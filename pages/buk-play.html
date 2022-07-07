@@ -25,14 +25,40 @@
 
     <section class="courses-categories buk-py-5">
       <div class="boxer">
-        <ul>
-          <li>Categorías de Cursos</li>
-          <li>
+        <ul class="categories-menu">
+          <li class="categories-menu__choice" >
+            <button class="categories-button ds-flex ai-center" id="btn-collapse" aria-controls="categoriesCollapse">
+              <img src="../img/assets-buk-play/camera-fill.svg" alt="c" class="categories-button__icon">
+              <span class="categories-button__txt">Categorías de Cursos</span>
+              <span class="categories-button__arrow"></span>
+            </button>
+          </li>
+          <li class="categories-menu__options" id="menu-options">
             <ul>
-              <li>Compilance</li>
-              <li>Comunicación</li>
-              <li>Data Managment</li>
-              <li>Desarrollo de Software</li>
+              <li class="categories-menu__item selected">
+                <button class="categories-button ds-flex ai-center">
+                  <img src="../img/assets-buk-play/camera-outline.svg" alt="c" class="categories-button__icon">
+                  <span class="categories-button__txt">Compilance</span>
+                </button>
+              </li>
+              <li class="categories-menu__item">
+                <button class="categories-button ds-flex ai-center">
+                  <img src="../img/assets-buk-play/camera-outline.svg" alt="c" class="categories-button__icon">
+                  <span class="categories-button__txt">Comunicación</span>
+                </button>
+              </li>
+              <li class="categories-menu__item">
+                <button class="categories-button ds-flex ai-center">
+                  <img src="../img/assets-buk-play/camera-outline.svg" alt="c" class="categories-button__icon">
+                  <span class="categories-button__txt">Data Managment</span>
+                </button>
+              </li>
+              <li class="categories-menu__item selected">
+                <button class="categories-button ds-flex ai-center">
+                  <img src="../img/assets-buk-play/camera-outline.svg" alt="c" class="categories-button__icon">
+                  <span class="categories-button__txt">Desarrollo de Software</span>
+                </button>
+              </li>
             </ul>
           </li>
         </ul>
@@ -44,5 +70,6 @@
   </main>
 
   <script defer src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script defer src="../js/buk-play/tabs.js"></script>
 </body>
 </html>

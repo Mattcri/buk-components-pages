@@ -2,3 +2,70 @@ main {
   background: #2F48A7;
   color: var(--color-white);
 }
+
+.categories-menu {
+  background-color: #162F60;
+  border-radius: 23px;
+  padding: .8rem 0;
+}
+
+.categories-menu__choice, .categories-menu__item {
+  padding: 0 1rem;
+}
+
+.categories-button {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  /* line-height: inherit; */
+  width: 100%;
+}
+.categories-button__icon { max-width: 35px; }
+.categories-button__txt { 
+  /* transform: translateY(-.5px); */
+  margin-left: 4px;
+}
+
+.categories-button__arrow {
+  height: 25px;
+  width: 25px;
+  position: relative;
+  margin-left: auto;
+}
+.categories-button__arrow::after {
+  content: "";
+  background-image: url("https://www.buk.cl/hubfs/2022/Icons/keyboard_arrow_down_white_36dp.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+}
+
+.categories-menu__options {
+  display: none;
+  /* height: 0;
+  overflow: hidden; */
+}
+.categories-menu__options.show {
+  display: block;
+}
+
+.categories-menu__options ul {
+  /* background-color: cornflowerblue; */
+  margin: .5rem 0;
+  border-top: 2px solid #40557D;
+}
+
+.categories-menu__item {
+  padding-top: .3rem;
+  padding-bottom: .3rem;
+}
+
+.categories-menu__item.selected {
+  background: rgba(0, 0, 0, .37);
+}
