@@ -15,6 +15,19 @@
   <link rel="preload" as="style" href="../css/margins-paddings.css" onload="this.rel='stylesheet'">
   <link rel="preload" as="style" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" onload="this.rel='stylesheet'" />
   <title>Buk Play</title>
+  <style>
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
 </head>
 <body>
   <section class="preheader"></section>
@@ -35,26 +48,26 @@
           </li>
           <li class="categories-menu__options" id="menu-options">
             <ul>
-              <li class="categories-menu__item selected">
-                <button class="categories-button ds-flex ai-center">
+              <li class="categories-menu__item">
+                <button class="categories-button ds-flex ai-center" data-categories-target="#category-1">
                   <img src="../img/assets-buk-play/camera-outline.svg" alt="c" class="categories-button__icon">
                   <span class="categories-button__txt">Compilance</span>
                 </button>
               </li>
               <li class="categories-menu__item">
-                <button class="categories-button ds-flex ai-center">
+                <button class="categories-button ds-flex ai-center" data-categories-target="#category-2">
                   <img src="../img/assets-buk-play/camera-outline.svg" alt="c" class="categories-button__icon">
                   <span class="categories-button__txt">Comunicación</span>
                 </button>
               </li>
               <li class="categories-menu__item">
-                <button class="categories-button ds-flex ai-center">
+                <button class="categories-button ds-flex ai-center" data-categories-target="#category-3">
                   <img src="../img/assets-buk-play/camera-outline.svg" alt="c" class="categories-button__icon">
                   <span class="categories-button__txt">Data Managment</span>
                 </button>
               </li>
-              <li class="categories-menu__item selected">
-                <button class="categories-button ds-flex ai-center">
+              <li class="categories-menu__item">
+                <button class="categories-button ds-flex ai-center" data-categories-target="#category-4">
                   <img src="../img/assets-buk-play/camera-outline.svg" alt="c" class="categories-button__icon">
                   <span class="categories-button__txt">Desarrollo de Software</span>
                 </button>
@@ -62,6 +75,134 @@
             </ul>
           </li>
         </ul>
+
+        <div class="buk-grid buk-mt-4">
+          <div class="buk-col tab-categories-content">
+            <div id="category-1" data-categories-content>
+
+              <div class="swiper category-carousel">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="category-carousel__item" role="button">
+                      <img src="../img/assets-buk-play/curso-1.jpg" alt="curso-1" class="category-carousel__img">
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="category-carousel__item">
+                      <img src="../img/assets-buk-play/curso-2.jpg" alt="curso-2" class="category-carousel__img">
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="category-carousel__item">
+                      <img src="../img/assets-buk-play/curso-3.jpg" alt="curso-3" class="category-carousel__img">
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="category-carousel__item" role="button">
+                      <img src="../img/assets-buk-play/curso-1.jpg" alt="curso-1" class="category-carousel__img">
+                    </div>
+                  </div>
+
+                </div>
+                <div class="swiper-pagination buk-mt-2"></div>
+              </div>
+
+            </div>
+
+            <div id="category-2" data-categories-content>
+
+              <div class="swiper category-carousel">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="category-carousel__item">
+                      <img src="../img/assets-buk-play/curso-2.jpg" alt="curso-2" class="category-carousel__img">
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="category-carousel__item">
+                      <img src="../img/assets-buk-play/curso-1.jpg" alt="curso-1" class="category-carousel__img">
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="category-carousel__item">
+                      <img src="../img/assets-buk-play/curso-3.jpg" alt="curso-3" class="category-carousel__img">
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="category-carousel__item" role="button">
+                      <img src="../img/assets-buk-play/curso-1.jpg" alt="curso-1" class="category-carousel__img">
+                    </div>
+                  </div>
+
+                </div>
+                <div class="swiper-pagination buk-mt-2"></div>
+              </div>
+
+            </div>
+
+            <div id="category-3" data-categories-content>
+
+              <div class="swiper category-carousel">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="category-carousel__item">
+                      <img src="../img/assets-buk-play/curso-1.jpg" alt="curso-1" class="category-carousel__img">
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="category-carousel__item">
+                      <img src="../img/assets-buk-play/curso-2.jpg" alt="curso-2" class="category-carousel__img">
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="category-carousel__item">
+                      <img src="../img/assets-buk-play/curso-3.jpg" alt="curso-3" class="category-carousel__img">
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="category-carousel__item" role="button">
+                      <img src="../img/assets-buk-play/curso-1.jpg" alt="curso-1" class="category-carousel__img">
+                    </div>
+                  </div>
+
+                </div>
+                <div class="swiper-pagination buk-mt-2"></div>
+              </div>
+
+            </div>
+
+            <div id="category-4" data-categories-content>
+
+              <div class="swiper category-carousel">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="category-carousel__item">
+                      <img src="../img/assets-buk-play/curso-2.jpg" alt="curso-2" class="category-carousel__img">
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="category-carousel__item">
+                      <img src="../img/assets-buk-play/curso-1.jpg" alt="curso-1" class="category-carousel__img">
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="category-carousel__item">
+                      <img src="../img/assets-buk-play/curso-3.jpg" alt="curso-3" class="category-carousel__img">
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="category-carousel__item" role="button">
+                      <img src="../img/assets-buk-play/curso-1.jpg" alt="curso-1" class="category-carousel__img">
+                    </div>
+                  </div>
+
+                </div>
+                <div class="swiper-pagination buk-mt-2"></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
 
       </div>
       
@@ -71,5 +212,6 @@
 
   <script defer src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
   <script defer src="../js/buk-play/tabs.js"></script>
+  <script defer src="../js/buk-play/carousels.js"></script>
 </body>
 </html>
