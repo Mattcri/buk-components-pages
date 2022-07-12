@@ -178,7 +178,7 @@ ul {
   h2 { font-size: 1.875rem; }
   h3 { font-size: 1.5rem; }
   
-  .v-mobile { display: none; }
+  .v-mobile { display: block; }
   .v-tablet { display: block; }
 }
 
