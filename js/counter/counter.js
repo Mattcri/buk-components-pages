@@ -1,11 +1,22 @@
-let DOMnum = document.getElementById('num')
-let DOMnum2 = document.getElementById('num2')
-let DOMnum3 = document.getElementById('num3')
-let DOMnum4 = document.getElementById('num4')
-let numValue = Number(DOMnum.textContent)
-let numValue2 = Number(DOMnum2.textContent)
-let numValue3 = Number(DOMnum3.textContent)
-let numValue4 = Number(DOMnum4.textContent)
+const DOMcipher = document.getElementById('num')
+const DOMcipher2 = document.getElementById('num2')
+const DOMcipher3 = document.getElementById('num3')
+const DOMcipher4 = document.getElementById('num4')
+const cipherToNum = Number(DOMcipher.textContent)
+const cipherToNum2 = Number(DOMcipher2.textContent)
+const cipherToNum3 = Number(DOMcipher3.textContent)
+const cipherToNum4 = Number(DOMcipher4.textContent)
+const sectionCounter = document.getElementById('counter')
+
+console.log(DOMcipher.textContent)
+console.log(typeof cipherToNum);
+console.log(cipherToNum);
+console.log(cipherToNum2);
+
+DOMcipher.textContent = '+ 0'
+DOMcipher2.textContent = '+ 0'
+DOMcipher3.textContent = '+ 0'
+DOMcipher4.textContent = '+ 0'
 
 // for (let i = 0; i <= numValue; i++) {
   //   setInterval(function() {
@@ -14,7 +25,7 @@ let numValue4 = Number(DOMnum4.textContent)
     //   console.log(i)
     // }
 const initCounter = (DOM, increment) => {
-  DOM.textContent = `+${increment}`
+  DOM.textContent = `+ ${increment.toLocaleString()}`
 }
 
 const count = (DOMelement, numLimit) => {
@@ -35,11 +46,36 @@ const count = (DOMelement, numLimit) => {
 
 }
 
-count(DOMnum, numValue)
-count(DOMnum2, numValue2)
-count(DOMnum3, numValue3)
-count(DOMnum4, numValue4)
+const count2 = (DOMelement, numLimit) => {
+  let to = 0
+  const counter = () => {
+    let increment = to++
+    increment <= numLimit ? initCounter(DOMelement, increment) : clearInterval(timer)
+  }
 
+  const timer = setInterval(counter, 100)
+}
+
+const options = {
+  threshold: .15,
+  rootMargin: "-160px 0px",
+}
+
+const observerCounter = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      console.log(entry.target)
+      count(DOMcipher, cipherToNum)
+      count2(DOMcipher2, cipherToNum2)
+      count2(DOMcipher3, cipherToNum3)
+      count(DOMcipher4, cipherToNum4)
+      observerCounter.unobserve(sectionCounter)
+    }
+
+  })
+}, options)
+
+observerCounter.observe(sectionCounter)
 
 // function counter() {
 //   setInterval(function() {
@@ -60,9 +96,8 @@ count(DOMnum4, numValue4)
 
 // counter()
 
-console.log(DOMnum.textContent)
-console.log(typeof numValue);
-console.log(numValue);
+
+// console.log(sectionCounter)
 
 // const initCounter = ( increment) => {
 //   const classNum = Array.from(document.getElementsByClassName('foo'))
