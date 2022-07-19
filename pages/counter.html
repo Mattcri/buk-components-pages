@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,21 +14,35 @@
   <link rel="preload" as="style" href="../css/grid-system.css" onload="this.rel='stylesheet'">
   <link rel="preload" as="style" href="../css/margins-paddings.css" onload="this.rel='stylesheet'">
   <title>Buk Hub Pages</title>
-  <style> h1 span {color: initial; font-size: 1.25rem;} </style>
+  <style>
+    h1 span {
+      color: initial;
+      font-size: 1.25rem;
+    }
+  </style>
 </head>
+
 <body>
   <div class="boxer buk-mt-5">
-    <h1 class="txt-center buk-mb-5">Select a page <br><span>You want to go</span></h1>
-    <div class="buk-grid">
-      <div class="buk-col buk-col-lg-2">
-        <a href="./pages/buk-play.html" class="btn btn--4">Buk Play</a>
+    <h1 class="txt-center buk-mb-5">Number Counter Function</h1>
+    <div style="background-color:aliceblue; height: 80rem">
+      <h3 class="txt-center">Content</h3>
+    </div>
+    <div class="buk-grid buk-py-lg-5">
+      <div class="buk-col">
+        <p id="num" class="foo">10000</p>
+        <p id="num2" class="foo">5000</p>
+        <p id="num3" class="foo">5000</p>
+        <p id="num4" class="foo">6000</p>
       </div>
-      <div class="buk-col buk-col-lg-2">
-        <a href="./pages/counter.html" class="btn btn--4">Counter Function</a>
-      </div>
+    </div>
+    <div style="background-color:aliceblue; height: 20rem">
+      <h3 class="txt-center">Final content</h3>
     </div>
 
   </div>
-  
+
+  <script defer src="../js/counter/counter.js"></script>
 </body>
+
 </html>
