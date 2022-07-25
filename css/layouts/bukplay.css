@@ -1,3 +1,8 @@
+header {
+  background-color: var(--color-primary);
+  height: 85px;
+}
+
 main {
   background: #2F48A7;
   color: var(--color-white);

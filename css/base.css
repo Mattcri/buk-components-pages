@@ -49,10 +49,7 @@ a {
   height: 40px;
   background-color: #0b2f63;
 }
-header {
-  background-color: var(--color-primary);
-  height: 85px;
-}
+
 
 img {
   max-width: 100%;

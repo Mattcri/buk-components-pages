@@ -1,0 +1,686 @@
+header {
+  background-color: #2f48a7;
+  color: #fff;
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 20px 0;
+}
+
+header.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.boxer-header {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 90%;
+}
+
+.buk-logo img {
+  height: 48px;
+  width: 123px;
+  transition: height .6s ease-out;
+}
+
+header.sticky .buk-logo img {
+  height: 43px;
+  transition: height .6s ease;
+}
+
+.buk-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+  /* # ---- Btn Mobile ---- # */
+
+.buk-xs-menu {
+  width: 40px;
+  height: 45px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  position: relative;
+  transition: all 1s ease-in-out;
+}
+
+.buk-xs-menu__hamburger {
+  height: 4px;
+  width: 80%;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: all .5s ease-in-out;
+}
+
+.buk-xs-menu__hamburger::before,
+.buk-xs-menu__hamburger::after {
+  content: '';
+  position: absolute;
+  height: 4px;
+  width: 80%;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: all .5s ease-in-out;
+}
+
+.buk-xs-menu__hamburger::before {
+  transform: translate(-50%, -10px);
+}
+
+.buk-xs-menu__hamburger::after {
+  transform: translate(-50%, 10px);
+}
+
+.buk-xs-menu.show-menu .buk-xs-menu__hamburger {
+  transform: translateX(-20px);
+  background: transparent;
+  z-index: 4;
+  transition: all .5s ease-in-out;
+}
+
+.buk-xs-menu.show-menu .buk-xs-menu__hamburger::before {
+  transform: rotate(45deg) translate(6px, -6px);
+}
+
+.buk-xs-menu.show-menu .buk-xs-menu__hamburger::after {
+  transform: rotate(-45deg) translate(5.5px, 5.5px);
+}
+
+  /* # ---- Fin Btn Mobile ---- # */
+
+  /* # ---- Show menu mobile ---- # */
+
+header .buk-xs-menu~.buk-menu {
+  transition: all .6s ease-in;
+}
+
+header.sticky .buk-xs-menu~.buk-menu {
+  top: calc(125px - 40px);
+}
+
+.buk-xs-menu.show-menu~.buk-menu {
+  right: 0;
+  opacity: 1;
+  overflow-y: auto;
+  transition: all .6s ease;
+}
+
+@media only screen and (min-width: 1020px) {
+  header .buk-xs-menu~.buk-menu {
+    transition: none;
+  }
+}
+
+  /* # ---- Fin Show Mobile ---- # */
+
+  /* # ---- Menú Buk ---- # */
+
+.buk-menu {
+  position: fixed;
+  display: block;
+  background-color: #fff;
+  right: -100%;
+  top: calc(40px + 91px);
+  height: 100vh;
+  width: 100%;
+  list-style: none;
+  opacity: 0;
+  transition: right 2s ease-in;
+  padding: 0 5%;
+  z-index: 20;
+}
+
+.buk-menu__item {
+  color: #2F48A7;
+  font-size: 1.25rem;
+  margin: 5px 0;
+}
+
+.buk-menu__item:not(:last-of-type) {
+  border-bottom: 1px solid rgba(47, 72, 167, .13);
+}
+
+.buk-menu__item.show-submenu {
+  border-bottom: 2px solid #2F48A7;
+}
+
+.buk-menu__item a {
+  color: #2F48A7;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 700;
+}
+
+.buk-menu__item .buk-menu__link {
+  letter-spacing: 1px;
+}
+
+.buk-menu__link {
+  display: flex;
+  cursor: pointer;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  width: 100%;
+}
+
+  /* # ---- Arrow Down ---- # */
+
+.arrow-down {
+  position: relative;
+  width: 30px;
+}
+
+.arrow-down .arrow-down__left {
+  position: absolute;
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 6px;
+  display: block;
+  transform: rotate(40deg);
+  float: right;
+  border-radius: 2px;
+}
+
+.arrow-down .arrow-down__left::after {
+  content: "";
+  background-color: #2F48A7;
+  width: 15px;
+  height: 6px;
+  display: block;
+  float: right;
+  border-radius: 8px;
+  transition: all .9s cubic-bezier(.25, 1.7, .35, .8);
+  z-index: -1;
+}
+
+.arrow-down .arrow-down__right {
+  position: absolute;
+  background-color: transparent;
+  top: 0px;
+  left: 8px;
+  width: 15px;
+  height: 6px;
+  display: block;
+  transform: rotate(-40deg);
+  float: right;
+  border-radius: 2px;
+}
+
+.arrow-down .arrow-down__right::after {
+  content: "";
+  background-color: #2F48A7;
+  width: 15px;
+  height: 6px;
+  display: block;
+  float: right;
+  border-radius: 8px;
+  transition: all .9s cubic-bezier(.25, 1.7, .35, .8);
+  z-index: -1;
+}
+
+.arrow-down.open .arrow-down__left::after {
+  transform-origin: center center;
+  transform: rotate(-70deg);
+}
+
+.arrow-down.open .arrow-down__right::after {
+  transform-origin: center center;
+  transform: rotate(70deg);
+}
+
+  /* # ---- Fin Arrow Down ---- # */
+
+  /* # ---- Submenu ---- # */
+
+.buk-submenu {
+  display: none;
+  list-style: none;
+  transform-origin: top;
+}
+
+.buk-menu__item.show-submenu .buk-submenu {
+  display: flex;
+  flex-direction: column;
+  animation: revealSubmenu .6s ease-in;
+}
+
+.buk-submenu--family {
+  padding-bottom: .7rem;
+}
+
+@keyframes revealSubmenu {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.buk-pilar:nth-of-type(1) {
+  order: 2;
+}
+
+.buk-pilar:nth-of-type(2) {
+  order: 1;
+}
+
+.buk-pilar:nth-of-type(3) {
+  order: 3;
+}
+
+.buk-pilar:nth-of-type(4) {
+  order: 4;
+}
+
+.buk-pilar__content {
+  align-items: center;
+  background: #C7D6F9;
+  display: flex;
+  margin: 0 -5.5%;
+  padding: 7px 5.5%;
+}
+
+.buk-pilar__icon {
+  width: max-content;
+}
+
+.buk-pilar__icon img {
+  aspect-ratio: 1;
+  vertical-align: middle;
+  width: 63px;
+}
+
+.buk-pilar__name {
+  font-size: 1.15rem;
+  font-weight: bold;
+  margin-left: 1.1rem;
+}
+
+.buk-pilar__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+  padding: 1.2rem 0;
+}
+
+.buk-pilar__label {
+  padding-left: 36px;
+  position: relative;
+}
+
+.buk-pilar__label::after {
+  content: url('https://www.buk.cl/hubfs/2022/BUK/Home%20nuevo/Header/icon-action-check_circle.svg');
+  position: absolute;
+  width: auto;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-40%);
+}
+
+.buk-pilar__label a {
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.buk-pilar__label a:hover {
+  color: #FFBC2F;
+  font-weight: bold;
+}
+
+.buk-family a {
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.buk-family a:hover {
+  color: #FFBC2F;
+  font-weight: bold;
+}
+
+.new-solution {
+  background-color: #1FBD4A;
+  border-radius: 15px;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: .85rem;
+  font-weight: bold;
+  padding: 5px 12px 6px;
+  position: absolute;
+  left: 60%;
+  top: 6px;
+}
+
+  /* # ---- Fin Submenu ---- # */
+
+.buk-nav .buk-cta {
+  background: #F1F5FD;
+  height: 51%;
+  list-style: none;
+  margin: 0 -5.5%;
+  padding: 30px 6%;
+}
+
+.buk-nav .buk-cta__wrap-button {
+  text-align: center;
+}
+
+.buk-nav .buk-cta__wrap-button:nth-of-type(1) {
+  margin-bottom: 13px;
+}
+
+.buk-nav .buk-cta__button {
+  border: 2px solid #FFBC2F;
+  border-radius: 30px;
+  display: inline-block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  min-width: 216px;
+}
+
+.buk-nav .buk-cta__button--btn1 {
+  background-color: #FFBC2F;
+  color: #fff;
+}
+
+.buk-nav .buk-cta__button--btn2 {
+  background-color: #fff;
+  color: #FFBC2F;
+}
+
+.buk-nav .buk-cta__button--btn1:hover {
+  color: #ffbc2f;
+  background-color: #fff;
+  transition: .5s;
+}
+
+  /* # ---- Fin Menú Buk ---- # */
+
+@media only screen and (min-width: 1020px) {
+  header {
+    padding: 0;
+  }
+
+  .buk-logo {
+    flex: 1 0 130px;
+  }
+
+  .buk-xs-menu {
+    display: none;
+  }
+
+    /* # ---- Menú Buk ---- # */
+
+  .buk-menu {
+    align-items: center;
+    background-color: #2F48A7;
+    display: flex;
+    flex: 2 0 80%;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    position: initial;
+    height: auto;
+    opacity: 1;
+    padding: 0;
+    width: auto;
+  }
+
+  .buk-menu__item {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+    padding: 36px 0;
+    position: relative;
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  header.sticky .buk-menu__item {
+    padding: 32px 0;
+  }
+
+  .buk-menu__item:not(:last-of-type) {
+    border-bottom: none;
+  }
+
+  .buk-menu__item.show-submenu {
+    border-bottom: none;
+  }
+
+  .buk-menu__item::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3.5px;
+    display: block;
+    transition: all .7s ease;
+    bottom: 28px;
+    left: 10px;
+  }
+
+  header.sticky .buk-menu__item::after {
+    bottom: 25px;
+  }
+
+  .buk-menu__item:hover::after {
+    background-color: #FFBC2F;
+    width: calc(100% - 17px);
+  }
+
+  .buk-menu__item a {
+    color: #fff;
+  }
+
+  .buk-menu__item .buk-submenu a {
+    color: #2F48A7;
+  }
+
+  .buk-menu__item .buk-submenu a:hover {
+    color: #ffbc2f;
+  }
+
+  .buk-menu__link {
+    padding: 4px 10px;
+    width: auto;
+  }
+
+    /* # ---- Arrow Down ---- # */
+
+  .arrow-down .arrow-down__left {
+    top: -2px;
+    left: 8.7px;
+    height: 5px;
+    width: 14px;
+  }
+
+  .arrow-down .arrow-down__right {
+    top: -2px;
+    left: 18px;
+    height: 5px;
+    width: 14px;
+  }
+
+  .arrow-down .arrow-down__left::after {
+    background-color: #fff;
+    height: 4px;
+    width: 14px;
+  }
+
+  .arrow-down .arrow-down__right::after {
+    background-color: #fff;
+    height: 4px;
+    width: 14px;
+  }
+
+  .buk-menu__item:hover .arrow-down .arrow-down__left::after {
+    transform-origin: center center;
+    transform: rotate(-70deg);
+  }
+
+  .buk-menu__item:hover .arrow-down .arrow-down__right::after {
+    transform-origin: center center;
+    transform: rotate(70deg);
+  }
+
+    /* # ---- Fin Arrow Down ---- # */
+
+    /* # ---- Submenu ---- # */
+
+  .buk-menu__item:hover .buk-submenu {
+    animation: revealSubmenu .6s ease-in;
+  }
+
+  .buk-menu__item.show-submenu .buk-submenu,
+  .buk-menu__item:hover .buk-submenu {
+    background: #FFF;
+    color: #2F48A7;
+    box-shadow: 0px 4px 6px 0 rgba(0, 0, 0, .16);
+    -moz-box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, .16);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem 1.2rem .5rem;
+    position: absolute;
+    /*     top: calc(43px + 12px + 6px); */
+    top: 98.4px;
+    left: 0;
+    width: 655px;
+    z-index: 20;
+  }
+
+  header.sticky .buk-menu__item.show-submenu .buk-submenu,
+  header.sticky .buk-menu__item:hover .buk-submenu {
+    /*     top: calc(43px + 12px + 2.5px); */
+    top: 90.3px;
+  }
+
+  .buk-menu__item.show-submenu .buk-submenu--family,
+  .buk-menu__item:hover .buk-submenu--family {
+    flex-direction: column;
+    padding: 1.2rem;
+    left: 10px;
+    width: 175px;
+  }
+
+  .buk-pilar {
+    display: flex;
+    flex-direction: column;
+    flex: 1 50%;
+  }
+
+  .buk-pilar:nth-of-type(1) {
+    order: 3;
+  }
+
+  .buk-pilar:nth-of-type(2) {
+    order: 1;
+  }
+
+  .buk-pilar:nth-of-type(3) {
+    order: 2;
+  }
+
+  .buk-pilar:nth-of-type(4) {
+    order: 4;
+  }
+
+  .buk-pilar__content {
+    background: #fff;
+    margin: 0;
+  }
+
+  .buk-pilar__icon img {
+    width: 60px;
+  }
+
+  .buk-pilar__list {
+    gap: .2rem;
+    padding: .5rem 0 1.2rem;
+  }
+
+  .buk-pilar__label {
+    padding: 0 6%;
+  }
+
+  .buk-pilar__label::after {
+    content: none;
+  }
+
+  .buk-pilar__label a {
+    font-size: 1.05rem;
+    padding: 6px 0;
+  }
+
+  .buk-family a {
+    padding: 6px 0;
+  }
+
+  .new-solution {
+    padding: 4px 9px 5.5px;
+    left: 69%;
+    top: 3px;
+  }
+
+    /* # ---- Fin Submenu ---- # */
+
+  .buk-nav .buk-cta {
+    background: #2F48A7;
+    height: auto;
+    margin: 0 0 0 2%;
+    padding: 0;
+  }
+
+  .buk-nav .buk-cta__wrap-button:nth-of-type(1) {
+    margin-bottom: 0;
+  }
+
+  .buk-nav .buk-cta__button {
+    font-size: 1.25rem;
+    padding: 11px 15px;
+    min-width: 178px;
+  }
+
+  .buk-nav .buk-cta__button--btn2 {
+    display: none;
+  }
+
+     /* ---- Fin Menú Buk ---- */
+
+
+
+}
+
+@media only screen and (min-width: 1200px) {
+  .buk-menu__item:not(:last-of-type) {
+    margin: 0 7px;
+  }
+
+  .buk-menu__item:last-of-type {
+    margin-left: 7px;
+  }
+
+  .buk-nav .buk-cta {
+    margin: 0 0 0 4%;
+  }
+
+}
