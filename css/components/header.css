@@ -13,7 +13,7 @@ header.sticky {
 
 .boxer-header {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1300px;
   width: 90%;
 }
 
@@ -145,6 +145,7 @@ header.sticky .buk-xs-menu~.buk-menu {
 .buk-menu__item:not(:last-of-type) {
   border-bottom: 1px solid rgba(47, 72, 167, .13);
 }
+.buk-menu__item:nth-last-of-type(2) { border-bottom: none; }
 
 .buk-menu__item.show-submenu {
   border-bottom: 2px solid #2F48A7;
@@ -153,6 +154,15 @@ header.sticky .buk-xs-menu~.buk-menu {
 .buk-menu__item a {
   color: #2F48A7;
   -webkit-font-smoothing: antialiased;
+  font-weight: 700;
+}
+
+.buk-menu__item button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
   font-weight: 700;
 }
 
@@ -422,8 +432,12 @@ header.sticky .buk-xs-menu~.buk-menu {
     padding: 0;
   }
 
+  .buk-menu__item .buk-menu__link {
+    letter-spacing: .5px;
+  }
+
   .buk-logo {
-    flex: 1 0 130px;
+    flex: 0 0 130px;
   }
 
   .buk-xs-menu {
@@ -670,7 +684,17 @@ header.sticky .buk-xs-menu~.buk-menu {
 
 }
 
+@media only screen and (min-width: 1100px) {
+  .buk-menu__item .buk-menu__link {
+    letter-spacing: 1px;
+  }
+}
+
 @media only screen and (min-width: 1200px) {
+  .buk-logo {
+    flex: 1 0 130px;
+  }
+
   .buk-menu__item:not(:last-of-type) {
     margin: 0 7px;
   }

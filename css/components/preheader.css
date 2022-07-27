@@ -55,9 +55,15 @@
   color: #fff;
 }
 
-.buk-preheader__links li a.buk-countries {
+/* cambio */
+.buk-preheader__links li button.buk-countries {
   display: flex;
   align-items: center;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 #countries {
@@ -74,7 +80,7 @@
   height: 144px;
 }
 
-.buk-countries__container {
+.buk-countries__submenu .buk-countries__container {
   padding: 17px 12px;
 }
 
@@ -83,7 +89,7 @@
   background-color: #fff;
   list-style: none;
   top: 39px;
-  left: -160%;
+  right: -5%;
   width: 150px;
   height: 0;
   overflow: hidden;
@@ -177,9 +183,9 @@
     margin: 0 4px;
   }
 
-  .buk-countries__submenu {
+  /* .buk-countries__submenu {
     left: -50%;
-  }
+  } */
 
   .buk-preheader__content {
     justify-content: space-between;

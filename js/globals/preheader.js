@@ -3,6 +3,7 @@ const bukSite = document.getElementById('bukSite');
 const appSite = document.getElementById('appSite');
 const openCountries = Array.from(document.getElementsByClassName('open-countries'));
 const itemCountries = document.getElementById('countries');
+const btnCountires = document.getElementById('countries-options')
 
 const locationUrl = (path) => {
   const COMPARE_URL = '/app'
@@ -19,10 +20,13 @@ const locationUrl = (path) => {
   return changeStatus(COMPARE_URL)
 }
 
-openCountries.forEach((item) => {
-  item.addEventListener('click', () => {
-    itemCountries.classList.toggle('show-countries')
-  })
+// openCountries.forEach((item) => {
+//   item.addEventListener('click', () => {
+//     itemCountries.classList.toggle('show-countries')
+//   })
+// })
+btnCountires.addEventListener('click', () => {
+  itemCountries.classList.toggle('show-countries')
 })
 
 const hideOutsideClickAndScrollDown = () => {
