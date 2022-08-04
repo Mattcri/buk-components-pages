@@ -1,0 +1,60 @@
+.preheader { height: 40px; background-color: var(--color-secondary);}
+header { height: 90px; background-color: var(--color-primary); }
+
+.testimony-card {
+  padding: 1.5rem;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.testimonials .buk-col:nth-of-type(4),
+.testimonials .buk-col:nth-of-type(5) {
+  display: none;
+}
+
+
+.testimony-card__info .name {
+  font-size: 1.125rem;
+}
+.testimony-card__info .charge {
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 767px) {
+  .testimony-card {
+    height: 100%;
+  }
+  .testimony-card {
+    max-width: initial;
+    margin: initial;
+  }
+}
+
+@media only screen and (min-width: 1020px) {
+  .testimony-card { text-align: initial; }
+  .testimonials .buk-col:nth-of-type(4),
+  .testimonials .buk-col:nth-of-type(5) {
+    display: block;
+  }
+
+  .testimonials .buk-col:nth-of-type(4) .testimony-card {
+    height: initial;
+  }
+  .buk-col:nth-of-type(4) .testimony-card .testimony-card__img {
+    text-align: center;
+  }
+
+  .quotation-mark img {
+    aspect-ratio: 1;
+    height: 65px;
+    width: 65px;
+  }
+  
+}
+
+@media only screen and (min-width: 1200px) {
+  .testimony-card {
+    padding: 2rem;
+  }
+}
