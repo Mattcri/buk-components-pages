@@ -1,0 +1,223 @@
+header, footer { 
+  height: 90px;
+  width: 100%;
+  background-color: var(--color-primary);
+}
+
+.accordion {
+  padding: 2rem 1.5rem;
+}
+
+/* .accordion .buk-col:not(:last-of-type) button {
+  margin-bottom: 2rem;
+} */
+
+.accordion-btn, .tab-btn {
+  cursor: pointer;
+  appearance: none;
+  background: transparent;
+  border: none;
+  flex-wrap: nowrap !important;
+}
+.accordion-btn::after {
+  content: '';
+  background: url("https://info.buk.cl/hubfs/2022/BUK/Landings/Pagos/boton-cruz.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+  width: 40px;
+  height: 40px;
+  transition: transform .5s ease;
+  /* position: static; */
+}
+.accordion-btn.active::after {
+  background-image: url(https://info.buk.cl/hubfs/2022/BUK/Landings/Pagos/Close-acordion.png);
+  transform: rotate(180deg);
+}
+.accordion-btn__ilustration {
+  width: 27%;
+}
+.accordion-btn__txt {
+  text-align: left;
+  width: 50%;
+}
+.accordion-btn__txt h4 {
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+.accordion-btn__txt p {
+  font-size: .85rem;
+  line-height: 1.1;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all ease .6s;
+  opacity: 0;
+}
+.accordion-content.show-content {
+  opacity: 1;
+  max-height: 600px;
+}
+
+.capterra h2 {
+  text-align: center;
+}
+
+.capterra-score h5 {
+  font-size: 1.5rem;
+}
+
+.capterra-score .capterra-score__stars img {
+  width: 25px;
+  height: 25px;
+}
+
+.capterra-carousel .shadow-box .shadow-body {
+  padding: 2rem 1rem;
+}
+
+.capterra-carousel .shadow-box {
+  margin: 1rem 0rem;
+  margin-left: 1rem;
+  height: 95%;
+}
+
+.capterra-testimony__details .logo {
+  max-width: 110px;
+}
+.capterra-testimony__details h5 {
+  font-size: 1.15rem;
+}
+.capterra-testimony__msg {
+  width: 100%;
+}
+.capterra .swiper-pagination {
+  position: static;
+  z-index: 20;
+}
+.capterra .swiper-pagination-bullet {
+  background: var(--color-primary);
+  width: .65rem;
+  height: .65rem;
+  transition: .5s ease;
+}
+
+@media only screen and (min-width: 767px) {
+  .accordion {
+      padding: 2rem 3rem;
+    }
+
+  .accordion-btn__ilustration {
+    width: 20%;
+    text-align: left;
+  }
+  .accordion-btn__txt {
+    width: 60%;
+  }
+  .accordion-btn__txt p {
+    font-size: .95rem;
+  }
+  .accordion-btn::after {
+    margin-left: 5%;
+  }
+
+  
+}
+
+@media only screen and (min-width: 1020px) {
+  .tab-ilustration img {
+    width: 100px;
+    height: 100px;
+    transition: transform .6s linear;
+  }
+  .tab-btn:hover .tab-ilustration img {
+    transform: scale(1.15);
+  }
+
+  .tab-title {
+    color: var(--font-color-darkgrey);
+    font-size: 1.25rem;
+    opacity: .6;
+  }
+
+  .tab-btn i img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .tab .shadow-body {
+    padding: 1.5rem;
+    min-height: 401px;
+  }
+
+  .tab-content__highlighted {
+    background-color: #dce5f8;
+    border-radius: 30px;
+    color: var(--color-primary);
+    font-weight: 500;
+    padding: .5rem 1rem;
+  }
+
+  /* .tab-content__desc {
+    gap: ;
+  } */
+  .tab-content__desc p {
+    padding-left: 40px;
+    position: relative;
+    width: calc(50% - .5rem);
+  }
+  .tab-content__desc p::before {
+    content: "";
+    position: absolute;
+    background-image: url("https://info.buk.cl/hubfs/2022/BUK/Landings/Pagos/check.png");
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    left: 0;
+    top: .1rem;
+  }
+
+  .tab-btn i img {
+    opacity: 0;
+  }
+  .tab-btn.pillar-selected .tab-title {
+    opacity: 1;
+  }
+  .tab-btn.pillar-selected i img {
+    opacity: 1;
+    transition: opacity 1s ease;
+  }
+
+  [data-pillar-content] {
+    display: none;
+  }
+  .target-active[data-pillar-content] {
+    display: block;
+    animation: showTarget 1s ease-in-out;
+  }
+
+  @keyframes showTarget {
+    from { opacity: 0; }
+    to { opacity: 1;; }
+  }
+
+  .capterra h2 {
+    text-align: initial;
+  }
+
+  .capterra-carousel .shadow-box {
+    height: 92%;
+    /* min-height: 350px; */
+  }
+  .capterra-testimony__details {
+    width: 30%;
+  }
+  .capterra-testimony__details .avatar {
+    width: 100px;
+  }
+  .capterra-testimony__msg {
+    width: 65%;
+  }
+}
