@@ -20,6 +20,31 @@
       font-size: 1.25rem;
     }
   </style>
+
+  <style>
+    .categories button, .sub-categories button {
+      padding: 4px 10px;
+    }
+    .categories .categorie-selected, .sub-categories .sub-categorie-selected {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border: 2px solid var(--color-secondary);
+    }
+
+
+    [data-categories-content] {
+      display: none;
+    }
+    [data-categories-content].categorie-active {
+      display: block;
+    }
+    [data-sub-categories-content] {
+      display: none;
+    }
+    [data-categories-content].categorie-active [data-sub-categories-content].sub-categorie-active {
+      display: block;
+    }
+  </style>
 </head>
 
 <body>
@@ -36,8 +61,148 @@
         <p id="num4" class="foo">6000</p>
       </div>
     </div>
-    <div style="background-color:aliceblue; height: 20rem">
-      <h3 class="txt-center">Final content</h3>
+    <div style="background-color:aliceblue; margin-bottom: 4rem;">
+      <h3 class="buk-mb-4 txt-center">Final content</h3>
+      <p class="buk-mb-2 txt-center">Multi Filter tab</p>
+      <div class="ds-flex ai-center categories">
+        <button data-categorie-target="#ebooks">Ebooks</button>
+        <button data-categorie-target="#guides">Guides</button>
+      </div>
+      <div class="buk-mt-2 ds-flex ai-center sub-categories">
+        <button class="sub-categorie-selected" data-sub-categorie-target="sub-categorie-1">Sub-categoria 1</button>
+        <button data-sub-categorie-target="sub-categorie-2">Sub-categoria 2</button>
+        <button data-sub-categorie-target="sub-categorie-3">Sub-categoria 3</button>
+        
+      </div>
+
+      <section id="ebooks" class="buk-mt-3" data-categories-content>
+        <div class="sub-categorie-1 sub-categorie-active" data-sub-categories-content>
+          <div class="buk-grid">
+            <div class="buk-col-2">
+              <article>
+                <p>Ebooks 1</p>
+              </article>
+            </div>
+            <div class="buk-col-2">
+              <article>
+                <p>Ebooks 1</p>
+              </article>
+            </div>
+            <div class="buk-col-2">
+              <article>
+                <p>Ebooks 1</p>
+              </article>
+            </div>
+          </div>
+
+        </div>
+        <div class="sub-categorie-2" data-sub-categories-content>
+          <div class="buk-grid">
+            <div class="buk-col-2">
+              <article>
+                <p>Ebooks 2</p>
+              </article>
+            </div>
+            <div class="buk-col-2">
+              <article>
+                <p>Ebooks 2</p>
+              </article>
+            </div>
+            <div class="buk-col-2">
+              <article>
+                <p>Ebooks 2</p>
+              </article>
+            </div>
+          </div>
+
+        </div>
+        <div class="sub-categorie-3" data-sub-categories-content>
+          <div class="buk-grid">
+            <div class="buk-col-2">
+              <article>
+                <p>Ebooks 3</p>
+              </article>
+            </div>
+            <div class="buk-col-2">
+              <article>
+                <p>Ebooks 3</p>
+              </article>
+            </div>
+            <div class="buk-col-2">
+              <article>
+                <p>Ebooks 3</p>
+              </article>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <section id="guides" class="buk-mt-3" data-categories-content>
+        <div class="sub-categorie-1 sub-categorie-active" data-sub-categories-content>
+          <div class="buk-grid">
+            <div class="buk-col-2">
+              <article>
+                <p>Guides 1</p>
+              </article>
+            </div>
+            <div class="buk-col-2">
+              <article>
+                <p>Guides 1</p>
+              </article>
+            </div>
+            <div class="buk-col-2">
+              <article>
+                <p>Guides 1</p>
+              </article>
+            </div>
+          </div>
+
+        </div>
+        <div class="sub-categorie-2" data-sub-categories-content>
+          <div class="buk-grid">
+            <div class="buk-col-2">
+              <article>
+                <p>Guides 2</p>
+              </article>
+            </div>
+            <div class="buk-col-2">
+              <article>
+                <p>Guides 2</p>
+              </article>
+            </div>
+            <div class="buk-col-2">
+              <article>
+                <p>Guides 2</p>
+              </article>
+            </div>
+          </div>
+
+        </div>
+        <div class="sub-categorie-3" data-sub-categories-content>
+          <div class="buk-grid">
+            <div class="buk-col-2">
+              <article>
+                <p>Guides 3</p>
+              </article>
+            </div>
+            <div class="buk-col-2">
+              <article>
+                <p>Guides 3</p>
+              </article>
+            </div>
+            <div class="buk-col-2">
+              <article>
+                <p>Guides 3</p>
+              </article>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
     </div>
 
   </div>

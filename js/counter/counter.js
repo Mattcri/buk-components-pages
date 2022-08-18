@@ -107,3 +107,50 @@ observerCounter.observe(sectionCounter)
 //   classNum.textContent = increment
 // }
 
+// MultiTab solution
+
+const buttonsCategories = [...document.querySelectorAll('[data-categorie-target]')]
+const buttonsSubCategories = [...document.querySelectorAll('[data-sub-categorie-target]')]
+const dataContent = [...document.querySelectorAll('[data-categories-content]')]
+const dataContentSubCategories = [...document.querySelectorAll('[data-sub-categories-content]')]
+
+buttonsCategories.forEach(button => {
+  button.addEventListener('click', function () {
+    dataContent.forEach(content => content.classList.remove('categorie-active'))
+    buttonsCategories.forEach(btn => btn.classList.remove('categorie-selected'))
+    
+    let getTargetId = this.dataset.categorieTarget.slice(1)
+    let target = document.getElementById(getTargetId)
+    console.log(getTargetId)
+    console.log(target)
+
+    target.classList.add('categorie-active')
+    button.classList.add('categorie-selected')
+
+  })
+})
+
+buttonsSubCategories.forEach(button => {
+  button.addEventListener('click', function () {
+    dataContentSubCategories.forEach(content => content.classList.remove('sub-categorie-active'))
+    buttonsSubCategories.forEach(btn => btn.classList.remove('sub-categorie-selected'))
+
+    let getTargetsClass = this.dataset.subCategorieTarget
+    let targets = [...document.getElementsByClassName(getTargetsClass)]
+    console.log(targets)
+    
+
+    targets.forEach(e => e.classList.add('sub-categorie-active'))
+    // console.log(target);
+    button.classList.add('sub-categorie-selected')
+  })
+})
+
+console.log(buttonsCategories);
+console.log(buttonsSubCategories);
+
+dataContent[0].classList.add('categorie-active')
+buttonsCategories[0].classList.add('categorie-selected')
+
+dataContentSubCategories[0].classList.add('sub-categorie-active')
+buttonsSubCategories[0].classList.add('sub-categorie-selected')
