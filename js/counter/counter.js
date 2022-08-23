@@ -64,7 +64,7 @@ const options = {
 const observerCounter = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      console.log(entry.target)
+      // console.log(entry.target)
       count(DOMcipher, cipherToNum)
       count2(DOMcipher2, cipherToNum2)
       count2(DOMcipher3, cipherToNum3)
@@ -121,8 +121,8 @@ buttonsCategories.forEach(button => {
     
     let getTargetId = this.dataset.categorieTarget.slice(1)
     let target = document.getElementById(getTargetId)
-    console.log(getTargetId)
-    console.log(target)
+    // console.log(getTargetId)
+    // console.log(target)
 
     target.classList.add('categorie-active')
     button.classList.add('categorie-selected')
@@ -137,17 +137,52 @@ buttonsSubCategories.forEach(button => {
 
     let getTargetsClass = this.dataset.subCategorieTarget
     let targets = [...document.getElementsByClassName(getTargetsClass)]
-    console.log(targets)
+    console.log('Targets: ', targets)
     
-
     targets.forEach(e => e.classList.add('sub-categorie-active'))
     // console.log(target);
     button.classList.add('sub-categorie-selected')
+
+    let targetsEbooks = [...document.querySelectorAll(`#ebooks .${getTargetsClass}.sub-categorie-active`)]
+    let targetsGuides = [...document.querySelectorAll(`#guides .${getTargetsClass}.sub-categorie-active`)]
+    console.log('Elements ebooks: ', targetsEbooks)
+    console.log('Elements guides: ', targetsGuides)
+    // console.log(targetsEbooks[0].parentElement.parentElement.id);
+    // console.log(targetsGuides[0].parentElement.parentElement.id);
+    let foundEbooks = targetsEbooks.length
+    let foundGuides = targetsGuides.length
+    // let idEbooks = targets[0].parentElement.parentElement.id
+    // let idGuides = targets[0].parentElement.parentElement.id
+
+    resourcesNotAvailable('ebooks', foundEbooks)
+    resourcesNotAvailable('guides', foundGuides)
+    
   })
 })
+// console.log(document.body.contains(document.getElementById('notFoundResults')));
+const resourcesNotAvailable = (idSection, results) => {
+  let DOMnewTag = document.createElement('p')
+  let DOMtarget = document.getElementById(idSection)
+  let message = 'No existen resultados'
+  let idTxt = 'notFoundResults'
 
-console.log(buttonsCategories);
-console.log(buttonsSubCategories);
+  DOMnewTag.textContent = message
+  DOMnewTag.id = idTxt
+
+  results != 0 ? true : DOMtarget.insertAdjacentElement('afterbegin', DOMnewTag)
+  results > 0 && document.body.contains(document.getElementById(idTxt))
+    ? document.getElementById(idTxt).remove()
+    : true
+
+  console.log(document.body.contains(document.getElementById(idTxt)));
+}
+
+// const removeMessage = () => {
+
+// }
+
+// console.log(buttonsCategories);
+// console.log(buttonsSubCategories);
 
 dataContent[0].classList.add('categorie-active')
 buttonsCategories[0].classList.add('categorie-selected')
