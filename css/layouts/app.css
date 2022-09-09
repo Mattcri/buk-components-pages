@@ -1,0 +1,89 @@
+header {
+  height: 50px;
+  background-color: var(--color-primary);
+}
+
+.banner-main__content h4 {
+  color: var(--font-color-primary);
+  font-size: 1.125rem;
+}
+
+.banner-main__content p {
+  padding: 0 5%;
+  position: relative;
+}
+
+.banner-main__content p::before {
+  content: "";
+  height: 2px;
+  width: 100%;
+  background: #e5e8ed;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .banner-main__content {
+    width: 75%;
+    margin: 0 auto;
+  }
+  .banner-main__content p::before {
+    height: 3px;
+  }
+}
+
+@media only screen and (min-width: 1020px) {
+  .banner-main__content {
+    width: 55%;
+  }
+}
+
+.card {
+  padding: .5rem 2.6rem 2.8rem;
+  max-width: 400px;
+  margin: 0 auto;
+
+}
+
+.card__img img {
+  height: 170px;
+  width: 160px;
+}
+
+@media only screen and (min-width: 768px) {
+  .card {
+    max-width: initial;
+  }
+}
+
+/*  */
+.download-app__link {
+  width: calc(50% - 1rem);
+}
+
+/* .download-app__store img {
+  width: 210px;
+} */
+
+@media only screen and (min-width: 540px) {
+  .download-app__desc {
+    padding: 0 10%;
+  }
+  .download-app__link {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 1020px) {
+  .download-app__desc {
+    padding: 0 5%;
+  }
+  .download-app__link {
+    width: auto;
+  }
+  .download-app__link img {
+    max-width: 230px;
+  }
+}
+
