@@ -1,0 +1,320 @@
+header {
+  background-color: var(--color-primary);
+  height: 50px;
+}
+
+.swiper-pagination-bullet {
+  background: var(--color-primary) !important;
+  transition: .5s ease !important;
+  height: .7rem !important;
+  width: .7rem !important;
+}
+
+/* Banner */
+.banner-static-solid {
+  background-color: var(--bg-banner-static-solid);
+  height: 63vh;
+  max-height: 580px;
+}
+
+.banner-static-solid__content p {
+  font-size: 1.188rem;
+}
+
+.banner-static-solid__img {
+  /* transform: translateY(-150px); */
+  margin-top: -135px;
+}
+
+
+@media only screen and (min-width: 540px) {
+  .banner-static-solid__img img {
+    max-width: 450px;
+  }
+  
+}
+
+@media only screen and (min-width: 767px) {
+  .banner-static-solid {
+    display: flex;
+    align-items: center;
+    height: 55vh;
+    /* padding: 2rem 0; */
+  }
+  .banner-static-solid .buk-grid {
+    place-items: center;
+  }
+  .banner-static-solid__img {
+    margin-top: initial;
+    
+  }
+  .banner-static-solid__img img {
+    max-width: 100%;
+    /* max-height: 300px; */
+    /* object-fit: contain; */
+  }
+}
+
+@media only screen and (min-width: 1020px) {
+  .banner-static-solid__content p {
+    font-size: 1.313rem;
+  }
+  .banner-static-solid__img img {
+    width: 450px;
+  }
+}
+
+/* E2E */
+
+.box-e2e {
+  background-color: var(--bg-banner-static-solid);
+  box-shadow: var(--shadow-2);
+  border-radius: 24px;
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem 1.5rem;
+  /* min-height: 178px; */
+  min-height: 160px;
+  position: relative;
+}
+
+.box-e2e::after {
+  content: "";
+  background-image: url("https://www.buk.cl/hubfs/2022/Icons/icon-check-blue-24.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 30px;
+  width: 30px;
+}
+
+.box-e2e__icon {
+  height: 90px;
+  width: 90px;
+  position: absolute;
+  top: -25%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.box-e2e__title {
+  font-size: 1.188rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.e2e-carousel .swiper-wrapper {
+  padding: 4.5rem 0 2rem;
+}
+
+@media only screen and (min-width: 767px) {
+  .box-e2e {
+    min-height: 178px;
+  }
+}
+
+@media only screen and (min-width: 1020px) {
+  .box-e2e {
+    min-height: 170px;
+  }
+  .e2e-carousel .swiper-wrapper {
+    padding: 6rem 0 1rem;
+  }
+}
+
+/* ATS Latam */
+
+[class*="buk-col"].ats-item {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.ats-item__icon img {
+  height: 86px;
+  width: 80px;
+  max-width: initial;
+}
+
+.ats-item__title {
+  font-size: 1.125rem;
+  padding-left: .5rem;
+}
+
+.ats-more-content {
+  color: var(--color-action);
+  font-size: 1.25rem;
+  font-weight: bolder;
+}
+
+@media only screen and (min-width: 767px) {
+  .ats-item__title {
+    font-size: 1.188rem;
+  }
+
+  .ats-more-content {
+    font-size: 1.313rem;
+  }
+}
+
+/* Multiposting */
+
+.bg-color-primary {
+  background-color: var(--color-primary);
+}
+
+.ft-color-white {
+  color: var(--color-white);
+}
+
+.box--light-primary {
+  background-color: #4E63B5;
+  border-radius: 18px;
+  color: var(--color-white);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.box--light-primary.bg--trasparent-mobile {
+  background-color: transparent;
+}
+
+.box--light-primary p {
+  font-size: 1.125rem;
+}
+
+.brand-portal img {
+  height: 79px;
+  width: 173px;
+}
+
+.brand-portal figure {
+  width: calc(50% - .25rem);
+}
+
+@media only screen and (min-width: 767px) {
+  .box--light-primary {
+    max-width: initial;
+    margin: initial;
+  }
+
+  .box--light-primary.bg--trasparent-mobile {
+    background-color: #4E63B5;
+  }
+}
+
+@media only screen and (min-width: 1020px) {
+  .box--light-primary p {
+    font-size: 1.25rem;
+  }
+}
+
+/* Test Psicometricos */
+
+.descent-text p {
+  font-size: 1.125rem;
+}
+
+@media only screen and (min-width: 1020px) {
+  .descent-text p {
+    font-size: 1.25rem;
+  }
+}
+
+.box-test {
+  box-shadow: var(--shadow-2);
+  border-radius: 26px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.box-test__header {
+  background-color: #D8E3F8;
+  border-radius: 26px 26px 0 0;
+  padding: 1.35rem 1.5rem;
+}
+
+.box-test__header h3 {
+  font-size: 1.25rem;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.box-test__body {
+  width: 70%;
+  margin: 0 auto;
+  padding: 1.7rem 1rem;
+}
+
+.box-test__body ul li {
+  font-size: 1.125rem;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.box-test__body ul li:not(:last-of-type) {
+  margin-bottom: .5rem;
+}
+
+.box-test__body ul li::before {
+  content: "";
+  background-image: url("https://www.buk.cl/hubfs/2022/Icons/icon-check-green.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 27px;
+  width: 27px;
+}
+
+.box-test__ilustr {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+.box-test__ilustr img {
+  width: 70%;
+}
+
+.recruiting-softwares img {
+  width: 130px;
+}
+
+
+@media only screen and (min-width: 767px) {
+  .box-test__header h3 {
+    font-size: 1.125rem;
+    width: 95%;
+  }
+  .box-test__body {
+    width: 95%;
+  }
+
+}
+
+/* Functionalities */
+
+.functionality-item {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.functionality-item__icon img {
+  height: 86px;
+  width: 80px;
+  max-width: initial;
+}
+
+.functionality-item__title {
+  font-size: 1.125rem;
+}
+
+@media only screen and (min-width: 1020px) {
+  .functionality-item__title {
+    font-size: 1.188rem;
+  }
+}
