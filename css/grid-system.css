@@ -1,61 +1,8 @@
 
-/* h2 {
-  margin: 2.5rem 0;
-  text-align: center;
-}
-main { margin-bottom: 4rem; } */
-
-/* .card { 
-  background-color: #F3F4F6;
-  border-radius: 25px;
-}
-
-.card-image {
-  margin: -15px -15px 0 -15px;
-}
-
-.card-image img {
-  border-radius: 25px 25px 0 0;
-  height: 250px;
-  width: 100%;
-}
-.card-head {
-  margin: 1rem 0;
-}
-.ds-flex .item {
-  width: 40%;
-} */
-
-/* ----------- */
-
-.ds-flex {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .5rem;
-}
-.jc-center {
-  justify-content: center;
-}
-.jc-start {
-  justify-content: flex-start;
-}
-.jc-end {
-  justify-content: flex-end;
-}
-.jc-between{
-  justify-content: space-between;
-}
-.ai-center {
-  align-items: center;
-}
-.ai-stretch {
-  align-items: stretch;
-}
-
 .buk-grid {
   display: grid;
   gap: 1rem .5rem;
-  /* grid-template-rows: auto; */
+  grid-template-rows: auto;
   grid-auto-flow: row;
   grid-template-columns: repeat(4, 1fr);
 }
@@ -89,31 +36,6 @@ main { margin-bottom: 4rem; } */
 .buk-col-3 {
   grid-column: span 3 / span 3;
 }
-/* .buk-col-4 {
-  grid-column: span 4 / span 4;
-} */
-/* .buk-col-5 {
-  grid-column: span 5 / span 5;
-}
-.buk-col-6 {
-  grid-column: span 6 / span 6;
-}
-.buk-col-7 {
-  grid-column: span 7 / span 7;
-}
-.buk-col-8 {
-  grid-column: span 8 / span 8;
-}
-.buk-col-9 {
-  grid-column: span 9 / span 9;
-}
-.buk-col-10 {
-  grid-column: span 10 / span 10;
-}
-.buk-col-11 {
-  grid-column: span 11 / span 11;
-} */
-
 
 .buk-col-st-1 {
   grid-column-start: 1;
@@ -127,49 +49,6 @@ main { margin-bottom: 4rem; } */
 .buk-col-st-4 {
   grid-column-start: 4;
 }
-/* .buk-col-st-5 {
-  grid-column-start: 5;
-}
-.buk-col-st-6 {
-  grid-column-start: 6;
-} */
-/* .buk-col-st-7 {
-  grid-column-start: 7;
-}
-.buk-col-st-8 {
-  grid-column-start: 8;
-}
-.buk-col-st-9 {
-  grid-column-start: 9;
-}
-.buk-col-st-10 {
-  grid-column-start: 10;
-}
-.buk-col-st-11 {
-  grid-column-start: 11;
-} */
-
-/* .buk-col-ed-7 {
-  grid-column-end: 7;
-}
-.buk-col-ed-8 {
-  grid-column-end: 8;
-}
-.buk-col-ed-9 {
-  grid-column-end: 9;
-}
-.buk-col-ed-10 {
-  grid-column-end: 10;
-}
-.buk-col-ed-11 {
-  grid-column-end: 11;
-}
-.buk-col-ed-12 {
-  grid-column-end: 12;
-}
-.buk-col-ed-13 {
-  grid-column-end: 13;
-} */
 
 .buk-col-ed-2 {
   grid-column-end: 2;
@@ -211,32 +90,11 @@ main { margin-bottom: 4rem; } */
 }
 
 
-
 @media only screen and (min-width: 767px) {
-  .ds-md-flex {
-    display: flex !important;
-  }
-  .jc-md-center {
-    justify-content: center;
-  }
-  .jc-md-start {
-    justify-content: flex-start;
-  }
-  .jc-md-end {
-    justify-content: flex-end;
-  }
-  .jc-md-between {
-    justify-content: space-between;
-  }
-  .ai-md-center {
-    align-items: center;
-  }
-  .ai-md-stretch {
-    align-items: stretch;
-  }
 
   .buk-grid {
     grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
   }
 
   .buk-col, .buk-col-md-12, .buk-col-lg-12 {
@@ -352,25 +210,11 @@ main { margin-bottom: 4rem; } */
 
 
 @media only screen and (min-width: 1020px) {
-  .ds-lg-flex { display: flex !important; gap: 1rem; flex-wrap: wrap;}
-  .jc-lg-center {
-    justify-content: center;
-  }
-  .jc-lg-start {
-    justify-content: flex-start;
-  }
-  .jc-lg-end {
-    justify-content: flex-end;
-  }
-  .jc-lg-between {
-    justify-content: space-between;
-  }
-  .ai-lg-center {
-    align-items: center;
-  }
-  .ai-lg-stretch {
-    align-items: stretch;
-  }
+  /* [class*="buk-col"] {
+    position: relative;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  } */
 
   .buk-grid {
     gap: 1rem;
@@ -441,6 +285,9 @@ main { margin-bottom: 4rem; } */
   .buk-col-st-lg-6 {
     grid-column-start: 6;
   }
+  .buk-col-st-lg-7 {
+    grid-column-start: 7;
+  }
 
   .buk-col-ed-lg-7 {
     grid-column-end: 7;
@@ -488,6 +335,19 @@ main { margin-bottom: 4rem; } */
   }
   .buk-row-st-lg-4 {
     grid-row-start: 4;
+  }
+
+  .buk-row-ed-lg-1 {
+    grid-row-end: span 1;
+  }
+  .buk-row-ed-lg-2 {
+    grid-row-end: span 2;
+  }
+  .buk-row-ed-lg-3 {
+    grid-row-end: span 3;
+  }
+  .buk-row-ed-lg-4 {
+    grid-row-end: span 4;
   }
 
 }
