@@ -1,0 +1,29 @@
+{
+  "name": "buk-mkt-frontend-components",
+  "version": "1.0.0",
+  "description": "Repository with a custom environment for web components in Buk site ",
+  "main": "index.js",
+  "scripts": {
+    "graphics-api": "json-server --watch ./js/buk-numbers/db.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mattcri/buk-components-pages.git"
+  },
+  "keywords": [
+    "css",
+    "javascript",
+    "html",
+    "cssGrid",
+    "chartJS"
+  ],
+  "author": "Mattcri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mattcri/buk-components-pages/issues"
+  },
+  "homepage": "https://github.com/Mattcri/buk-components-pages#readme",
+  "devDependencies": {
+    "json-server": "^0.17.0"
+  }
+}

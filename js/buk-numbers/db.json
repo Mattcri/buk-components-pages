@@ -1,0 +1,132 @@
+{
+  "chat": {
+    "graphicName": "Chat response time",
+    "average90Days": 0.30,
+    "data": [
+      {
+        "date": "14 Octubre",
+        "averagePerDay": 0.45
+      },
+      {
+        "date": "13 Octubre",
+        "averagePerDay": 0.30
+      },
+      {
+        "date": "12 Octubre",
+        "averagePerDay": 0.55
+      },
+      {
+        "date": "11 Octubre",
+        "averagePerDay": 0.26
+      },
+      {
+        "date": "10 Octubre",
+        "averagePerDay": 0.36
+      }
+    ]
+  },
+  "email": {
+    "graphicName": "Email response time",
+    "average90Days": 2.3,
+    "data": [
+      {
+        "date": "14 Octubre",
+        "averagePerDay": 1.45
+      },
+      {
+        "date": "13 Octubre",
+        "averagePerDay": 2.30
+      },
+      {
+        "date": "12 Octubre",
+        "averagePerDay": 3.55
+      },
+      {
+        "date": "11 Octubre",
+        "averagePerDay": 2.26
+      },
+      {
+        "date": "10 Octubre",
+        "averagePerDay": 2.96
+      }
+    ]
+  },
+  "call": {
+    "graphicName": "Call response time",
+    "average90Days": 0.36,
+    "data": [
+      {
+        "date": "14 Octubre",
+        "averagePerDay": 0.55
+      },
+      {
+        "date": "13 Octubre",
+        "averagePerDay": 0.20
+      },
+      {
+        "date": "12 Octubre",
+        "averagePerDay": 0.25
+      },
+      {
+        "date": "11 Octubre",
+        "averagePerDay": 0.38
+      },
+      {
+        "date": "10 Octubre",
+        "averagePerDay": 0.28
+      }
+    ]
+  },
+  "sac": {
+    "graphicName": "SAC satisfaction",
+    "average90Days": 4.8,
+    "data": [
+      {
+        "date": "14 Octubre",
+        "averagePerDay": 5
+      },
+      {
+        "date": "13 Octubre",
+        "averagePerDay": 4.2
+      },
+      {
+        "date": "12 Octubre",
+        "averagePerDay": 4
+      },
+      {
+        "date": "11 Octubre",
+        "averagePerDay": 4.6
+      },
+      {
+        "date": "10 Octubre",
+        "averagePerDay": 5
+      }
+    ]
+  },
+  "nps": {
+    "graphicName": "NPS clients",
+    "average90Days": 56,
+    "data": [
+      {
+        "date": "14 Octubre",
+        "averagePerDay": 60
+      },
+      {
+        "date": "13 Octubre",
+        "averagePerDay": 52
+      },
+      {
+        "date": "12 Octubre",
+        "averagePerDay": 43
+      },
+      {
+        "date": "11 Octubre",
+        "averagePerDay": 59
+      },
+      {
+        "date": "10 Octubre",
+        "averagePerDay": 62
+      }
+    ]
+  }
+}
