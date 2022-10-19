@@ -12,14 +12,113 @@
     rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layouts/app.css">
+  <link rel="stylesheet" href="../css/layouts/buk-numbers.css">
   <link rel="preload" as="style" href="../css/grid-system.css" onload="this.rel='stylesheet'">
   <link rel="preload" as="style" href="../css/margins-paddings.css" onload="this.rel='stylesheet'">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 </head>
 <body>
 
-  
+  <header></header>
 
-  <script src="https://cdnjs.com/libraries/Chart.js" defer></script>
+  <main class="bg-numbers">
+    <section class="buk-py-6 buk-py-lg-5">
+      <div class="boxer">
+        <h1 class="txt-center buk-mb-3">Graphics for <br> Buk Numbers</h1>
+    
+        <div class="buk-grid buk-pt-3">
+          <article class="buk-col buk-col-md-10 buk-col-lg-10 buk-col-st-md-2 buk-col-st-lg-2">
+            <div class="chart__head">
+              <h3 class="ds-flex ai-center">
+                <img src="https://www.buk.cl/hubfs/2022/Chile/icon-chat.png" width="30" height="auto" class="chart__icon v-tablet v-desktop">
+                Tiempo de respuesta chat en línea
+                <img src="https://www.buk.cl/hubfs/2022/Chile/icon-info-c-1.png" class="chart__info">
+              </h3>
+            </div>
+            <div class="chart__body">
+              <div class="buk-grid">
+                <div class="buk-col buk-col-md-5 buk-col-lg-5 buk-pb-0 buk-col-ed-md-13 buk-col-ed-lg-13">
+                  <p id="chatAvg" class="txt-center avg">0</p>
+                  <p class="txt-center text-avg-info buk-mt-2">Promedio de 90 días</p>
+                </div>
+                <div class="buk-col buk-col-md-7 buk-col-lg-7 buk-col-st-md-1 buk-col-st-lg-1 buk-row-st-md-1 buk-row-st-lg-1">
+                  <p>Es el tiempo entre que un cliente se comunica al teléfono de Buk y un miembro del equipo de soporte atiende el llamado.</p>
+                </div>
+              </div>
+
+              <div class="buk-mt-4 chart__content">
+                <canvas id="graphiChat" width="400" height="200"></canvas>
+              </div>
+
+            </div>
+
+          </article>
+        </div>
+
+        <div class="buk-grid buk-mt-6">
+          <article class="buk-col buk-col-md-10 buk-col-lg-10 buk-col-st-md-2 buk-col-st-lg-2">
+            <div class="chart__head">
+              <h3 class="ds-flex ai-center">
+                <img src="https://www.buk.cl/hubfs/2022/Chile/icon-chat.png" width="30" height="auto" class="chart__icon v-tablet v-desktop">
+                Tiempo de respuesta teléfono
+                <img src="https://www.buk.cl/hubfs/2022/Chile/icon-info-c-1.png" class="chart__info">
+              </h3>
+            </div>
+            <div class="chart__body">
+              <div class="buk-grid">
+                <div class="buk-col buk-col-md-5 buk-col-lg-5 buk-pb-0 buk-col-ed-md-13 buk-col-ed-lg-13">
+                  <p id="callAvg" class="txt-center avg">0</p>
+                  <p class="txt-center text-avg-info buk-mt-2">Promedio de 90 días</p>
+                </div>
+                <div class="buk-col buk-col-md-7 buk-col-lg-7 buk-col-st-md-1 buk-col-st-lg-1 buk-row-st-md-1 buk-row-st-lg-1">
+                  <p>Es el tiempo entre que un cliente se comunica al teléfono de Buk y un miembro del equipo de soporte atiende el llamado.</p>
+                </div>
+              </div>
+
+              <div class="buk-mt-4 chart__content">
+                <canvas id="graphiCall" width="400" height="200"></canvas>
+              </div>
+
+            </div>
+
+          </article>
+        </div>
+
+        <div class="buk-grid buk-mt-6">
+          <article class="buk-col buk-col-md-10 buk-col-lg-10 buk-col-st-md-2 buk-col-st-lg-2">
+            <div class="chart__head">
+              <h3 class="ds-flex ai-center">
+                <img src="https://www.buk.cl/hubfs/2022/Chile/icon-chat.png" width="30" height="auto" class="chart__icon v-tablet v-desktop">
+                Tiempo de respuesta Correo electrónico
+                <img src="https://www.buk.cl/hubfs/2022/Chile/icon-info-c-1.png" class="chart__info">
+              </h3>
+            </div>
+            <div class="chart__body">
+              <div class="buk-grid">
+                <div class="buk-col buk-col-md-5 buk-col-lg-5 buk-pb-0 buk-col-ed-md-13 buk-col-ed-lg-13">
+                  <p id="emailAvg" class="txt-center avg">0</p>
+                  <p class="txt-center text-avg-info buk-mt-2">Promedio de 90 días</p>
+                </div>
+                <div class="buk-col buk-col-md-7 buk-col-lg-7 buk-col-st-md-1 buk-col-st-lg-1 buk-row-st-md-1 buk-row-st-lg-1">
+                  <p>El tiempo entre que un cliente se comunica por primera vez por correo electrónico y un miembro del equipo de soporte de
+                  Buk responde.</p>
+                </div>
+              </div>
+
+              <div class="buk-mt-4 chart__content">
+                <canvas id="graphicEmail" width="400" height="200"></canvas>
+              </div>
+
+            </div>
+
+          </article>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  
   <script src="../js/buk-numbers/index.js" defer></script>
 </body>
 </html>
