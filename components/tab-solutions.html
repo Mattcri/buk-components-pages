@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Soluciones Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="preload" as="style" href="../css/grid-system.css" onload="this.rel='stylesheet'">
+  <link rel="preload" as="style" href="../css/margins-paddings.css" onload="this.rel='stylesheet'">
+
+  <style>
+    @media only screen and (min-width: 820px) {
+      .solutions .shadow-box-fluid .tab-solutions__buttons {
+        justify-content: center !important;
+      }
+    }
+
+    .tab-solutions__buttons {
+      overflow: auto;
+    }
+    .tab-solutions__buttons .btn.selected {
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+    
+    @media only screen and (min-width: 1200px) {
+      .tab-solutions__buttons .btn {
+        min-width: 200px;
+        padding-top: .75rem;
+        padding-bottom: .75rem;
+      }
+    }
+
+    .general-list {
+      position: relative;
+    }
+    .general-list li {
+      padding-left: 2rem;
+    }
+    .general-list li a {
+      color: var(--color-primary);
+      font-size: 1.063rem;
+      font-weight: bolder;
+    }
+    .general-list li:not(:last-of-type) {
+      margin-bottom: .75rem;
+    }
+    .general-list li::after {
+      content: url(https://www.buk.cl/hubfs/2022/BUK/Home%20nuevo/check-soluciones.svg);
+      width: 25px;
+      position: absolute;
+      left: 0;
+      /* top: 50%; */
+      transform: translateY(-1px);
+    }
+
+    /* @media only screen and (min-width: 767px) {
+      .tab-solutions__body {
+        min-height: 343px;
+      }
+    } */
+    /* @media only screen and (min-width: 1020px) {
+      .tab-solutions__body {
+        min-height: 350px;
+      }
+    } */
+    @media only screen and (min-width: 1100px) {
+      .tab-solutions__body {
+        min-height: 347px;
+      }
+    }
+
+    [data-solution-content] {
+      display: none;
+    }
+    .content-active[data-solution-content] {
+      display: block;
+      animation: showTarget .8s ease;
+    }
+
+    @keyframes showTarget {
+      from { opacity: 0; }
+      to { opacity: 1;; }
+    }
+
+  </style>
+
+</head>
+<body>
+  <header></header>
+
+  <main class="buk-pb-8">
+    <section class="buk-mt-6 solutions">
+      <div class="boxer">
+        <h2 class="txt-center buk-mb-4 buk-mb-md-5">
+          Conoce todas nuestras soluciones
+        </h2>
+
+        <div class="shadow-box-fluid buk-pt-5 buk-px-2 buk-pb-md-4 buk-px-md-4 buk-px-lg-5">
+          <div class="tab-solutions__buttons ds-flex ai-center jc-start none-wrap buk-pb-3 gap-lg--24" >
+            <button class="btn btn--4" data-solution="atrae">Atrae</button>
+            <button class="btn btn--4" data-solution="gestiona">Gestiona</button>
+            <button class="btn btn--4" data-solution="potencia">Potencia</button>
+            <button class="btn btn--4" data-solution="compromete">Compromete</button>
+          </div>
+
+          <div class="tab-solutions__body buk-mt-2">
+
+            <div class="tab-solutions__content" id="atrae" data-solution-content >
+              <div class="buk-grid">
+                <div class="buk-col buk-col-md-6 buk-col-ed-md-13 buk-col-lg-5 buk-col-ed-lg-12">
+                  <h3 class="buk-mb-2">Atrae</h3>
+                  <p>el mejor talento para tu organización con las más eficientes herramientas de reclutamiento, selección y onboarding, para
+                  que la experiencia de tus postulantes, reclutadores y colaboradores sea excelente.</p>
+                  <ul class="buk-mt-2 general-list">
+                    <li><a href="#">Gestión de Personas</a></li>
+                    <li><a href="#">Gestión de Nómina</a></li>
+                    
+                  </ul>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-st-md-1 buk-row-st-md-1 buk-col-lg-5  buk-col-st-lg-1 buk-row-st-lg-1 ai-self-md-center">
+                  <figure class="txt-center"><img src="https://www.buk.cl/hubfs/pilar-web-atrae-_2_.webp" alt="solucion-atrae" loading="lazy"></figure>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-solutions__content" id="gestiona" data-solution-content >
+              <div class="buk-grid">
+                <div class="buk-col buk-col-md-6 buk-col-ed-md-13 buk-col-lg-5 buk-col-ed-lg-12">
+                  <h3 class="buk-mb-2">Gestiona</h3>
+                  <p>tu activo más valioso, las personas, de manera integral y en una sola plataforma. Visualiza organigrama y el detalle de
+                  tus colaboradores, realiza acciones como pago de remuneraciones, control de asistencia y firma de documentos entre
+                  otros.</p>
+                  <ul class="buk-mt-2 general-list">
+                    <li><a href="#">Gestión de Personas</a></li>
+                    <li><a href="#">Gestión de Nómina</a></li>
+                    <li><a href="#">Firmas Electrónicas</a></li>
+                    <li><a href="#">Asistencia</a></li>
+                  </ul>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-st-md-1 buk-row-st-md-1 buk-col-lg-5  buk-col-st-lg-1 buk-row-st-lg-1 ai-self-md-center">
+                  <figure class="txt-center"><img src="https://www.buk.mx/hubfs/2022/BUK/Home%20nuevo/Pilares/pilar-web-gestiona%20(1).svg" alt="solucion-atrae" loading="lazy"></figure>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-solutions__content" data-solution-content id="potencia">
+              <div class="buk-grid">
+                <div class="buk-col buk-col-md-6 buk-col-ed-md-13 buk-col-lg-5 buk-col-ed-lg-12">
+                  <h3 class="buk-mb-2">Potencia</h3>
+                  <p>las habilidades de tu equipo entregando herramientas concretas que permitan el crecimiento, aprendizaje y desarrollo
+                  profesional de tus colaboradores.</p>
+                  <ul class="buk-mt-2 general-list">
+                    <li><a href="#">Gestion del Desempeño</a></li>
+                    <li><a href="#">Capacitaciones</a></li>
+                    
+                  </ul>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-st-md-1 buk-row-st-md-1 buk-col-lg-5  buk-col-st-lg-1 buk-row-st-lg-1">
+                  <figure class="txt-center"><img src="https://www.buk.cl/hubfs/pilar-potencia-1.webp" alt="solucion-atrae" loading="lazy"></figure>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-solutions__content" data-solution-content id="compromete">
+              <div class="buk-grid">
+                <div class="buk-col buk-col-md-6 buk-col-ed-md-13 buk-col-lg-5 buk-col-ed-lg-12">
+                  <h3 class="buk-mb-2">Compromete</h3>
+                  <p>a tus colaboradores, promoviendo la comunicación y las relaciones entre los equipos, escúchalos y fortalece tu cultura
+                  organizacional.</p>
+                  <ul class="buk-mt-2 general-list">
+                    <li><a href="#">Comunicación y Reconocimiento</a></li>
+                    <li><a href="#">Beneficios</a></li>
+                    <li><a href="#">Encuestas</a></li>
+                    
+                  </ul>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-st-md-1 buk-row-st-md-1 buk-col-lg-5  buk-col-st-lg-1 buk-row-st-lg-1">
+                  <figure class="txt-center"><img src="https://www.buk.cl/hubfs/pilar-web-compromete-_2_.webp" alt="solucion-atrae" loading="lazy"></figure>
+                </div>
+              </div>
+            </div>
+
+          </div> <!-- Fin tab-solutions__body -->
+        </div> <!-- Fin shadow-box-fluid -->
+
+        <div class="buk-mt-6 buk-mt-lg-4 txt-center">
+          <button class="btn btn--1">Empieza ahora</button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  
+
+  <script src="../js/tab-solutions/index.js" defer></script>
+
+</body>
+</html>
