@@ -12,18 +12,19 @@
 
   <title>Calculadora Remuneraciones</title>
 
+  <link rel="preload" as="style" href="https://cdn2.hubspot.net/hub/3790458/hub_generated/template_assets/86075928702/1664222292888/BUK-SITE_CL/CSS/Bux-css/calc-remuneraciones.min.css" onload="this.rel='stylesheet'">
   <link rel="preload" as="style" href="../css/base.css" onload="this.rel='stylesheet'">
   <link rel="preload" as="style" href="../css/grid-system.css" onload="this.rel='stylesheet'">
   <link rel="preload" as="style" href="../css/margins-paddings.css" onload="this.rel='stylesheet'">
   <link rel="stylesheet" href="../css/layouts/calc-remu.css">
 </head>
 <body>
-
+  <button id="test">hola</button>
   <section class="remu-calc buk-py-6 buk-py-lg-4">
     <div class="boxer">
       <div class="buk-grid nationals-values">
         <div class="buk-col buk-col-lg-10 buk-col-st-lg-2">
-          <h3 class="buk-mb-3">Valores nacionales</h3>
+          <h3 class="buk-mb-3 title-values">Valores nacionales</h3>
           <div class="buk-grid">
             <div class="buk-col buk-col-md-4 buk-col-lg-4 form-group string required person_first_name">
               <label class="control-label string required" for="person_first_name">Sueldo Mínimo</label>
@@ -58,10 +59,10 @@
         <h2 class="txt-center buk-mb-4">Calcula tu remuneración mensual</h2>
         <div class="buk-grid">
           <div class="buk-col buk-col-lg-10 buk-col-st-lg-2">
-            <button class="button-large button-large__color active">
+            <button class="button-large button-large__color active" data-target-field="salary">
               <h5 class="txt-left">1- Haberes</h5>
             </button>
-            <div class="panel-info show">
+            <div class="panel-info show" id="salary">
               <div class="buk-grid">
                 <div class="form-group string required person_first_name buk-col buk-col-md-4 buk-col-lg-4">
                   <label class="control-label select required">Sueldo Base *</label>
@@ -253,11 +254,11 @@
   
           </div>
           <div class="buk-col buk-col-lg-10 buk-col-st-lg-2">
-            <button class="button-large button-large__color">
+            <a href="#discounts" class="button-large button-large__color" data-target-field="discounts">
               <h5 class="txt-left">2- Descuentos</h5>
-            </button>
-            <div class="panel-info ">
-              <div class="buk-grid">
+            </a>
+            <div class="panel-info " >
+              <div class="buk-grid" id="discounts">
                 <div class="form-group select required person_estado_civil buk-col buk-col-md-4 buk-col-lg-3">
                   <div class="tooltip">
                     <label class="control-label select required">Días Ausente</label>
@@ -279,7 +280,7 @@
                   </div>
                 </div> <!-- fin group -->
                 <div class="form-group string required person_first_name buk-col buk-col-md-4 buk-col-lg-3"
-                  id="column_diaslaborales" style="visibility: hidden;">
+                  id="column_diaslaborales" >
                   <label class="control-label string required" for="person_first_name">Días Laborales</label>
                   <div class="tooltip">
                     <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size:24px" height="15"
@@ -297,7 +298,7 @@
                   </div>
                 </div> <!-- fin group -->
                 <div class="form-group string required person_first_name buk-col buk-col-md-4 buk-col-lg-3"
-                  id="column_diasausente" style="visibility: hidden;">
+                  id="column_diasausente" >
                   <label class="control-label string required" for="person_first_name">Días Ausente</label>
                   <div class="tooltip">
                     <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size:24px" height="15"
@@ -384,7 +385,7 @@
                   </div>
                 </div> <!-- fin group -->
                 <div class="form-group string required person_first_name buk-col buk-col-md-4 buk-col-lg-3"
-                  id="column_salud" style="visibility: hidden;">
+                  id="column_salud" >
                   <label class="control-label string required" for="person_first_name">Plan Salud en UF</label>
                   <div class="tooltip">
                     <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size:24px" height="15"
@@ -445,10 +446,10 @@
             </div>
           </div>
           <div class="buk-col buk-col-lg-10 buk-col-st-lg-2">
-            <button class="button-large button-large__color">
+            <button class="button-large button-large__color" data-target-field="resume-salary">
               <h5 class="txt-left">3- Valores Intermedios</h5>
             </button>
-            <div class="panel-info ">
+            <div class="panel-info " id="resume-salary">
               <div class="buk-grid">
                 <div class="form-group select required person_estado_civil buk-col buk-col-md-4 buk-col-lg-3">
                   <label class="control-label select required">Haberes Imponibles</label>
@@ -622,22 +623,7 @@
         </div>
         <div class="buk-col buk-col-lg-10 buk-col-st-lg-2">
           <div class="buk-grid">
-            <div class="form-group buk-col buk-col-md-4 buk-col-lg-4 liquid-salary" data-calculator="results">
-              <label class="control-label select required">Sueldo Líquido Calculado</label>
-              <div class="tooltip">
-                <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size:24px" height="15"
-                  viewBox="0 0 512 512">
-                  <path
-                    d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
-                </svg>
-                <span class="tooltiptext">
-                  Es lo que finalmente recibirás, corresponde a la Sueldo Líquido = Total Haberes - Descuentos
-                </span>
-              </div>
-              <div class="input-group">
-                <div class="total" id="lblliquido" type="number" min="0" pattern="^[0-9]+">0</div>
-              </div>
-            </div> <!-- fin group -->
+            
             <div class="form-group buk-col buk-col-md-4  buk-col-lg-4 " data-calculator="results">
               <label class="control-label select required">Total Haberes</label>
               <div class="tooltip">
@@ -670,6 +656,22 @@
                 <div id="lbltotal_descuentos" type="number" min="0" pattern="^[0-9]+">0</div>
               </div>
             </div> <!-- fin group -->
+            <div class="form-group buk-col buk-col-md-4 buk-col-lg-4 liquid-salary" data-calculator="results">
+              <label class="control-label select required">Sueldo Líquido Calculado</label>
+              <div class="tooltip">
+                <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size:24px" height="15"
+                  viewBox="0 0 512 512">
+                  <path
+                    d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
+                </svg>
+                <span class="tooltiptext">
+                  Es lo que finalmente recibirás, corresponde a la Sueldo Líquido = Total Haberes - Descuentos
+                </span>
+              </div>
+              <div class="input-group">
+                <div class="total" id="lblliquido" type="number" min="0" pattern="^[0-9]+">0</div>
+              </div>
+            </div> <!-- fin group -->
   
           </div> <!-- fin grid -->
         </div> <!-- fin wrapper col -->
@@ -680,23 +682,12 @@
   
   </section>
   
-  <script>
-    const acc = document.getElementsByClassName("button-large ");
-    let i;
-    for (i = 0; i < acc.length; i++) {
-      acc[i].onclick = function () {
-        let active = document.querySelector(".button-large.active");
-        if (active && active != this) {
-          active.classList.remove("active");
-          active.nextElementSibling.classList.remove("show");
-        }
-        this.classList.toggle("active");
-        this.nextElementSibling.classList.toggle("show");
-      }
-    }  
-  </script>
+  <section id="test-section">
+    <h1 class="buk-my-4">funco la prueba</h1>
+  </section>
 
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js" defer></script>
   <script src="../js/calc-remu/index.js" defer></script>
+  <script src="../js/calc-remu/functions.js" defer></script>
 </body>
 </html>

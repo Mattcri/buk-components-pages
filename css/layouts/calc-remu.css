@@ -67,13 +67,23 @@ label {
 
 .nationals-values .form-group label.control-label {
   font-weight: 600;
-  color: var(--font-color-primary);
+  color: #2E46A3;
 }
 
 .nationals-values input.text-input-read {
-  background: var(--bg-cta-mobile);
-  font-size: 1.063rem;
+  background: var(--color-quaternary);
+  border-radius: .5rem !important;
+  color: #2E46A3;
+  font-size: 1.125rem;
   font-family: var(--font-family-body);
+  font-weight: bolder;
+  padding: .5rem ;
+}
+
+.nationals-values input.text-input-read.alert-error {
+  /* background: var(--color-error); */
+  border:2px solid var(--color-error);
+  /* color: var(--color-white); */
 }
 
 .form-group .control-label {
@@ -81,6 +91,7 @@ label {
 }
 
 .buk-grid .tooltip {
+  cursor: pointer;
   margin-left: 8px;
   transform: translateY(-1px);
 }
@@ -115,4 +126,10 @@ label {
 
 [data-calculator="results"].liquid-salary svg {
   fill: var(--color-white);
+}
+
+.title-values {
+  background-color: var(--color-quaternary);
+  border-radius: 8px;
+  padding: .75rem 1.25rem;
 }

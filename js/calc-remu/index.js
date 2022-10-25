@@ -1,25 +1,55 @@
+let inputUf = document.getElementById("txtuf")
+let inputUtm = document.getElementById("txtutm")
+
 function diasAusente() {
-  if (
-    document.getElementById("column_diaslaborales").style.visibility ==
-    "visible"
-  )
-    document.getElementById("column_diaslaborales").style.visibility = "hidden";
-  else
-    document.getElementById("column_diaslaborales").style.visibility =
-      "visible";
-  if (document.getElementById("column_diasausente").style.visibility == "visible")
-    document.getElementById("column_diasausente").style.visibility = "hidden";
-  else document.getElementById("column_diasausente").style.visibility = "visible";
+  const absentDay = document.getElementById('cmbausente')
+  if (absentDay.value == 0) {
+    document.getElementById("column_diaslaborales").style.display = "none"
+    document.getElementById("column_diasausente").style.display = "none"
+  } else if (absentDay.value == 1) {
+    document.getElementById("column_diaslaborales").style.display = "block"
+    document.getElementById("column_diasausente").style.display = "block"
+  }
+
+  // if (
+  //   document.getElementById("column_diaslaborales").style.visibility ==
+  //   "visible"
+  // ) {
+  //   document.getElementById("column_diaslaborales").style.display = "none";
+  // }
+
+  // else {
+  //   document.getElementById("column_diaslaborales").style.display =
+  //     "block";
+  //   document.getElementById("column_diaslaborales").style.visibility = "visible"
+  // }
+  
+  // if (document.getElementById("column_diasausente").style.visibility == "visible") {
+  //   document.getElementById("column_diasausente").style.display = "none";
+  // }
+  // else {
+  //   document.getElementById("column_diasausente").style.display = "block"
+  //   document.getElementById("column_diasausente").style.visibility = "visible";
+  // } 
   calcularSueldo()
 }
 
 function prevision() {
-  if (document.getElementById("column_salud").style.visibility == "visible")
-    document.getElementById("column_salud").style.visibility = "hidden";
-  else document.getElementById("column_salud").style.visibility = "visible";
+  const typePrevision = document.getElementById("cmbprevision")
+  if (typePrevision.value == "Fonasa") {
+    document.getElementById("column_salud").style.display = "none"
+  } else if (typePrevision.value == "Isapre") {
+    document.getElementById("column_salud").style.display = "block"
+  }
+  // if (document.getElementById("column_salud").style.visibility == "visible")
+  //   document.getElementById("column_salud").style.visibility = "hidden";
+  // else document.getElementById("column_salud").style.visibility = "visible";
 }
 
+// let getMinSalary = document.getElementById("txtsueldo_minimo").value
+
 function calcularSueldo() {
+  valuesErrors()
   // Parámetros
   // Topes Imponibles
   const topeAfp = 81.6 * parseFloat(document.getElementById("txtuf").value);
@@ -150,11 +180,12 @@ function calcularSueldo() {
   // Sueldo Líquido
   const sueldoLiquido = totalHaberes - totalDescuentos;
   document.getElementById("lblliquido").innerHTML = sueldoLiquido.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' });
+
 }
 
 const getJSON = async () => {
   const data = await fetch(
-    "http://d3nk1otf0qe6jp.cloudfront.net/data.json"
+    "http://d3nk1otf0qe6jp.cloudfront.net/data.jso"
   ).then((r) => r.json());
   return data;
 };
@@ -164,27 +195,44 @@ const updateValues = async () => {
     const data = await getJSON();
     const uf = data.UF.Valor.replaceAll(".", "").replaceAll(",", ".");
     const utm = data.UTM.Valor.replaceAll(".", "").replaceAll(",", ".");
+    // const inputUtm = document.getElementById("txtutm")
     console.log({ uf, utm });
     document.getElementById("valor_uf_lbl").innerText =
       "Valor UF " + dayjs(data.UF.Fecha).format("DD/MM/YYYY");
     document.getElementById("valor_utm_lbl").innerText =
       "Valor UTM " + dayjs(data.UTM.Fecha).format("DD/MM/YYYY");
+
+    // let utmToString = utm.toString()
+    // console.log(typeof utmToString, utmToString);
+    console.log(typeof utm, utm);
     document.getElementById("txtuf").value = uf;
     document.getElementById("txtutm").value = utm;
     calcularSueldo();
+    
   } catch (error) {
+    inputUf.value = 0;
+    inputUtm.value = 0;
+    valuesErrors()
     console.log(error);
     alert(
       "No se pudo obtener el valor actualizado de UF y UTM, por favor rellenar de forma manual"
     );
-    document.getElementById("txtuf").value = 0;
-    document.getElementById("txtutm").value = 0;
+    
   }
 };
 
+function valuesErrors () {
+  inputUf.value == 0
+    ? inputUf.classList.add('alert-error')
+    : inputUf.classList.remove('alert-error')
+  inputUtm.value == 0
+    ? inputUtm.classList.add('alert-error')
+    : inputUtm.classList.remove('alert-error')
+}
+
 // Llama la función que actualiza UTM y UF al abrir la página
 if (typeof window !== "undefined") {
-  window.onload = updateValues();
+  window.onload = Promise.all([updateValues(), diasAusente(), prevision()])
 }
 
 // TODO:
