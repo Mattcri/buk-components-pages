@@ -6,13 +6,18 @@ const getData = async (urlapi) => {
   return response.json()
 }
 
-const minValues = (num) => {
+const minimumSecondsValues = (num) => {
   let value = Math.floor(num % 60)
   if (value >= 10) {
     return value.toString()
   } else {
     return value.toString().padStart(2, '0')
   }
+}
+
+const minimunMinutesValues = (num) => {
+  let remanient = num % 3600
+  return Math.floor(remanient / 60).toString().padStart(2, '0')
 }
 
 const getChat = async () => {
@@ -23,11 +28,11 @@ const getChat = async () => {
     const avgs = chat.data.map(e => e.avg_responseTime_chat)
     let avg = chat.average90Days
     let avgMin = Math.floor(avg / 60).toString()
-    let avgSec = minValues(avg)
+    let avgSec = minimumSecondsValues(avg)
     const DOMavg = document.getElementById('chatAvg')
     DOMavg.textContent = `${avgMin}min ${avgSec}s`
     const valuesMin = avgs.map(e => Math.floor(e / 60).toString())
-    const valuesSec = avgs.map(e => minValues(e))
+    const valuesSec = avgs.map(e => minimumSecondsValues(e))
 
     const minutesAndsecond = valuesMin.map((value, index) => `${value}.${valuesSec[index]}`)
     // const minutesAndsecond = []
@@ -82,11 +87,11 @@ const getCall = async () => {
     const avgs = call.data.map(e => e.avg_answerSpeed_call)
     const avg = call.average90Days
     const avgMin = Math.floor(avg / 60).toString()
-    const avgSec = minValues(avg)
+    const avgSec = minimumSecondsValues(avg)
     const DOMavg = document.getElementById('callAvg')
     DOMavg.textContent = `${avgMin}min ${avgSec}s`
     const valuesMin = avgs.map(e => Math.floor(e / 60).toString())
-    const valuesSec = avgs.map(e => minValues(e))
+    const valuesSec = avgs.map(e => minimumSecondsValues(e))
     const minutesAndsecond = valuesMin.map((value, index) => `${value}.${valuesSec[index]}`)
 
     console.log('Promedios call: ', minutesAndsecond)
@@ -105,23 +110,30 @@ const getCall = async () => {
 
 const getEmail = async () => {
   try {
-    let email = await getData(API).then(response => response.email.responseTime)
-    let dates = email.data.map(e => e.date)
-    let avgs = email.data.map(e => e.avg_responseTime_email)
-    let avg = email.average90Days
-    let hours = Math.floor(avg).toString()
-    let minutes = avg.toFixed(2).toString().slice(2)
+    const email = await getData(API).then(response => response.email.responseTime)
+    const dates = email.data.map(e => e.date)
+    const avgs = email.data.map(e => e.avg_responseTime_email)
+    const avg = email.average90Days
+    const DOMavg = document.getElementById('emailAvg')
+    const avgHour = Math.floor(avg / 3600).toString()
+    const avgMinutes = minimunMinutesValues(avg)
+    DOMavg.textContent = `${avgHour}h ${avgMinutes}min`
+    const avgsHours = avgs.map(e => Math.floor(e / 3600).toString())
+    const avgsMinutes = avgs.map(e => minimunMinutesValues(e))
+    const hoursAndMinutes = avgsHours.map((value, index) => `${value}.${avgsMinutes[index]}`)
+    console.log('HOURS: ', avgsHours)
+    console.log('MINUTES: ', avgsMinutes)
+
     console.log('Promedio email: ', avg)
     console.log('Fechas email: ', dates)
     console.log('Promedios email: ', avgs)
     // console.log(typeof avg, avg)
     // console.log('minutos email: ', typeof hours, hours)
     // console.log('segundos email: ', typeof minutes, minutes)
-    // const DOMavg = document.getElementById('emailAvg')
+    
     const ctx = document.getElementById('graphicEmail').getContext('2d')
 
-    // DOMavg.textContent = `${hours} h ${minutes} min`
-    const chart = new Chart(ctx, abstractConfig(dates, avgs, 'Horas'))
+    const chart = new Chart(ctx, abstractConfig(dates.reverse(), hoursAndMinutes.reverse(), 'Horas'))
 
   } catch (err) {
     console.error(err)
@@ -156,11 +168,11 @@ const abstractConfig = (date, avg, time) => {
             }
           },
           // stackWeight: .60,
-          min: 0,
-          max: 4,
+          // min: 0,
+          // max: 4,
           // suggestedMax: 60,
-          // suggestedMin: 0,
-          // suggestedMax: 60,
+          suggestedMin: 0,
+          suggestedMax: 4,
           ticks: {
             stepSize: 1,
             // crossAlign: 'center',
@@ -181,26 +193,6 @@ const abstractConfig = (date, avg, time) => {
 
   }
 }
-
-
-
-// const data = {
-
-// }
-
-// const config = {
-//   type: 'line',
-//   data: data,
-//   options: {
-//     scales: {
-//       y: {
-//         beginAtZero: true
-//       }
-//     }
-//   }
-// }
-
-
 
 // (async () => {
 //   try {
