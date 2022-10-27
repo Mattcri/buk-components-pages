@@ -185,7 +185,7 @@ function calcularSueldo() {
 
 const getJSON = async () => {
   const data = await fetch(
-    "http://d3nk1otf0qe6jp.cloudfront.net/data.jso"
+    "http://d3nk1otf0qe6jp.cloudfront.net/data.json"
   ).then((r) => r.json());
   return data;
 };
