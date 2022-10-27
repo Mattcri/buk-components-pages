@@ -6,37 +6,45 @@ const getData = async (urlapi) => {
   return response.json()
 }
 
+const minValues = (num) => {
+  let value = Math.floor(num % 60)
+  if (value >= 10) {
+    return value.toString()
+  } else {
+    return value.toString().padStart(2, '0')
+  }
+}
+
 const getChat = async () => {
   try {
-    let chat = await getData(API).then(response => response.chat.responseTime)
-    let dates = chat.data.map(e => e.date)
-    let avgs = chat.data.map(e => e.avg_responseTime_chat)
+    const startTime = performance.now()
+    const chat = await getData(API).then(response => response.chat.responseTime)
+    const dates = chat.data.map(e => e.date)
+    const avgs = chat.data.map(e => e.avg_responseTime_chat)
     let avg = chat.average90Days
-    let valuesMin = avgs.map(e => Math.floor(e / 60).toString())
-    let valuesSec = avgs.map(e => {
-      let second = Math.floor(e % 60)
-      if (second >= 10) {
-        return second.toString()
-      } else {
-        return second.toString().padStart(2, '0')
-      }
-    })
+    let avgMin = Math.floor(avg / 60).toString()
+    let avgSec = minValues(avg)
+    const DOMavg = document.getElementById('chatAvg')
+    DOMavg.textContent = `${avgMin}min ${avgSec}s`
+    const valuesMin = avgs.map(e => Math.floor(e / 60).toString())
+    const valuesSec = avgs.map(e => minValues(e))
 
-    let minutesAndsecond = []
-    
-    for (let i = 0; i < valuesMin.length; i++ ) {
-      let min = valuesMin[i]
-      let sec = valuesSec[i]
-      let formatt = `${min}.${sec}`
-      minutesAndsecond.push(formatt)
-    }
+    const minutesAndsecond = valuesMin.map((value, index) => `${value}.${valuesSec[index]}`)
+    // const minutesAndsecond = []
+    // for (let i = 0; i < valuesMin.length; i++ ) {
+    //   let min = valuesMin[i]
+    //   let sec = valuesSec[i]
+    //   let formatt = `${min}.${sec}`
+    //   minutesAndsecond.push(formatt)
+    // }
     // let t = valuesMin.join(`.${valuesSec}`)
+    const endTime = performance.now()
 
     console.log('Min:', valuesMin)
     console.log('Sec: ', valuesSec)
     console.log('A VERR', minutesAndsecond)
 
-
+    console.log(`Tiempo de respuesta del código: ${endTime - startTime} ms`)
     // let minute = Math.floor(avg).toString()
     // let seconds = avg.toFixed(2).toString().slice(2)
 
@@ -56,10 +64,10 @@ const getChat = async () => {
     // console.log(typeof avg, avg)
     // console.log('minutos: ', typeof minute, minute)
     // console.log('segundos: ', typeof seconds, seconds)
-    // const DOMavg = document.getElementById('chatAvg')
+    
     const ctx = document.getElementById('graphiChat').getContext('2d')
     
-    // DOMavg.textContent = `${minute} min ${seconds} seg`
+    
     const chart = new Chart(ctx, abstractConfig(dates.reverse(), minutesAndsecond.reverse(), 'Minutos'))
     
   } catch (err) {
@@ -69,23 +77,26 @@ const getChat = async () => {
 
 const getCall = async () => {
   try {
-    let call = await getData(API).then(response => response.call.responseTime)
-    let dates = call.data.map(e => e.date)
-    let avgs = call.data.map(e => e.avg_answerSpeed_call)
-    let avg = call.average90Days
-    let minute = Math.floor(avg)
-    let seconds = avg.toString().slice(2)
-    console.log('Promedio call: ', avg)
-    console.log('Fechas call: ', dates)
-    console.log('Promedios call: ', avgs)
+    const call = await getData(API).then(response => response.call.responseTime)
+    const dates = call.data.map(e => e.date)
+    const avgs = call.data.map(e => e.avg_answerSpeed_call)
+    const avg = call.average90Days
+    const avgMin = Math.floor(avg / 60).toString()
+    const avgSec = minValues(avg)
+    const DOMavg = document.getElementById('callAvg')
+    DOMavg.textContent = `${avgMin}min ${avgSec}s`
+    const valuesMin = avgs.map(e => Math.floor(e / 60).toString())
+    const valuesSec = avgs.map(e => minValues(e))
+    const minutesAndsecond = valuesMin.map((value, index) => `${value}.${valuesSec[index]}`)
+
+    console.log('Promedios call: ', minutesAndsecond)
+    
     // console.log(typeof avg, avg)
     // console.log('minutos call: ', typeof minute, minute)
     // console.log('segundos call: ', typeof seconds, seconds)
-    // const DOMavg = document.getElementById('callAvg')
     const ctx = document.getElementById('graphiCall').getContext('2d')
 
-    // DOMavg.textContent = `${minute} min ${seconds} seg`
-    const chart = new Chart(ctx, abstractConfig(dates, avgs, 'Minutos'))
+    const chart = new Chart(ctx, abstractConfig(dates.reverse() , minutesAndsecond.reverse(), 'Minutos'))
 
   } catch (err) {
     console.error(err)
