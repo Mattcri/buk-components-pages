@@ -72,8 +72,7 @@ const getChat = async () => {
     
     const ctx = document.getElementById('graphiChat').getContext('2d')
     
-    
-    const chart = new Chart(ctx, abstractConfig(dates.reverse(), minutesAndsecond.reverse(), 'Minutos'))
+    const chart = new Chart(ctx, abstractConfig(dates.reverse(), minutesAndsecond.reverse(), 'Minutos', 4, 1))
     
   } catch (err) {
     console.error(err)
@@ -101,7 +100,7 @@ const getCall = async () => {
     // console.log('segundos call: ', typeof seconds, seconds)
     const ctx = document.getElementById('graphiCall').getContext('2d')
 
-    const chart = new Chart(ctx, abstractConfig(dates.reverse() , minutesAndsecond.reverse(), 'Minutos'))
+    const chart = new Chart(ctx, abstractConfig(dates.reverse() , minutesAndsecond.reverse(), 'Minutos' , 4, 1))
 
   } catch (err) {
     console.error(err)
@@ -133,34 +132,100 @@ const getEmail = async () => {
     
     const ctx = document.getElementById('graphicEmail').getContext('2d')
 
-    const chart = new Chart(ctx, abstractConfig(dates.reverse(), hoursAndMinutes.reverse(), 'Horas'))
+    const chart = new Chart(ctx, abstractConfig(dates.reverse(), hoursAndMinutes.reverse(), 'Horas', 4, 1))
 
   } catch (err) {
     console.error(err)
   }
 }
 
-const abstractConfig = (date, avg, time) => {
+const getNps = async () => {
+  try {
+    const nps = await getData(API).then(response => response.nps.nps)
+    const dates = nps.data.map(e => e.date)
+    const avgs = nps.data.map(e => Math.trunc(e.npsAverage90Days).toString())
+    const avg = nps.average90Days
+    const DOMavg = document.getElementById('npsAvg')
+    const avgNps = Math.trunc(avg)
+    DOMavg.textContent = `${avgNps} NPS`
+
+    const ctx = document.getElementById('graphicNps').getContext('2d')
+
+    const chart = new Chart(ctx, abstractConfig(dates.reverse(), avgs.reverse(), 'NPS', 100, 25))
+    console.log('AVGS Nps: ', avgs)
+    console.log('Dates Nps: ', dates)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+const abstractConfig = (date, avgs, textY, axisYmax, axisYstep) => {
   return {
     type: 'line',
     data: {
       labels: date,
       datasets: [{
-        data: avg,
+        data: avgs,
         borderColor: ['rgba(114, 139, 197, 1)'],
         borderWidth: 3
       }]
     },
     options: {
       plugins: {
-        legend: false // Hide legend
+        legend: false, // Hide legend
+        tooltip: {
+          backgroundColor: "#0b2f63",
+          cornerRadius: 2,
+          displayColors: false,
+          padding: {
+            x: 12,
+            y: 10
+          },
+          caretPadding: 8,
+          caretSize: 7,
+          titleFont: {
+            size: 14
+          },
+          bodyFont: {
+            size: 15,
+          },
+          footerFont: {
+            weight: 'normal',
+            style: 'italic'
+          },
+          callbacks: {
+            label: function (context) {
+              let value = context.raw
+              // let dateLabel = context.label
+              let first = Math.floor(value).toString()
+              let second = first.length <= 1 ? value.slice(2) : value.slice(3)
+              console.log('Tooltip: ', context)
+              console.log('Tooltip Item: ', value)
+              if (textY == 'Minutos') {
+                return `${first}min ${second}s`
+              } else if (textY == 'Horas') {
+                return `${first}h ${second}min`
+              } else if (textY == 'NPS') {
+                return `${value}`
+              }
+              
+            },
+            footer: function(context) {
+              if (textY == 'NPS') {
+                return 'Prom. hoy + 90 días anteriores'
+              } else {
+                return
+              }
+            }
+          }
+        },
       },
       scales: {
         y: {
           type: 'linear',
           title: {
             display: true,
-            text: time,
+            text: textY,
             color: '#2f48a7',
             font: {
               size: 16,
@@ -172,9 +237,9 @@ const abstractConfig = (date, avg, time) => {
           // max: 4,
           // suggestedMax: 60,
           suggestedMin: 0,
-          suggestedMax: 4,
+          suggestedMax: axisYmax,
           ticks: {
-            stepSize: 1,
+            stepSize: axisYstep,
             // crossAlign: 'center',
             backdropPadding: 2,
             padding: 5
@@ -241,7 +306,7 @@ const abstractConfig = (date, avg, time) => {
 
 
 if (typeof window !== "undefined") {
-  window.onload = Promise.all[getChat(), getCall(), getEmail()]
+  window.onload = Promise.all[getChat(), getCall(), getEmail(), getNps()]
 }
 
 // getChart()
