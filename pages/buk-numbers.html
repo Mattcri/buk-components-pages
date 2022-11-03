@@ -38,7 +38,7 @@
             <div class="chart__body">
               <div class="buk-grid">
                 <div class="buk-col buk-col-md-5 buk-col-lg-5 buk-pb-0 buk-col-ed-md-13 buk-col-ed-lg-13">
-                  <p id="chatAvg" class="txt-center avg">0</p>
+                  <p id="chat-avg-time" class="txt-center avg">0</p>
                   <p class="txt-center text-avg-info buk-mt-2">Promedio de 90 días</p>
                 </div>
                 <div class="buk-col buk-col-md-7 buk-col-lg-7 buk-col-st-md-1 buk-col-st-lg-1 buk-row-st-md-1 buk-row-st-lg-1">
@@ -47,7 +47,37 @@
               </div>
 
               <div class="buk-mt-4 chart__content">
-                <canvas id="graphiChat" width="400" height="200"></canvas>
+                <canvas id="chat-response-time" width="400" height="200"></canvas>
+              </div>
+
+            </div>
+
+          </article>
+        </div>
+
+        <div class="buk-grid buk-mt-6">
+          <article class="buk-col buk-col-md-10 buk-col-lg-10 buk-col-st-md-2 buk-col-st-lg-2">
+            <div class="chart__head">
+              <h3 class="ds-flex ai-center">
+                <img src="https://www.buk.cl/hubfs/2022/Chile/icon-chat.png" width="30" height="auto" class="chart__icon v-tablet v-desktop">
+                Satisfacción Servicio Atención al Cliente - Chat
+                <img src="https://www.buk.cl/hubfs/2022/Chile/icon-info-c-1.png" class="chart__info">
+              </h3>
+            </div>
+            <div class="chart__body">
+              <div class="buk-grid">
+                <div class="buk-col buk-col-md-5 buk-col-lg-5 buk-pb-0 buk-col-ed-md-13 buk-col-ed-lg-13">
+                  <p id="chat-avg-cs" class="txt-center avg">0</p>
+                  <p class="txt-center text-avg-info buk-mt-2">Promedio de 90 días</p>
+                </div>
+                <div class="buk-col buk-col-md-7 buk-col-lg-7 buk-col-st-md-1 buk-col-st-lg-1 buk-row-st-md-1 buk-row-st-lg-1">
+                  <p>La calificación de satisfacción de servicio de atención al cliente mide las respuestas de clientes luego de ser
+                  atendidos por un ejecutivo de Buk a través de nuestros canales de atención.</p>
+                </div>
+              </div>
+
+              <div class="buk-mt-4 chart__content">
+                <canvas id="chat-customer-satisfaction" width="400" height="200"></canvas>
               </div>
 
             </div>
@@ -67,7 +97,7 @@
             <div class="chart__body">
               <div class="buk-grid">
                 <div class="buk-col buk-col-md-5 buk-col-lg-5 buk-pb-0 buk-col-ed-md-13 buk-col-ed-lg-13">
-                  <p id="callAvg" class="txt-center avg">0</p>
+                  <p id="call-avg-time" class="txt-center avg">0</p>
                   <p class="txt-center text-avg-info buk-mt-2">Promedio de 90 días</p>
                 </div>
                 <div class="buk-col buk-col-md-7 buk-col-lg-7 buk-col-st-md-1 buk-col-st-lg-1 buk-row-st-md-1 buk-row-st-lg-1">
@@ -76,7 +106,7 @@
               </div>
 
               <div class="buk-mt-4 chart__content">
-                <canvas id="graphiCall" width="400" height="200"></canvas>
+                <canvas id="call-response-time" width="400" height="200"></canvas>
               </div>
 
             </div>
@@ -96,7 +126,7 @@
             <div class="chart__body">
               <div class="buk-grid">
                 <div class="buk-col buk-col-md-5 buk-col-lg-5 buk-pb-0 buk-col-ed-md-13 buk-col-ed-lg-13">
-                  <p id="emailAvg" class="txt-center avg">0</p>
+                  <p id="email-avg-time" class="txt-center avg">0</p>
                   <p class="txt-center text-avg-info buk-mt-2">Promedio de 90 días</p>
                 </div>
                 <div class="buk-col buk-col-md-7 buk-col-lg-7 buk-col-st-md-1 buk-col-st-lg-1 buk-row-st-md-1 buk-row-st-lg-1">
@@ -106,7 +136,7 @@
               </div>
 
               <div class="buk-mt-4 chart__content">
-                <canvas id="graphicEmail" width="400" height="200"></canvas>
+                <canvas id="email-response-time" width="400" height="200"></canvas>
               </div>
 
             </div>
@@ -118,6 +148,36 @@
           <article class="buk-col buk-col-md-10 buk-col-lg-10 buk-col-st-md-2 buk-col-st-lg-2">
             <div class="chart__head">
               <h3 class="ds-flex ai-center">
+                <img src="https://www.buk.cl/hubfs/2022/Chile/icon-chat.png" width="30" height="auto"
+                  class="chart__icon v-tablet v-desktop">
+                Satisfacción Servicio Atención al Cliente - Email
+                <img src="https://www.buk.cl/hubfs/2022/Chile/icon-info-c-1.png" class="chart__info">
+              </h3>
+            </div>
+            <div class="chart__body">
+              <div class="buk-grid">
+                <div class="buk-col buk-col-md-5 buk-col-lg-5 buk-pb-0 buk-col-ed-md-13 buk-col-ed-lg-13">
+                  <p id="email-avg-cs" class="txt-center avg">0</p>
+                  <p class="txt-center text-avg-info buk-mt-2">Promedio de 90 días</p>
+                </div>
+                <div class="buk-col buk-col-md-7 buk-col-lg-7 buk-col-st-md-1 buk-col-st-lg-1 buk-row-st-md-1 buk-row-st-lg-1">
+                  <p>La calificación de satisfacción de servicio de atención al cliente mide las respuestas de clientes luego de ser atendidos por un ejecutivo de Buk a través de nuestros canales de atención.</p>
+                </div>
+              </div>
+
+              <div class="buk-mt-4 chart__content">
+                <canvas id="email-customer-satisfaction" width="400" height="200"></canvas>
+              </div>
+
+            </div>
+
+          </article>
+        </div>
+
+        <div class="buk-grid buk-mt-6 buk-pb-3">
+          <article class="buk-col buk-col-md-10 buk-col-lg-10 buk-col-st-md-2 buk-col-st-lg-2">
+            <div class="chart__head">
+              <h3 class="ds-flex ai-center">
                 <img src="https://www.buk.cl/hubfs/2022/Chile/icon-chat.png" width="30" height="auto" class="chart__icon v-tablet v-desktop">
                 NPS Clientes
                 <img src="https://www.buk.cl/hubfs/2022/Chile/icon-info-c-1.png" class="chart__info">
@@ -126,7 +186,7 @@
             <div class="chart__body">
               <div class="buk-grid">
                 <div class="buk-col buk-col-md-5 buk-col-lg-5 buk-pb-0 buk-col-ed-md-13 buk-col-ed-lg-13">
-                  <p id="npsAvg" class="txt-center avg">0</p>
+                  <p id="nps-avg" class="txt-center avg">0</p>
                   <p class="txt-center text-avg-info buk-mt-2">Promedio de 90 días</p>
                 </div>
                 <div class="buk-col buk-col-md-7 buk-col-lg-7 buk-col-st-md-1 buk-col-st-lg-1 buk-row-st-md-1 buk-row-st-lg-1">
@@ -137,7 +197,7 @@
               </div>
 
               <div class="buk-mt-4 chart__content">
-                <canvas id="graphicNps" width="400" height="200"></canvas>
+                <canvas id="graphic-nps" width="400" height="200"></canvas>
               </div>
 
             </div>

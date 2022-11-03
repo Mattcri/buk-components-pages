@@ -20,16 +20,16 @@ const minimunMinutesValues = (num) => {
   return Math.floor(remanient / 60).toString().padStart(2, '0')
 }
 
-const getChat = async () => {
+const chatTime = async () => {
   try {
     const startTime = performance.now()
     const chat = await getData(API).then(response => response.chat.responseTime)
     const dates = chat.data.map(e => e.date)
     const avgs = chat.data.map(e => e.avg_responseTime_chat)
-    let avg = chat.average90Days
-    let avgMin = Math.floor(avg / 60).toString()
-    let avgSec = minimumSecondsValues(avg)
-    const DOMavg = document.getElementById('chatAvg')
+    const avg = chat.average90Days
+    const avgMin = Math.floor(avg / 60).toString()
+    const avgSec = minimumSecondsValues(avg)
+    const DOMavg = document.getElementById('chat-avg-time')
     DOMavg.textContent = `${avgMin}min ${avgSec}s`
     const valuesMin = avgs.map(e => Math.floor(e / 60).toString())
     const valuesSec = avgs.map(e => minimumSecondsValues(e))
@@ -49,7 +49,7 @@ const getChat = async () => {
     console.log('Sec: ', valuesSec)
     console.log('A VERR', minutesAndsecond)
 
-    console.log(`Tiempo de respuesta del código: ${endTime - startTime} ms`)
+    console.log(`Tiempo de respuesta del código: ${(endTime - startTime) / 60} seg`)
     // let minute = Math.floor(avg).toString()
     // let seconds = avg.toFixed(2).toString().slice(2)
 
@@ -62,24 +62,42 @@ const getChat = async () => {
     //   console.log(formattSeconds)
     // })
 
-    console.log('Promedio chat: ', avg)
-    console.log('Fechas chat: ', dates)
-    console.log('Promedios chat: ', avgs)
+    // console.log('Promedio chat: ', avg)
+    // console.log('Fechas chat: ', dates)
+    // console.log('Promedios chat: ', avgs)
     
     // console.log(typeof avg, avg)
     // console.log('minutos: ', typeof minute, minute)
     // console.log('segundos: ', typeof seconds, seconds)
     
-    const ctx = document.getElementById('graphiChat').getContext('2d')
+    const ctx = document.getElementById('chat-response-time').getContext('2d')
     
     const chart = new Chart(ctx, abstractConfig(dates.reverse(), minutesAndsecond.reverse(), 'Minutos', 4, 1))
     
+  } catch (err) {
+    // const DOMerror = document.querySelector('.chart__content ')
+    // DOMerror.insertBefore('h3')
+    console.error(err)
+  }
+}
+
+const chatCS = async () => {
+  try {
+    const chatCS = await getData(API).then(response => response.chat.csat)
+    const dates = chatCS.data.map(e => e.date)
+    const avgs = chatCS.data.map(e => e.avg_csat.toFixed(1))
+    const avg = chatCS.average90Days.toFixed(1)
+    const DOMavg = document.getElementById('chat-avg-cs')
+    DOMavg.textContent = `${avg} / 5`
+    const ctx = document.getElementById('chat-customer-satisfaction').getContext('2d')
+
+    const chart = new Chart(ctx, abstractConfig(dates.reverse(), avgs.reverse(), 'Customer Satisfaction', 5, 1 ))
   } catch (err) {
     console.error(err)
   }
 }
 
-const getCall = async () => {
+const callTime = async () => {
   try {
     const call = await getData(API).then(response => response.call.responseTime)
     const dates = call.data.map(e => e.date)
@@ -87,18 +105,18 @@ const getCall = async () => {
     const avg = call.average90Days
     const avgMin = Math.floor(avg / 60).toString()
     const avgSec = minimumSecondsValues(avg)
-    const DOMavg = document.getElementById('callAvg')
+    const DOMavg = document.getElementById('call-avg-time')
     DOMavg.textContent = `${avgMin}min ${avgSec}s`
     const valuesMin = avgs.map(e => Math.floor(e / 60).toString())
     const valuesSec = avgs.map(e => minimumSecondsValues(e))
     const minutesAndsecond = valuesMin.map((value, index) => `${value}.${valuesSec[index]}`)
 
-    console.log('Promedios call: ', minutesAndsecond)
+    // console.log('Promedios call: ', minutesAndsecond)
     
     // console.log(typeof avg, avg)
     // console.log('minutos call: ', typeof minute, minute)
     // console.log('segundos call: ', typeof seconds, seconds)
-    const ctx = document.getElementById('graphiCall').getContext('2d')
+    const ctx = document.getElementById('call-response-time').getContext('2d')
 
     const chart = new Chart(ctx, abstractConfig(dates.reverse() , minutesAndsecond.reverse(), 'Minutos' , 4, 1))
 
@@ -107,13 +125,13 @@ const getCall = async () => {
   }
 }
 
-const getEmail = async () => {
+const emailTime = async () => {
   try {
     const email = await getData(API).then(response => response.email.responseTime)
     const dates = email.data.map(e => e.date)
     const avgs = email.data.map(e => e.avg_responseTime_email)
     const avg = email.average90Days
-    const DOMavg = document.getElementById('emailAvg')
+    const DOMavg = document.getElementById('email-avg-time')
     const avgHour = Math.floor(avg / 3600).toString()
     const avgMinutes = minimunMinutesValues(avg)
     DOMavg.textContent = `${avgHour}h ${avgMinutes}min`
@@ -126,30 +144,44 @@ const getEmail = async () => {
     console.log('Promedio email: ', avg)
     console.log('Fechas email: ', dates)
     console.log('Promedios email: ', avgs)
-    // console.log(typeof avg, avg)
-    // console.log('minutos email: ', typeof hours, hours)
-    // console.log('segundos email: ', typeof minutes, minutes)
     
-    const ctx = document.getElementById('graphicEmail').getContext('2d')
+    const ctx = document.getElementById('email-response-time').getContext('2d')
 
-    const chart = new Chart(ctx, abstractConfig(dates.reverse(), hoursAndMinutes.reverse(), 'Horas', 4, 1))
+    const chart = new Chart(ctx, abstractConfig(dates.reverse(), hoursAndMinutes.reverse(), 'Horas', 4, 2))
 
   } catch (err) {
     console.error(err)
   }
 }
 
-const getNps = async () => {
+const emailCS = async () => {
+  try {
+    const emailCS = await getData(API).then(response => response.email.csat)
+    const dates = emailCS.data.map(e => e.date)
+    const avgs = emailCS.data.map(e => e.avg_csat.toFixed(1))
+    const avg = emailCS.average90Days.toFixed(1)
+    const DOMavg = document.getElementById('email-avg-cs')
+    DOMavg.textContent = `${avg} / 5`
+
+    const ctx = document.getElementById('email-customer-satisfaction').getContext('2d')
+
+    const chart = new Chart(ctx, abstractConfig(dates.reverse(), avgs.reverse(), 'Customer Satisfaction', 5, 1 ))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+const nps = async () => {
   try {
     const nps = await getData(API).then(response => response.nps.nps)
     const dates = nps.data.map(e => e.date)
     const avgs = nps.data.map(e => Math.trunc(e.npsAverage90Days).toString())
     const avg = nps.average90Days
-    const DOMavg = document.getElementById('npsAvg')
+    const DOMavg = document.getElementById('nps-avg')
     const avgNps = Math.trunc(avg)
     DOMavg.textContent = `${avgNps} NPS`
 
-    const ctx = document.getElementById('graphicNps').getContext('2d')
+    const ctx = document.getElementById('graphic-nps').getContext('2d')
 
     const chart = new Chart(ctx, abstractConfig(dates.reverse(), avgs.reverse(), 'NPS', 100, 25))
     console.log('AVGS Nps: ', avgs)
@@ -205,7 +237,7 @@ const abstractConfig = (date, avgs, textY, axisYmax, axisYstep) => {
                 return `${first}min ${second}s`
               } else if (textY == 'Horas') {
                 return `${first}h ${second}min`
-              } else if (textY == 'NPS') {
+              } else if (textY == 'NPS' || textY == 'Customer Satisfaction') {
                 return `${value}`
               }
               
@@ -306,7 +338,7 @@ const abstractConfig = (date, avgs, textY, axisYmax, axisYstep) => {
 
 
 if (typeof window !== "undefined") {
-  window.onload = Promise.all[getChat(), getCall(), getEmail(), getNps()]
+  window.onload = Promise.all[chatTime(), callTime(), emailTime(), nps(), chatCS(), emailCS()]
 }
 
 // getChart()

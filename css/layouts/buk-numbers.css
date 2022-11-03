@@ -51,11 +51,16 @@
     max-width: 55%;
   }
 
-  .chart__body #graphiChat,
-  .chart__body #graphiCall,
-  .chart__body #graphicEmail,
-  .chart__body #graphicNps {
+  .chart__body #chat-response-time,
+  .chart__body #call-response-time,
+  .chart__body #graphic-nps,
+  .chart__body #chat-customer-satisfaction,
+  .chart__body #email-customer-satisfaction {
     max-height: 330px;
+  }
+
+  .chart__body #email-response-time {
+    max-height: 500px;
   }
 
 }
