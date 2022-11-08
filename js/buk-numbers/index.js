@@ -1,10 +1,16 @@
-const API = "https://mattguz.github.io/buk-numbers/data_buknumbers.json"
+const API = "https://mattguz.github.io/buk-numbers/data_buknumbers_V2.json"
+moment.locale('es')
 
+const formatDate = 'D MMM'
 
 const getData = async (urlapi) => {
   let response = await fetch(urlapi) 
   return response.json()
 }
+
+const storeData = new Promise((resolve) => {
+    resolve(getData(API))
+})
 
 const minimumSecondsValues = (num) => {
   let value = Math.floor(num % 60)
@@ -23,8 +29,8 @@ const minimunMinutesValues = (num) => {
 const chatTime = async () => {
   try {
     const startTime = performance.now()
-    const chat = await getData(API).then(response => response.chat.responseTime)
-    const dates = chat.data.map(e => e.date)
+    const chat = await storeData.then(response => response.chat.responseTime)
+    const dates = chat.data.map(e => moment(e.date).format(formatDate).replace(/\b[a-z]/g, d => d.toUpperCase()).replace('.', ''))
     const avgs = chat.data.map(e => e.avg_responseTime_chat)
     const avg = chat.average90Days
     const avgMin = Math.floor(avg / 60).toString()
@@ -50,26 +56,7 @@ const chatTime = async () => {
     console.log('A VERR', minutesAndsecond)
 
     console.log(`Tiempo de respuesta del código: ${(endTime - startTime) / 60} seg`)
-    // let minute = Math.floor(avg).toString()
-    // let seconds = avg.toFixed(2).toString().slice(2)
 
-    // let i = 1
-    // avgs.forEach(item => {
-    //   let fomattMinutes = Math.trunc(item / 60)
-    //   let formattSeconds = item % 60
-    
-    //   console.log(i++, '-' , fomattMinutes)
-    //   console.log(formattSeconds)
-    // })
-
-    // console.log('Promedio chat: ', avg)
-    // console.log('Fechas chat: ', dates)
-    // console.log('Promedios chat: ', avgs)
-    
-    // console.log(typeof avg, avg)
-    // console.log('minutos: ', typeof minute, minute)
-    // console.log('segundos: ', typeof seconds, seconds)
-    
     const ctx = document.getElementById('chat-response-time').getContext('2d')
     
     const chart = new Chart(ctx, abstractConfig(dates.reverse(), minutesAndsecond.reverse(), 'Minutos', 4, 1))
@@ -81,27 +68,11 @@ const chatTime = async () => {
   }
 }
 
-const chatCS = async () => {
-  try {
-    const chatCS = await getData(API).then(response => response.chat.csat)
-    const dates = chatCS.data.map(e => e.date)
-    const avgs = chatCS.data.map(e => e.avg_csat.toFixed(1))
-    const avg = chatCS.average90Days.toFixed(1)
-    const DOMavg = document.getElementById('chat-avg-cs')
-    DOMavg.textContent = `${avg} / 5`
-    const ctx = document.getElementById('chat-customer-satisfaction').getContext('2d')
-
-    const chart = new Chart(ctx, abstractConfig(dates.reverse(), avgs.reverse(), 'Customer Satisfaction', 5, 1 ))
-  } catch (err) {
-    console.error(err)
-  }
-}
-
 const callTime = async () => {
   try {
-    const call = await getData(API).then(response => response.call.responseTime)
-    const dates = call.data.map(e => e.date)
-    const avgs = call.data.map(e => e.avg_answerSpeed_call)
+    const call = await storeData.then(response => response.call.waitTime)
+    const dates = call.data.map(e => moment(e.date).format(formatDate).replace(/\b[a-z]/g, d => d.toUpperCase()).replace('.', ''))
+    const avgs = call.data.map(e => e.avg_wait_time)
     const avg = call.average90Days
     const avgMin = Math.floor(avg / 60).toString()
     const avgSec = minimumSecondsValues(avg)
@@ -125,10 +96,26 @@ const callTime = async () => {
   }
 }
 
+const customerSfs = async () => {
+  try {
+    const cs = await storeData.then(response => response.chat.csat)
+    const dates = cs.data.map(e => moment(e.date).format(formatDate).replace(/\b[a-z]/g, d => d.toUpperCase()).replace('.', ''))
+    const avgs = cs.data.map(e => e.avg_csat.toFixed(1))
+    const avg = cs.average90Days.toFixed(1)
+    const DOMavg = document.getElementById('avg-cs')
+    DOMavg.textContent = `${avg} / 5`
+    const ctx = document.getElementById('customer-satisfaction').getContext('2d')
+
+    const chart = new Chart(ctx, abstractConfig(dates.reverse(), avgs.reverse(), 'Satisfacción', 5, 1))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 const emailTime = async () => {
   try {
-    const email = await getData(API).then(response => response.email.responseTime)
-    const dates = email.data.map(e => e.date)
+    const email = await storeData.then(response => response.email.responseTime)
+    const dates = email.data.map(e => moment(e.date).format(formatDate).replace(/\b[a-z]/g, d => d.toUpperCase()).replace('.', ''))
     const avgs = email.data.map(e => e.avg_responseTime_email)
     const avg = email.average90Days
     const DOMavg = document.getElementById('email-avg-time')
@@ -154,27 +141,27 @@ const emailTime = async () => {
   }
 }
 
-const emailCS = async () => {
-  try {
-    const emailCS = await getData(API).then(response => response.email.csat)
-    const dates = emailCS.data.map(e => e.date)
-    const avgs = emailCS.data.map(e => e.avg_csat.toFixed(1))
-    const avg = emailCS.average90Days.toFixed(1)
-    const DOMavg = document.getElementById('email-avg-cs')
-    DOMavg.textContent = `${avg} / 5`
+// const emailCS = async () => {
+//   try {
+//     const emailCS = await storeData.then(response => response.email.csat)
+//     const dates = emailCS.data.map(e => e.date)
+//     const avgs = emailCS.data.map(e => e.avg_csat.toFixed(1))
+//     const avg = emailCS.average90Days.toFixed(1)
+//     const DOMavg = document.getElementById('email-avg-cs')
+//     DOMavg.textContent = `${avg} / 5`
 
-    const ctx = document.getElementById('email-customer-satisfaction').getContext('2d')
+//     const ctx = document.getElementById('email-customer-satisfaction').getContext('2d')
 
-    const chart = new Chart(ctx, abstractConfig(dates.reverse(), avgs.reverse(), 'Customer Satisfaction', 5, 1 ))
-  } catch (err) {
-    console.error(err)
-  }
-}
+//     const chart = new Chart(ctx, abstractConfig(dates.reverse(), avgs.reverse(), 'Customer Satisfaction', 5, 1, 'email-cs' ))
+//   } catch (err) {
+//     console.error(err)
+//   }
+// }
 
 const nps = async () => {
   try {
-    const nps = await getData(API).then(response => response.nps.nps)
-    const dates = nps.data.map(e => e.date)
+    const nps = await storeData.then(response => response.nps.nps)
+    const dates = nps.data.map(e => moment(e.date).format(formatDate).replace(/\b[a-z]/g, d => d.toUpperCase()).replace('.', ''))
     const avgs = nps.data.map(e => Math.trunc(e.npsAverage90Days).toString())
     const avg = nps.average90Days
     const DOMavg = document.getElementById('nps-avg')
@@ -198,13 +185,35 @@ const abstractConfig = (date, avgs, textY, axisYmax, axisYstep) => {
       labels: date,
       datasets: [{
         data: avgs,
-        borderColor: ['rgba(114, 139, 197, 1)'],
-        borderWidth: 3
+        borderColor: ['rgba(47, 72, 167, .9)'],
+        borderWidth: 3,
       }]
     },
     options: {
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      elements: {
+        point: {
+          radius: 0,
+          // hitRadius: 3,
+          // backgroundColor: '#2f48a7',
+          borderColor: '#2f48a7',
+          hoverRadius: 6,
+          hoverBorderWidth: 2
+        },
+        // line: {
+        //   tension: 0
+        // },
+      },
+      // layout: {
+      //   padding: {
+      //     top: 50
+      //   }
+      // },
       plugins: {
-        legend: false, // Hide legend
+        legend: false,
         tooltip: {
           backgroundColor: "#0b2f63",
           cornerRadius: 2,
@@ -233,20 +242,37 @@ const abstractConfig = (date, avgs, textY, axisYmax, axisYstep) => {
               let second = first.length <= 1 ? value.slice(2) : value.slice(3)
               console.log('Tooltip: ', context)
               console.log('Tooltip Item: ', value)
-              if (textY == 'Minutos') {
-                return `${first}min ${second}s`
-              } else if (textY == 'Horas') {
-                return `${first}h ${second}min`
-              } else if (textY == 'NPS' || textY == 'Customer Satisfaction') {
-                return `${value}`
+              console.log(context.label)
+              switch (textY) {
+                case 'Minutos':
+                  return `${first}min ${second}s`
+                  break
+                case 'Horas':
+                  if (context.label == '30 Sep') {
+                    return `${first}h ${second}min | Incidencia por x motivo`
+                  } else {
+                    return `${first}h ${second}min`
+                  }
+                  break
+                default:
+                  return `${value}`
               }
+              // if (textY == 'Minutos') {
+              //   return `${first}min ${second}s`
+              // } else if (textY == 'Horas') {
+              //   if (context.label == '2022-09-30') {
+              //     return `${first}h ${second}min | Incidencia por x motivo`
+              //   } else {
+              //     return `${first}h ${second}min`
+              //   }
+              // } else if (textY == 'NPS' || textY == 'Customer Satisfaction') {
+              //   return `${value}`
+              // }
               
             },
             footer: function(context) {
               if (textY == 'NPS') {
                 return 'Prom. hoy + 90 días anteriores'
-              } else {
-                return
               }
             }
           }
@@ -267,20 +293,27 @@ const abstractConfig = (date, avgs, textY, axisYmax, axisYstep) => {
           // stackWeight: .60,
           // min: 0,
           // max: 4,
-          // suggestedMax: 60,
           suggestedMin: 0,
           suggestedMax: axisYmax,
           ticks: {
             stepSize: axisYstep,
             // crossAlign: 'center',
             backdropPadding: 2,
-            padding: 5
+            padding: 5,
+            font: {
+              size: 14
+            }
           },
           
         },
         x: {
           ticks: {
             maxTicksLimit: 7,
+            maxRotation: (context) => context.scale.width > 405 ? 0 : 50,
+            padding: 15,
+            font: {
+              size: 14
+            }
           }
         }
       },
@@ -338,7 +371,5 @@ const abstractConfig = (date, avgs, textY, axisYmax, axisYstep) => {
 
 
 if (typeof window !== "undefined") {
-  window.onload = Promise.all[chatTime(), callTime(), emailTime(), nps(), chatCS(), emailCS()]
+  window.onload = Promise.all[chatTime(), callTime(), customerSfs(), emailTime(), nps()]
 }
-
-// getChart()
