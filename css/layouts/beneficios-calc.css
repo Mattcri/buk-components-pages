@@ -1,0 +1,34 @@
+@media only screen and (min-width: 767px) {
+  .banner figure img {
+    max-width: 380px;
+  }
+}
+
+.box-roundend {
+  background: var(--color-white);
+  box-shadow: var(--shadow-2);
+  border-radius: 39px;
+}
+
+.values {
+  background: var(--bg-banner-static-solid);
+  box-shadow: var(--shadow-2);
+  border-radius: 16px;
+  margin: 1.5rem 0;
+  padding: 1.5rem 04.5rem;
+}
+
+#price-uf {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+#price-clp {
+  font-size: 1.25rem;
+}
+
+@media only screen and (min-width: 576px) {
+  .values {
+    margin: 2rem auto;
+    max-width: 325px;
+  }
+}

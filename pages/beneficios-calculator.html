@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Beneficios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layouts/beneficios-calc.css">
+  <link rel="preload" as="style" href="../css/grid-system.css" onload="this.rel='stylesheet'">
+  <link rel="preload" as="style" href="../css/margins-paddings.css" onload="this.rel='stylesheet'">
+</head>
+<body>
+
+  <main class="main--variant-2">
+    <section class="buk-py-6 buk-py-lg-5 bg-light-blue">
+      <div class="boxer">
+        <div class="buk-grid banner">
+          <div class="buk-col buk-col-md-6 buk-col-lg-5 buk-col-st-lg-2">
+            <h1 class="buk-mb-3">Arma tu pack de Beneficios a la medida de tus colaboradores</h1>
+            <p>Elige los beneficios que mas valoren tus colaboradores
+            y no pagues demás! Ten colaboradores mas comprometidos
+            y felices con los nuevos beneficios que Buk tiene para
+            tu organización.</p>
+          </div>
+          <div class="buk-col buk-col-md-6 buk-col-lg-5">
+            <figure class="txt-center">
+              <img src="https://www.buk.cl/hubfs/2022/BUK/Soluciones/Beneficios/Ilustracion-banner-beneficios.png" alt="" >
+            </figure>
+          </div>
+        </div>
+
+        <div class="buk-grid buk-mt-5">
+          <div class="buk-col buk-col-md-6 buk-col-lg-6">
+            <div class="box-roundend buk-py-4 buk-px-3">
+              <div class="box-rounded__body">
+                <div class="ds-flex ai-center none-wrap">
+                  <input type="checkbox" name="benefit-1" id="bn-1" value="0.01" onclick="operateRun(this)">
+                  <label for="benefit-1">Modulos de Beneficios</label>
+                </div>
+                <div class="ds-flex ai-center none-wrap">
+                  <input type="checkbox" name="benefit-2" id="bn-2" value="0" onclick="operateRun(this)">
+                  <label for="benefit-2">Pack de Beneficios gratuito (incluido en
+                  todos los servicio de Buk)</label>
+                </div>
+                <div class="ds-flex ai-center none-wrap">
+                  <input type="checkbox" name="benefit-3" id="bn-3" value="0.06" onclick="operateRun(this)">
+                  <label for="benefit-3">Gympass Core</label>
+                </div>
+                <div class="ds-flex ai-center none-wrap">
+                  <input type="checkbox" name="benefit-4" id="bn-4" value="0.14" onclick="operateRun(this)">
+                  <label for="benefit-4">Gympass starter</label>
+                </div>
+                <div class="ds-flex ai-center none-wrap">
+                  <input type="checkbox" name="benefit-5" id="bn-5" value="0.04" onclick="operateRun(this)">
+                  <label for="benefit-5">Telemedicina ilimitada (medicina general,
+                  nutrición, psicología y veterinaria)</label>
+                </div>
+                <div class="ds-flex ai-center none-wrap">
+                  <input type="checkbox" name="benefit-6" id="bn-6" value="0.02" onclick="operateRun(this)">
+                  <label for="benefit-6">Convenio Farmacia</label>
+                </div>
+                <div class="ds-flex ai-center none-wrap">
+                  <input type="checkbox" name="benefit-7" id="bn-7" value="0.02" onclick="operateRun(this)">
+                  <label for="benefit-7">Adelantos de Sueldo</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="buk-col buk-col-md-6 buk-col-lg-6">
+            <div class="box-roundend buk-py-4 buk-px-3">
+              <div class="box-rounded__body txt-center">
+                <h4>Valor Mensual de tu plan de <br>
+                  Beneficios por colaborador</h4>
+
+                <div class="values">
+                  <p id="price-uf">UF <span>XX</span></p>
+                  <p id="price-clp">Aprox $0 CLP</p>
+
+                </div>
+
+              <button class="btn btn--2">Cotiza Aquí</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/soluciones/beneficios-calc.js" defer></script>
+</body>
+</html>
