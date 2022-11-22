@@ -29,15 +29,17 @@ const operateRun = (element) => {
 
   if (gympassCore.checked && gympassStarter.checked) {
     console.log('ERROR')
+    showError()
   } else {
     calculateValue(allCheckbox)
+    hideError()
   }
 
-  console.log(element)
+  // console.log(element)
   // element.checked
   //   ? add(init, currentPrice)
-    // ? total = total + currentPrice
-    // : total = total - currentPrice
+  //   ? total = total + currentPrice
+  //   : total = total - currentPrice
 
 }
 
@@ -73,15 +75,28 @@ const putPricesInDOM = (price) => {
   console.log('CLP: ',clp)
 }
 
-// const formattCLP = new Intl.NumberFormat('es-CL', {
-//   style: 'currency',
-//   currency: 'CLP',
-//   maximumFractionDigits: 3,
-//   minimumFractionDigits: 3,
-//   minimumIntegerDigits: 1
-// })
+const showError = () => {
+  const gympassCore = document.getElementById('bn-3')
+  const gympassStarter = document.getElementById('bn-4')
+  const DOMuf = document.getElementById('price-uf')
+  const DOMclp = document.getElementById('price-clp')
+  DOMuf.textContent = 'Selecciona solo un Gympass'
+  DOMclp.textContent = 'Aprox $0 CLP'
+  DOMuf.classList.add('txt-error')
+  gympassCore.parentElement.classList.add('control-error')
+  gympassStarter.parentElement.classList.add('control-error')
+}
 
-// getUF()
+const hideError = () => {
+  const gympassCore = document.getElementById('bn-3')
+  const gympassStarter = document.getElementById('bn-4')
+  const DOMuf = document.getElementById('price-uf')
+  DOMuf.classList.remove('txt-error')
+  gympassCore.parentElement.classList.remove('control-error')
+  gympassStarter.parentElement.classList.remove('control-error')
+}
+
+
 if (typeof window !== "undefined") {
   window.onload = putUF()
 }

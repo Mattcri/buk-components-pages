@@ -10,12 +10,39 @@
   border-radius: 39px;
 }
 
+.input-control {
+  background: var(--bg-banner-static-solid);
+  border-radius: 10px;
+  padding: .5rem .25rem;
+}
+.input-control:not(:last-of-type) {
+  margin-bottom: .5rem;
+}
+
+.input-control input[type="checkbox"] {
+  /* appearance: none;
+  border: 2px solid var(--color-primary); */
+  height: 17px;
+  width: 17px;
+}
+
+.error-control {
+  display: block;
+}
+
+.control-error {
+  border: 2px solid var(--color-error);
+}
+.txt-error {
+  color: var(--color-error);
+}
+
 .values {
   background: var(--bg-banner-static-solid);
   box-shadow: var(--shadow-2);
   border-radius: 16px;
   margin: 1.5rem 0;
-  padding: 1.5rem 04.5rem;
+  padding: 1.5rem 0rem;
 }
 
 #price-uf {
