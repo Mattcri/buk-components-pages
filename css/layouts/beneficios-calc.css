@@ -11,7 +11,7 @@
 }
 
 .input-control {
-  background: var(--bg-banner-static-solid);
+  /* background: var(--bg-banner-static-solid); */
   border-radius: 10px;
   padding: .5rem .25rem;
 }
@@ -22,19 +22,96 @@
 .input-control input[type="checkbox"] {
   /* appearance: none;
   border: 2px solid var(--color-primary); */
-  height: 17px;
-  width: 17px;
+  height: 18px;
+  width: 18px;
 }
 
-.error-control {
-  display: block;
+.tooltip {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  margin-left: .5rem;
+}
+.tooltip svg {
+  height: 22px;
+  width: 22px;
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity .65s;
+}
+.tooltip-text {
+  background: #D9E3FC;
+  border-radius: 13px;
+  color: #2F4DAA;
+  font-size: 15px;
+  position: absolute;
+  text-align: center;
+  max-width: 210px;
+  width: 200px;
+  padding: .75rem .5rem;
+  left: 0;
+  bottom: 240%;
+  opacity: 0;
+  /* transition: opacity .75s; */
+  visibility: hidden;
+  /* transform: translateX(-75%); */
+
+}
+.tooltip-text::before {
+  content: " ";
+  border: 7px solid transparent;
+  border-top-color: #D9E3FC;
+  left: 50%;
+  margin-left: -12px;
+  position: absolute;
+  top: 100%;
 }
 
+@media only screen and (min-width: 340px) {
+  .tooltip-text {
+    bottom: 180%;
+    left: 50%;
+    /* margin-left: 12px; */
+    transform: translateX(-75%);
+  }
+  .tooltip-text::before {
+    margin-left: 0;
+    left: 71%;
+    
+  }
+}
+@media only screen and (min-width: 767px) {
+  .tooltip-text {
+    bottom: 165%;
+    transform: translateX(-45%);
+  }
+  .tooltip-text::before {
+    left: 50%;
+    margin-left: -17px;
+  }
+}
+
+.control-error.ds-flex {
+  gap: .25rem .5rem;
+}
 .control-error {
   border: 2px solid var(--color-error);
 }
 .txt-error {
   color: var(--color-error);
+}
+
+.error-msg {
+  display: none;
+  color: var(--color-error);
+  width: 100%;
+}
+.control-error .error-msg {
+  display: block;
 }
 
 .values {
@@ -51,6 +128,9 @@
 }
 #price-clp {
   font-size: 1.25rem;
+}
+#date-uf {
+  font-weight: 600;
 }
 
 @media only screen and (min-width: 576px) {
