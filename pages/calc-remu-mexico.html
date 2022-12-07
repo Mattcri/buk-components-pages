@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Remuneraciones MX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;700&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://www.buk.cl/hs-fs/hub/3790458/hub_generated/template_assets/86075928702/1667614345512/BUK-SITE_CL/CSS/Bux-css/bux-stylesheet.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layouts/calc-remu-mx.css">
+  <link rel="preload" as="style" href="../css/grid-system.css" onload="this.rel='stylesheet'">
+  <link rel="preload" as="style" href="../css/margins-paddings.css" onload="this.rel='stylesheet'">
+</head>
+<body style="overflow-y: initial !important;">
+
+  <section class="calculator-mx buk-py-6 buk-py-lg-5" style="padding-bottom: 5rem;">
+    <div class="boxer bg-light-blue">
+      <h2 class="txt-center buk-mb-4">¡Calcular sueldo!</h2>
+      <div class="buk-grid">
+        <div class="buk-col buk-col-lg-10 buk-col-st-lg-2">
+          <div class="calc-period">
+            <div class="calc-period__header bg-blue-buk buk-px-2 buk-px-lg-2">
+              <h3>Selecciona un periodo</h3>
+            </div>
+            <div class="calc-period__options">
+              <div class="buk-grid pi-center buk-py-4">
+                <div class="buk-col buk-col-md-4 buk-col-lg-4 buk-py-0">
+                  <button class="btn btn--2 btn--n-shadow">Diario</button>
+                </div>
+                <div class="buk-col buk-col-md-4 buk-col-lg-4 buk-py-0">
+                  <button class="btn btn--2 btn--n-shadow">Quincenal</button>
+                </div>
+                <div class="buk-col buk-col-md-4 buk-col-lg-4 buk-py-0">
+                  <button class="btn btn--2 btn--n-shadow">Mensual</button>
+                </div>
+              </div>
+            </div>
+          </div> <!-- end period -->
+
+          <div class="calc-salary buk-mt-5">
+            <div class="calc-salary__header bg-blue-buk buk-px-2 buk-px-lg-2">
+              <h3>Ingresa tu sueldo bruto Diario/Quincenal/Mensual</h3>
+            </div>
+            <div class="calc-salary__amount buk-px-2 buk-px-lg-1">
+              <div class="buk-grid buk-py-4 buk-mx-md-2 buk-mx-lg-4">
+                <div class="buk-col buk-col-md-7 buk-col-lg-7 buk-py-0">
+                  <div class="input-group">
+                    <input 
+                    type="number"
+                    class="form-control string required"
+                    required="required"
+                    aria-required="true"
+                    min="1"
+                    pattern="^[0-9]+"
+                    id="sueldo-bruto"
+                    value="0"
+                    >
+                  </div>
+                  <div class="buk-mt-2">
+                    <label class="imms-label ds-flex ai-center">
+                      <input type="checkbox" id="imss-check" value="imss" /> Incluir
+                      IMSS
+                      <div class="tooltip">
+                        <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                          viewBox="0 0 512 512">
+                          <path
+                            d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
+                        </svg>
+                        <span class="tooltiptext">
+                          Valor que aporta el patrón y el colaborador para asegurar su
+                          seguro social.
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                <div class="buk-col buk-col-md-5 buk-col-lg-5 buk-py-0 txt-center txt-md-right">
+                  <button type="button" class="btn btn--2 btn--n-shadow">Calcular</button>
+                </div>
+
+              </div>
+            </div>
+
+          </div> <!-- end salary -->
+
+          <div class="calc-details buk-mt-5">
+            <div class="calc-details__header buk-px-2 buk-px-lg-2">
+              <h3>Detalles de tu sueldo neto</h3>
+            </div>
+            <div class="calc-details__values buk-mt-3 bg-white">
+              <div class="buk-grid gap--8 buk-px-2 buk-px-lg-2 buk-py-2 buk-py-lg-2">
+                <div class="buk-col-3 buk-col-md-7 buk-col-lg-7">
+                  <div>
+
+                    <span>Límite inferior</span>
+                    <div class="tooltip">
+                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                        viewBox="0 0 512 512">
+                        <path
+                          d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
+                      </svg>
+                      <span class="tooltiptext">
+                        El valor mínimo existente (por período), al ubicar el
+                        ingreso en el rango de la tabla del Impuesto Sobre la Renta
+                        (ISR).
+                      </span>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="buk-col-1 buk-col-md-5 buk-col-lg-5">
+                  <span id="limite-inferior" type="number" min="0" pattern="^[0-9]+">0</span>
+                </div>
+
+                <div class="buk-col-3 buk-col-md-7 buk-col-lg-7">
+                  <div>
+
+                    <span>Excedente del límite inferior</span>
+                    <div class="tooltip">
+                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                        viewBox="0 0 512 512">
+                        <path
+                          d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
+                      </svg>
+                      <span class="tooltiptext">
+                        Valor excedente que se obtiene al restar la base gravable del periodo, al valor mínimo del rango del Impuesto Sobre la Renta (ISR).
+                      </span>
+                    </div>
+      
+                  </div>
+                </div>
+                <div class="buk-col-1 buk-col-md-5 buk-col-lg-5">
+                  <span id="excedente-limite-inferior" type="number" min="0" pattern="^[0-9]+">0</span>
+                </div>
+
+                <div class="buk-col-3 buk-col-md-7 buk-col-lg-7">
+                  <div>
+                
+                    <span>% sobre el excedente del límite inferior</span>
+                    <div class="tooltip">
+                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                        viewBox="0 0 512 512">
+                        <path
+                          d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
+                      </svg>
+                      <span class="tooltiptext">
+                        La tasa es el porcentaje que se aplica al valor excedente del límite inferior.
+                      </span>
+                    </div>
+                
+                  </div>
+                </div>
+                <div class="buk-col-1 buk-col-md-5 buk-col-lg-5">
+                  <span id="porcentaje-excedente" type="number" min="0" pattern="^[0-9]+">0</span>
+                </div>
+
+                <div class="buk-col-3 buk-col-md-7 buk-col-lg-7">
+                  <div>
+                
+                    <span>Impuesto marginal</span>
+                    <div class="tooltip">
+                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                        viewBox="0 0 512 512">
+                        <path
+                          d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
+                      </svg>
+                      <span class="tooltiptext">
+                        Es el impuesto resultante al aplicar la tasa.
+                      </span>
+                    </div>
+                
+                  </div>
+                </div>
+                <div class="buk-col-1 buk-col-md-5 buk-col-lg-5">
+                  <span id="impuesto-marginal" type="number" min="0" pattern="^[0-9]+">0</span>
+                </div>
+
+                <div class="buk-col-3 buk-col-md-7 buk-col-lg-7">
+                  <div>
+                
+                    <span>Cuota fija del impuesto</span>
+                    <div class="tooltip">
+                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                        viewBox="0 0 512 512">
+                        <path
+                          d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
+                      </svg>
+                      <span class="tooltiptext">
+                        Valor que se suma al impuesto marginal (se encuentra en la tabla de ISR).
+                      </span>
+                    </div>
+                
+                  </div>
+                </div>
+                <div class="buk-col-1 buk-col-md-5 buk-col-lg-5">
+                  <span id="cuota-fija-impuesto" type="number" min="0" pattern="^[0-9]+">0</span>
+                </div>
+
+                <div class="buk-col-3 buk-col-md-7 buk-col-lg-7">
+                  <div>
+                
+                    <span>ISR determinado</span>
+                    <div class="tooltip">
+                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                        viewBox="0 0 512 512">
+                        <path
+                          d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
+                      </svg>
+                      <span class="tooltiptext">
+                        Contribución obligatoria o carga fiscal directa aplicable a los ingresos obtenidos que incrementan el patrimonio del empleado, que debe ser retenida por el patrón.
+                      </span>
+                    </div>
+                
+                  </div>
+                </div>
+                <div class="buk-col-1 buk-col-md-5 buk-col-lg-5">
+                  <span id="isr" type="number" min="0" pattern="^[0-9]+">0</span>
+                </div>
+
+                <div class="buk-col-3 buk-col-md-7 buk-col-lg-7">
+                  <div>
+                
+                    <span>IMSS</span>
+                    <div class="tooltip">
+                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                        viewBox="0 0 512 512">
+                        <path
+                          d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
+                      </svg>
+                      <span class="tooltiptext">
+                        Valor que aporta el patrón y el colaborador para asegurar su seguro social.
+                      </span>
+                    </div>
+                
+                  </div>
+                </div>
+                <div class="buk-col-1 buk-col-md-5 buk-col-lg-5">
+                  <span id="imss" type="number" min="0" pattern="^[0-9]+">0</span>
+                </div>
+
+                <div class="buk-col-3 buk-col-md-7 buk-col-lg-7">
+                  <div>
+                
+                    <span>Subsidio al empleo</span>
+                    <div class="tooltip">
+                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                        viewBox="0 0 512 512">
+                        <path
+                          d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
+                      </svg>
+                      <span class="tooltiptext">
+                        Valor que brinda el gobierno a los colaboradores y va en función al ingreso obtenido, hasta por un monto de $7,382.33 MXN.
+                      </span>
+                    </div>
+                
+                  </div>
+                </div>
+                <div class="buk-col-1 buk-col-md-5 buk-col-lg-5">
+                  <span id="subsidio" type="number" min="0" pattern="^[0-9]+">0</span>
+                </div>
+
+              </div> <!-- end grid -->
+            </div>
+          </div> <!-- end details -->
+
+        </div> <!-- fin col -->
+      </div>
+
+
+    </div>
+  </section>
+</body>
+</html>

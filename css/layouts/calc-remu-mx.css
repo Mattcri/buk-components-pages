@@ -1,0 +1,39 @@
+.calc-period__header,
+.calc-salary__header {
+  border-radius: 9px 9px 0 0;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+}
+
+.calc-details__header {
+  background-color: var(--bg-dark-sky-blue);
+  border-radius: 9px;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+}
+
+.calc-period__header h3,
+.calc-salary__header h3 {
+  color: var(--color-white);
+}
+
+.calc-period__options,
+.calc-salary__amount {
+  background-color: var(--bg-dark-sky-blue);
+  border-radius: 0 0 9px 9px;
+}
+
+.imms-label input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  font-size: 15px;
+}
+
+.calc-details__values [class*="buk-col"] {
+ padding-top: .25rem;
+ padding-bottom: .25rem;
+}
+.calc-details__values {
+  border-radius: 5px;
+  box-shadow: 0 0 11px 0 rgb(0, 0, 0, .15);
+}
