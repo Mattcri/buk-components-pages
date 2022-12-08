@@ -19,7 +19,7 @@
 <body style="overflow-y: initial !important;">
 
   <section class="calculator-mx buk-py-6 buk-py-lg-5" style="padding-bottom: 5rem;">
-    <div class="boxer bg-light-blue">
+    <div class="boxer ">
       <h2 class="txt-center buk-mb-4">¡Calcular sueldo!</h2>
       <div class="buk-grid">
         <div class="buk-col buk-col-lg-10 buk-col-st-lg-2">
@@ -30,13 +30,13 @@
             <div class="calc-period__options">
               <div class="buk-grid pi-center buk-py-4">
                 <div class="buk-col buk-col-md-4 buk-col-lg-4 buk-py-0">
-                  <button class="btn btn--2 btn--n-shadow">Diario</button>
+                  <button class="btn btn--2 btn--n-shadow btn-period" type="button" name="diario">Diario</button>
                 </div>
                 <div class="buk-col buk-col-md-4 buk-col-lg-4 buk-py-0">
-                  <button class="btn btn--2 btn--n-shadow">Quincenal</button>
+                  <button class="btn btn--2 btn--n-shadow btn-period" type="button" name="quincenal">Quincenal</button>
                 </div>
                 <div class="buk-col buk-col-md-4 buk-col-lg-4 buk-py-0">
-                  <button class="btn btn--2 btn--n-shadow">Mensual</button>
+                  <button class="btn btn--2 btn--n-shadow btn-period" type="button" name="mensual">Mensual</button>
                 </div>
               </div>
             </div>
@@ -66,7 +66,7 @@
                       <input type="checkbox" id="imss-check" value="imss" /> Incluir
                       IMSS
                       <div class="tooltip">
-                        <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                        <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="16"
                           viewBox="0 0 512 512">
                           <path
                             d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
@@ -80,7 +80,7 @@
                   </div>
                 </div>
                 <div class="buk-col buk-col-md-5 buk-col-lg-5 buk-py-0 txt-center txt-md-right">
-                  <button type="button" class="btn btn--2 btn--n-shadow">Calcular</button>
+                  <button type="button" class="btn btn--2 btn--n-shadow" id="calcular-sueldo">Calcular</button>
                 </div>
 
               </div>
@@ -97,9 +97,9 @@
                 <div class="buk-col-3 buk-col-md-7 buk-col-lg-7">
                   <div>
 
-                    <span>Límite inferior</span>
+                    <span class="detail-field">Límite inferior</span>
                     <div class="tooltip">
-                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="16"
                         viewBox="0 0 512 512">
                         <path
                           d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
@@ -114,15 +114,15 @@
                   </div>
                 </div>
                 <div class="buk-col-1 buk-col-md-5 buk-col-lg-5">
-                  <span id="limite-inferior" type="number" min="0" pattern="^[0-9]+">0</span>
+                  <span id="limite-inferior" type="number" min="0" pattern="^[0-9]+" class="calc-details__amount">0</span>
                 </div>
 
                 <div class="buk-col-3 buk-col-md-7 buk-col-lg-7">
                   <div>
 
-                    <span>Excedente del límite inferior</span>
+                    <span class="detail-field">Excedente del límite inferior</span>
                     <div class="tooltip">
-                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="16"
                         viewBox="0 0 512 512">
                         <path
                           d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
@@ -135,15 +135,15 @@
                   </div>
                 </div>
                 <div class="buk-col-1 buk-col-md-5 buk-col-lg-5">
-                  <span id="excedente-limite-inferior" type="number" min="0" pattern="^[0-9]+">0</span>
+                  <span id="excedente-limite-inferior" type="number" min="0" pattern="^[0-9]+" class="calc-details__amount">0</span>
                 </div>
 
                 <div class="buk-col-3 buk-col-md-7 buk-col-lg-7">
                   <div>
                 
-                    <span>% sobre el excedente del límite inferior</span>
+                    <span class="detail-field">% sobre el excedente del límite inferior</span>
                     <div class="tooltip">
-                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="16"
                         viewBox="0 0 512 512">
                         <path
                           d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
@@ -156,15 +156,15 @@
                   </div>
                 </div>
                 <div class="buk-col-1 buk-col-md-5 buk-col-lg-5">
-                  <span id="porcentaje-excedente" type="number" min="0" pattern="^[0-9]+">0</span>
+                  <span id="porcentaje-excedente" type="number" min="0" pattern="^[0-9]+" class="calc-details__amount">0</span>
                 </div>
 
                 <div class="buk-col-3 buk-col-md-7 buk-col-lg-7">
                   <div>
                 
-                    <span>Impuesto marginal</span>
+                    <span class="detail-field">Impuesto marginal</span>
                     <div class="tooltip">
-                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="16"
                         viewBox="0 0 512 512">
                         <path
                           d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
@@ -177,15 +177,15 @@
                   </div>
                 </div>
                 <div class="buk-col-1 buk-col-md-5 buk-col-lg-5">
-                  <span id="impuesto-marginal" type="number" min="0" pattern="^[0-9]+">0</span>
+                  <span id="impuesto-marginal" type="number" min="0" pattern="^[0-9]+" class="calc-details__amount">0</span>
                 </div>
 
                 <div class="buk-col-3 buk-col-md-7 buk-col-lg-7">
                   <div>
                 
-                    <span>Cuota fija del impuesto</span>
+                    <span class="detail-field">Cuota fija del impuesto</span>
                     <div class="tooltip">
-                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="16"
                         viewBox="0 0 512 512">
                         <path
                           d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
@@ -198,15 +198,15 @@
                   </div>
                 </div>
                 <div class="buk-col-1 buk-col-md-5 buk-col-lg-5">
-                  <span id="cuota-fija-impuesto" type="number" min="0" pattern="^[0-9]+">0</span>
+                  <span id="cuota-fija-impuesto" type="number" min="0" pattern="^[0-9]+" class="calc-details__amount">0</span>
                 </div>
 
                 <div class="buk-col-3 buk-col-md-7 buk-col-lg-7">
                   <div>
                 
-                    <span>ISR determinado</span>
+                    <span class="detail-field">ISR determinado</span>
                     <div class="tooltip">
-                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="16"
                         viewBox="0 0 512 512">
                         <path
                           d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
@@ -219,15 +219,15 @@
                   </div>
                 </div>
                 <div class="buk-col-1 buk-col-md-5 buk-col-lg-5">
-                  <span id="isr" type="number" min="0" pattern="^[0-9]+">0</span>
+                  <span id="isr" type="number" min="0" pattern="^[0-9]+" class="calc-details__amount">0</span>
                 </div>
 
                 <div class="buk-col-3 buk-col-md-7 buk-col-lg-7">
                   <div>
                 
-                    <span>IMSS</span>
+                    <span class="detail-field">IMSS</span>
                     <div class="tooltip">
-                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="16"
                         viewBox="0 0 512 512">
                         <path
                           d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
@@ -240,15 +240,15 @@
                   </div>
                 </div>
                 <div class="buk-col-1 buk-col-md-5 buk-col-lg-5">
-                  <span id="imss" type="number" min="0" pattern="^[0-9]+">0</span>
+                  <span id="imss" type="number" min="0" pattern="^[0-9]+" class="calc-details__amount">0</span>
                 </div>
 
                 <div class="buk-col-3 buk-col-md-7 buk-col-lg-7">
                   <div>
                 
-                    <span>Subsidio al empleo</span>
+                    <span class="detail-field">Subsidio al empleo</span>
                     <div class="tooltip">
-                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="15"
+                      <svg class="tooltip-trigger" xmlns="http://www.w3.org/2000/svg" style="font-size: 24px" height="16"
                         viewBox="0 0 512 512">
                         <path
                           d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
@@ -261,12 +261,27 @@
                   </div>
                 </div>
                 <div class="buk-col-1 buk-col-md-5 buk-col-lg-5">
-                  <span id="subsidio" type="number" min="0" pattern="^[0-9]+">0</span>
+                  <span id="subsidio" type="number" min="0" pattern="^[0-9]+" class="calc-details__amount">0</span>
                 </div>
 
               </div> <!-- end grid -->
             </div>
           </div> <!-- end details -->
+
+          <div class="calc-net-salary buk-mt-5 buk-py-3 bg-blue-buk">
+            <div class="buk-grid buk-px-3">
+              <div class="buk-col buk-col-md-8 buk-col-st-md-3 buk-col-lg-8 buk-col-st-lg-3">
+                <h3 class="txt-center buk-mb-3">Sueldo Neto <span class="SELECTED_PERIOD"></span></h3>
+                <div class="total txt-center">
+                  <span type="number" id="sueldo-neto" min="0" pattern="^[0-9]+">0</span>
+                  
+                </div>
+                <p class="buk-mt-3">
+                  *Esta calculadora contempla las prestaciones mínimas de ley. Los resultados del ejercicio son de carácter informativo y es responsabilidad del usuario hacer uso correcto del mismo.
+                </p>
+              </div>
+            </div>
+          </div>
 
         </div> <!-- fin col -->
       </div>
@@ -274,5 +289,7 @@
 
     </div>
   </section>
+
+  <script src="../js/calc-remu/calc-mx.js" defer></script>
 </body>
 </html>

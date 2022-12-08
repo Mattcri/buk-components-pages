@@ -1,3 +1,9 @@
+.btn {
+  line-height: initial !important;
+  text-transform: initial !important;
+  white-space: initial !important;
+}
+
 .calc-period__header,
 .calc-salary__header {
   border-radius: 9px 9px 0 0;
@@ -30,10 +36,69 @@
 }
 
 .calc-details__values [class*="buk-col"] {
- padding-top: .25rem;
- padding-bottom: .25rem;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
 }
 .calc-details__values {
   border-radius: 5px;
   box-shadow: 0 0 11px 0 rgb(0, 0, 0, .15);
+}
+@media only screen and (min-width: 585px) {
+  .calc-details__amount {
+    font-size: 1rem;
+  }
+}
+
+.calc-net-salary {
+  border-radius: 9px;
+}
+.calc-net-salary h2,
+.calc-net-salary h3,
+.calc-net-salary p {
+  color: var(--color-white);
+}
+
+.detail-field {
+  padding-right: .5rem;
+  font-size: 15px;
+}
+
+.tooltip svg {
+  fill: var(--color-primary);
+}
+.tooltip {
+  cursor: pointer;
+}
+.buk-grid .tooltip .tooltiptext {
+  /* background-color: #D9E3FC;
+  color: var(--color-primary); */
+  padding: 6px 5px;
+  max-width: 230px;
+  font-size: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#sueldo-neto {
+  height: initial;
+  font-size: 1.35rem;
+  text-align: center;
+  color: #495057;
+}
+
+@media only screen and (min-width: 767px) {
+  #sueldo-neto {
+    font-size: 1.5rem;
+  }
+}
+
+.total {
+  background-color: var(--color-white);
+  border-radius: 5px;
+  padding: .375rem .75rem;
+}
+
+.btn-period.active {
+  background-color: var(--color-white);
+  color: var(--color-primary);
 }
