@@ -17,7 +17,7 @@ const putUF = async () => {
   const uf = call.Valor
   const date = call.Fecha
   const dateFormat = moment(date).format('D MMM YYYY')
-  const ufvalueClp = parseFloat(uf)
+  const ufvalueClp = uf.slice(0, 6)
   valuesUF.price = uf
   valuesUF.date = date
   DOMufDate.textContent = `$${ufvalueClp} - ${dateFormat}`
@@ -28,7 +28,7 @@ const valuesUF = {
   'date': ''
 }
 
-const operateRun = (element) => {
+const operateRun = () => {
   const allCheckbox = [...document.querySelectorAll('input[type="checkbox"]')]
   const gympassCore = document.getElementById('bn-3')
   const gympassStarter = document.getElementById('bn-4')
@@ -38,6 +38,7 @@ const operateRun = (element) => {
     showError()
   } else {
     calculateValue(allCheckbox)
+    fontWeightSelectInputs(allCheckbox)
     hideError()
   }
 
@@ -76,7 +77,7 @@ const putPricesInDOM = (price) => {
     minimumFractionDigits: 3,
   })
   DOMclp.textContent = Math.floor(ufToClp) == 0 ? `Aprox. $${clp.slice(3)} CLP` : `Aprox. ${clp} CLP`
-  
+  console.log('UF day: ', ufPrice)
   console.log('UfPrice: ', parseFloat(ufPrice))
   console.log('toClp', ufToClp)
   console.log('CLP: ',clp)
@@ -107,6 +108,12 @@ const initialClick = async () => {
   document.getElementById('bn-2').click()
 }
 
+const fontWeightSelectInputs = (checkbox) => {
+  checkbox.forEach(mod => {
+    mod.checked ? mod.nextElementSibling.style.fontWeight = "600" : mod.nextElementSibling.style.fontWeight = "400"
+  })
+  
+}
 
 if (typeof window !== "undefined") {
   window.onload = async () => {
