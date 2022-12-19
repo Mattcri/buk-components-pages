@@ -30,6 +30,7 @@ const chatTime = async () => {
   try {
     const startTime = performance.now()
     const chat = await storeData.then(response => response.chat.responseTime)
+    const name = chat.graphicName
     const dates = chat.data.map(e => moment(e.date).format(formatDate).replace(/\b[a-z]/g, d => d.toUpperCase()).replace('.', ''))
     const avgs = chat.data.map(e => e.avg_responseTime_chat)
     const avg = chat.average90Days
@@ -51,15 +52,15 @@ const chatTime = async () => {
     // let t = valuesMin.join(`.${valuesSec}`)
     const endTime = performance.now()
 
-    console.log('Min:', valuesMin)
-    console.log('Sec: ', valuesSec)
-    console.log('A VERR', minutesAndsecond)
+    // console.log('Min:', valuesMin)
+    // console.log('Sec: ', valuesSec)
+    // console.log('A VERR', minutesAndsecond)
 
     console.log(`Tiempo de respuesta del código: ${(endTime - startTime) / 60} seg`)
 
     const ctx = document.getElementById('chat-response-time').getContext('2d')
     
-    const chart = new Chart(ctx, abstractConfig(dates.reverse(), minutesAndsecond.reverse(), 'Minutos', 4, 1))
+    const chart = new Chart(ctx, abstractConfig(dates.reverse(), minutesAndsecond.reverse(), 'Minutos', 4, 1, name))
     
   } catch (err) {
     // const DOMerror = document.querySelector('.chart__content ')
@@ -71,6 +72,7 @@ const chatTime = async () => {
 const callTime = async () => {
   try {
     const call = await storeData.then(response => response.call.waitTime)
+    const name = call.graphicName
     const dates = call.data.map(e => moment(e.date).format(formatDate).replace(/\b[a-z]/g, d => d.toUpperCase()).replace('.', ''))
     const avgs = call.data.map(e => e.avg_wait_time)
     const avg = call.average90Days
@@ -89,7 +91,7 @@ const callTime = async () => {
     // console.log('segundos call: ', typeof seconds, seconds)
     const ctx = document.getElementById('call-response-time').getContext('2d')
 
-    const chart = new Chart(ctx, abstractConfig(dates.reverse() , minutesAndsecond.reverse(), 'Minutos' , 4, 1))
+    const chart = new Chart(ctx, abstractConfig(dates.reverse() , minutesAndsecond.reverse(), 'Minutos' , 4, 1, name))
 
   } catch (err) {
     console.error(err)
@@ -99,14 +101,30 @@ const callTime = async () => {
 const customerSfs = async () => {
   try {
     const cs = await storeData.then(response => response.chat.csat)
+    const name = cs.graphicName
     const dates = cs.data.map(e => moment(e.date).format(formatDate).replace(/\b[a-z]/g, d => d.toUpperCase()).replace('.', ''))
+    const filterDates = dates.filter(e => e != '21 Oct')
+    const findIndexUnwantedDate = dates.indexOf('21 Oct')
     const avgs = cs.data.map(e => e.avg_csat.toFixed(1))
+    const findIndexUnwantedAvg = avgs.indexOf('1.0')
+    const filterAvgs = avgs.filter(e => e != '1.0')
+
+    const lengthFilterAvgs = filterAvgs.length
+    const filterAvgsToNumber = filterAvgs.map(e => Number(e))
+    const sumFilterAvgs = filterAvgsToNumber.reduce((accum, curr) => accum + curr) 
+    const avgWithFilterData = (sumFilterAvgs / lengthFilterAvgs)
     const avg = cs.average90Days.toFixed(1)
     const DOMavg = document.getElementById('avg-cs')
     DOMavg.textContent = `${avg} / 5`
     const ctx = document.getElementById('customer-satisfaction').getContext('2d')
-
-    const chart = new Chart(ctx, abstractConfig(dates.reverse(), avgs.reverse(), 'Satisfacción', 5, 1))
+    console.log('Indice unwanted date: ', findIndexUnwantedDate)
+    console.log('Indice unwanted avg: ', findIndexUnwantedAvg)
+    console.log('Filter dates: ', filterDates)
+    console.log('Filter avgs', filterAvgs)
+    console.log('Length Avgs: ', lengthFilterAvgs)
+    console.log('Sum Avgs: ', sumFilterAvgs)
+    console.log('Avg with filter data: ', avgWithFilterData.toFixed(1))
+    const chart = new Chart(ctx, abstractConfig(filterDates.reverse(), filterAvgs.reverse(), 'Satisfacción', 5, 1, name))
   } catch (err) {
     console.error(err)
   }
@@ -115,6 +133,7 @@ const customerSfs = async () => {
 const emailTime = async () => {
   try {
     const email = await storeData.then(response => response.email.responseTime)
+    const name = email.graphicName
     const dates = email.data.map(e => moment(e.date).format(formatDate).replace(/\b[a-z]/g, d => d.toUpperCase()).replace('.', ''))
     const avgs = email.data.map(e => e.avg_responseTime_email)
     const avg = email.average90Days
@@ -125,16 +144,16 @@ const emailTime = async () => {
     const avgsHours = avgs.map(e => Math.floor(e / 3600).toString())
     const avgsMinutes = avgs.map(e => minimunMinutesValues(e))
     const hoursAndMinutes = avgsHours.map((value, index) => `${value}.${avgsMinutes[index]}`)
-    console.log('HOURS: ', avgsHours)
-    console.log('MINUTES: ', avgsMinutes)
+    // console.log('HOURS: ', avgsHours)
+    // console.log('MINUTES: ', avgsMinutes)
 
-    console.log('Promedio email: ', avg)
-    console.log('Fechas email: ', dates)
-    console.log('Promedios email: ', avgs)
+    // console.log('Promedio email: ', avg)
+    // console.log('Fechas email: ', dates)
+    // console.log('Promedios email: ', avgs)
     
     const ctx = document.getElementById('email-response-time').getContext('2d')
 
-    const chart = new Chart(ctx, abstractConfig(dates.reverse(), hoursAndMinutes.reverse(), 'Horas', 4, 2))
+    const chart = new Chart(ctx, abstractConfig(dates.reverse(), hoursAndMinutes.reverse(), 'Horas', 4, 2, name ))
 
   } catch (err) {
     console.error(err)
@@ -161,6 +180,7 @@ const emailTime = async () => {
 const nps = async () => {
   try {
     const nps = await storeData.then(response => response.nps.nps)
+    const name = nps.graphicName
     const dates = nps.data.map(e => moment(e.date).format(formatDate).replace(/\b[a-z]/g, d => d.toUpperCase()).replace('.', ''))
     const avgs = nps.data.map(e => Math.trunc(e.npsAverage90Days).toString())
     const avg = nps.average90Days
@@ -170,15 +190,15 @@ const nps = async () => {
 
     const ctx = document.getElementById('graphic-nps').getContext('2d')
 
-    const chart = new Chart(ctx, abstractConfig(dates.reverse(), avgs.reverse(), 'NPS', 100, 25))
-    console.log('AVGS Nps: ', avgs)
-    console.log('Dates Nps: ', dates)
+    const chart = new Chart(ctx, abstractConfig(dates.reverse(), avgs.reverse(), 'NPS', 100, 25, name))
+    // console.log('AVGS Nps: ', avgs)
+    // console.log('Dates Nps: ', dates)
   } catch (err) {
     console.error(err)
   }
 }
 
-const abstractConfig = (date, avgs, textY, axisYmax, axisYstep) => {
+const abstractConfig = (date, avgs, textY, axisYmax, axisYstep, name) => {
   return {
     type: 'line',
     data: {
@@ -234,6 +254,7 @@ const abstractConfig = (date, avgs, textY, axisYmax, axisYstep) => {
             weight: 'normal',
             style: 'italic'
           },
+          // boxWidth: 200,
           callbacks: {
             label: function (context) {
               let value = context.raw
@@ -241,15 +262,15 @@ const abstractConfig = (date, avgs, textY, axisYmax, axisYstep) => {
               let first = Math.floor(value).toString()
               let second = first.length <= 1 ? value.slice(2) : value.slice(3)
               console.log('Tooltip: ', context)
-              console.log('Tooltip Item: ', value)
-              console.log(context.label)
+              // console.log('Tooltip Item: ', value)
+              // console.log(context.label)
               switch (textY) {
                 case 'Minutos':
                   return `${first}min ${second}s`
                   break
                 case 'Horas':
                   if (context.label == '30 Sep') {
-                    return `${first}h ${second}min | Incidencia por x motivo`
+                    return `${first}h ${second}min`
                   } else {
                     return `${first}h ${second}min`
                   }
@@ -274,7 +295,14 @@ const abstractConfig = (date, avgs, textY, axisYmax, axisYstep) => {
               if (textY == 'NPS') {
                 return 'Prom. hoy + 90 días anteriores'
               }
-            }
+            },
+            afterLabel: (context) => {
+              const findItem = date.findIndex(i => i == '30 Sep')
+              if (name == 'Email Response Time' && context.dataIndex >= findItem) {
+                return 'Pruebas con menú de selección de servicio'
+              }
+            },
+
           }
         },
       },
