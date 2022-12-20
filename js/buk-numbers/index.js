@@ -299,7 +299,7 @@ const abstractConfig = (date, avgs, textY, axisYmax, axisYstep, name) => {
             afterLabel: (context) => {
               const findItem = date.findIndex(i => i == '30 Sep')
               if (name == 'Email Response Time' && context.dataIndex >= findItem) {
-                return 'Pruebas con menú de selección de servicio'
+                return 'Pruebas menú de voz interactivo automático'
               }
             },
 
