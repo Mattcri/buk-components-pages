@@ -29,6 +29,7 @@
 .buk-my-5 { margin: 2.5rem 0; }
 .buk-my-6 { margin: 3rem 0; }
 
+.buk-mx-auto { margin-left: auto; margin-right: auto; }
 .buk-mx-1 { margin-left: .5rem; margin-right: .5rem; }
 .buk-mx-2 { margin-left: 1rem; margin-right: 1rem; }
 .buk-mx-3 { margin-left: 1.5rem; margin-right: 1.5rem; }
@@ -144,6 +145,7 @@
   .buk-my-md-5 { margin: 2.8rem 0 !important; }
   .buk-my-md-6 { margin: 3.3rem 0 !important; }
   
+  .buk-mx-md-0 { margin-left: 0rem !important; margin-right: 0rem !important; }
   .buk-mx-md-1 { margin-left: .8rem !important; margin-right: .8rem !important; }
   .buk-mx-md-2 { margin-left: 1.3rem !important; margin-right: 1.3rem !important; }
   .buk-mx-md-3 { margin-left: 1.8rem !important; margin-right: 1.8rem !important; }
@@ -217,6 +219,9 @@
   .buk-pl-md-5 { padding-left: 2.8rem !important; }
   .buk-pl-md-6 { padding-left: 3.3rem !important; }
   .buk-pl-md-7 { padding-left: 3.8rem !important; }
+  .buk-pl-md-8 { padding-left: 4.3rem !important; }
+  .buk-pl-md-9 { padding-left: 4.8rem !important; }
+  .buk-pl-md-10 { padding-left: 5.3rem !important; }
   
   .buk-pr-md-0 { padding-right: 0 !important; }
   .buk-pr-md-1 { padding-right: .8rem !important; }
