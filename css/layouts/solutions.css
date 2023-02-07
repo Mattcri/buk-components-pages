@@ -1,0 +1,29 @@
+header {
+  height: 50px;
+  background-color: var(--color-primary);
+}
+
+button.btn--7 {
+  font-weight: normal;
+}
+
+main p {
+  color: #1A2441;
+}
+
+/* .choose-solution {
+  position: sticky;
+  top: 40px;
+  z-index: 10;
+  background-color: antiquewhite;
+} */
+
+.ft-color--2 {
+  color: #1A2441 !important;
+}
+
+.sl-image {
+  width: 491px;
+  height: 355px;
+  object-fit: contain;
+}
