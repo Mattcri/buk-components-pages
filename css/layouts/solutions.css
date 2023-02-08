@@ -7,7 +7,18 @@ button.btn--7 {
   font-weight: normal;
 }
 
-main p {
+[data-target-solution].selected {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+/* [data-target-solution].selected:hover {
+  background-color: var(--bg-dark-light-blue);
+  color: var(--color-primary);
+  border-color: var(--bg-dark-light-blue);
+} */
+
+main.main--variant-ui-kit p {
   color: #1A2441;
 }
 
