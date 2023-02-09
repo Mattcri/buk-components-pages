@@ -1,10 +1,6 @@
 const btnOptions = [...document.querySelectorAll("button[data-target-solution]")]
 const solutionContent =[...document.querySelectorAll('[data-solution]')]
 
-solutionContent.forEach(item => {
-  item.classList.add('ds-none')
-})
-
 function showContent (btn) {
   const dataBtn = btn.dataset.targetSolution // atrae
   const dataSection = document.querySelectorAll(`[data-solution=${dataBtn}]`)
@@ -17,14 +13,14 @@ function showContent (btn) {
   console.log('param: ', findParemeter)
 
   dataBtn == findParemeter
-    ? dataSection.forEach(e => e.classList.remove('ds-none'))
+    ? dataSection.forEach(e => e.classList.add('solution-show'))
     : true
 }
 
 function btnClickActions (button) {
   btnOptions.forEach(e => e.classList.remove('selected'))
   button.classList.add('selected')
-  solutionContent.forEach(e => e.classList.add('ds-none'))
+  solutionContent.forEach(e => e.classList.remove('solution-show'))
   // solutionText.forEach(e => e.classList.add('ds-none'))
 
   // let dataBtn = button.dataset.targetSolution

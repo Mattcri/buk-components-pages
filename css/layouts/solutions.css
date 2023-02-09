@@ -38,3 +38,16 @@ main.main--variant-ui-kit p {
   height: 355px;
   object-fit: contain;
 }
+
+[data-solution] {
+  display: none !important;
+}
+[data-solution].solution-show {
+  display: grid !important;
+  animation: showTarget 1s ease-in-out;
+}
+
+@keyframes showTarget {
+  from { opacity: 0; }
+  to { opacity: 1;; }
+}
