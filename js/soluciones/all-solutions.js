@@ -1,5 +1,22 @@
 const btnOptions = [...document.querySelectorAll("button[data-target-solution]")]
 const solutionContent =[...document.querySelectorAll('[data-solution]')]
+const solutions = document.getElementById('solutions-content')
+
+const observerOpt = {
+  rootMargin: '0px 0px 0px 0px',
+  threshold: .18
+}
+
+const observerVoid = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    const choose = document.querySelector('.choose-solution')
+    entry.isIntersecting
+      ? choose.classList.add('intersecting')
+      : choose.classList.remove('intersecting')
+  })
+}, observerOpt)
+
+observerVoid.observe(solutions)
 
 function showContent (btn) {
   const dataBtn = btn.dataset.targetSolution // atrae
