@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Precios Buk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layouts/calc-precios.css">
+  <link rel="preload" as="style" href="../css/grid-system.css" onload="this.rel='stylesheet'">
+  <link rel="preload" as="style" href="../css/margins-paddings.css" onload="this.rel='stylesheet'">
+</head>
+<body>
+  <header></header>
+  
+  <main>
+    <section class="buk-py-5 buk-py-lg-5">
+      <div class="boxer">
+        <h2 class="txt-center buk-mb-4">Precios Buk</h2>
+        <div class="buk-grid">
+
+          <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-ed-lg-13">
+            <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-px-lg-2 buk-py-lg-2">
+              <h3 class="txt-center buk-mb-1">Valor de tu Buk</h3>
+              <p class="txt-center buk-mb-1">Mensual</p>
+              <div class="price pst-relative txt-center buk-py-3 buk-px-2">
+                <p>
+                  <span class="price__current">UF</span>
+                  <span class="price__mount">0</span>
+                </p>
+                <span class="price__tax">+IVA</span>
+                <!-- <br> -->
+                <div class="price__without-discount buk-mt-1">
+                  <span>ANTES: UF <span id="original-price">0</span></span>
+                </div>
+              </div>
+
+              <div class="txt-center buk-mt-3">
+                <button class="btn btn--1">Empieza Ahora</button>
+              </div>
+
+              <div class="buk-mt-3 txt-center" id="discount-alert">
+                <p>
+                  Adquiere
+                  <span id="modules-attain">2</span>
+                  <span id="plur-or-sing">Modulos</span>
+                  para conocer tu descuento
+                </p>
+              </div>
+
+            </div>
+          </div>
+          <div class="buk-col buk-col-md-6 buk-col-lg-7 buk-col-st-lg-1 buk-row-st-lg-1">
+            <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-p-lg-2">
+              <h3 class="buk-mb-1">Número de colaboradores</h3>
+              <p class="buk-mb-1">Indica la cantidad de colaboradores que trabajan en tu empresa</p>
+              <input class="n-colab-input" value="100" type="number" id="n-colab" min="1">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+</body>
+</html>
