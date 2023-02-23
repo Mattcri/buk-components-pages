@@ -10,6 +10,13 @@ header {
   /* padding: 1.5rem 1rem; */
 }
 
+@media only screen and (min-width: 1020px) {
+  .sticky-price {
+    position: sticky;
+    top: 50px;
+  }
+}
+
 #n-colab {
   padding: .5rem 1rem;
   width: 85%;
@@ -19,3 +26,28 @@ header {
   text-align: center;
 }
 
+.plan-type .input-control {
+  width: 100%;
+}
+@media only screen and (min-width: 1020px) {
+  .plan-type .input-control {
+    width: 50%;
+  }
+}
+
+.plan-type__detail {
+  background: #F6F8FE;
+  box-shadow: 0 0 16px 4px rgba(43,60,106, .12);
+  border-radius: 1rem;
+  cursor: pointer;
+  padding: 1.5rem 1rem;
+}
+.plan-type__detail li:not(:last-of-type) {
+  margin-bottom: .5rem;
+}
+@media only screen and (min-width: 1020px) {
+  .plan-type__detail {
+    padding: 2rem 1.5rem;
+    height: 100%;
+  }
+}

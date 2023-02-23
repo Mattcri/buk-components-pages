@@ -25,7 +25,7 @@
         <div class="buk-grid">
 
           <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-ed-lg-13">
-            <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-px-lg-2 buk-py-lg-2">
+            <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-px-lg-2 buk-py-lg-2 sticky-price">
               <h3 class="txt-center buk-mb-1">Valor de tu Buk</h3>
               <p class="txt-center buk-mb-1">Mensual</p>
               <div class="price pst-relative txt-center buk-py-3 buk-px-2">
@@ -56,14 +56,149 @@
             </div>
           </div>
           <div class="buk-col buk-col-md-6 buk-col-lg-7 buk-col-st-lg-1 buk-row-st-lg-1">
-            <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-p-lg-2">
+            <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-p-lg-2 buk-mb-5">
               <h3 class="buk-mb-1">Número de colaboradores</h3>
               <p class="buk-mb-1">Indica la cantidad de colaboradores que trabajan en tu empresa</p>
               <input class="n-colab-input" value="100" type="number" id="n-colab" min="1">
             </div>
-          </div>
 
-        </div>
+            <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-p-lg-2 plan-type buk-mb-5">
+              <h3 class="buk-mb-1">Gestión de personas</h3>
+              <p class="buk-mb-3">Elige una base: Esencial o Pro</p>
+              <div class="ds-flex none-lg-wrap gap-lg--24">
+                <div class="input-control">
+                  <label for="esential" data-plan-base="buk-base">
+                    <div class="plan-type__detail">
+                      <h3 class="buk-mb-2 txt-center">Esencial</h3>
+                      <ul>
+                        <li>Ficha de colaboradores</li>
+                        <li>Organigrama</li>
+                        <li>Portal del colaborador</li>
+                        <li>Registro de vacaciones, licencias y permisos básicos</li>
+                        <li>Atributos personalizados</li>
+                        <li>Usuarios y perfiles</li>
+                        <li>Reportería</li>
+                        <li>App web</li>
+                        <li>Pack de beneficios</li>
+                      </ul>
+                    </div>
+                  </label>
+                  <input type="checkbox" name="buk-esential" id="esential">
+                </div>
+                <div class="input-control">
+                  <label for="pro" data-plan-base="buk-base">
+                    <div class="plan-type__detail">
+                      <h3 class="buk-mb-2 txt-center">Pro</h3>
+                      <ul>
+                        <li>Todo lo esecial</li>
+                        <li>Tipos de asistencia personalizada</li>
+                        <li>Historial de cambios</li>
+                        <li>Juego de datos</li>
+                      </ul>
+                    </div>
+                  </label>
+                  <input type="checkbox" name="buk-pro" id="pro">
+                </div>
+              </div>
+            </div> <!-- end-shadow-box -->
+            <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-p-lg-2 modules">
+              <h3 class="buk-mb-1">Módulos</h3>
+              <p class="buk-mb-3">Selecciona los módulos que necesitas</p>
+              <div class="buk-grid">
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-1">
+                      <span>Remuneraciones</span>
+                    </label>
+                    <input type="checkbox" name="" id="module-1">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-2">
+                      <span>Control de asistencia</span>
+                    </label>
+                    <input type="checkbox" name="" id="module-2">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-3">
+                      <span>Firma digital y gestión documental</span>
+                    </label>
+                    <input type="checkbox" name="" id="module-3">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-4">
+                      <span>Adelantos de sueldo</span>
+                    </label>
+                    <input type="checkbox" name="" id="module-4">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-5">
+                      <span>Gestión del desempeño</span>
+                    </label>
+                    <input type="checkbox" name="" id="module-5">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-6">
+                      <span>Capacitaciones-LMS</span>
+                    </label>
+                    <input type="checkbox" name="" id="module-6">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-7">
+                      <span>Comunicaciones y reconocimiento</span>
+                    </label>
+                    <input type="checkbox" name="" id="module-7">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-8">
+                      <span>Beneficios</span>
+                    </label>
+                    <input type="checkbox" name="" id="module-8">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-9">
+                      <span>Encuestas</span>
+                    </label>
+                    <input type="checkbox" name="" id="module-9">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-10">
+                      <span>Selección</span>
+                    </label>
+                    <input type="checkbox" name="" id="module-10">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-11">
+                      <span>Onboarding</span>
+                    </label>
+                    <input type="checkbox" name="" id="module-11">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div> <!-- end-col -->
+
+        </div> <!-- end-grid -->
       </div>
     </section>
   </main>
