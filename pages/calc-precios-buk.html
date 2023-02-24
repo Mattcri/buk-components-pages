@@ -59,7 +59,7 @@
             <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-p-lg-2 buk-mb-5">
               <h3 class="buk-mb-1">Número de colaboradores</h3>
               <p class="buk-mb-1">Indica la cantidad de colaboradores que trabajan en tu empresa</p>
-              <input class="n-colab-input" value="100" type="number" id="n-colab" min="1">
+              <input class="n-colab-input" value="1000" type="number" id="n-colab" min="1">
             </div>
 
             <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-p-lg-2 plan-type buk-mb-5">
@@ -82,8 +82,8 @@
                         <li>Pack de beneficios</li>
                       </ul>
                     </div>
+                    <input type="radio" name="buk-plan" id="esential" data-factor="1" data-module="1" onclick="pricing.checkPlan()">
                   </label>
-                  <input type="checkbox" name="buk-esential" id="esential">
                 </div>
                 <div class="input-control">
                   <label for="pro" data-plan-base="buk-base">
@@ -96,8 +96,8 @@
                         <li>Juego de datos</li>
                       </ul>
                     </div>
+                    <input type="radio" name="buk-plan" id="pro" data-factor="1.2" data-module="2" onclick="pricing.checkPlan()">
                   </label>
-                  <input type="checkbox" name="buk-pro" id="pro">
                 </div>
               </div>
             </div> <!-- end-shadow-box -->
@@ -110,7 +110,7 @@
                     <label for="module-1">
                       <span>Remuneraciones</span>
                     </label>
-                    <input type="checkbox" name="" id="module-1">
+                    <input type="checkbox" name="m-remu" value="" id="module-1" onclick="pricing.addFactor()">
                   </div>
                 </div>
                 <div class="buk-col buk-col-lg-6">
@@ -118,7 +118,7 @@
                     <label for="module-2">
                       <span>Control de asistencia</span>
                     </label>
-                    <input type="checkbox" name="" id="module-2">
+                    <input type="checkbox" name="m-asist" value="" id="module-2" onclick="pricing.addFactor()">
                   </div>
                 </div>
                 <div class="buk-col buk-col-lg-6">
@@ -126,7 +126,7 @@
                     <label for="module-3">
                       <span>Firma digital y gestión documental</span>
                     </label>
-                    <input type="checkbox" name="" id="module-3">
+                    <input type="checkbox" name="m-firma" value="" id="module-3" onclick="pricing.addFactor()">
                   </div>
                 </div>
                 <div class="buk-col buk-col-lg-6">
@@ -134,7 +134,7 @@
                     <label for="module-4">
                       <span>Adelantos de sueldo</span>
                     </label>
-                    <input type="checkbox" name="" id="module-4">
+                    <input type="checkbox" name="m-adela" value="" id="module-4" onclick="pricing.addFactor()">
                   </div>
                 </div>
                 <div class="buk-col buk-col-lg-6">
@@ -142,7 +142,7 @@
                     <label for="module-5">
                       <span>Gestión del desempeño</span>
                     </label>
-                    <input type="checkbox" name="" id="module-5">
+                    <input type="checkbox" name="m-desep" id="module-5" onclick="pricing.addFactor()">
                   </div>
                 </div>
                 <div class="buk-col buk-col-lg-6">
@@ -150,7 +150,7 @@
                     <label for="module-6">
                       <span>Capacitaciones-LMS</span>
                     </label>
-                    <input type="checkbox" name="" id="module-6">
+                    <input type="checkbox" name="m-capac" id="module-6" onclick="pricing.addFactor()">
                   </div>
                 </div>
                 <div class="buk-col buk-col-lg-6">
@@ -158,7 +158,7 @@
                     <label for="module-7">
                       <span>Comunicaciones y reconocimiento</span>
                     </label>
-                    <input type="checkbox" name="" id="module-7">
+                    <input type="checkbox" name="m-comun" id="module-7" onclick="pricing.addFactor()">
                   </div>
                 </div>
                 <div class="buk-col buk-col-lg-6">
@@ -166,7 +166,7 @@
                     <label for="module-8">
                       <span>Beneficios</span>
                     </label>
-                    <input type="checkbox" name="" id="module-8">
+                    <input type="checkbox" name="m-benef" id="module-8" onclick="pricing.addFactor()">
                   </div>
                 </div>
                 <div class="buk-col buk-col-lg-6">
@@ -174,7 +174,7 @@
                     <label for="module-9">
                       <span>Encuestas</span>
                     </label>
-                    <input type="checkbox" name="" id="module-9">
+                    <input type="checkbox" name="m-encue" id="module-9" onclick="pricing.addFactor()">
                   </div>
                 </div>
                 <div class="buk-col buk-col-lg-6">
@@ -182,7 +182,7 @@
                     <label for="module-10">
                       <span>Selección</span>
                     </label>
-                    <input type="checkbox" name="" id="module-10">
+                    <input type="checkbox" name="m-selec" id="module-10" onclick="pricing.addFactor()">
                   </div>
                 </div>
                 <div class="buk-col buk-col-lg-6">
@@ -190,7 +190,7 @@
                     <label for="module-11">
                       <span>Onboarding</span>
                     </label>
-                    <input type="checkbox" name="" id="module-11">
+                    <input type="checkbox" name="m-onboa" id="module-11" onclick="pricing.addFactor()">
                   </div>
                 </div>
               </div>
@@ -203,6 +203,6 @@
     </section>
   </main>
 
-
+  <script src="../js/calc-remu/pricing-buk.js" defer></script>
 </body>
 </html>

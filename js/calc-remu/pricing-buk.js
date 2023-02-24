@@ -20,7 +20,39 @@
 //   // await checkPlan()
 //   console.log(baseValues)
 // }
+function CalculateFactorAdelantos() {
+  const numberCollaborators = document.getElementById('n-colab').value
+  const RANGES = [
+    { 'start': 1, 'end': 100, 'factor': 1.3 },
+    { 'start': 101, 'end': 500, 'factor': 1.3 },
+    { 'start': 501, 'end': 1000, 'factor': 1.5 },
+    { 'start': 1001, 'end': 2500, 'factor': 1.5 },
+    { 'start': 2501, 'end': 5000, 'factor': 1.6 },
+    { 'start': 5001, 'end': 7500, 'factor': 1.7 },
+    { 'start': 7501, 'end': 10000, 'factor': 1.7 },
+    { 'start': 10001, 'end': 15000, 'factor': 1.7 },
+    { 'start': 15001, 'end': 20000, 'factor': 1.72 },
+  ]
 
+  const lastRange = RANGES[RANGES.length - 1]
+  const factorOverRanges = lastRange.factor
+
+  if (numberCollaborators <= lastRange.end) {
+    for (let i = 0; i < RANGES.length; i++) {
+      let range = RANGES[i]
+      // console.log(range)
+      if (range.start <= numberCollaborators && range.end >= numberCollaborators) {
+        let findFactor = range.factor
+        console.log('Factor Encontrado: ', findFactor)
+        return findFactor
+      }
+
+    }
+  } else {
+    return factorOverRanges
+  }
+
+}
 
 class TableBuilder {
   constructor( table ) {
@@ -67,7 +99,7 @@ class ModuleFeature {
 
   async action () {
     await pricing
-    await pricing.addModule(this.module)
+    await pricing.addModule(this.factor)
     // console.log('nombre: ', this.name)
     // console.log('factor: ', this.factor)
   }
@@ -81,8 +113,8 @@ const remu = new ModuleFeature({
   module: 1
 })
 const asist = new ModuleFeature({
-  factor: 1,
-  name: 'm-remu',
+  factor: 1.38,
+  name: 'm-asist',
   price: 1.9,
   module: 1
 })
@@ -92,13 +124,15 @@ class PricingBuilder {
   constructor({
     tableBase,
     tableAditional,
-    baseValues,
-    amountValues = [],
+    baseValues = {},
+    amountModules = 0,
+    amountFactors = 0
   }) {
     this.tableBase = tableBase
     this.tableAditional = tableAditional
     this.baseValues = baseValues
-    this.amountValues = amountValues
+    this.amountModules = amountModules
+    this.amountFactors = amountFactors
     this.init()
   }
 
@@ -108,14 +142,14 @@ class PricingBuilder {
   }
 
   checkPlan() {
-    const DOMbukPlans = [...document.getElementsByName('buk-plan')]
-    const resetPlanSelected = [...document.querySelectorAll('.plan-type__detail')]
-    const plan = DOMbukPlans.find(item => item.checked == true)
+    let DOMbukPlans = [...document.getElementsByName('buk-plan')]
+    let resetPlanSelected = [...document.querySelectorAll('.plan-type__detail')]
+    let plan = DOMbukPlans.find(item => item.checked == true)
     resetPlanSelected.forEach(i => i.classList.remove('SELECTED'))
     plan.previousElementSibling.classList.toggle('SELECTED')
-    const values = {
-      'factor': plan.dataset.factor,
-      'module': plan.dataset.module
+    let values = {
+      'factor': parseFloat(plan.dataset.factor),
+      'module': parseFloat(plan.dataset.module)
     }
     this.baseValues = values
     console.log('update: ', this.baseValues)
@@ -123,9 +157,49 @@ class PricingBuilder {
     
   }
 
-  addModule(module) {
-    this.amountValues.push(module)
-    console.log('Suma: ', this.amountValues);
+  addFactor() {
+    let modulesCheckbox = [...document.querySelectorAll('.modules input[type="checkbox"')]
+    let modules = modulesCheckbox.filter(m => m.checked)
+    let values = modules.map(v => v.name)
+    let searcher = this.searchModules(values)
+    this.amountFactors = searcher
+    console.log(this.amountFactors)
+    this.addModule()
+  }
+
+  addModule() {
+    let modulesCheckbox = [...document.querySelectorAll('.modules input[type="checkbox"')]
+    let modules = modulesCheckbox.filter(m => m.checked)
+    this.amountModules = modules.length 
+    console.log(this.amountModules)
+  }
+
+  searchModules(input) {
+    const VALUEMODULES = [
+      { name: 'm-remu', factor: 1 },
+      { name: 'm-asist', factor: 1.38 },
+      { name: 'm-firma', factor: 0.26 },
+      { name: 'm-adela', factor: CalculateFactorAdelantos() },
+      { name: 'm-desep', factor: 0.8 },
+      { name: 'm-capac', factor: 0.62 },
+      { name: 'm-comun', factor: 0.28 },
+      { name: 'm-benef', factor: 0.3 },
+      { name: 'm-encue', factor: 0.2 },
+      { name: 'm-selec', factor: 0.6 },
+      { name: 'm-onboa', factor: 0.18 }
+    ]
+    let matches = VALUEMODULES.filter(module => input.includes(module.name))
+    // let find = VALUEMODULES.filter((module, index) => {
+    //   console.log('input: ', input)
+    //   console.log('modules: ', module.name)
+    //   // return input.indexOf(module.name) !== -1
+    //   return input.includes(module.name)
+    // })
+    
+    // console.log('searchModules - input : ', input)
+    // console.log('searchModules - find : ', find)
+    let factorValues = matches.map(item => item.factor)
+    return factorValues
   }
 
 
@@ -139,4 +213,12 @@ const pricing = new PricingBuilder({
 
 console.log(pricing)
 // document.getElementById('esential').click()
-console.log(remu)
+// console.log(remu)
+// console.log(document.getElementById('n-colab').value)
+// console.log('Adelantos: ', CalculateFactorAdelantos())
+
+// Posible solución para agregar los factores:
+// crear un array con los valores de los factores y una llave valor con
+// el nombre del módulo y hacer el match con el atributo "name" del 
+// input html, de esa manera rescatamos el valor que contenga el factor 
+// dentro del objeto encontrado en el array.
