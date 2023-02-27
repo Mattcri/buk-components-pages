@@ -43,7 +43,7 @@ function CalculateFactorAdelantos() {
       // console.log(range)
       if (range.start <= numberCollaborators && range.end >= numberCollaborators) {
         let findFactor = range.factor
-        console.log('Factor Encontrado: ', findFactor)
+        // console.log('Factor Encontrado: ', findFactor)
         return findFactor
       }
 
@@ -126,19 +126,29 @@ class PricingBuilder {
     tableAditional,
     baseValues = {},
     amountModules = 0,
-    amountFactors = 0
+    amountFactors = 0,
+    factorsSelected = 0
   }) {
     this.tableBase = tableBase
     this.tableAditional = tableAditional
     this.baseValues = baseValues
     this.amountModules = amountModules
     this.amountFactors = amountFactors
+    this.factorsSelected = factorsSelected
     this.init()
   }
 
   async init() {
     await this.checkPlan
     document.getElementById('esential').click()
+  }
+
+  director() {
+    this.checkPlan()
+    this.addFactor()
+    this.addModule()
+    this.minPrice()
+    this.additionalAmount()
   }
 
   checkPlan() {
@@ -162,15 +172,18 @@ class PricingBuilder {
     let modules = modulesCheckbox.filter(m => m.checked)
     let values = modules.map(v => v.name)
     let searcher = this.searchModules(values)
-    this.amountFactors = searcher
-    console.log(this.amountFactors)
-    this.addModule()
+    let sumFactors = Number(searcher.reduce((prev, acum) => prev + acum, 0).toFixed(2))
+    this.factorsSelected = searcher
+    this.amountFactors = sumFactors + this.baseValues.factor
+    console.log(this.factorsSelected)
+    console.log('pricing: ', this)
+    // this.addModule()
   }
 
   addModule() {
     let modulesCheckbox = [...document.querySelectorAll('.modules input[type="checkbox"')]
     let modules = modulesCheckbox.filter(m => m.checked)
-    this.amountModules = modules.length 
+    this.amountModules = modules.length + this.baseValues.module
     console.log(this.amountModules)
   }
 
@@ -202,7 +215,48 @@ class PricingBuilder {
     return factorValues
   }
 
+  minPrice() {
+    const basePeopleManagment = 2.3
+    const priceForModule = 0.1
+    let calcMinPrice = Number((basePeopleManagment + (priceForModule * this.amountModules)).toFixed(2))
+    console.log('Min Price: ', calcMinPrice)
+    return calcMinPrice
+  }
 
+  additionalAmount() {
+    try {
+      let numEmployees = document.getElementById('n-colab').value
+      let initSearchAdditional = 100
+      let overLastRange = 20001
+      if (numEmployees <= initSearchAdditional) {
+        console.log('colab: ', parseInt(numEmployees))
+        return parseInt(numEmployees)
+      }
+      else if (numEmployees > initSearchAdditional && numEmployees < overLastRange) {
+        // retorna la cantidad adicional, que es la diferencia entre el rango anterior y el rango ingresado en el input numero de colaboradores
+        let range = this.tableAditional.table.findIndex(r => this.betweenRange(r.start, r.end, numEmployees, r))
+        let previusRange = range - 1
+        let additionalEndValue = this.tableAditional.table[previusRange].end
+        console.log('rango: ', range)
+        console.log('rango anterior: ', additionalEndValue)
+        return additionalEndValue
+      } else {
+        // retorna el valor de la cantidad adicional del último rango
+        console.log('last: ', this.tableAditional.table[this.tableAditional.table.length - 1].end)
+        return this.tableAditional.table[this.tableAditional.table.length - 1].end
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  betweenRange (start, end, employees, obj) {
+    try {
+      if (employees >= start && employees <= end) return obj
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
 }
 
@@ -211,7 +265,7 @@ const pricing = new PricingBuilder({
   tableAditional: tableAditional,
 })
 
-console.log(pricing)
+// console.log(pricing)
 // document.getElementById('esential').click()
 // console.log(remu)
 // console.log(document.getElementById('n-colab').value)
