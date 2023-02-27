@@ -149,6 +149,9 @@ class PricingBuilder {
     this.addModule()
     this.minPrice()
     this.additionalAmount()
+    this.basisCostRange()
+    this.additionalCostRange()
+    this.calcPrice()
   }
 
   checkPlan() {
@@ -190,10 +193,10 @@ class PricingBuilder {
   searchModules(input) {
     const VALUEMODULES = [
       { name: 'm-remu', factor: 1 },
-      { name: 'm-asist', factor: 1.38 },
+      { name: 'm-asist', factor: 0.8 },
       { name: 'm-firma', factor: 0.26 },
       { name: 'm-adela', factor: CalculateFactorAdelantos() },
-      { name: 'm-desep', factor: 0.8 },
+      { name: 'm-desep', factor: 0.6 },
       { name: 'm-capac', factor: 0.62 },
       { name: 'm-comun', factor: 0.28 },
       { name: 'm-benef', factor: 0.3 },
@@ -248,6 +251,47 @@ class PricingBuilder {
     } catch (err) {
       console.error(err)
     }
+  }
+
+  basisCostRange() {
+    try {
+      let numEmployees = document.getElementById('n-colab').value
+      let lastRange = this.tableBase.table[this.tableBase.table.length - 1]
+      // Si es menor o igual al último rango, buscar el rango correspondiente según el input del número de colaboradores
+      if (numEmployees <= lastRange.end) {
+        let range = this.tableBase.table.find(r => this.betweenRange(r.start, r.end, numEmployees, r))
+        console.log('Rango base: ', range)
+        return range.base
+      } else {
+        return lastRange.base
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  additionalCostRange() {
+    try {
+      let numEmployees = document.getElementById('n-colab').value
+      let lastRange = this.tableAditional.table[this.tableAditional.table.length - 1]
+      if (numEmployees <= lastRange.end) {
+        let range = this.tableAditional.table.find(r => this.betweenRange(r.start, r.end, numEmployees, r))
+        console.log('Rango Adicional: ', range.aditional)
+        return range.aditional
+      } else {
+        return lastRange.aditional
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  calcPrice() {
+    let basisCost = this.basisCostRange()
+    let additionalCost = this.additionalCostRange()
+    let additionalAmount = this.additionalAmount()
+    let price = (additionalCost * additionalAmount + basisCost) * this.amountFactors
+    console.log('Price Total: ', price)
   }
 
   betweenRange (start, end, employees, obj) {
