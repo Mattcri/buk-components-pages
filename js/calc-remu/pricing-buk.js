@@ -72,16 +72,16 @@ const tableBase = new TableBuilder([
   { 'start': 15001, 'end': 20000, 'base': 221.7728 }
 ])
 
-const tableAditional = new TableBuilder([
-  { 'start': 1, 'end': 100, 'aditional': 0.039104 },
-  { 'start': 101, 'end': 500, 'aditional': 0.023296 },
-  { 'start': 501, 'end': 1000, 'aditional': 0.019744 },
-  { 'start': 1001, 'end': 2500, 'aditional': 0.019488 },
-  { 'start': 2501, 'end': 5000, 'aditional': 0.014272 },
-  { 'start': 5001, 'end': 7500, 'aditional': 0.013376 },
-  { 'start': 7501, 'end': 10000, 'aditional': 0.013376 },
-  { 'start': 10001, 'end': 15000, 'aditional': 0.013376 },
-  { 'start': 15001, 'end': 20000, 'aditional': 0.01309 }
+const tableAdditional = new TableBuilder([
+  { 'start': 1, 'end': 100, 'additional': 0.039104 },
+  { 'start': 101, 'end': 500, 'additional': 0.023296 },
+  { 'start': 501, 'end': 1000, 'additional': 0.019744 },
+  { 'start': 1001, 'end': 2500, 'additional': 0.019488 },
+  { 'start': 2501, 'end': 5000, 'additional': 0.014272 },
+  { 'start': 5001, 'end': 7500, 'additional': 0.013376 },
+  { 'start': 7501, 'end': 10000, 'additional': 0.013376 },
+  { 'start': 10001, 'end': 15000, 'additional': 0.013376 },
+  { 'start': 15001, 'end': 20000, 'additional': 0.01309 }
 ])
 
 class ModuleFeature {
@@ -123,14 +123,14 @@ const asist = new ModuleFeature({
 class PricingBuilder {
   constructor({
     tableBase,
-    tableAditional,
+    tableAdditional,
     baseValues = {},
     amountModules = 0,
     amountFactors = 0,
     factorsSelected = 0
   }) {
     this.tableBase = tableBase
-    this.tableAditional = tableAditional
+    this.tableAdditional = tableAdditional
     this.baseValues = baseValues
     this.amountModules = amountModules
     this.amountFactors = amountFactors
@@ -237,16 +237,16 @@ class PricingBuilder {
       }
       else if (numEmployees > initSearchAdditional && numEmployees < overLastRange) {
         // retorna la cantidad adicional, que es la diferencia entre el rango anterior y el rango ingresado en el input numero de colaboradores
-        let range = this.tableAditional.table.findIndex(r => this.betweenRange(r.start, r.end, numEmployees, r))
+        let range = this.tableAdditional.table.findIndex(r => this.betweenRange(r.start, r.end, numEmployees, r))
         let previusRange = range - 1
-        let additionalEndValue = this.tableAditional.table[previusRange].end
+        let additionalEndValue = this.tableAdditional.table[previusRange].end
         console.log('rango: ', range)
         console.log('rango anterior: ', additionalEndValue)
         return additionalEndValue
       } else {
         // retorna el valor de la cantidad adicional del último rango
-        console.log('last: ', this.tableAditional.table[this.tableAditional.table.length - 1].end)
-        return this.tableAditional.table[this.tableAditional.table.length - 1].end
+        console.log('last: ', this.tableAdditional.table[this.tableAdditional.table.length - 1].end)
+        return this.tableAdditional.table[this.tableAdditional.table.length - 1].end
       }
     } catch (err) {
       console.error(err)
@@ -273,13 +273,13 @@ class PricingBuilder {
   additionalCostRange() {
     try {
       let numEmployees = document.getElementById('n-colab').value
-      let lastRange = this.tableAditional.table[this.tableAditional.table.length - 1]
+      let lastRange = this.tableAdditional.table[this.tableAdditional.table.length - 1]
       if (numEmployees <= lastRange.end) {
-        let range = this.tableAditional.table.find(r => this.betweenRange(r.start, r.end, numEmployees, r))
-        console.log('Rango Adicional: ', range.aditional)
-        return range.aditional
+        let range = this.tableAdditional.table.find(r => this.betweenRange(r.start, r.end, numEmployees, r))
+        console.log('Rango Adicional: ', range.additional)
+        return range.additional
       } else {
-        return lastRange.aditional
+        return lastRange.additional
       }
     } catch (err) {
       console.error(err)
@@ -306,7 +306,7 @@ class PricingBuilder {
 
 const pricing = new PricingBuilder({
   tableBase: tableBase,
-  tableAditional: tableAditional,
+  tableAdditional: tableAdditional,
 })
 
 // console.log(pricing)
