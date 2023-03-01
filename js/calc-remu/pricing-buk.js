@@ -1,25 +1,3 @@
-
-
-// const checkPlan = () => {
-//   const DOMbukPlans = [...document.getElementsByName('buk-plan')]
-//   const resetPlanSelected = [...document.querySelectorAll('.plan-type__detail')]
-//   // const DOMesentialPlan = document.getElementById('esential')
-//   // const DOMproPlan = document.getElementById('pro')
-//   const plan = DOMbukPlans.find(item => item.checked == true)
-//   resetPlanSelected.forEach(i => i.classList.remove('SELECTED'))
-//   plan.previousElementSibling.classList.toggle('SELECTED')
-//   return {
-//     'factor': plan.dataset.factor,
-//     'module': plan.dataset.module
-//   }
-//   // console.log(plan.dataset.factor)
-// }
-
-// const priceDirector = async () => {
-//   const baseValues = await checkPlan()
-//   // await checkPlan()
-//   console.log(baseValues)
-// }
 function CalculateFactorAdelantos() {
   const numberCollaborators = document.getElementById('n-colab').value
   const RANGES = [
@@ -84,57 +62,68 @@ const tableAdditional = new TableBuilder([
   { 'start': 15001, 'end': 20000, 'additional': 0.01309 }
 ])
 
-class ModuleFeature {
-  constructor({
-    factor,
-    name,
-    price,
-    module
-  }) {
-    this.factor = factor
-    this.name = name
-    this.price = price
-    this.module = module
-  }
+const tableDiscounts = new TableBuilder([
+  { 'totalModules': 4, 'percent': 5 },
+  { 'totalModules': 5, 'percent': 7 },
+  { 'totalModules': 6, 'percent': 8 },
+  { 'totalModules': 7, 'percent': 9 },
+  { 'totalModules': 8, 'percent': 9.5 },
+  { 'totalModules': 9, 'percent': 10 },
+  { 'totalModules': 10, 'percent': 10 },
+  { 'totalModules': 11, 'percent': 10 },
+  { 'totalModules': 12, 'percent': 11 },
+  { 'totalModules': 13, 'percent': 12 },
+  { 'totalModules': 14, 'percent': 13 },
+  { 'totalModules': 15, 'percent': 14 },
+  { 'totalModules': 16, 'percent': 15 },
+])
 
-  async action () {
-    await pricing
-    await pricing.addModule(this.factor)
-    // console.log('nombre: ', this.name)
-    // console.log('factor: ', this.factor)
-  }
+// class ModuleFeature {
+//   constructor({
+//     factor,
+//     name,
+//     price,
+//     module
+//   }) {
+//     this.factor = factor
+//     this.name = name
+//     this.price = price
+//     this.module = module
+//   }
 
-}
+// }
 
-const remu = new ModuleFeature({
-  factor: 1,
-  name: 'm-remu',
-  price: 1.9,
-  module: 1
-})
-const asist = new ModuleFeature({
-  factor: 1.38,
-  name: 'm-asist',
-  price: 1.9,
-  module: 1
-})
+// const remu = new ModuleFeature({
+//   factor: 1,
+//   name: 'm-remu',
+//   price: 1.9,
+//   module: 1
+// })
+// const asist = new ModuleFeature({
+//   factor: 1.38,
+//   name: 'm-asist',
+//   price: 1.9,
+//   module: 1
+// })
 
 
 class PricingBuilder {
   constructor({
     tableBase,
     tableAdditional,
+    tableDiscounts,
     baseValues = {},
     amountModules = 0,
     amountFactors = 0,
-    factorsSelected = 0
+    factorsModulesSelected = 0
   }) {
     this.tableBase = tableBase
     this.tableAdditional = tableAdditional
+    this.tableDiscounts = tableDiscounts
     this.baseValues = baseValues
     this.amountModules = amountModules
     this.amountFactors = amountFactors
-    this.factorsSelected = factorsSelected
+    this.factorsModulesSelected = factorsModulesSelected
     this.init()
   }
 
@@ -147,11 +136,13 @@ class PricingBuilder {
     this.checkPlan()
     this.addFactor()
     this.addModule()
-    this.minPrice()
-    this.additionalAmount()
-    this.basisCostRange()
-    this.additionalCostRange()
-    this.calcPrice()
+    if (this.minPrice() > this.calcPrice()) {
+      this.hideDOMblocks()
+      this.displayPrice(this.minPrice())
+    } else {
+      this.handlerDOMactions()
+      this.amountModules >= 4 ? this.displayPrice(this.discount()) : this.displayPrice(this.calcPrice())
+    }
   }
 
   checkPlan() {
@@ -176,9 +167,9 @@ class PricingBuilder {
     let values = modules.map(v => v.name)
     let searcher = this.searchModules(values)
     let sumFactors = Number(searcher.reduce((prev, acum) => prev + acum, 0).toFixed(2))
-    this.factorsSelected = searcher
+    this.factorsModulesSelected = searcher
     this.amountFactors = sumFactors + this.baseValues.factor
-    console.log(this.factorsSelected)
+    console.log(this.factorsModulesSelected)
     console.log('pricing: ', this)
     // this.addModule()
   }
@@ -187,7 +178,7 @@ class PricingBuilder {
     let modulesCheckbox = [...document.querySelectorAll('.modules input[type="checkbox"')]
     let modules = modulesCheckbox.filter(m => m.checked)
     this.amountModules = modules.length + this.baseValues.module
-    console.log(this.amountModules)
+    // console.log(this.amountModules)
   }
 
   searchModules(input) {
@@ -212,8 +203,6 @@ class PricingBuilder {
     //   return input.includes(module.name)
     // })
     
-    // console.log('searchModules - input : ', input)
-    // console.log('searchModules - find : ', find)
     let factorValues = matches.map(item => item.factor)
     return factorValues
   }
@@ -221,7 +210,8 @@ class PricingBuilder {
   minPrice() {
     const basePeopleManagment = 2.3
     const priceForModule = 0.1
-    let calcMinPrice = Number((basePeopleManagment + (priceForModule * this.amountModules)).toFixed(2))
+    // Se aplica - 1 pq dentro del valor basePeopleManagment va el valor basica, sobrando un módulo si se toma en cuenta el valor this.amountModules
+    let calcMinPrice = Number((basePeopleManagment + (priceForModule * (this.amountModules - 1))).toFixed(2))
     console.log('Min Price: ', calcMinPrice)
     return calcMinPrice
   }
@@ -232,7 +222,7 @@ class PricingBuilder {
       let initSearchAdditional = 100
       let overLastRange = 20001
       if (numEmployees <= initSearchAdditional) {
-        console.log('colab: ', parseInt(numEmployees))
+        // console.log('colab: ', parseInt(numEmployees))
         return parseInt(numEmployees)
       }
       else if (numEmployees > initSearchAdditional && numEmployees < overLastRange) {
@@ -240,9 +230,10 @@ class PricingBuilder {
         let range = this.tableAdditional.table.findIndex(r => this.betweenRange(r.start, r.end, numEmployees, r))
         let previusRange = range - 1
         let additionalEndValue = this.tableAdditional.table[previusRange].end
-        console.log('rango: ', range)
+        let additionalAmount = numEmployees - additionalEndValue
+        // console.log('rango: ', range)
         console.log('rango anterior: ', additionalEndValue)
-        return additionalEndValue
+        return additionalAmount
       } else {
         // retorna el valor de la cantidad adicional del último rango
         console.log('last: ', this.tableAdditional.table[this.tableAdditional.table.length - 1].end)
@@ -276,7 +267,7 @@ class PricingBuilder {
       let lastRange = this.tableAdditional.table[this.tableAdditional.table.length - 1]
       if (numEmployees <= lastRange.end) {
         let range = this.tableAdditional.table.find(r => this.betweenRange(r.start, r.end, numEmployees, r))
-        console.log('Rango Adicional: ', range.additional)
+        console.log('Rango Adiccional: ', range)
         return range.additional
       } else {
         return lastRange.additional
@@ -286,12 +277,75 @@ class PricingBuilder {
     }
   }
 
+  discount() {
+    let findDiscount = this.tableDiscounts.table.find(m => m.totalModules == this.amountModules)
+    console.log('Descuento:', findDiscount)
+    let price = this.calcPrice()
+    let percent = findDiscount.percent
+    let getPercent = percent / 100
+    let priceWithDiscount = price - (price * getPercent)
+    // let factorWithDiscount = this.amountFactors - (this.amountFactors * getPercent)
+    // this.amountFactors = factorWithDiscount
+    this.displayPreviousPrice(price, percent)
+    return priceWithDiscount
+  }
+
   calcPrice() {
     let basisCost = this.basisCostRange()
     let additionalCost = this.additionalCostRange()
     let additionalAmount = this.additionalAmount()
     let price = (additionalCost * additionalAmount + basisCost) * this.amountFactors
     console.log('Price Total: ', price)
+    console.log('CANTIDAD ADICIONAL: ', additionalAmount)
+    return price
+  }
+
+  displayPrice (amount) {
+    let DOMprice = document.getElementById('price')
+    DOMprice.textContent = amount.toFixed(2)
+  }
+
+  displayPreviousPrice (amount, discount) {
+    let DOMpreviousPrice = document.getElementById('previous-price')
+    let DOMbadgePrice = document.querySelector('.discount-percent')
+    DOMpreviousPrice.textContent = amount.toFixed(2)
+    DOMbadgePrice.textContent = `${discount}%`
+  }
+
+  handlerDOMactions () {
+    let DOMpreviousPriceBlock = document.getElementById('whithout-discount')
+    let DOMattainModules = document.getElementById('modules-attain')
+    let DOMdiscountAlertBlock = document.getElementById('discount-alert')
+    let DOMdiscounMessageBlock = document.getElementById('discount-message')
+    let DOMbadgeBlock = document.getElementById('badge-discount')
+    let DOMmodulePlurOrSing = document.getElementById('plur-or-sing')
+    
+    let startDiscount = this.tableDiscounts.table[0].totalModules
+    let modulesToGetDiscount = startDiscount - this.amountModules
+    
+    if (this.amountModules >= startDiscount) {
+      DOMpreviousPriceBlock.classList.remove('ds-none')
+      DOMdiscounMessageBlock.classList.remove('ds-none')
+      DOMbadgeBlock.classList.remove('ds-none')
+      DOMdiscountAlertBlock.classList.add('ds-none')
+    } else {
+      DOMpreviousPriceBlock.classList.add('ds-none')
+      DOMattainModules.textContent = modulesToGetDiscount
+      modulesToGetDiscount != 1 ? DOMmodulePlurOrSing.textContent = 'Módulos' : DOMmodulePlurOrSing.textContent = 'Módulo'
+      DOMdiscounMessageBlock.classList.add('ds-none')
+      DOMbadgeBlock.classList.add('ds-none')
+      DOMdiscountAlertBlock.classList.remove('ds-none')
+    }
+  }
+
+  hideDOMblocks () {
+    let DOMpreviousPriceBlock = document.getElementById('whithout-discount')
+    let DOMdiscountAlertBlock = document.getElementById('discount-alert')
+    let DOMdiscounMessageBlock = document.getElementById('discount-message')
+    
+    DOMpreviousPriceBlock.classList.add('ds-none')
+    DOMdiscountAlertBlock.classList.add('ds-none')
+    DOMdiscounMessageBlock.classList.add('ds-none')
   }
 
   betweenRange (start, end, employees, obj) {
@@ -307,16 +361,11 @@ class PricingBuilder {
 const pricing = new PricingBuilder({
   tableBase: tableBase,
   tableAdditional: tableAdditional,
+  tableDiscounts: tableDiscounts
 })
 
-// console.log(pricing)
-// document.getElementById('esential').click()
-// console.log(remu)
-// console.log(document.getElementById('n-colab').value)
-// console.log('Adelantos: ', CalculateFactorAdelantos())
-
-// Posible solución para agregar los factores:
+// Posible solución para agregar los factores dinamicamente:
 // crear un array con los valores de los factores y una llave valor con
-// el nombre del módulo y hacer el match con el atributo "name" del 
-// input html, de esa manera rescatamos el valor que contenga el factor 
-// dentro del objeto encontrado en el array.
+// el nombre del módulo seleccionado y valor del factor, luego hacer el match con el atributo
+// "name" del input html, de esa manera rescatamos el valor que contenga
+// el factor dentro del objeto encontrado en el array.

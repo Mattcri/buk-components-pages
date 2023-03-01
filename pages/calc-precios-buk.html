@@ -28,15 +28,18 @@
             <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-px-lg-2 buk-py-lg-2 sticky-price">
               <h3 class="txt-center buk-mb-1">Valor de tu Buk</h3>
               <p class="txt-center buk-mb-1">Mensual</p>
-              <div class="price pst-relative txt-center buk-py-3 buk-px-2">
+              <div class="price pst-relative txt-center buk-py-4 buk-px-2 buk-py-md-3 buk-px-md-2">
+                <div class="price__badge" id="badge-discount">
+                  <p>Dcto. <span class="discount-percent"></span></p>
+                </div>
                 <p>
                   <span class="price__current">UF</span>
-                  <span class="price__mount">0</span>
+                  <span class="price__mount" id="price">0</span>
                 </p>
                 <span class="price__tax">+IVA</span>
                 <!-- <br> -->
-                <div class="price__without-discount buk-mt-1">
-                  <span>ANTES: UF <span id="original-price">0</span></span>
+                <div class="price__without-discount buk-mt-1" id="whithout-discount">
+                  <span>ANTES: UF <span id="previous-price">0</span></span>
                 </div>
               </div>
 
@@ -52,6 +55,12 @@
                   para conocer tu descuento
                 </p>
               </div>
+              <div class="buk-mt-3 txt-center" id="discount-message">
+                <p>
+                  Descuento incluido en el valor final del precio
+                </p>
+                <p>Agrega otro módulo para obtener mayores beneficios</p>
+              </div>
 
             </div>
           </div>
@@ -59,7 +68,7 @@
             <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-p-lg-2 buk-mb-5">
               <h3 class="buk-mb-1">Número de colaboradores</h3>
               <p class="buk-mb-1">Indica la cantidad de colaboradores que trabajan en tu empresa</p>
-              <input class="n-colab-input" value="1000" type="number" id="n-colab" min="1" onchange="pricing.director()">
+              <input class="n-colab-input" value="350" type="number" id="n-colab" min="1" onchange="pricing.director()">
             </div>
 
             <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-p-lg-2 plan-type buk-mb-5">

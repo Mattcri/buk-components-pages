@@ -45,9 +45,58 @@ header {
 .plan-type__detail li:not(:last-of-type) {
   margin-bottom: .5rem;
 }
+.plan-type__detail.SELECTED {
+  background: #2F4DAA;
+  color: #fff;
+}
+.plan-type__detail.SELECTED h3 {
+  color: #fff;
+}
 @media only screen and (min-width: 1020px) {
   .plan-type__detail {
     padding: 2rem 1.5rem;
     height: 100%;
   }
 }
+
+.price__current,
+.price__mount {
+  color: #2F4DAA;
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+@media only screen and (min-width: 767px) {
+  .price__current {
+    font-size: 1.5rem;
+  }
+
+  .price__mount {
+    font-size: 1.75rem;
+  }
+}
+
+.price__badge {
+  background: #2B3C6A;
+  border-radius: 8px;
+  color: var(--color-white);
+  padding: .25rem .5rem;
+  position: absolute;
+  right: .75rem;
+  top: .5rem;
+}
+
+.price__tax {
+  color: #F8A12A;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+#previous-price {
+  text-decoration: line-through;
+}
+
+/* .price__without-discount {
+  color: #2F4DAA;
+} */
+
