@@ -32,6 +32,34 @@ function CalculateFactorAdelantos() {
 
 }
 
+function calcFactorLME () {
+  const employees = document.getElementById('n-colab').value
+  const RANGES = [
+    { 'start': 1, 'end': 100, 'factor': 0.59 },
+    { 'start': 101, 'end': 500, 'factor': 0.5 },
+    { 'start': 501, 'end': 1000, 'factor': 0.2 },
+    { 'start': 1001, 'end': 2500, 'factor': 0.2 },
+    { 'start': 2501, 'end': 5000, 'factor': 0.15 },
+    { 'start': 5001, 'end': 7500, 'factor': 0.14 },
+    { 'start': 7501, 'end': 10000, 'factor': 0.14 },
+    { 'start': 10001, 'end': 15000, 'factor': 0.13 },
+    { 'start': 15001, 'end': 20000, 'factor': 0.13 },
+  ]
+
+  let lastRange = RANGES[RANGES.length - 1]
+  let factorOverRanges = lastRange.factor
+  let findFactor = RANGES.find(search => {
+    if (employees >= search.start && employees <= search.end) return search
+  })
+
+  // employees <= lastRange.end ? findFactor : factorOverRanges
+  if (employees <= lastRange.end) {
+    return findFactor.factor
+  } else {
+    return factorOverRanges
+  }
+}
+
 class TableBuilder {
   constructor( table ) {
     this.table = table
@@ -115,7 +143,8 @@ class PricingBuilder {
     baseValues = {},
     amountModules = 0,
     amountFactors = 0,
-    factorsModulesSelected = 0
+    factorsModulesSelected = 0,
+    factorsAddonsSelected = 0
   }) {
     this.tableBase = tableBase
     this.tableAdditional = tableAdditional
@@ -124,6 +153,7 @@ class PricingBuilder {
     this.amountModules = amountModules
     this.amountFactors = amountFactors
     this.factorsModulesSelected = factorsModulesSelected
+    this.factorsAddonsSelected = factorsAddonsSelected
     this.init()
   }
 
@@ -162,16 +192,34 @@ class PricingBuilder {
   }
 
   addFactor() {
+    let modules = this.addFactorModule()
+    let addons = this.addFactorAddon()
+    console.log('Factor addons', addons)
+    let basis = this.baseValues.factor
+    this.amountFactors = (basis + modules + addons)
+  }
+
+  addFactorModule() {
     let modulesCheckbox = [...document.querySelectorAll('.modules input[type="checkbox"')]
     let modules = modulesCheckbox.filter(m => m.checked)
-    let values = modules.map(v => v.name)
-    let searcher = this.searchModules(values)
+    let names = modules.map(e => e.name)
+    let searcher = this.searchModules(names)
     let sumFactors = Number(searcher.reduce((prev, acum) => prev + acum, 0).toFixed(2))
     this.factorsModulesSelected = searcher
-    this.amountFactors = sumFactors + this.baseValues.factor
+    // this.amountFactors = sumFactors
     console.log(this.factorsModulesSelected)
     console.log('pricing: ', this)
-    // this.addModule()
+    return sumFactors
+  }
+
+  addFactorAddon() {
+    let addonsCheckbox = [...document.querySelectorAll('.addons input[type="checkbox"')]
+    let addons = addonsCheckbox.filter(a => a.checked)
+    let names = addons.map(e => e.name)
+    let searcher = this.searchAddons(names)
+    let sumFactors = Number(searcher.reduce((prev, acum) => prev + acum, 0).toFixed(2))
+    this.factorsAddonsSelected = searcher
+    return sumFactors
   }
 
   addModule() {
@@ -196,15 +244,24 @@ class PricingBuilder {
       { name: 'm-onboa', factor: 0.18 }
     ]
     let matches = VALUEMODULES.filter(module => input.includes(module.name))
-    // let find = VALUEMODULES.filter((module, index) => {
-    //   console.log('input: ', input)
-    //   console.log('modules: ', module.name)
-    //   // return input.indexOf(module.name) !== -1
-    //   return input.includes(module.name)
-    // })
-    
-    let factorValues = matches.map(item => item.factor)
+    // return input.indexOf(module.name) !== -1
+    let factorValues = matches.map(e => e.factor)
     return factorValues
+  }
+
+  searchAddons(input) {
+    const VALUEADDONS = [
+      { name: 'a-work', factor: 0.1 },
+      { name: 'a-trat', factor: 0.1 },
+      { name: 'a-hono', factor: 0.1 },
+      { name: 'a-ilme', factor: calcFactorLME() },
+      { name: 'a-sso', factor: 0.1 },
+      { name: 'a-api', factor: 0.1 },
+      { name: 'a-play', factor: 0.8 },
+    ]
+    let matches = VALUEADDONS.filter(addon => input.includes(addon.name))
+    let factorsValues = matches.map(e => e.factor)
+    return factorsValues
   }
 
   minPrice() {
@@ -232,11 +289,11 @@ class PricingBuilder {
         let additionalEndValue = this.tableAdditional.table[previusRange].end
         let additionalAmount = numEmployees - additionalEndValue
         // console.log('rango: ', range)
-        console.log('rango anterior: ', additionalEndValue)
+        // console.log('rango anterior: ', additionalEndValue)
         return additionalAmount
       } else {
         // retorna el valor de la cantidad adicional del último rango
-        console.log('last: ', this.tableAdditional.table[this.tableAdditional.table.length - 1].end)
+        // console.log('last: ', this.tableAdditional.table[this.tableAdditional.table.length - 1].end)
         return this.tableAdditional.table[this.tableAdditional.table.length - 1].end
       }
     } catch (err) {
@@ -251,7 +308,7 @@ class PricingBuilder {
       // Si es menor o igual al último rango, buscar el rango correspondiente según el input del número de colaboradores
       if (numEmployees <= lastRange.end) {
         let range = this.tableBase.table.find(r => this.betweenRange(r.start, r.end, numEmployees, r))
-        console.log('Rango base: ', range)
+        // console.log('Rango base: ', range)
         return range.base
       } else {
         return lastRange.base
@@ -267,7 +324,7 @@ class PricingBuilder {
       let lastRange = this.tableAdditional.table[this.tableAdditional.table.length - 1]
       if (numEmployees <= lastRange.end) {
         let range = this.tableAdditional.table.find(r => this.betweenRange(r.start, r.end, numEmployees, r))
-        console.log('Rango Adiccional: ', range)
+        // console.log('Rango Adiccional: ', range)
         return range.additional
       } else {
         return lastRange.additional
@@ -321,7 +378,7 @@ class PricingBuilder {
     let DOMmodulePlurOrSing = document.getElementById('plur-or-sing')
     
     let startDiscount = this.tableDiscounts.table[0].totalModules
-    let modulesToGetDiscount = startDiscount - this.amountModules
+    let modulesToGetDiscount = (startDiscount - this.amountModules)
     
     if (this.amountModules >= startDiscount) {
       DOMpreviousPriceBlock.classList.remove('ds-none')
