@@ -100,3 +100,41 @@ header {
   color: #2F4DAA;
 } */
 
+input[name="buk-plan"] {
+  appearance: none;
+  width: 0;
+  height: 0;
+}
+
+.modules input[type="checkbox"],
+.addons input[type="checkbox"] {
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+}
+
+.modules .input-control,
+.addons .input-control {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.modules .input-control label,
+.addons .input-control label {
+  background: #F6F8FE;
+  border: 1px solid #D9E3FC;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 52px;
+  width: 85%;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.modules .input-control label span,
+.addons .input-control label span {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
