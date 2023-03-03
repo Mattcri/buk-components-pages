@@ -127,13 +127,6 @@ const tableDiscounts = new TableBuilder([
 //   price: 1.9,
 //   module: 1
 // })
-// const asist = new ModuleFeature({
-//   factor: 1.38,
-//   name: 'm-asist',
-//   price: 1.9,
-//   module: 1
-// })
-
 
 class PricingBuilder {
   constructor({
@@ -214,12 +207,20 @@ class PricingBuilder {
 
   addFactorAddon() {
     let addonsCheckbox = [...document.querySelectorAll('.addons input[type="checkbox"')]
+    let DOMtrainingsModule = document.getElementById('module-6')
+    let DOMbukPlayAddon = document.getElementById('addon-7')
     let addons = addonsCheckbox.filter(a => a.checked)
     let names = addons.map(e => e.name)
     let searcher = this.searchAddons(names)
     let sumFactors = Number(searcher.reduce((prev, acum) => prev + acum, 0).toFixed(2))
     this.factorsAddonsSelected = searcher
-    return sumFactors
+    // En caso de que Capacitaciones no este true pero BukPlay si este true restar el factor de Bukplay
+    if (!DOMtrainingsModule.checked && DOMbukPlayAddon.checked) {
+      return sumFactors - 0.8
+    } else {
+      return sumFactors
+    }
+
   }
 
   addModule() {
@@ -376,6 +377,8 @@ class PricingBuilder {
     let DOMdiscounMessageBlock = document.getElementById('discount-message')
     let DOMbadgeBlock = document.getElementById('badge-discount')
     let DOMmodulePlurOrSing = document.getElementById('plur-or-sing')
+    let DOMtrainingsModule = document.getElementById('module-6')
+    let DOMbukPlayAddon = document.getElementById('addon-7')
     
     let startDiscount = this.tableDiscounts.table[0].totalModules
     let modulesToGetDiscount = (startDiscount - this.amountModules)
@@ -393,16 +396,31 @@ class PricingBuilder {
       DOMbadgeBlock.classList.add('ds-none')
       DOMdiscountAlertBlock.classList.remove('ds-none')
     }
+
+    if (DOMtrainingsModule.checked) {
+      DOMbukPlayAddon.parentElement.parentElement.classList.remove('ds-none')
+    } else {
+      DOMbukPlayAddon.parentElement.parentElement.classList.add('ds-none')
+    }
+
   }
 
   hideDOMblocks () {
     let DOMpreviousPriceBlock = document.getElementById('whithout-discount')
     let DOMdiscountAlertBlock = document.getElementById('discount-alert')
     let DOMdiscounMessageBlock = document.getElementById('discount-message')
+    let DOMtrainingsModule = document.getElementById('module-6')
+    let DOMbukPlayAddon = document.getElementById('addon-7')
     
     DOMpreviousPriceBlock.classList.add('ds-none')
     DOMdiscountAlertBlock.classList.add('ds-none')
     DOMdiscounMessageBlock.classList.add('ds-none')
+
+    if (DOMtrainingsModule.checked) {
+      DOMbukPlayAddon.parentElement.parentElement.classList.remove('ds-none')
+    } else {
+      DOMbukPlayAddon.parentElement.parentElement.classList.add('ds-none')
+    }
   }
 
   betweenRange (start, end, employees, obj) {
@@ -422,7 +440,11 @@ const pricing = new PricingBuilder({
 })
 
 // Posible solución para agregar los factores dinamicamente:
-// crear un array con los valores de los factores y una llave valor con
-// el nombre del módulo seleccionado y valor del factor, luego hacer el match con el atributo
-// "name" del input html, de esa manera rescatamos el valor que contenga
-// el factor dentro del objeto encontrado en el array.
+// crear un Array con objetos llave valor del name del módulo y el valor del factor
+// Luego hacer match con los módulos y addons seleccionados
+// guardando en un Array los valores que estén checked y hacer
+// la comparación, si los elementos seleccionados están en el Array
+// maestro de comparación, que tiene los objetos llave valor de los
+// names y de los factores
+// Posteriormente rescatamos el valor de cada factor que contengan los
+// elementos que hagan match y los sumamos
