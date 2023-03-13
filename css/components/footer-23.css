@@ -1,9 +1,80 @@
 main {
   background-color: #F6F8FE;
-  height: 50rem;
+  height: 30rem;
 }
 
 footer {
   background: var(--color-white);
-  height: 100px;
+  color: var(--color-blue-buk);
+  font-size: 1rem;
+}
+/* @media only screen and (min-width:767px) {
+  footer {
+    font-size: 1.125rem;
+  }
+} */
+
+footer h3 {
+  font-size: 1.5rem;
+  color: var(--color-orange-buk);
+  margin-bottom: 10px;
+}
+footer h4 {
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+}
+
+.footer {
+  border-bottom: 3px solid var(--color-light-blue);
+}
+
+.footer__menu h3 {
+  margin-bottom: 12px;
+}
+
+.footer__solutions .buk-grid [class*="buk-col"] {
+  padding-top: 0;
+  /* padding-bottom: 0; */
+}
+/* .footer__solutions .ds-flex [class*="footer__"] {
+  width: calc(50% - 8px);
+} */
+
+.footer__list li:not(:last-of-type) {
+  margin-bottom: 6px;
+}
+
+footer .brand {
+  padding: 63px 0;
+}
+
+.brand__logo {
+  width: 70%;
+}
+.brand__logo p {
+  margin-top: 1rem;
+}
+@media only screen and (min-width: 767px) {
+  .brand__logo {
+    width: auto;
+  }
+  .brand__logo p {
+    margin-top: 0;
+  }
+}
+
+.brand__rrss {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand__rrss a {
+  display: inline-block;
+}
+.brand__rrss a .fill-rrss {
+  transition: fill .3s ease-in;
+}
+.brand__rrss a:hover .fill-rrss {
+  fill: var(--color-orange-buk);
 }
