@@ -155,7 +155,7 @@ class PricingBuilder {
     document.getElementById('esential').click()
   }
 
-  director() {
+  run() {
     this.checkPlan()
     this.addFactor()
     this.addModule()
@@ -360,22 +360,26 @@ class PricingBuilder {
 
   displayPrice (amount) {
     let DOMprice = document.getElementById('price')
+    let DOMpriceMobile = document.getElementById('price-mobile')
     DOMprice.textContent = amount.toFixed(2)
+    DOMpriceMobile.textContent = amount.toFixed(2)
   }
 
   displayPreviousPrice (amount, discount) {
     let DOMpreviousPrice = document.getElementById('previous-price')
-    let DOMbadgePrice = document.querySelector('.discount-percent')
+    let DOMpreviousPriceMobile = document.getElementById('previous-price-mobile')
+    let DOMbadgePrice = [...document.querySelectorAll('.discount-percent')]
     DOMpreviousPrice.textContent = amount.toFixed(2)
-    DOMbadgePrice.textContent = `${discount}%`
+    DOMpreviousPriceMobile.textContent = amount.toFixed(2)
+    DOMbadgePrice.forEach(item => item.textContent = `${discount}%`)
   }
 
   handlerDOMactions () {
-    let DOMpreviousPriceBlock = document.getElementById('whithout-discount')
+    let DOMpreviousPriceBlock = [...document.querySelectorAll('.price__without-discount')]
     let DOMattainModules = document.getElementById('modules-attain')
     let DOMdiscountAlertBlock = document.getElementById('discount-alert')
     let DOMdiscounMessageBlock = document.getElementById('discount-message')
-    let DOMbadgeBlock = document.getElementById('badge-discount')
+    let DOMbadgeBlock = [...document.querySelectorAll('.price__badge')]
     let DOMmodulePlurOrSing = document.getElementById('plur-or-sing')
     let DOMtrainingsModule = document.getElementById('module-6')
     let DOMbukPlayAddon = document.getElementById('addon-7')
@@ -384,16 +388,16 @@ class PricingBuilder {
     let modulesToGetDiscount = (startDiscount - this.amountModules)
     
     if (this.amountModules >= startDiscount) {
-      DOMpreviousPriceBlock.classList.remove('ds-none')
+      DOMpreviousPriceBlock.forEach(item => item.classList.remove('ds-none'))
       DOMdiscounMessageBlock.classList.remove('ds-none')
-      DOMbadgeBlock.classList.remove('ds-none')
+      DOMbadgeBlock.forEach(item => item.classList.remove('ds-none'))
       DOMdiscountAlertBlock.classList.add('ds-none')
     } else {
-      DOMpreviousPriceBlock.classList.add('ds-none')
+      DOMpreviousPriceBlock.forEach(item => item.classList.add('ds-none'))
       DOMattainModules.textContent = modulesToGetDiscount
       modulesToGetDiscount != 1 ? DOMmodulePlurOrSing.textContent = 'Módulos' : DOMmodulePlurOrSing.textContent = 'Módulo'
       DOMdiscounMessageBlock.classList.add('ds-none')
-      DOMbadgeBlock.classList.add('ds-none')
+      DOMbadgeBlock.forEach(item => item.classList.add('ds-none'))
       DOMdiscountAlertBlock.classList.remove('ds-none')
     }
 

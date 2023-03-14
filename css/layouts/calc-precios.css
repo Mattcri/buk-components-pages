@@ -10,20 +10,37 @@ header {
   /* padding: 1.5rem 1rem; */
 }
 
-@media only screen and (min-width: 1020px) {
+@media only screen and (min-width: 767px) {
   .sticky-price {
     position: sticky;
     top: 50px;
   }
 }
 
+.show-price-mobile-sticky {
+  position: sticky !important;
+  bottom: 20px;
+}
+.show-price-mobile-sticky .price {
+  box-shadow: var(--shadow-1);
+}
+
+.show-price-mobile-sticky .price__badge p {
+  font-size: 0.75rem;
+}
+
 #n-colab {
   padding: .5rem 1rem;
-  width: 85%;
+  width: 100%;
   font-size: 2rem;
   font-weight: 600;
   color: var(--color-primary);
   text-align: center;
+}
+@media only screen and (min-width: 1020px) {
+  #n-colab {
+    width: 85%;
+  }
 }
 
 .plan-type .input-control {
@@ -92,7 +109,16 @@ header {
   font-size: 1.5rem;
 }
 
-#previous-price {
+.price__without-discount {
+  font-size: 0.875rem;
+}
+@media only screen and (min-width: 767px) {
+  .price__without-discount {
+    font-size: 1rem;
+  }
+}
+
+#previous-price, #previous-price-mobile {
   text-decoration: line-through;
 }
 
