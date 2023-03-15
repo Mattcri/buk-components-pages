@@ -388,13 +388,15 @@ class PricingBuilder {
   }
 
   hideDOMblocks() {
-    let DOMpreviousPriceBlock = document.getElementById('whithout-discount')
+    let DOMpreviousPriceBlock = [...document.querySelectorAll('.price__without-discount')]
+    let DOMdiscountBadge = [...document.querySelectorAll('.price__badge')]
     let DOMdiscountAlertBlock = document.getElementById('discount-alert')
     let DOMdiscounMessageBlock = document.getElementById('discount-message')
     let DOMtrainingsModule = document.getElementById('module-6')
     let DOMbukPlayAddon = document.getElementById('addon-7')
 
-    DOMpreviousPriceBlock.classList.add('ds-none')
+    DOMdiscountBadge.forEach(item => item.classList.add('ds-none'))
+    DOMpreviousPriceBlock.forEach(item => item.classList.add('ds-none'))
     DOMdiscountAlertBlock.classList.add('ds-none')
     DOMdiscounMessageBlock.classList.add('ds-none')
 
