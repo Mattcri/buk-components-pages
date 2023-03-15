@@ -1,15 +1,15 @@
 function CalculateFactorAdelantos() {
   const numberCollaborators = document.getElementById('n-colab').value
   const RANGES = [
-    { 'start': 1, 'end': 100, 'factor': 1.3 },
-    { 'start': 101, 'end': 500, 'factor': 1.3 },
-    { 'start': 501, 'end': 1000, 'factor': 1.5 },
-    { 'start': 1001, 'end': 2500, 'factor': 1.5 },
-    { 'start': 2501, 'end': 5000, 'factor': 1.6 },
-    { 'start': 5001, 'end': 7500, 'factor': 1.7 },
-    { 'start': 7501, 'end': 10000, 'factor': 1.7 },
-    { 'start': 10001, 'end': 15000, 'factor': 1.7 },
-    { 'start': 15001, 'end': 20000, 'factor': 1.72 },
+    { 'start': 1, 'end': 100, 'factor': 0.5 },
+    { 'start': 101, 'end': 500, 'factor': 0.65 },
+    { 'start': 501, 'end': 1000, 'factor': 0.7 },
+    { 'start': 1001, 'end': 2500, 'factor': 0.7 },
+    { 'start': 2501, 'end': 5000, 'factor': 0.75 },
+    { 'start': 5001, 'end': 7500, 'factor': 0.8 },
+    { 'start': 7501, 'end': 10000, 'factor': 0.8 },
+    { 'start': 10001, 'end': 15000, 'factor': 0.8 },
+    { 'start': 15001, 'end': 20000, 'factor': 0.8 },
   ]
 
   const lastRange = RANGES[RANGES.length - 1]
