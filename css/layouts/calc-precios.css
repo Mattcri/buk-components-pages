@@ -25,10 +25,6 @@ header {
   box-shadow: var(--shadow-1);
 }
 
-.show-price-mobile-sticky .price__badge p {
-  font-size: 0.75rem;
-}
-
 #n-colab {
   padding: .5rem 1rem;
   width: 100%;
@@ -102,20 +98,32 @@ header {
   right: .75rem;
   top: .5rem;
 }
+.price__badge p {
+  font-size: 0.75rem;
+}
 
 .price__tax {
   color: #F8A12A;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .price__without-discount {
   font-size: 0.875rem;
 }
 @media only screen and (min-width: 767px) {
+  .price__badge p {
+    font-size: 0.938rem;
+  }
+
+  .price__tax {
+    font-size: 1.5rem;
+  }
+
   .price__without-discount {
     font-size: 1rem;
   }
+
 }
 
 #previous-price, #previous-price-mobile {

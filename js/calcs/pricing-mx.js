@@ -60,6 +60,13 @@
 //   }
 // }
 
+const mxFormatter = new Intl.NumberFormat("es-MX", {
+  style: "currency",
+  currency: "MXN",
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0,
+});
+
 class TableBuilder {
   constructor(table) {
     this.table = table
@@ -339,16 +346,16 @@ class PricingBuilder {
   displayPrice(amount) {
     let DOMprice = document.getElementById('price')
     let DOMpriceMobile = document.getElementById('price-mobile')
-    DOMprice.textContent = amount.toFixed(2)
-    DOMpriceMobile.textContent = amount.toFixed(2)
+    DOMprice.textContent = mxFormatter.format(amount)
+    DOMpriceMobile.textContent = mxFormatter.format(amount)
   }
 
   displayPreviousPrice(amount, discount) {
     let DOMpreviousPrice = document.getElementById('previous-price')
     let DOMpreviousPriceMobile = document.getElementById('previous-price-mobile')
     let DOMbadgePrice = [...document.querySelectorAll('.discount-percent')]
-    DOMpreviousPrice.textContent = amount.toFixed(2)
-    DOMpreviousPriceMobile.textContent = amount.toFixed(2)
+    DOMpreviousPrice.textContent = mxFormatter.format(amount)
+    DOMpreviousPriceMobile.textContent = mxFormatter.format(amount)
     DOMbadgePrice.forEach(item => item.textContent = `${discount}%`)
   }
 
