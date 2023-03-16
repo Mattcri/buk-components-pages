@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Precios Buk CO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layouts/calc-precios.css">
+  <link rel="preload" as="style" href="../css/grid-system.css" onload="this.rel='stylesheet'">
+  <link rel="preload" as="style" href="../css/margins-paddings.css" onload="this.rel='stylesheet'">
+</head>
+
+<body>
+  <header></header>
+
+  <main>
+    <section class="buk-py-5 buk-py-lg-5">
+      <div class="boxer">
+        <h2 class="txt-center buk-mb-4">Precios Buk CO</h2>
+        <div class="buk-grid">
+
+          <div class="buk-col buk-col-md-6 buk-col-ed-md-13 buk-col-lg-4 buk-col-ed-lg-13">
+            <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-px-lg-2 buk-py-lg-2 sticky-price">
+              <h3 class="txt-center buk-mb-1">Valor de tu Buk</h3>
+              <p class="txt-center buk-mb-1">Mensual</p>
+              <div class="price pst-relative txt-center buk-py-4 buk-px-2 buk-py-md-4 buk-px-md-2">
+                <div class="price__badge" id="badge-discount">
+                  <p>Dcto. <span class="discount-percent"></span></p>
+                </div>
+                <p>
+                  <span class="price__current">COP</span>
+                  <span class="price__mount" id="price">0</span>
+                </p>
+                <!-- <span class="price__tax">+IVA</span> -->
+                <!-- <br> -->
+                <div class="price__without-discount buk-mt-1" id="whithout-discount">
+                  <span>ANTES: COP <span id="previous-price">0</span></span>
+                </div>
+              </div>
+
+              <div class="txt-center buk-mt-3">
+                <button class="btn btn--1">Empieza Ahora</button>
+              </div>
+
+              <div class="buk-mt-3 txt-center" id="discount-alert">
+                <p>
+                  Adquiere
+                  <span id="modules-attain">2</span>
+                  <span id="plur-or-sing">Modulos</span>
+                  para conocer tu descuento
+                </p>
+              </div>
+              <div class="buk-mt-3 txt-center" id="discount-message">
+                <p>
+                  Descuento incluido en el valor final del precio
+                </p>
+                <p>Agrega otro módulo para obtener mayores beneficios</p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="buk-col buk-col-md-6 buk-row-st-md-1 buk-col-lg-7 buk-col-st-lg-1 buk-row-st-lg-1">
+            <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-p-lg-2 buk-mb-5">
+              <h3 class="buk-mb-1">Número de colaboradores</h3>
+              <p class="buk-mb-1">Indica la cantidad de colaboradores que trabajan en tu empresa</p>
+              <input class="n-colab-input" value="250" type="number" id="n-colab" min="1" onchange="pricing.run()">
+            </div>
+
+            <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-p-lg-2 plan-type buk-mb-5">
+              <h3 class="buk-mb-1">Gestión de personas</h3>
+              <p class="buk-mb-3">Elige una base: Esencial o Pro</p>
+              <div class="ds-flex none-lg-wrap gap-lg--24">
+                <div class="input-control">
+                  <label for="esential" data-plan-base="buk-base">
+                    <div class="plan-type__detail">
+                      <h3 class="buk-mb-2 txt-center">Esencial</h3>
+                      <ul>
+                        <li>Ficha de colaboradores</li>
+                        <li>Organigrama</li>
+                        <li>Portal del colaborador</li>
+                        <li>Registro de vacaciones, licencias y permisos básicos</li>
+                        <li>Atributos personalizados</li>
+                        <li>Usuarios y perfiles</li>
+                        <li>Reportería</li>
+                        <li>App web</li>
+                        <li>Pack de beneficios</li>
+                      </ul>
+                    </div>
+                    <input type="radio" name="buk-plan" id="esential" data-factor="1" data-module="1"
+                      onclick="pricing.run()">
+                  </label>
+                </div>
+                <div class="input-control">
+                  <label for="pro" data-plan-base="buk-base">
+                    <div class="plan-type__detail">
+                      <h3 class="buk-mb-2 txt-center">Pro</h3>
+                      <ul>
+                        <li>Todo lo esecial</li>
+                        <li>Tipos de asistencia personalizada</li>
+                        <li>Historial de cambios</li>
+                        <li>Juego de datos</li>
+                      </ul>
+                    </div>
+                    <input type="radio" name="buk-plan" id="pro" data-factor="1.2" data-module="2"
+                      onclick="pricing.run()">
+                  </label>
+                </div>
+              </div>
+            </div> <!-- end-shadow-box -->
+            <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-p-lg-2 buk-mb-5 modules">
+              <h3 class="buk-mb-1">Módulos</h3>
+              <p class="buk-mb-3">Selecciona los módulos que necesitas</p>
+              <div class="buk-grid">
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-1">
+                      <span>Sistema de nómina</span>
+                    </label>
+                    <input type="checkbox" name="m-remu" value="" id="module-1" onclick="pricing.run()">
+                  </div>
+                </div>
+                <!-- <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-2">
+                      <span>Control de asistencia</span>
+                    </label>
+                    <input type="checkbox" name="m-asist" value="" id="module-2" onclick="pricing.run()">
+                  </div>
+                </div> -->
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-3">
+                      <span>Firma digital y gestión documental</span>
+                    </label>
+                    <input type="checkbox" name="m-firma" value="" id="module-3" onclick="pricing.run()">
+                  </div>
+                </div>
+                <!-- <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-4">
+                      <span>Adelantos de sueldo</span>
+                    </label>
+                    <input type="checkbox" name="m-adela" value="" id="module-4" onclick="pricing.run()">
+                  </div>
+                </div> -->
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-5">
+                      <span>Gestión de desempeño</span>
+                    </label>
+                    <input type="checkbox" name="m-desep" id="module-5" onclick="pricing.run()">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-6">
+                      <span>Capacitaciones-LMS</span>
+                    </label>
+                    <input type="checkbox" name="m-capac" id="module-6" onclick="pricing.run()">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-7">
+                      <span>Comunicaciones y reconocimiento</span>
+                    </label>
+                    <input type="checkbox" name="m-comun" id="module-7" onclick="pricing.run()">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-8">
+                      <span>Beneficios laborales</span>
+                    </label>
+                    <input type="checkbox" name="m-benef" id="module-8" onclick="pricing.run()">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-9">
+                      <span>Encuestas</span>
+                    </label>
+                    <input type="checkbox" name="m-encue" id="module-9" onclick="pricing.run()">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-10">
+                      <span>Reclutamiento y selección</span>
+                    </label>
+                    <input type="checkbox" name="m-selec" id="module-10" onclick="pricing.run()">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="module-11">
+                      <span>Onboarding</span>
+                    </label>
+                    <input type="checkbox" name="m-onboa" id="module-11" onclick="pricing.run()">
+                  </div>
+                </div>
+              </div>
+            </div> <!-- end box -->
+
+            <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-p-lg-2 addons">
+              <h3 class="buk-mb-1">Addons</h3>
+              <p class="buk-mb-3">Agrega los complementos que quieras</p>
+              <div class="buk-grid">
+
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="addon-1">
+                      <span>Workflows</span>
+                    </label>
+                    <input type="checkbox" name="a-work" id="addon-1" onclick="pricing.run()">
+                  </div>
+                </div>
+                <!-- <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="addon-2">
+                      <span>Tratos</span>
+                    </label>
+                    <input type="checkbox" name="a-trat" id="addon-2" onclick="pricing.run()">
+                  </div>
+                </div> -->
+                <!-- <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="addon-3">
+                      <span>Honorarios</span>
+                    </label>
+                    <input type="checkbox" name="a-hono" id="addon-3" onclick="pricing.run()">
+                  </div>
+                </div> -->
+                <!-- <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="addon-4">
+                      <span>Integración Liecencias Médicas Electrónicas</span>
+                    </label>
+                    <input type="checkbox" name="a-ilme" id="addon-4" onclick="pricing.run()">
+                  </div>
+                </div> -->
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="addon-5">
+                      <span>Autenticación Single Sign On (SSO)</span>
+                    </label>
+                    <input type="checkbox" name="a-sso" id="addon-5" onclick="pricing.run()">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="addon-6">
+                      <span>API</span>
+                    </label>
+                    <input type="checkbox" name="a-api" id="addon-6" onclick="pricing.run()">
+                  </div>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <div class="input-control">
+                    <label for="addon-7">
+                      <span>BukPlay</span>
+                    </label>
+                    <input type="checkbox" name="a-play" id="addon-7" onclick="pricing.run()">
+                  </div>
+                </div>
+
+              </div>
+            </div> <!-- end-box-addons -->
+
+          </div>
+          <div class="buk-col v-mobile show-price-mobile-sticky">
+            <div class="price pst-relative txt-center buk-py-2 buk-px-2 ">
+              <div class="price__badge" id="badge-discount">
+                <p>Dcto. <span class="discount-percent"></span></p>
+              </div>
+              <p>
+                <span class="price__current">COP</span>
+                <span class="price__mount" id="price-mobile">0</span>
+                <!-- <span class="price__tax">+IVA</span> -->
+              </p>
+              <!-- <br> -->
+              <div class="price__without-discount" id="whithout-discount-mobile">
+                <span>ANTES: COP <span id="previous-price-mobile">0</span></span>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- end-grid -->
+    </section>
+  </main>
+
+  <script src="../js/calcs/pricing-co.js" defer></script>
+</body>
+
+</html>
