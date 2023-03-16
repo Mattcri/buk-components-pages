@@ -201,7 +201,7 @@ class PricingBuilder {
     this.factorsAddonsSelected = searcher
     // En caso de que Capacitaciones no este true pero BukPlay si este true restar el factor de Bukplay
     if (!DOMtrainingsModule.checked && DOMbukPlayAddon.checked) {
-      return sumFactors - 0.8
+      return sumFactors - 0.62
     } else {
       return sumFactors
     }
@@ -243,7 +243,7 @@ class PricingBuilder {
       // { name: 'a-ilme', factor: calcFactorLME() },
       { name: 'a-sso', factor: 0.1 },
       { name: 'a-api', factor: 0.1 },
-      { name: 'a-play', factor: 0.8 },
+      { name: 'a-play', factor: 0.62 },
     ]
     let matches = VALUEADDONS.filter(addon => input.includes(addon.name))
     let factorsValues = matches.map(e => e.factor)
