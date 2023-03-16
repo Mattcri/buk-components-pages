@@ -134,6 +134,7 @@ class PricingBuilder {
     tableAdditional,
     tableDiscounts,
     baseValues = {},
+    amountAddons = 0,
     amountModules = 0,
     amountFactors = 0,
     factorsModulesSelected = 0,
@@ -143,6 +144,7 @@ class PricingBuilder {
     this.tableAdditional = tableAdditional
     this.tableDiscounts = tableDiscounts
     this.baseValues = baseValues
+    this.amountAddons = amountAddons
     this.amountModules = amountModules
     this.amountFactors = amountFactors
     this.factorsModulesSelected = factorsModulesSelected
@@ -159,6 +161,7 @@ class PricingBuilder {
     this.checkPlan()
     this.addFactor()
     this.addModule()
+    this.addAddon()
     if (this.minPrice() > this.calcPrice()) {
       this.hideDOMblocks()
       this.displayPrice(this.minPrice())
@@ -230,6 +233,12 @@ class PricingBuilder {
     // console.log(this.amountModules)
   }
 
+  addAddon() {
+    let addonsCheckbox = [...document.querySelectorAll('.addons input[type="checkbox"')]
+    let addons = addonsCheckbox.filter(a => a.checked)
+    this.amountAddons = addons.length
+  }
+
   searchModules(input) {
     const VALUEMODULES = [
       { name: 'm-remu', factor: 1 },
@@ -269,7 +278,7 @@ class PricingBuilder {
     const basePeopleManagment = 2.3
     const priceForModule = 0.1
     // Se aplica - 1 pq dentro del valor basePeopleManagment va el valor basica, sobrando un módulo si se toma en cuenta el valor this.amountModules
-    let calcMinPrice = Number((basePeopleManagment + (priceForModule * (this.amountModules - 1))).toFixed(2))
+    let calcMinPrice = Number((basePeopleManagment + (priceForModule * (this.amountModules - 1 + this.amountAddons)) ).toFixed(2))
     console.log('Min Price: ', calcMinPrice)
     return calcMinPrice
   }
