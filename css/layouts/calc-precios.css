@@ -30,7 +30,7 @@ header {
   width: 100%;
   font-size: 2rem;
   font-weight: 600;
-  color: var(--color-primary);
+  color: var(--color-blue-buk);
   text-align: center;
 }
 @media only screen and (min-width: 1020px) {
@@ -52,12 +52,31 @@ header {
   background: #F6F8FE;
   box-shadow: 0 0 16px 4px rgba(43,60,106, .12);
   border-radius: 1rem;
+  color: var(--color-blue-buk);
   cursor: pointer;
   padding: 1.5rem 1rem;
+  position: relative;
+}
+.plan-type__detail li {
+  padding-left: 32px;
+  position: relative;
+}
+.plan-type__detail li::before {
+  content: "";
+  background-image: url("https://www.buk.cl/hubfs/2023/Buk-ui-kit/precios/bullet-arrow-prices-no-selected.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 0;
 }
 .plan-type__detail li:not(:last-of-type) {
   margin-bottom: .5rem;
 }
+.plan-type__btn {
+  padding-top: 2rem;
+}
+
 .plan-type__detail.SELECTED {
   background: #2F4DAA;
   color: #fff;
@@ -65,10 +84,30 @@ header {
 .plan-type__detail.SELECTED h3 {
   color: #fff;
 }
+.plan-type__detail.SELECTED li::before {
+  background-image: url("https://www.buk.cl/hubfs/2023/Buk-ui-kit/precios/bullet-arrow-prices-selected.svg");
+}
+.plan-type__detail.SELECTED .plan-type__btn span {
+  background: var(--color-yellow-buk);
+  border-color: var(--color-yellow-buk);
+}
+@media only screen and (min-width: 767px) {
+  .plan-type__detail li:not(:last-of-type) {
+    margin-bottom: 1rem;
+  }
+}
 @media only screen and (min-width: 1020px) {
   .plan-type__detail {
     padding: 2rem 1.5rem;
     height: 100%;
+  }
+  .plan-type__detail ul {
+    margin-bottom: 48px;
+  }
+  .plan-type__btn {
+    position: absolute;
+    bottom: 32px;
+    width: calc(100% - 32px);
   }
 }
 
@@ -79,45 +118,46 @@ header {
   font-weight: 900;
 }
 
+.price__tax {
+  color: #F8A12A;
+  font-weight: 600;
+  /* font-size: 1.25rem; */
+}
+
 @media only screen and (min-width: 767px) {
-  .price__current {
+  .price__current,
+  .price__mount,
+  .price__tax {
     font-size: 1.5rem;
   }
-
-  .price__mount {
-    font-size: 1.75rem;
-  }
+  
 }
 
 .price__badge {
   background: #2B3C6A;
-  border-radius: 8px;
+  border-radius: 32px;
   color: var(--color-white);
   padding: .25rem .5rem;
   position: absolute;
-  right: .75rem;
-  top: .5rem;
+  right: 1rem;
+  top: -0.75rem;
 }
 .price__badge p {
-  font-size: 0.75rem;
-}
-
-.price__tax {
-  color: #F8A12A;
-  font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 0.875rem;
 }
 
 .price__without-discount {
   font-size: 0.875rem;
 }
 @media only screen and (min-width: 767px) {
-  .price__badge p {
-    font-size: 0.938rem;
+  .price__badge {
+    padding: .5rem 1rem;
+    top: -1.25rem;
+    right: 1.25rem;
   }
 
-  .price__tax {
-    font-size: 1.5rem;
+  .price__badge p {
+    font-size: 0.938rem;
   }
 
   .price__without-discount {
@@ -171,4 +211,16 @@ input[name="buk-plan"] {
   display: flex;
   align-items: center;
   height: 100%;
+  color: var(--color-blue-buk);
+}
+
+#discount-alert, #discount-message {
+  color: var(--color-blue-buk);
+}
+#discount-message strong {
+  font-size: 1.25rem;
+}
+
+#modules-attain, #plur-or-sing {
+  font-weight: bold;
 }

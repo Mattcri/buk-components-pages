@@ -9,9 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/main-23.css">
   <link rel="stylesheet" href="../css/layouts/calc-precios.css">
   <link rel="preload" as="style" href="../css/grid-system.css" onload="this.rel='stylesheet'">
   <link rel="preload" as="style" href="../css/margins-paddings.css" onload="this.rel='stylesheet'">
@@ -29,7 +29,7 @@
           <div class="buk-col buk-col-md-6 buk-col-ed-md-13 buk-col-lg-4 buk-col-ed-lg-13">
             <div class="shadow-box-fluid buk-px-2 buk-py-3 buk-px-lg-2 buk-py-lg-2 sticky-price">
               <h3 class="txt-center buk-mb-1">Valor de tu Buk</h3>
-              <p class="txt-center buk-mb-1">Mensual</p>
+              <p class="txt-center buk-mb-3">Mensual</p>
               <div class="price pst-relative txt-center buk-py-4 buk-px-2 buk-py-md-4 buk-px-md-2">
                 <div class="price__badge" id="badge-discount">
                   <p>Dcto. <span class="discount-percent"></span></p>
@@ -58,10 +58,8 @@
                 </p>
               </div>
               <div class="buk-mt-3 txt-center" id="discount-message">
-                <p>
-                  Descuento incluido en el valor final del precio
-                </p>
-                <p>Agrega otro módulo para obtener mayores beneficios</p>
+                <p>Agrega <strong>otro módulo</strong> para obtener mayores beneficios</p>
+                <p>Descuento incluido en el valor final del precio</p>
               </div>
 
             </div>
@@ -81,7 +79,7 @@
                 <div class="input-control">
                   <label for="esential" data-plan-base="buk-base">
                     <div class="plan-type__detail">
-                      <h3 class="buk-mb-2 txt-center">Esencial</h3>
+                      <h3 class="buk-mb-3 txt-center">Esencial</h3>
                       <ul>
                         <li>Ficha de colaboradores</li>
                         <li>Organigrama</li>
@@ -93,6 +91,9 @@
                         <li>App web</li>
                         <li>Pack de beneficios</li>
                       </ul>
+                      <div class="plan-type__btn buk-pt-6 txt-center">
+                        <span class="btn">¡Lo quiero!</span>
+                      </div>
                     </div>
                     <input type="radio" name="buk-plan" id="esential" data-factor="1" data-module="1"
                       onclick="pricing.run()">
@@ -101,7 +102,7 @@
                 <!-- <div class="input-control">
                   <label for="pro" data-plan-base="buk-base">
                     <div class="plan-type__detail">
-                      <h3 class="buk-mb-2 txt-center">Pro</h3>
+                      <h3 class="buk-mb-3 txt-center">Pro</h3>
                       <ul>
                         <li>Todo lo esecial</li>
                         <li>Tipos de asistencia personalizada</li>
