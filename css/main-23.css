@@ -59,6 +59,8 @@ h6 { font-size: 1.25rem; }
 .h2 { font-size: 2rem; }
 .h3 { font-size: 1.5rem; }
 .h4 { font-size: 1.25rem }
+.h5 { font-size: 1.25rem; }
+.h6 { font-size: 1.25rem; }
 
 p {
   font-size: 1.125rem;
@@ -158,6 +160,7 @@ header.sticky { box-shadow: 0px 7px 7px 0px rgba(51,51,51,0.3) }
 .ds-block {display:block;}
 .ds-none {display:none;}
 .ds-flex { display: flex; flex-wrap: wrap; gap: .5rem;}
+.flex-dir-row { flex-direction: row; }
 .flex-dir-column { flex-direction: column; }
 .flex-dir-column-rv { flex-direction: column-reverse; }
 .jc-center { justify-content: center; }
@@ -184,7 +187,22 @@ header.sticky { box-shadow: 0px 7px 7px 0px rgba(51,51,51,0.3) }
 
 .bg-light-modules { background: var(--wb-bg-modules); }
 .bg-blue-buk { background: var(--color-blue-buk); }
-.bg-white { background: var(--color-white); } 
+.bg-white { background: var(--color-white); }
+.bg-light-blue { background: var(--color-light-blue); }
+
+.txt-light-modules { color: var(--wb-bg-modules); }
+.txt-blue-buk { color: var(--color-blue-buk); }
+.txt-white {color: var(--color-white);}
+
+.bg-blue-buk h1,
+.bg-blue-buk h2,
+.bg-blue-buk h3,
+.bg-blue-buk h4,
+.bg-blue-buk h5,
+.bg-blue-buk h6,
+.bg-blue-buk p {
+  color: var(--color-white)
+}
 
 @media only screen and (min-width: 767px) {
 /*   h1 { font-size: 2.375rem; } */
@@ -211,8 +229,8 @@ header.sticky { box-shadow: 0px 7px 7px 0px rgba(51,51,51,0.3) }
   .none-md-wrap { flex-wrap: nowrap !important; }
   .ds-md-block {display:block;}
   .ds-md-flex {display: flex !important; flex-wrap: wrap; gap: .5rem; }
-  .flex-md-dir-row { flex-direction: row; }
-  .flex-md-dir-column { flex-direction: column !important; }
+  .flex-dir-md-row { flex-direction: row; }
+  .flex-dir-md-column { flex-direction: column !important; }
   .jc-md-center { justify-content: center; }
   .jc-md-start { justify-content: flex-start; }
   .jc-md-end { justify-content: flex-end; }
@@ -253,6 +271,8 @@ header.sticky { box-shadow: 0px 7px 7px 0px rgba(51,51,51,0.3) }
   .h2 { font-size: 3rem; }
   .h3 { font-size: 2rem; }
   .h4 { font-size: 1.75rem; }
+  .h5 { font-size: 1.5rem; }
+  .h6 { font-size: 1.25rem; }
   
   .pst-lg-relative { position: relative; }
   .pst-lg-absolute { position: absolute; }
@@ -273,8 +293,8 @@ header.sticky { box-shadow: 0px 7px 7px 0px rgba(51,51,51,0.3) }
   .none-lg-wrap { flex-wrap: nowrap !important; }
   .ds-lg-block {display:block;}
   .ds-lg-flex { display: flex !important; flex-wrap: wrap; gap: 0.8rem;}
-  .flex-lg-dir-row { flex-direction: row; }
-  .flex-lg-dir-column { flex-direction: column !important; }
+  .flex-dir-lg-row { flex-direction: row; }
+  .flex-dir-lg-column { flex-direction: column !important; }
   .jc-lg-center { justify-content: center; }
   .jc-lg-start { justify-content: flex-start; }
   .jc-lg-end { justify-content: flex-end;}
