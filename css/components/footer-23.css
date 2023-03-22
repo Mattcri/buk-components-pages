@@ -15,12 +15,12 @@ footer {
 } */
 
 footer h3 {
-  font-size: 1.5rem;
+  font-size: 1.125rem;
   color: var(--color-orange-buk);
   margin-bottom: 10px;
 }
 footer h4 {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 600;
   color: var(--color-blue-buk);
   margin-bottom: 5px;
@@ -54,6 +54,8 @@ footer .brand {
   width: 70%;
 }
 .brand__logo p {
+  font-family: var(--font-family-title);
+  font-size: 1.5rem;
   margin-top: 1rem;
 }
 @media only screen and (min-width: 767px) {
@@ -62,6 +64,7 @@ footer .brand {
   }
   .brand__logo p {
     margin-top: 0;
+    padding-left: .25rem;
   }
 }
 
