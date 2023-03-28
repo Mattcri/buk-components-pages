@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora CTS PE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <!-- <link rel="stylesheet"
+    href="https://www.buk.cl/hs-fs/hub/3790458/hub_generated/template_assets/86075928702/1667614345512/BUK-SITE_CL/CSS/Bux-css/bux-stylesheet.min.css"> -->
+  <!-- <link rel="preload" as="style"
+    href="https://cdn2.hubspot.net/hub/3790458/hub_generated/template_assets/86075928702/1664222292888/BUK-SITE_CL/CSS/Bux-css/calc-remuneraciones.min.css"
+    onload="this.rel='stylesheet'"> -->
+    <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layouts/calc-cts-pe.css">
+  <link rel="preload" as="style" href="../css/grid-system.css" onload="this.rel='stylesheet'">
+  <link rel="preload" as="style" href="../css/margins-paddings.css" onload="this.rel='stylesheet'">
+</head>
+<body>
+  <header></header>
+  <main>
+
+    <section class="buk-py-6 buk-py-lg-6">
+      <div class="boxer">
+        <div class="buk-grid">
+
+          <div class="buk-col buk-col-md-10 buk-col-st-md-2 buk-col-lg-10 buk-col-st-lg-2">
+            <div class="calc-header bg-blue-buk buk-px-2 buk-px-lg-2">
+              <h3>Completa los datos</h3>
+            </div>
+
+            <div class="calc-values bg-white buk-px-2 buk-py-3 buk-px-lg-2 buk-py-lg-2 buk-mt-3">
+              <div class="calc-values__title buk-px-2 buk-px-lg-2 buk-mb-3">
+                <p>Ingresa un periodo</p>
+              </div>
+              <div class="buk-grid buk-px-2 buk-px-lg-2">
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <div class="ds-flex ai-center buk-mb-2">
+                    <img src="https://www.buk.cl/hubfs/2023/Calculadoras/icon-calendar.svg" alt="periodo-cts">
+                    <p class="ft-bold">Periodo CTS</p>
+                  </div>
+                  <div class="select-group">
+                    <select name="" id="cts-period" class="select-control">
+                      <option value="31-05-2023">Periodo Mayo 2023</option>
+                      <option value="30-11-2023">Periodo Noviembre 2023</option>
+                      <option value="31-05-2024">Periodo Mayo 2024</option>
+                      <option value="30-11-2024">Periodo Noviembre 2024</option>
+                      <option value="31-05-2025">Periodo Mayo 2025</option>
+                      <option value="30-11-2025">Periodo Noviembre 2025</option>
+                    </select>
+                  </div>
+
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <div class="ds-flex ai-center buk-mb-2">
+                    <img src="https://www.buk.cl/hubfs/2023/Calculadoras/icon-calendar.svg" alt="periodo-cts">
+                    <p class="ft-bold">Fecha de ingreso</p>
+                  </div>
+                  <div class="date-group">
+                    <input type="date" name="" id="">
+                  </div>
+                </div>
+              </div>
+              <div class="calc-values__title buk-px-2 buk-px-lg-2 buk-my-3">
+                <p>Tiempo computable</p>
+              </div>
+              <div class="buk-grid buk-px-2 buk-px-lg-2 calc-values__fields">
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="cts-months">Tiempo computable meses</label>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <input type="text" id="cts-months" readonly>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="cts-days">Tiempo computable días</label>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <input type="text" id="cts-days" readonly>
+                </div>
+                <div class="buk-col buk-my-1">
+                  <hr>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="salary">Sueldo</label>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <input type="number" min="0" id="salary">
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="family-assignment">Asignación familiar</label>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <input type="number" min="0" id="family-assignment">
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="gratification">Gratificación</label>
+                  <span class="ds-block buk-my-1">*Solo si recibiste en tu misma empresa gratificación de fiestas patrias o navidad en contrato continuado.</span>
+                  <span class="ds-block">*No se debe incluir la bonificación extraordinaria de gratificación</span>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <input type="number" min="0" id="gratification">
+                </div>
+                <div class="buk-mt-4 buk-col txt-center">
+                  <button class="btn btn--4">Calcular CTS</button>
+                </div>
+              </div>
+
+            </div> <!-- calc-values -->
+
+            <div class="buk-grid buk-my-4">
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 calc-values__rst-day-month buk-px-2 buk-py-2 buk-px-md-3">
+                <p class="ft-bold buk-mb-1">Cálculo de CTS en meses</p>
+                <div id="lbl-months">0</div>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 calc-values__rst-day-month buk-px-2 buk-py-2 buk-px-md-3">
+                <p class="ft-bold buk-mb-1">Cálculo de CTS en días</p>
+                <div id="lbl-days">0</div>
+              </div>
+            </div>
+
+            <div class="bg-blue-buk buk-py-3 calc-values__rst-total">
+              <div class="buk-grid buk-px-3">
+                <div class="buk-col buk-col-md-8 buk-col-st-md-3 buk-col-lg-8 buk-col-st-lg-3">
+                  <h3 class="buk-mb-3 txt-center">Total de CTS a depositar</h3>
+                  <div class="input-total txt-center">
+                    <span id="lbl-total-cts">0</span>
+                  </div>
+                  <p class="buk-mt-3">*Esta calculadora contempla las prestaciones mínimas de ley. Los resultados del ejercicio son de carácter informativo y
+                  es responsabilidad del usuario hacer uso correcto del mismo. (texto de ejemplo)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
