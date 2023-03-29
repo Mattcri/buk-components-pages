@@ -15,10 +15,12 @@
   <!-- <link rel="preload" as="style"
     href="https://cdn2.hubspot.net/hub/3790458/hub_generated/template_assets/86075928702/1664222292888/BUK-SITE_CL/CSS/Bux-css/calc-remuneraciones.min.css"
     onload="this.rel='stylesheet'"> -->
-    <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layouts/calc-cts-pe.css">
   <link rel="preload" as="style" href="../css/grid-system.css" onload="this.rel='stylesheet'">
   <link rel="preload" as="style" href="../css/margins-paddings.css" onload="this.rel='stylesheet'">
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" /> -->
+
 </head>
 <body>
   <header></header>
@@ -61,7 +63,20 @@
                     <p class="ft-bold">Fecha de ingreso</p>
                   </div>
                   <div class="date-group">
-                    <input type="date" name="" id="">
+                    <input type="date" name="" id="cts-date">
+                    <!-- <div class="relative max-w-sm">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                            d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                            clip-rule="evenodd"></path>
+                        </svg>
+                      </div>
+                      <input inline-datepicker datepicker-format="dd/mm/yyyy" type="text" id="cts-date"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Select date">
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -73,13 +88,13 @@
                   <label for="cts-months">Tiempo computable meses</label>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                  <input type="text" id="cts-months" readonly>
+                  <input type="text" id="cts-months" readonly value="0">
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
                   <label for="cts-days">Tiempo computable días</label>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                  <input type="text" id="cts-days" readonly>
+                  <input type="text" id="cts-days" readonly value="0">
                 </div>
                 <div class="buk-col buk-my-1">
                   <hr>
@@ -141,5 +156,8 @@
     </section>
 
   </main>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/datepicker.min.js" defer></script> -->
+  <script src="../js/calcs/calc-cts-pe.js" defer></script>
 </body>
 </html>
