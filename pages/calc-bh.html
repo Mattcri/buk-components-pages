@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Building Happiness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/main-23.css">
+  <link rel="stylesheet" href="../css/grid-system.css">
+  <link rel="stylesheet" href="../css/margins-paddings.css">
+</head>
+<body>
+  <header style="height: 50px; background-color: var(--color-blue-buk);"></header>
+  
+  <main>
+    <section class="buk-py-6 buk-py-lg-6">
+      <div class="boxer">
+        <h2 class="buk-mb-5 txt-center">Calculadora Muestra Building Happiness</h2>
+  
+        <div class="buk-grid">
+          <div class="buk-col buk-col-lg-10 buk-col-st-lg-2">
+            <div class="buk-px-2 buk-px-md-4 buk-px-lg-3 buk-py-4 buk-py-lg-2 rounded-16 shadow-1">
+              <div class="ds-flex flex-dir-column flex-dir-md-row jc-md-between ai-md-center">
+                <label for="">Colaboradores Totales</label>
+                <input type="number" min="0" id="num-colab">
+              </div>
+              <div class="ds-flex flex-dir-column flex-dir-md-row jc-md-between ai-md-center buk-mt-3">
+                <label for="">Muestra Mínima</label>
+                <input type="number" min="0" id="min-sample" readonly>
+              </div>
+              <div class="ds-flex flex-dir-column flex-dir-md-row jc-md-between ai-md-center buk-mt-3">
+                <label for="">% del total de Colaboradores</label>
+                <input type="text" id="percent-colab" readonly>
+              </div>
+              <div class="ds-flex flex-dir-column flex-dir-md-row jc-md-between ai-md-center buk-mt-3">
+                <label for="">Categoria empresa</label>
+                <input type="text" id="cop-category" readonly>
+              </div>
+              <div class="buk-mt-5 txt-center">
+                <button class="btn btn--2" onclick="sample.run()">Calcular</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/calcs/calc-bh.js"></script>
+</body>
+</html>
