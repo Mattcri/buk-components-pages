@@ -6,9 +6,10 @@ class TableBuilder {
 }
 
 const tableError = new TableBuilder([
-  { from: 1, till: 100, error: 7, category: 'Pequeña' },
-  { from: 101, till: 500, error: 5, category: 'Mediana' },
-  { from: 501, till: 1000000, error: 3, category: 'Grande' },
+  { from: 1, till: 20, error: 0, mt: 0, category: 'Pequeña' },
+  { from: 21, till: 100, error: 7, mt: -0.025, category: 'Pequeña' },
+  { from: 101, till: 500, error: 5, mt: 0, category: 'Mediana' },
+  { from: 501, till: 1000000, error: 5, mt: 0, category: 'Grande' },
 ])
 
 class calcBuilder {
@@ -52,9 +53,15 @@ class calcBuilder {
     let rangeCategory = range.category
     // console.log('Error: ', rangeError)
 
+    // Intermediate values
+    let deltaColabTmin = colab - range.from
+    let mt = range.mt / 100
+    let errorVariable = Number( (rangeError + mt * deltaColabTmin).toFixed(3) )
+    console.log('Error: ', errorVariable)
+
     let numerator = (colab * this.Zvalue * this.CalcPQ())
     console.log('Numerador: ', numerator)
-    let denominator = ( Math.pow(rangeError, 2) *  (colab - 1) ) + (this.Zvalue * this.CalcPQ())
+    let denominator = ( Math.pow(errorVariable, 2) *  (colab - 1) ) + (this.Zvalue * this.CalcPQ())
     console.log('Denominador: ', denominator)
     let result = Math.round(numerator / denominator)
     console.log('Resultado: ', result)
