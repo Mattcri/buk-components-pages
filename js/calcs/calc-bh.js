@@ -59,11 +59,14 @@ class calcBuilder {
     let errorVariable = Number( (rangeError + mt * deltaColabTmin).toFixed(3) )
     console.log('Error: ', errorVariable)
 
+    let min = this.minSample(colab)
+    console.log('Min: ', min)
     let numerator = (colab * this.Zvalue * this.CalcPQ())
     console.log('Numerador: ', numerator)
     let denominator = ( Math.pow(errorVariable, 2) *  (colab - 1) ) + (this.Zvalue * this.CalcPQ())
     console.log('Denominador: ', denominator)
-    let result = Math.round(numerator / denominator)
+    let resultDivision = Math.round(numerator / denominator)
+    let result = Math.max(resultDivision, min)
     console.log('Resultado: ', result)
     let percent = Number( ((result / colab) * 100).toFixed(2) )
 
@@ -71,6 +74,11 @@ class calcBuilder {
     this.displayValue(DOMpercent, `${percent} %`)
     this.displayValue(DOMcategory, rangeCategory)
 
+  }
+
+  minSample(colab) {
+    let minPercent = 0.15
+    return Math.round(colab * minPercent)
   }
 
   searchRangeError(from, till, employees, obj) {
