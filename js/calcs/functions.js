@@ -26,7 +26,7 @@ acc.forEach(item => {
 //   })
 // })
 
-const t = document.getElementById('test')
-t.addEventListener('click', () => {
-  document.getElementById('test-section').scrollIntoView({behavior: 'smooth'})
-})
+// const t = document.getElementById('test')
+// t.addEventListener('click', () => {
+//   document.getElementById('test-section').scrollIntoView({behavior: 'smooth'})
+// })
