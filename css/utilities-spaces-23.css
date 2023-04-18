@@ -1,0 +1,734 @@
+/* Margins & Paddings Globales */
+/* Mobile */
+
+.buk-mt-0 { margin-top: 0;}
+.buk-mt-1 { margin-top: .5rem;}
+.buk-mt-2 { margin-top: 1rem; }   /* uso frecuente 16px*/
+.buk-mt-3 { margin-top: 1.5rem; } /* uso frecuente 24px*/
+.buk-mt-4 { margin-top: 2rem; }   /* uso frecuente 32px*/
+.buk-mt-5 { margin-top: 2.5rem; }
+.buk-mt-6 { margin-top: 3rem; }
+.buk-mt-7 { margin-top: 3.5rem; } /* uso frecuente 56px*/
+.buk-mt-8 { margin-top: 4rem; }
+.buk-mt-9 { margin-top: 4.5rem; }
+.buk-mt-10 { margin-top: 5rem; }
+.buk-mt-11 { margin-top: 5.5rem;} /* uso frecuente 88px*/
+.buk-mt-12 { margin-top: 6rem;}
+.buk-mt-13 { margin-top: 6.5rem;}
+.buk-mt-14 { margin-top: 7rem;}
+.buk-mt-15 { margin-top: 7.5rem;} /* uso frecuente 120px*/
+
+.buk-mb-0 { margin-bottom: 0; }
+.buk-mb-1 { margin-bottom: .5rem; }
+.buk-mb-2 { margin-bottom: 1rem; } /* uso frecuente */
+.buk-mb-3 { margin-bottom: 1.5rem; } /* uso frecuente */
+.buk-mb-4 { margin-bottom: 2rem; } /* uso frecuente */
+.buk-mb-5 { margin-bottom: 2.5rem; }
+.buk-mb-6 { margin-bottom: 3rem; }
+.buk-mb-7 { margin-bottom: 3.5rem; } /* uso frecuente */
+.buk-mb-8 { margin-bottom: 4rem; }
+.buk-mb-9 { margin-bottom: 4.5rem; }
+.buk-mb-10 { margin-bottom: 5rem; }
+.buk-mb-11 { margin-bottom: 5.5rem;} /* uso frecuente */
+.buk-mb-12 { margin-bottom: 6rem;}
+.buk-mb-13 { margin-bottom: 6.5rem;}
+.buk-mb-14 { margin-bottom: 7rem;}
+.buk-mb-15 { margin-bottom: 7.5rem;} /* uso frecuente */
+
+.buk-my-0 { margin-top: 0; margin-bottom: 0;}
+.buk-my-1 { margin-top: .5rem;margin-bottom: .5rem; }
+.buk-my-2 { margin-top: 1rem;margin-bottom: 1rem; } /* uso frecuente */
+.buk-my-3 { margin-top: 1.5rem;margin-bottom: 1.5rem; } /* uso frecuente */
+.buk-my-4 { margin-top: 2rem;margin-bottom: 2rem; }/* uso frecuente */
+.buk-my-5 { margin-top: 2.5rem; margin-bottom: 2.5rem; }
+.buk-my-6 { margin-top: 3rem; margin-bottom: 3rem; }
+.buk-my-7 { margin-top: 3.5rem;margin-bottom: 3.5rem; }/* uso frecuente */
+.buk-my-8 { margin-top: 4rem;margin-bottom: 4rem;}
+.buk-my-9 {  margin-top: 4.5rem;margin-bottom: 4.5rem;}
+.buk-my-10 { margin-top: 5rem;margin-bottom: 5rem;}
+.buk-my-11 { margin-top: 5.5rem;margin-bottom: 5.5rem; }/* uso frecuente */
+.buk-my-12 { margin-top: 6rem;margin-bottom: 6rem;}
+.buk-my-13 { margin-top: 6.5rem;margin-bottom: 6.5rem;}
+.buk-my-14 { margin-top: 7rem;margin-bottom: 7rem;}
+.buk-my-15 { margin-top: 7.5rem;margin-bottom: 7.5rem; } /* uso frecuente */
+
+.buk-ml-0 { margin-left: 0;}
+.buk-ml-1 { margin-left: .5rem;}
+.buk-ml-2 { margin-left: 1rem; }   /* uso frecuente 16px*/
+.buk-ml-3 { margin-left: 1.5rem; } /* uso frecuente 24px*/
+.buk-ml-4 { margin-left: 2rem; }   /* uso frecuente 32px*/
+.buk-ml-5 { margin-left: 2.5rem; }
+.buk-ml-6 { margin-left: 3rem; }
+.buk-ml-7 { margin-left: 3.5rem; } /* uso frecuente 56px*/
+.buk-ml-8 { margin-left: 4rem; }
+.buk-ml-9 { margin-left: 4.5rem; }
+.buk-ml-10 { margin-left: 5rem; }
+.buk-ml-11 { margin-left: 5.5rem;} /* uso frecuente 88px*/
+.buk-ml-12 { margin-left: 6rem;}
+.buk-ml-13 { margin-left: 6.5rem;}
+.buk-ml-14 { margin-left: 7rem;}
+.buk-ml-15 { margin-left: 7.5rem;} /* uso frecuente 120px*/
+
+.buk-mr-0 { margin-right: 0; }
+.buk-mr-1 { margin-right: .5rem; }
+.buk-mr-2 { margin-right: 1rem; } /* uso frecuente */
+.buk-mr-3 { margin-right: 1.5rem; } /* uso frecuente */
+.buk-mr-4 { margin-right: 2rem; } /* uso frecuente */
+.buk-mr-5 { margin-right: 2.5rem; }
+.buk-mr-6 { margin-right: 3rem; }
+.buk-mr-7 { margin-right: 3.5rem; } /* uso frecuente */
+.buk-mr-8 { margin-right: 4rem; }
+.buk-mr-9 { margin-right: 4.5rem; }
+.buk-mr-10 { margin-right: 5rem; }
+.buk-mr-11 { margin-right: 5.5rem;} /* uso frecuente */
+.buk-mr-12 { margin-right: 6rem;}
+.buk-mr-13 { margin-right: 6.5rem;}
+.buk-mr-14 { margin-right: 7rem;}
+.buk-mr-15 { margin-right: 7.5rem;} /* uso frecuente */
+
+.buk-mx-auto { margin-left: auto; margin-right: auto; }
+.buk-mx-0 { margin-left: 0; margin-right: 0; } 
+.buk-mx-1 { margin-left: .5rem; margin-right: .5rem; }
+.buk-mx-2 { margin-left: 1rem; margin-right: 1rem; } /* uso frecuente */
+.buk-mx-3 { margin-left: 1.5rem; margin-right: 1.5rem; } /* uso frecuente */
+.buk-mx-4 { margin-left: 2rem; margin-right: 2rem; } /* uso frecuente */
+.buk-mx-5 { margin-left: 2.5rem; margin-right: 2.5rem; } 
+.buk-mx-6 { margin-left: 3rem; margin-right: 3rem; }
+.buk-mx-7 { margin-left: 3.5rem; margin-right: 3.5rem; } /* uso frecuente */
+.buk-mx-8 { margin-left: 4rem;margin-right: 4rem;}
+.buk-mx-9 {  margin-left: 4.5rem;margin-right: 4.5rem;}
+.buk-mx-10 { margin-left: 5rem;margin-right: 5rem;}
+.buk-mx-11 { margin-left: 5.5rem;margin-right: 5.5rem; }/* uso frecuente */
+.buk-mx-12 { margin-left: 6rem;margin-right: 6rem;}
+.buk-mx-13 { margin-left: 6.5rem;margin-right: 6.5rem;}
+.buk-mx-14 { margin-left: 7rem;margin-right: 7rem;}
+.buk-mx-15 { margin-left: 7.5rem;margin-right: 7.5rem; } /* uso frecuente */
+
+.buk-m-auto {margin:auto;}
+.buk-m-0 { margin: 0 ; }
+.buk-m-1 { margin: .5rem; }
+.buk-m-2 { margin: 1rem; } /* uso frecuente */
+.buk-m-3 { margin: 1.5rem; } /* uso frecuente */
+.buk-m-4 { margin: 2rem; } /* uso frecuente */
+.buk-m-5 { margin: 2.5rem; }
+.buk-m-6 { margin: 3rem; }
+.buk-m-7 { margin: 3.5rem; } /* uso frecuente */
+.buk-m-8 { margin: 4rem;}
+.buk-m-9 { margin: 4.5rem;}
+.buk-m-10 { margin: 5rem;}
+.buk-m-11 { margin: 5.5rem;}/* uso frecuente */
+.buk-m-12 { margin: 6rem;}
+.buk-m-13 { margin: 6.5rem;}
+.buk-m-14 { margin: 7rem;}
+.buk-m-15 { margin: 7.5rem;} /* uso frecuente */
+
+.buk-p-0 { padding: 0 ; } 
+.buk-p-1 { padding: .5rem ; }
+.buk-p-2 { padding: 1rem ; } /* uso frecuente */
+.buk-p-3 { padding: 1.5rem ; } /* uso frecuente */
+.buk-p-4 { padding: 2rem ; } /* uso frecuente */
+.buk-p-5 { padding: 2.5rem ; }
+.buk-p-6 { padding: 3rem ; } 
+.buk-p-7 { padding: 3.5rem ; } /* uso frecuente */
+.buk-p-8 { padding: 4rem ; }
+.buk-p-9 { padding: 4.5rem ;}
+.buk-p-10 { padding: 5rem ;}
+.buk-p-11 { padding: 5.5rem ;}/* uso frecuente */
+.buk-p-12 { padding: 6rem ;}
+.buk-p-13 { padding: 6.5rem ;}
+.buk-p-14 { padding: 7rem ;}
+.buk-p-15 { padding: 7.5rem ;} /* uso frecuente */
+
+.buk-py-0 { padding-top: 0 ; padding-bottom: 0 ; }
+.buk-py-1 { padding-top: .5rem;padding-bottom: .5rem; }
+.buk-py-2 { padding-top: 1rem;padding-bottom: 1rem; } /* uso frecuente */
+.buk-py-3 { padding-top: 1.5rem;padding-bottom: 1.5rem; } /* uso frecuente */
+.buk-py-4 { padding-top: 2rem; padding-bottom: 2rem; }/* uso frecuente */
+.buk-py-5 { padding-top: 2.5rem;padding-bottom: 2.5rem; }
+.buk-py-6 { padding-top: 3rem;padding-bottom: 3rem; }
+.buk-py-7 { padding-top: 3.5rem;padding-bottom: 3.5rem; }/* uso frecuente */
+.buk-py-8 { padding-top: 4rem;padding-bottom: 4rem;}
+.buk-py-9 { padding-top: 4.5rem;padding-bottom: 4.5rem;}
+.buk-py-10 { padding-top: 5rem;padding-bottom: 5rem;}
+.buk-py-11 { padding-top: 5.5rem;padding-bottom: 5.5rem; }/* uso frecuente */
+.buk-py-12 { padding-top: 6rem;padding-bottom: 6rem;}
+.buk-py-13 { padding-top: 6.5rem;padding-bottom: 6.5rem;}
+.buk-py-14 { padding-top: 7rem;padding-bottom: 7rem;}
+.buk-py-15 { padding-top: 7.5rem;padding-bottom: 7.5rem; } /* uso frecuente */
+.buk-py-20 { padding-top: 2.75rem; padding-bottom: 2.75rem; }
+.buk-py-21 { padding-top: 3.75rem; padding-bottom: 3.75rem; } 
+
+.buk-px-0 { padding-left: 0; padding-right: 0; }
+.buk-px-1 { padding-left: .5rem; padding-right: .5rem; }
+.buk-px-2 { padding-left: 1rem; padding-right: 1rem; }
+.buk-px-3 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.buk-px-4 { padding-left: 2rem; padding-right: 2rem; }
+.buk-px-5 { padding-left: 2.5rem; padding-right: 2.5rem; }
+.buk-px-6 { padding-left: 3rem; padding-right: 3rem; }
+.buk-px-7 { padding-left: 3.5rem;padding-right: 3.5rem; }/* uso frecuente */
+.buk-px-8 { padding-left: 4rem;padding-right: 4rem;}
+.buk-px-9 { padding-left: 4.5rem;padding-right: 4.5rem;}
+.buk-px-10 { padding-left: 5rem;padding-right: 5rem;}
+.buk-px-11 { padding-left: 5.5rem;padding-right: 5.5rem; }/* uso frecuente */
+.buk-px-12 { padding-left: 6rem;padding-right: 6rem;}
+.buk-px-13 { padding-left: 6.5rem;padding-right: 6.5rem;}
+.buk-px-14 { padding-left: 7rem;padding-right: 7rem;}
+.buk-px-15 { padding-left: 7.5rem;padding-right: 7.5rem; } /* uso frecuente */
+
+.buk-pt-0 { padding-top: 0; }
+.buk-pt-1 { padding-top: .5rem; }
+.buk-pt-2 { padding-top: 1rem; } /* uso frecuente */
+.buk-pt-3 { padding-top: 1.5rem; } /* uso frecuente */
+.buk-pt-4 { padding-top: 2rem; } /* uso frecuente */
+.buk-pt-5 { padding-top: 2.5rem; }
+.buk-pt-6 { padding-top: 3rem; }
+.buk-pt-7 { padding-top: 3.5rem; } /* uso frecuente */
+.buk-pt-8 { padding-top: 4rem; }
+.buk-pt-9 { padding-top: 4.5rem; }
+.buk-pt-10 { padding-top: 5rem; }
+.buk-pt-11 { padding-top: 5.5rem; }  /* uso frecuente */
+.buk-pt-12 { padding-top: 6rem; }
+.buk-pt-13 { padding-top: 6.5rem; }
+.buk-pt-14 { padding-top: 7rem; }
+.buk-pt-15 { padding-top: 7.5rem; }  /* uso frecuente */
+
+.buk-pb-0 { padding-bottom: 0; }
+.buk-pb-1 { padding-bottom: .5rem; }
+.buk-pb-2 { padding-bottom: 1rem; } /* uso frecuente */
+.buk-pb-3 { padding-bottom: 1.5rem; } /* uso frecuente */
+.buk-pb-4 { padding-bottom: 2rem; } /* uso frecuente */
+.buk-pb-5 { padding-bottom: 2.5rem; }
+.buk-pb-6 { padding-bottom: 3rem; }
+.buk-pb-7 { padding-bottom: 3.5rem; } /* uso frecuente */
+.buk-pb-8 { padding-bottom: 4rem; }
+.buk-pb-9 { padding-bottom: 4.5rem; }
+.buk-pb-10 { padding-bottom: 5rem; }
+.buk-pb-11 { padding-bottom: 5.5rem; }  /* uso frecuente */
+.buk-pb-12 { padding-bottom: 6rem; }
+.buk-pb-13 { padding-bottom: 6.5rem; }
+.buk-pb-14 { padding-bottom: 7rem; }
+.buk-pb-15 { padding-bottom: 7.5rem; }  /* uso frecuente */
+
+.buk-pl-0 { padding-left: 0 ; }
+.buk-pl-1 { padding-left: .5rem ; }
+.buk-pl-2 { padding-left: 1rem ; } /* uso frecuente */
+.buk-pl-3 { padding-left: 1.5rem ; } /* uso frecuente */
+.buk-pl-4 { padding-left: 2rem ; } /* uso frecuente */
+.buk-pl-5 { padding-left: 2.5rem ; }
+.buk-pl-6 { padding-left: 3rem ; }
+.buk-pl-7 { padding-left: 3.5rem ; } /* uso frecuente */
+.buk-pl-8 { padding-left: 4rem ; }
+.buk-pl-9 { padding-left: 4.5rem; }
+.buk-pl-10 { padding-left: 5rem; }
+.buk-pl-11 { padding-left: 5.5rem; }  /* uso frecuente */
+.buk-pl-12 { padding-left: 6rem; }
+.buk-pl-13 { padding-left: 6.5rem; }
+.buk-pl-14 { padding-left: 7rem; }
+.buk-pl-15 { padding-left: 7.5rem; }  /* uso frecuente */
+
+.buk-pr-0 { padding-right: 0; }
+.buk-pr-1 { padding-right: .5rem; }
+.buk-pr-2 { padding-right: 1rem; }
+.buk-pr-3 { padding-right: 1.5rem; }
+.buk-pr-4 { padding-right: 2rem; }
+.buk-pr-5 { padding-right: 2.5rem; }
+.buk-pr-6 { padding-right: 3rem; }
+.buk-pr-7 { padding-right: 3.5rem; }
+.buk-pr-8 { padding-right: 4rem; }
+.buk-pr-9 { padding-right: 4.5rem; }
+.buk-pr-10 { padding-right: 5rem; }
+.buk-pr-11 { padding-right: 5.5rem; }  /* uso frecuente */
+.buk-pr-12 { padding-right: 6rem; }
+.buk-pr-13 { padding-right: 6.5rem; }
+.buk-pr-14 { padding-right: 7rem; }
+.buk-pr-15 { padding-right: 7.5rem; }  /* uso frecuente */
+
+/* Tablets */
+@media only screen and (min-width: 767px) {
+.buk-mt-md-0 { margin-top: 0;}  
+.buk-mt-md-1 { margin-top: .5rem;}
+.buk-mt-md-2 { margin-top: 1rem; } /* uso frecuente */
+.buk-mt-md-3 { margin-top: 1.5rem; } /* uso frecuente */
+.buk-mt-md-4 { margin-top: 2rem; } /* uso frecuente */
+.buk-mt-md-5 { margin-top: 2.5rem; }
+.buk-mt-md-6 { margin-top: 3rem; }
+.buk-mt-md-7 { margin-top: 3.5rem; } /* uso frecuente */
+.buk-mt-md-8 { margin-top: 4rem; }
+.buk-mt-md-9 { margin-top: 4.5rem; }
+.buk-mt-md-10 { margin-top: 5rem; }
+.buk-mt-md-11 { margin-top: 5.5rem;} /* uso frecuente */
+.buk-mt-md-12 { margin-top: 6rem;}
+.buk-mt-md-13 { margin-top: 6.5rem;}
+.buk-mt-md-14 { margin-top: 7rem;}
+.buk-mt-md-15 { margin-top: 7.5rem;} /* uso frecuente */
+
+.buk-mb-md-0 { margin-bottom: 0; }  
+.buk-mb-md-1 { margin-bottom: .5rem; }
+.buk-mb-md-2 { margin-bottom: 1rem; } /* uso frecuente */
+.buk-mb-md-3 { margin-bottom: 1.5rem; } /* uso frecuente */
+.buk-mb-md-4 { margin-bottom: 2rem; } /* uso frecuente */
+.buk-mb-md-5 { margin-bottom: 2.5rem; }
+.buk-mb-md-6 { margin-bottom: 3rem; }
+.buk-mb-md-7 { margin-bottom: 3.5rem; } /* uso frecuente */
+.buk-mb-md-8 { margin-bottom: 4rem; }
+.buk-mb-md-9 { margin-bottom: 4.5rem; }
+.buk-mb-md-10 { margin-bottom: 5rem; }
+.buk-mb-md-11 { margin-bottom: 5.5rem;} /* uso frecuente */
+.buk-mb-md-12 { margin-bottom: 6rem;}
+.buk-mb-md-13 { margin-bottom: 6.5rem;}
+.buk-mb-md-14 { margin-bottom: 7rem;}
+.buk-mb-md-15 { margin-bottom: 7.5rem;} /* uso frecuente */
+
+.buk-my-md-0 { margin-top: 0; margin-bottom: 0;}
+.buk-my-md-1 { margin-top: .5rem;margin-bottom: .5rem; }
+.buk-my-md-2 { margin-top: 1rem;margin-bottom: 1rem; } /* uso frecuente */
+.buk-my-md-3 { margin-top: 1.5rem;margin-bottom: 1.5rem; } /* uso frecuente */
+.buk-my-md-4 { margin-top: 2rem;margin-bottom: 2rem; }/* uso frecuente */
+.buk-my-md-5 { margin-top: 2.5rem; margin-bottom: 2.5rem; }
+.buk-my-md-6 { margin-top: 3rem; margin-bottom: 3rem; }
+.buk-my-md-7 { margin-top: 3.5rem;margin-bottom: 3.5rem; }/* uso frecuente */
+.buk-my-md-8 { margin-top: 4rem;margin-bottom: 4rem;}
+.buk-my-md-9 {  margin-top: 4.5rem;margin-bottom: 4.5rem;}
+.buk-my-md-10 { margin-top: 5rem;margin-bottom: 5rem;}
+.buk-my-md-11 { margin-top: 5.5rem;margin-bottom: 5.5rem; }/* uso frecuente */
+.buk-my-md-12 { margin-top: 6rem;margin-bottom: 6rem;}
+.buk-my-md-13 { margin-top: 6.5rem;margin-bottom: 6.5rem;}
+.buk-my-md-14 { margin-top: 7rem;margin-bottom: 7rem;}
+.buk-my-md-15 { margin-top: 7.5rem;margin-bottom: 7.5rem; } /* uso frecuente */
+  
+.buk-ml-md-0 { margin-left: 0;}
+.buk-ml-md-1 { margin-left: .5rem;}
+.buk-ml-md-2 { margin-left: 1rem; }   /* uso frecuente 16px*/
+.buk-ml-md-3 { margin-left: 1.5rem; } /* uso frecuente 24px*/
+.buk-ml-md-4 { margin-left: 2rem; }   /* uso frecuente 32px*/
+.buk-ml-md-5 { margin-left: 2.5rem; }
+.buk-ml-md-6 { margin-left: 3rem; }
+.buk-ml-md-7 { margin-left: 3.5rem; } /* uso frecuente 56px*/
+.buk-ml-md-8 { margin-left: 4rem; }
+.buk-ml-md-9 { margin-left: 4.5rem; }
+.buk-ml-md-10 { margin-left: 5rem; }
+.buk-ml-md-11 { margin-left: 5.5rem;} /* uso frecuente 88px*/
+.buk-ml-md-12 { margin-left: 6rem;}
+.buk-ml-md-13 { margin-left: 6.5rem;}
+.buk-ml-md-14 { margin-left: 7rem;}
+.buk-ml-md-15 { margin-left: 7.5rem;} /* uso frecuente 120px*/
+
+.buk-mr-md-0 { margin-right: 0; }
+.buk-mr-md-1 { margin-right: .5rem; }
+.buk-mr-md-2 { margin-right: 1rem; } /* uso frecuente */
+.buk-mr-md-3 { margin-right: 1.5rem; } /* uso frecuente */
+.buk-mr-md-4 { margin-right: 2rem; } /* uso frecuente */
+.buk-mr-md-5 { margin-right: 2.5rem; }
+.buk-mr-md-6 { margin-right: 3rem; }
+.buk-mr-md-7 { margin-right: 3.5rem; } /* uso frecuente */
+.buk-mr-md-8 { margin-right: 4rem; }
+.buk-mr-md-9 { margin-right: 4.5rem; }
+.buk-mr-md-10 { margin-right: 5rem; }
+.buk-mr-md-11 { margin-right: 5.5rem;} /* uso frecuente */
+.buk-mr-md-12 { margin-right: 6rem;}
+.buk-mr-md-13 { margin-right: 6.5rem;}
+.buk-mr-md-14 { margin-right: 7rem;}
+.buk-mr-md-15 { margin-right: 7.5rem;} /* uso frecuente */  
+
+.buk-mx-md-auto { margin-left: auto; margin-right: auto; }
+.buk-mx-md-0 { margin-left: 0; margin-right: 0; } 
+.buk-mx-md-1 { margin-left: .5rem; margin-right: .5rem; }
+.buk-mx-md-2 { margin-left: 1rem; margin-right: 1rem; } /* uso frecuente */
+.buk-mx-md-3 { margin-left: 1.5rem; margin-right: 1.5rem; } /* uso frecuente */
+.buk-mx-md-4 { margin-left: 2rem; margin-right: 2rem; } /* uso frecuente */
+.buk-mx-md-5 { margin-left: 2.5rem; margin-right: 2.5rem; } 
+.buk-mx-md-6 { margin-left: 3rem; margin-right: 3rem; }
+.buk-mx-md-7 { margin-left: 3.5rem; margin-right: 3.5rem; } /* uso frecuente */
+.buk-mx-md-8 { margin-left: 4rem;margin-right: 4rem;}
+.buk-mx-md-9 {  margin-left: 4.5rem;margin-right: 4.5rem;}
+.buk-mx-md-10 { margin-left: 5rem;margin-right: 5rem;}
+.buk-mx-md-11 { margin-left: 5.5rem;margin-right: 5.5rem; }/* uso frecuente */
+.buk-mx-md-12 { margin-left: 6rem;margin-right: 6rem;}
+.buk-mx-md-13 { margin-left: 6.5rem;margin-right: 6.5rem;}
+.buk-mx-md-14 { margin-left: 7rem;margin-right: 7rem;}
+.buk-mx-md-15 { margin-left: 7.5rem;margin-right: 7.5rem; } /* uso frecuente */
+
+.buk-m-md-auto {margin:auto;}
+.buk-m-md-0 { margin: 0 ; }
+.buk-m-md-1 { margin: .5rem; }
+.buk-m-md-2 { margin: 1rem; } /* uso frecuente */
+.buk-m-md-3 { margin: 1.5rem; } /* uso frecuente */
+.buk-m-md-4 { margin: 2rem; } /* uso frecuente */
+.buk-m-md-5 { margin: 2.5rem; }
+.buk-m-md-6 { margin: 3rem; }
+.buk-m-md-7 { margin: 3.5rem; } /* uso frecuente */
+.buk-m-md-8 { margin: 4rem;}
+.buk-m-md-9 { margin: 4.5rem;}
+.buk-m-md-10 { margin: 5rem;}
+.buk-m-md-11 { margin: 5.5rem;}/* uso frecuente */
+.buk-m-md-12 { margin: 6rem;}
+.buk-m-md-13 { margin: 6.5rem;}
+.buk-m-md-14 { margin: 7rem;}
+.buk-m-md-15 { margin: 7.5rem;} /* uso frecuente */
+
+.buk-p-md-0 { padding: 0 ; } 
+.buk-p-md-1 { padding: .5rem ; }
+.buk-p-md-2 { padding: 1rem ; } /* uso frecuente */
+.buk-p-md-3 { padding: 1.5rem ; } /* uso frecuente */
+.buk-p-md-4 { padding: 2rem ; } /* uso frecuente */
+.buk-p-md-5 { padding: 2.5rem ; }
+.buk-p-md-6 { padding: 3rem ; } 
+.buk-p-md-7 { padding: 3.5rem ; } /* uso frecuente */
+.buk-p-md-8 { padding: 4rem ;}
+.buk-p-md-9 { padding: 4.5rem ;}
+.buk-p-md-10 { padding: 5rem ;}
+.buk-p-md-11 { padding: 5.5rem ;}/* uso frecuente */
+.buk-p-md-12 { padding: 6rem ;}
+.buk-p-md-13 { padding: 6.5rem ;}
+.buk-p-md-14 { padding: 7rem ;}
+.buk-p-md-15 { padding: 7.5rem ;} /* uso frecuente */
+
+.buk-py-md-0 { padding-top: 0 ; padding-bottom: 0; }
+.buk-py-md-1 { padding-top: .5rem;padding-bottom: .5rem; }
+.buk-py-md-2 { padding-top: 1rem;padding-bottom: 1rem; } /* uso frecuente */
+.buk-py-md-3 { padding-top: 1.5rem;padding-bottom: 1.5rem; } /* uso frecuente */
+.buk-py-md-4 { padding-top: 2rem; padding-bottom: 2rem; }/* uso frecuente */
+.buk-py-md-5 { padding-top: 2.5rem;padding-bottom: 2.5rem; }
+.buk-py-md-6 { padding-top: 3rem;padding-bottom: 3rem; }
+.buk-py-md-7 { padding-top: 3.5rem;padding-bottom: 3.5rem; }/* uso frecuente */
+.buk-py-md-8 { padding-top: 4rem;padding-bottom: 4rem;}
+.buk-py-md-9 { padding-top: 4.5rem;padding-bottom: 4.5rem;}
+.buk-py-md-10 { padding-top: 5rem;padding-bottom: 5rem;}
+.buk-py-md-11 { padding-top: 5.5rem;padding-bottom: 5.5rem; }/* uso frecuente */
+.buk-py-md-12 { padding-top: 6rem;padding-bottom: 6rem;}
+.buk-py-md-13 { padding-top: 6.5rem;padding-bottom: 6.5rem;}
+.buk-py-md-14 { padding-top: 7rem;padding-bottom: 7rem;}
+.buk-py-md-15 { padding-top: 7.5rem;padding-bottom: 7.5rem; } /* uso frecuente */
+.buk-py-md-20 { padding-top: 2.75rem; padding-bottom: 2.75rem; }
+.buk-py-md-21 { padding-top: 3.75rem; padding-bottom: 3.75rem; } 
+
+.buk-px-md-0 { padding-left: 0; padding-right: 0; }  
+.buk-px-md-1 { padding-left: .5rem; padding-right: .5rem; }
+.buk-px-md-2 { padding-left: 1rem; padding-right: 1rem; }
+.buk-px-md-3 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.buk-px-md-4 { padding-left: 2rem; padding-right: 2rem; }
+.buk-px-md-5 { padding-left: 2.5rem; padding-right: 2.5rem; }
+.buk-px-md-6 { padding-left: 3rem; padding-right: 3rem; }
+.buk-px-md-7 { padding-left: 3.5rem;padding-right: 3.5rem; }/* uso frecuente */
+.buk-px-md-8 { padding-left: 4rem;padding-right: 4rem;}
+.buk-px-md-9 { padding-left: 4.5rem;padding-right: 4.5rem;}
+.buk-px-md-10 { padding-left: 5rem;padding-right: 5rem;}
+.buk-px-md-11 { padding-left: 5.5rem;padding-right: 5.5rem; }/* uso frecuente */
+.buk-px-md-12 { padding-left: 6rem;padding-right: 6rem;}
+.buk-px-md-13 { padding-left: 6.5rem;padding-right: 6.5rem;}
+.buk-px-md-14 { padding-left: 7rem;padding-right: 7rem;}
+.buk-px-md-15 { padding-left: 7.5rem;padding-right: 7.5rem; } /* uso frecuente */
+
+.buk-pt-md-0 { padding-top: 0; }
+.buk-pt-md-1 { padding-top: .5rem; }
+.buk-pt-md-2 { padding-top: 1rem; } /* uso frecuente */
+.buk-pt-md-3 { padding-top: 1.5rem; } /* uso frecuente */
+.buk-pt-md-4 { padding-top: 2rem; } /* uso frecuente */
+.buk-pt-md-5 { padding-top: 2.5rem; }
+.buk-pt-md-6 { padding-top: 3rem; }
+.buk-pt-md-7 { padding-top: 3.5rem; } /* uso frecuente */
+.buk-pt-md-8 { padding-top: 4rem; }
+.buk-pt-md-9 { padding-top: 4.5rem; }
+.buk-pt-md-10 { padding-top: 5rem; }
+.buk-pt-md-11 { padding-top: 5.5rem; }  /* uso frecuente */
+.buk-pt-md-12 { padding-top: 6rem; }
+.buk-pt-md-13 { padding-top: 6.5rem; }
+.buk-pt-md-14 { padding-top: 7rem; }
+.buk-pt-md-15 { padding-top: 7.5rem; }  /* uso frecuente */
+
+.buk-pb-md-0 { padding-bottom: 0; }
+.buk-pb-md-1 { padding-bottom: .5rem; }
+.buk-pb-md-2 { padding-bottom: 1rem; } /* uso frecuente */
+.buk-pb-md-3 { padding-bottom: 1.5rem; } /* uso frecuente */
+.buk-pb-md-4 { padding-bottom: 2rem; } /* uso frecuente */
+.buk-pb-md-5 { padding-bottom: 2.5rem; }
+.buk-pb-md-6 { padding-bottom: 3rem; }
+.buk-pb-md-7 { padding-bottom: 3.5rem; } /* uso frecuente */
+.buk-pb-md-8 { padding-bottom: 4rem; }
+.buk-pb-md-9 { padding-bottom: 4.5rem; }
+.buk-pb-md-10 { padding-bottom: 5rem; }
+.buk-pb-md-11 { padding-bottom: 5.5rem; }  /* uso frecuente */
+.buk-pb-md-12 { padding-bottom: 6rem; }
+.buk-pb-md-13 { padding-bottom: 6.5rem; }
+.buk-pb-md-14 { padding-bottom: 7rem; }
+.buk-pb-md-15 { padding-bottom: 7.5rem; }  /* uso frecuente */
+
+.buk-pl-md-0 { padding-left: 0 ; }
+.buk-pl-md-1 { padding-left: .5rem ; }
+.buk-pl-md-2 { padding-left: 1rem ; } /* uso frecuente */
+.buk-pl-md-3 { padding-left: 1.5rem ; } /* uso frecuente */
+.buk-pl-md-4 { padding-left: 2rem ; } /* uso frecuente */
+.buk-pl-md-5 { padding-left: 2.5rem ; }
+.buk-pl-md-6 { padding-left: 3rem ; }
+.buk-pl-md-7 { padding-left: 3.5rem ; } /* uso frecuente */
+.buk-pl-md-8 { padding-left: 4rem ; }
+.buk-pl-md-9 { padding-left: 4.5rem; }
+.buk-pl-md-10 { padding-left: 5rem; }
+.buk-pl-md-11 { padding-left: 5.5rem; }  /* uso frecuente */
+.buk-pl-md-12 { padding-left: 6rem; }
+.buk-pl-md-13 { padding-left: 6.5rem; }
+.buk-pl-md-14 { padding-left: 7rem; }
+.buk-pl-md-15 { padding-left: 7.5rem; }  /* uso frecuente */
+
+.buk-pr-md-0 { padding-right: 0; }
+.buk-pr-md-1 { padding-right: .5rem; }
+.buk-pr-md-2 { padding-right: 1rem; }
+.buk-pr-md-3 { padding-right: 1.5rem; }
+.buk-pr-md-4 { padding-right: 2rem; }
+.buk-pr-md-5 { padding-right: 2.5rem; }
+.buk-pr-md-6 { padding-right: 3rem; }
+.buk-pr-md-7 { padding-right: 3.5rem; }
+.buk-pr-md-8 { padding-right: 4rem; }
+.buk-pr-md-9 { padding-right: 4.5rem; }
+.buk-pr-md-10 { padding-right: 5rem; }
+.buk-pr-md-11 { padding-right: 5.5rem; }  /* uso frecuente */
+.buk-pr-md-12 { padding-right: 6rem; }
+.buk-pr-md-13 { padding-right: 6.5rem; }
+.buk-pr-md-14 { padding-right: 7rem; }
+.buk-pr-md-15 { padding-right: 7.5rem; }  /* uso frecuente */
+}
+
+/* Desktop */
+@media only screen and (min-width: 1020px) {
+.buk-mt-lg-0 { margin-top: 0 !important; }
+.buk-mt-lg-1 { margin-top: .5rem;}
+.buk-mt-lg-2 { margin-top: 1rem; } /* uso frecuente */
+.buk-mt-lg-3 { margin-top: 1.5rem; } /* uso frecuente */
+.buk-mt-lg-4 { margin-top: 2rem; } /* uso frecuente */
+.buk-mt-lg-5 { margin-top: 2.5rem; }
+.buk-mt-lg-6 { margin-top: 3rem; }
+.buk-mt-lg-7 { margin-top: 3.5rem; } /* uso frecuente */
+.buk-mt-lg-8 { margin-top: 4rem; }
+.buk-mt-lg-9 { margin-top: 4.5rem; }
+.buk-mt-lg-10 { margin-top: 5rem; }
+.buk-mt-lg-11 { margin-top: 5.5rem;} /* uso frecuente */
+.buk-mt-lg-12 { margin-top: 6rem;}
+.buk-mt-lg-13 { margin-top: 6.5rem;}
+.buk-mt-lg-14 { margin-top: 7rem;}
+.buk-mt-lg-15 { margin-top: 7.5rem;} /* uso frecuente */
+
+.buk-mb-lg-0 { margin-bottom: 0; }
+.buk-mb-lg-1 { margin-bottom: .5rem; }
+.buk-mb-lg-2 { margin-bottom: 1rem; } /* uso frecuente */
+.buk-mb-lg-3 { margin-bottom: 1.5rem; } /* uso frecuente */
+.buk-mb-lg-4 { margin-bottom: 2rem; } /* uso frecuente */
+.buk-mb-lg-5 { margin-bottom: 2.5rem; }
+.buk-mb-lg-6 { margin-bottom: 3rem; }
+.buk-mb-lg-7 { margin-bottom: 3.5rem; } /* uso frecuente */
+.buk-mb-lg-8 { margin-bottom: 4rem; }
+.buk-mb-lg-9 { margin-bottom: 4.5rem; }
+.buk-mb-lg-10 { margin-bottom: 5rem; }
+.buk-mb-lg-11 { margin-bottom: 5.5rem;} /* uso frecuente */
+.buk-mb-lg-12 { margin-bottom: 6rem;}
+.buk-mb-lg-13 { margin-bottom: 6.5rem;}
+.buk-mb-lg-14 { margin-bottom: 7rem;}
+.buk-mb-lg-15 { margin-bottom: 7.5rem;} /* uso frecuente */
+
+.buk-my-lg-0 { margin-top: 0; margin-bottom: 0;}
+.buk-my-lg-1 { margin-top: .5rem;margin-bottom: .5rem; }
+.buk-my-lg-2 { margin-top: 1rem;margin-bottom: 1rem; } /* uso frecuente */
+.buk-my-lg-3 { margin-top: 1.5rem;margin-bottom: 1.5rem; } /* uso frecuente */
+.buk-my-lg-4 { margin-top: 2rem;margin-bottom: 2rem; }/* uso frecuente */
+.buk-my-lg-5 { margin-top: 2.5rem; margin-bottom: 2.5rem; }
+.buk-my-lg-6 { margin-top: 3rem; margin-bottom: 3rem; }
+.buk-my-lg-7 { margin-top: 3.5rem;margin-bottom: 3.5rem; }/* uso frecuente */
+.buk-my-lg-8 { margin-top: 4rem;margin-bottom: 4rem;}
+.buk-my-lg-9 {  margin-top: 4.5rem;margin-bottom: 4.5rem;}
+.buk-my-lg-10 { margin-top: 5rem;margin-bottom: 5rem;}
+.buk-my-lg-11 { margin-top: 5.5rem;margin-bottom: 5.5rem; }/* uso frecuente */
+.buk-my-lg-12 { margin-top: 6rem;margin-bottom: 6rem;}
+.buk-my-lg-13 { margin-top: 6.5rem;margin-bottom: 6.5rem;}
+.buk-my-lg-14 { margin-top: 7rem;margin-bottom: 7rem;}
+.buk-my-lg-15 { margin-top: 7.5rem;margin-bottom: 7.5rem; } /* uso frecuente */
+  
+.buk-ml-lg-0 { margin-left: 0;}
+.buk-ml-lg-1 { margin-left: .5rem;}
+.buk-ml-lg-2 { margin-left: 1rem; }   /* uso frecuente 16px*/
+.buk-ml-lg-3 { margin-left: 1.5rem; } /* uso frecuente 24px*/
+.buk-ml-lg-4 { margin-left: 2rem; }   /* uso frecuente 32px*/
+.buk-ml-lg-5 { margin-left: 2.5rem; }
+.buk-ml-lg-6 { margin-left: 3rem; }
+.buk-ml-lg-7 { margin-left: 3.5rem; } /* uso frecuente 56px*/
+.buk-ml-lg-8 { margin-left: 4rem; }
+.buk-ml-lg-9 { margin-left: 4.5rem; }
+.buk-ml-lg-10 { margin-left: 5rem; }
+.buk-ml-lg-11 { margin-left: 5.5rem;} /* uso frecuente 88px*/
+.buk-ml-lg-12 { margin-left: 6rem;}
+.buk-ml-lg-13 { margin-left: 6.5rem;}
+.buk-ml-lg-14 { margin-left: 7rem;}
+.buk-ml-lg-15 { margin-left: 7.5rem;} /* uso frecuente 120px*/
+
+.buk-mr-lg-0 { margin-right: 0; }
+.buk-mr-lg-1 { margin-right: .5rem; }
+.buk-mr-lg-2 { margin-right: 1rem; } /* uso frecuente */
+.buk-mr-lg-3 { margin-right: 1.5rem; } /* uso frecuente */
+.buk-mr-lg-4 { margin-right: 2rem; } /* uso frecuente */
+.buk-mr-lg-5 { margin-right: 2.5rem; }
+.buk-mr-lg-6 { margin-right: 3rem; }
+.buk-mr-lg-7 { margin-right: 3.5rem; } /* uso frecuente */
+.buk-mr-lg-8 { margin-right: 4rem; }
+.buk-mr-lg-9 { margin-right: 4.5rem; }
+.buk-mr-lg-10 { margin-right: 5rem; }
+.buk-mr-lg-11 { margin-right: 5.5rem;} /* uso frecuente */
+.buk-mr-lg-12 { margin-right: 6rem;}
+.buk-mr-lg-13 { margin-right: 6.5rem;}
+.buk-mr-lg-14 { margin-right: 7rem;}
+.buk-mr-lg-15 { margin-right: 7.5rem;} /* uso frecuente */  
+
+.buk-mx-lg-auto { margin-left: auto; margin-right: auto; }
+.buk-mx-lg-0 { margin-left: 0; margin-right: 0; } 
+.buk-mx-lg-1 { margin-left: .5rem; margin-right: .5rem; }
+.buk-mx-lg-2 { margin-left: 1rem; margin-right: 1rem; } /* uso frecuente */
+.buk-mx-lg-3 { margin-left: 1.5rem; margin-right: 1.5rem; } /* uso frecuente */
+.buk-mx-lg-4 { margin-left: 2rem; margin-right: 2rem; } /* uso frecuente */
+.buk-mx-lg-5 { margin-left: 2.5rem; margin-right: 2.5rem; } 
+.buk-mx-lg-6 { margin-left: 3rem; margin-right: 3rem; }
+.buk-mx-lg-7 { margin-left: 3.5rem; margin-right: 3.5rem; } /* uso frecuente */
+.buk-mx-lg-8 { margin-left: 4rem;margin-right: 4rem;}
+.buk-mx-lg-9 {  margin-left: 4.5rem;margin-right: 4.5rem;}
+.buk-mx-lg-10 { margin-left: 5rem;margin-right: 5rem;}
+.buk-mx-lg-11 { margin-left: 5.5rem;margin-right: 5.5rem; }/* uso frecuente */
+.buk-mx-lg-12 { margin-left: 6rem;margin-right: 6rem;}
+.buk-mx-lg-13 { margin-left: 6.5rem;margin-right: 6.5rem;}
+.buk-mx-lg-14 { margin-left: 7rem;margin-right: 7rem;}
+.buk-mx-lg-15 { margin-left: 7.5rem;margin-right: 7.5rem; } /* uso frecuente */
+
+.buk-m-lg-auto {margin:auto;}
+.buk-m-lg-0 { margin: 0 ; }
+.buk-m-lg-1 { margin: .5rem; }
+.buk-m-lg-2 { margin: 1rem; } /* uso frecuente */
+.buk-m-lg-3 { margin: 1.5rem; } /* uso frecuente */
+.buk-m-lg-4 { margin: 2rem; } /* uso frecuente */
+.buk-m-lg-5 { margin: 2.5rem; }
+.buk-m-lg-6 { margin: 3rem; }
+.buk-m-lg-7 { margin: 3.5rem; } /* uso frecuente */
+.buk-m-lg-8 { margin: 4rem;}
+.buk-m-lg-9 { margin: 4.5rem;}
+.buk-m-lg-10 { margin: 5rem;}
+.buk-m-lg-11 { margin: 5.5rem;}/* uso frecuente */
+.buk-m-lg-12 { margin: 6rem;}
+.buk-m-lg-13 { margin: 6.5rem;}
+.buk-m-lg-14 { margin: 7rem;}
+.buk-m-lg-15 { margin: 7.5rem;} /* uso frecuente */
+
+.buk-p-lg-0 { padding: 0 ; } 
+.buk-p-lg-1 { padding: .5rem ; }
+.buk-p-lg-2 { padding: 1rem ; } /* uso frecuente */
+.buk-p-lg-3 { padding: 1.5rem ; } /* uso frecuente */
+.buk-p-lg-4 { padding: 2rem ; } /* uso frecuente */
+.buk-p-lg-5 { padding: 2.5rem ; }
+.buk-p-lg-6 { padding: 3rem ; } 
+.buk-p-lg-7 { padding: 3.5rem ; } /* uso frecuente */
+.buk-p-lg-8 { padding: 4rem ;}
+.buk-p-lg-9 { padding: 4.5rem ;}
+.buk-p-lg-10 { padding: 5rem ;}
+.buk-p-lg-11 { padding: 5.5rem ;}/* uso frecuente */
+.buk-p-lg-12 { padding: 6rem ;}
+.buk-p-lg-13 { padding: 6.5rem ;}
+.buk-p-lg-14 { padding: 7rem ;}
+.buk-p-lg-15 { padding: 7.5rem ;} /* uso frecuente */
+
+.buk-py-lg-0 { padding-top: 0 ; padding-bottom: 0 ; }
+.buk-py-lg-1 { padding-top: .5rem;padding-bottom: .5rem; }
+.buk-py-lg-2 { padding-top: 1rem;padding-bottom: 1rem; } /* uso frecuente */
+.buk-py-lg-3 { padding-top: 1.5rem;padding-bottom: 1.5rem; } /* uso frecuente */
+.buk-py-lg-4 { padding-top: 2rem; padding-bottom: 2rem; }/* uso frecuente */
+.buk-py-lg-5 { padding-top: 2.5rem;padding-bottom: 2.5rem; }
+.buk-py-lg-6 { padding-top: 3rem;padding-bottom: 3rem; }
+.buk-py-lg-7 { padding-top: 3.5rem;padding-bottom: 3.5rem; }/* uso frecuente */
+.buk-py-lg-8 { padding-top: 4rem;padding-bottom: 4rem;}
+.buk-py-lg-9 { padding-top: 4.5rem;padding-bottom: 4.5rem;}
+.buk-py-lg-10 { padding-top: 5rem;padding-bottom: 5rem;}
+.buk-py-lg-11 { padding-top: 5.5rem;padding-bottom: 5.5rem; }/* uso frecuente */
+.buk-py-lg-12 { padding-top: 6rem;padding-bottom: 6rem;}
+.buk-py-lg-13 { padding-top: 6.5rem;padding-bottom: 6.5rem;}
+.buk-py-lg-14 { padding-top: 7rem;padding-bottom: 7rem;}
+.buk-py-lg-15 { padding-top: 7.5rem;padding-bottom: 7.5rem; } /* uso frecuente */
+
+.buk-px-lg-0 { padding-left: 0; padding-right: 0; }
+.buk-px-lg-1 { padding-left: .5rem; padding-right: .5rem; }
+.buk-px-lg-2 { padding-left: 1rem; padding-right: 1rem; }
+.buk-px-lg-3 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.buk-px-lg-4 { padding-left: 2rem; padding-right: 2rem; }
+.buk-px-lg-5 { padding-left: 2.5rem; padding-right: 2.5rem; }
+.buk-px-lg-6 { padding-left: 3rem; padding-right: 3rem; }
+.buk-px-lg-7 { padding-left: 3.5rem;padding-right: 3.5rem; }/* uso frecuente */
+.buk-px-lg-8 { padding-left: 4rem;padding-right: 4rem;}
+.buk-px-lg-9 { padding-left: 4.5rem;padding-right: 4.5rem;}
+.buk-px-lg-10 { padding-left: 5rem;padding-right: 5rem;}
+.buk-px-lg-11 { padding-left: 5.5rem;padding-right: 5.5rem; }/* uso frecuente */
+.buk-px-lg-12 { padding-left: 6rem;padding-right: 6rem;}
+.buk-px-lg-13 { padding-left: 6.5rem;padding-right: 6.5rem;}
+.buk-px-lg-14 { padding-left: 7rem;padding-right: 7rem;}
+.buk-px-lg-15 { padding-left: 7.5rem;padding-right: 7.5rem; } /* uso frecuente */
+.buk-py-lg-20 { padding-top: 2.75rem; padding-bottom: 2.75rem; }
+.buk-py-lg-21 { padding-top: 3.75rem; padding-bottom: 3.75rem; } 
+
+.buk-pt-lg-0 { padding-top: 0; }
+.buk-pt-lg-1 { padding-top: .5rem; }
+.buk-pt-lg-2 { padding-top: 1rem; } /* uso frecuente */
+.buk-pt-lg-3 { padding-top: 1.5rem; } /* uso frecuente */
+.buk-pt-lg-4 { padding-top: 2rem; } /* uso frecuente */
+.buk-pt-lg-5 { padding-top: 2.5rem; }
+.buk-pt-lg-6 { padding-top: 3rem; }
+.buk-pt-lg-7 { padding-top: 3.5rem; } /* uso frecuente */
+.buk-pt-lg-8 { padding-top: 4rem; }
+.buk-pt-lg-9 { padding-top: 4.5rem; }
+.buk-pt-lg-10 { padding-top: 5rem; }
+.buk-pt-lg-11 { padding-top: 5.5rem; }  /* uso frecuente */
+.buk-pt-lg-12 { padding-top: 6rem; }
+.buk-pt-lg-13 { padding-top: 6.5rem; }
+.buk-pt-lg-14 { padding-top: 7rem; }
+.buk-pt-lg-15 { padding-top: 7.5rem; }  /* uso frecuente */
+
+.buk-pb-lg-0 { padding-bottom: 0; }
+.buk-pb-lg-1 { padding-bottom: .5rem; }
+.buk-pb-lg-2 { padding-bottom: 1rem; } /* uso frecuente */
+.buk-pb-lg-3 { padding-bottom: 1.5rem; } /* uso frecuente */
+.buk-pb-lg-4 { padding-bottom: 2rem; } /* uso frecuente */
+.buk-pb-lg-5 { padding-bottom: 2.5rem; }
+.buk-pb-lg-6 { padding-bottom: 3rem; }
+.buk-pb-lg-7 { padding-bottom: 3.5rem; } /* uso frecuente */
+.buk-pb-lg-8 { padding-bottom: 4rem; }
+.buk-pb-lg-9 { padding-bottom: 4.5rem; }
+.buk-pb-lg-10 { padding-bottom: 5rem; }
+.buk-pb-lg-11 { padding-bottom: 5.5rem; }  /* uso frecuente */
+.buk-pb-lg-12 { padding-bottom: 6rem; }
+.buk-pb-lg-13 { padding-bottom: 6.5rem; }
+.buk-pb-lg-14 { padding-bottom: 7rem; }
+.buk-pb-lg-15 { padding-bottom: 7.5rem; }  /* uso frecuente */
+
+.buk-pl-lg-0 { padding-left: 0 ; }
+.buk-pl-lg-1 { padding-left: .5rem ; }
+.buk-pl-lg-2 { padding-left: 1rem ; } /* uso frecuente */
+.buk-pl-lg-3 { padding-left: 1.5rem ; } /* uso frecuente */
+.buk-pl-lg-4 { padding-left: 2rem ; } /* uso frecuente */
+.buk-pl-lg-5 { padding-left: 2.5rem ; }
+.buk-pl-lg-6 { padding-left: 3rem ; }
+.buk-pl-lg-7 { padding-left: 3.5rem ; } /* uso frecuente */
+.buk-pl-lg-8 { padding-left: 4rem ; }
+.buk-pl-lg-9 { padding-left: 4.5rem; }
+.buk-pl-lg-10 { padding-left: 5rem; }
+.buk-pl-lg-11 { padding-left: 5.5rem; }  /* uso frecuente */
+.buk-pl-lg-12 { padding-left: 6rem; }
+.buk-pl-lg-13 { padding-left: 6.5rem; }
+.buk-pl-lg-14 { padding-left: 7rem; }
+.buk-pl-lg-15 { padding-left: 7.5rem; }  /* uso frecuente */
+
+.buk-pr-lg-0 { padding-right: 0; }
+.buk-pr-lg-1 { padding-right: .5rem; }
+.buk-pr-lg-2 { padding-right: 1rem; }
+.buk-pr-lg-3 { padding-right: 1.5rem; }
+.buk-pr-lg-4 { padding-right: 2rem; }
+.buk-pr-lg-5 { padding-right: 2.5rem; }
+.buk-pr-lg-6 { padding-right: 3rem; }
+.buk-pr-lg-7 { padding-right: 3.5rem; }
+.buk-pr-lg-8 { padding-right: 4rem; }
+.buk-pr-lg-9 { padding-right: 4.5rem; }
+.buk-pr-lg-10 { padding-right: 5rem; }
+.buk-pr-lg-11 { padding-right: 5.5rem; }  /* uso frecuente */
+.buk-pr-lg-12 { padding-right: 6rem; }
+.buk-pr-lg-13 { padding-right: 6.5rem; }
+.buk-pr-lg-14 { padding-right: 7rem; }
+.buk-pr-lg-15 { padding-right: 7.5rem; }  /* uso frecuente */
+}
