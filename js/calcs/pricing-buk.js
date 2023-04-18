@@ -190,7 +190,7 @@ class PricingBuilder {
   addFactor() {
     let modules = this.addFactorModule()
     let addons = this.addFactorAddon()
-    console.log('Factor addons', addons)
+    // console.log('Factor addons', addons)
     let basis = this.baseValues.factor
     this.amountFactors = (basis + modules + addons)
   }
@@ -231,12 +231,18 @@ class PricingBuilder {
     let modules = modulesCheckbox.filter(m => m.checked)
     this.amountModules = modules.length + this.baseValues.module
     // console.log(this.amountModules)
+    // Agregar Font-weight a módulos seleccionados
+    modulesCheckbox.forEach(m => m.checked ? m.previousElementSibling.style.fontWeight = "600" : m.previousElementSibling.style.fontWeight = "400"
+    )
+    
   }
 
   addAddon() {
     let addonsCheckbox = [...document.querySelectorAll('.addons input[type="checkbox"')]
     let addons = addonsCheckbox.filter(a => a.checked)
     this.amountAddons = addons.length
+    // Agregar Font-weight en addons seleccionados
+    addonsCheckbox.forEach(a => a.checked ? a.previousElementSibling.style.fontWeight = "600" : a.previousElementSibling.style.fontWeight = "400")
   }
 
   searchModules(input) {
@@ -279,7 +285,7 @@ class PricingBuilder {
     const priceForModule = 0.1
     // Se aplica - 1 pq dentro del valor basePeopleManagment va el valor basica, sobrando un módulo si se toma en cuenta el valor this.amountModules
     let calcMinPrice = Number((basePeopleManagment + (priceForModule * (this.amountModules - 1 + this.amountAddons)) ).toFixed(2))
-    console.log('Min Price: ', calcMinPrice)
+    // console.log('Min Price: ', calcMinPrice)
     return calcMinPrice
   }
 
@@ -346,7 +352,7 @@ class PricingBuilder {
 
   discount() {
     let findDiscount = this.tableDiscounts.table.find(m => m.totalModules == this.amountModules)
-    console.log('Descuento:', findDiscount)
+    // console.log('Descuento:', findDiscount)
     let price = this.calcPrice()
     let percent = findDiscount.percent
     let getPercent = percent / 100
@@ -362,8 +368,8 @@ class PricingBuilder {
     let additionalCost = this.additionalCostRange()
     let additionalAmount = this.additionalAmount()
     let price = (additionalCost * additionalAmount + basisCost) * this.amountFactors
-    console.log('Price Total: ', price)
-    console.log('CANTIDAD ADICIONAL: ', additionalAmount)
+    // console.log('Price Total: ', price)
+    // console.log('CANTIDAD ADICIONAL: ', additionalAmount)
     return price
   }
 

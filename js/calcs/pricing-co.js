@@ -217,13 +217,14 @@ class PricingBuilder {
     let modulesCheckbox = [...document.querySelectorAll('.modules input[type="checkbox"')]
     let modules = modulesCheckbox.filter(m => m.checked)
     this.amountModules = modules.length + this.baseValues.module
-    // console.log(this.amountModules)
+    modulesCheckbox.forEach(m => m.checked ? m.previousElementSibling.style.fontWeight = "600" : m.previousElementSibling.style.fontWeight = "400")
   }
 
   addAddon() {
     let addonsCheckbox = [...document.querySelectorAll('.addons input[type="checkbox"')]
     let addons = addonsCheckbox.filter(a => a.checked)
     this.amountAddons = addons.length
+    addonsCheckbox.forEach(a => a.checked ? a.previousElementSibling.style.fontWeight = "600" : a.previousElementSibling.style.fontWeight = "400")
   }
 
   searchModules(input) {
