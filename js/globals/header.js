@@ -3,7 +3,7 @@ window.onload = () => {
   const btnMobile = document.getElementById('btn-mobile')
   const header = document.querySelector('header')
   const mainContent = document.querySelector('main')
-  const mobileCtaFirst = document.querySelector('.buk-cta__button--btn1')
+  const mobileCtaFirst = document.querySelector('.buk-cta__wrap-button .btn--1')
   const linkDropdown = Array.from(document.getElementsByClassName('buk-menu__link--dropdown'))
   const mql = window.matchMedia('(max-width:1020px)')
 

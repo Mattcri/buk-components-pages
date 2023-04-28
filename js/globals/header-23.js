@@ -1,5 +1,5 @@
 const btnCountries = [...document.querySelectorAll('.buk-countries')]
-
+const btnMobile = document.getElementById('btn-mobile')
 
 btnCountries.forEach(btn => {
   btn.addEventListener('click', function () {
@@ -18,4 +18,8 @@ document.addEventListener('scroll', () => {
   if (window.scrollY > 30) {
     btnCountries.forEach(btn => btn.classList.remove('show'))
   }
+})
+
+btnMobile.addEventListener('click', function () {
+  this.classList.toggle('show-menu')
 })
