@@ -6,7 +6,7 @@ header {
 }
 
 header nav { height: 78px; }
-@media only screen and (min-width: 1100px) {
+@media only screen and (min-width: 1115px) {
   header nav { height: initial; }
 }
 
@@ -14,7 +14,7 @@ header nav { height: 78px; }
   width: 112px;
   margin-right: auto;
 }
-@media only screen and (min-width: 1100px) {
+@media only screen and (min-width: 1115px) {
   .nav__logo { margin-right: 16px; }
 }
 @media only screen and (min-width: 1200px) {
@@ -22,12 +22,28 @@ header nav { height: 78px; }
 }
 
 .nav__collapse {
-  display: none;
+  background: var(--wb-bg-modules);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  opacity: 0;
+  top: -100%;
+  left: 0;
+  height: 85vh;
+  padding: 0 5%;
+  width: 100%;
+  transition: all .65s ease;
 }
-@media only screen and (min-width: 1100px) {
+@media only screen and (min-width: 1115px) {
   .nav__collapse {
+    background: var(--color-white);
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    opacity: initial;
+    padding: initial;
+    position: initial;
+    transition: initial;
     height: 109px;
     width: calc(100% - 112px - 8px - 16px);
   }
@@ -41,7 +57,13 @@ header nav { height: 78px; }
 
 .nav__navigation {
   font-family: var(--font-family-title);
-  gap: 24px;
+}
+@media only screen and (min-width: 1115px) {
+  .nav__navigation {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
 }
 @media only screen and (min-width: 1200px) {
   .nav__navigation { gap: 32px; }
@@ -60,8 +82,8 @@ header nav { height: 78px; }
   border: none;
   background: inherit;
 }
-@media only screen and (min-width: 1100px) {
-  .nav__item { height: 100%; display: flex; align-items: center; }
+@media only screen and (min-width: 1115px) {
+  .nav__item { height: 100%; display: flex; justify-content: center; flex-direction: column; }
 }
 
 @media only screen and (min-width: 1300px) {
@@ -72,8 +94,13 @@ header nav { height: 78px; }
 .buk-countries--mobile { 
   margin-right: 30px;
 }
-@media only screen and (min-width: 1100px) {
+@media only screen and (min-width: 1115px) {
   .buk-countries--mobile { display: none; }
+}
+
+.buk-countries--desktop { display: none; }
+@media only screen and (min-width: 1115px) {
+  .buk-countries--desktop { display: inline-block; }
 }
 
 .buk-countries {
@@ -106,7 +133,6 @@ header nav { height: 78px; }
 .buk-countries.show .buk-countries__submenu {
   box-shadow: var(--box-shadow-1);
   height: 150px;
-  overflow: visible;
 }
 
 .buk-countries__submenu li:not(:last-of-type) {
@@ -151,7 +177,7 @@ header nav { height: 78px; }
   position: relative;
   transition: all 1s ease-in-out;
 }
-@media only screen and (min-width: 1100px) {
+@media only screen and (min-width: 1115px) {
   .nav__toggle { display: none; }
 }
 
@@ -182,17 +208,174 @@ header nav { height: 78px; }
   transform: translate(-50%, 10px);
 }
 
-.nav__toggle.show-menu .nav__hamburger {
+.nav__toggle.open-collapse .nav__hamburger {
   transform: translateX(-20px);
   background: transparent;
   z-index: 4;
   transition: all .5s ease-in-out;
 }
 
-.nav__toggle.show-menu .nav__hamburger::before {
+.nav__toggle.open-collapse .nav__hamburger::before {
   transform: rotate(45deg) translate(6px, -6px);
 }
 
-.nav__toggle.show-menu .nav__hamburger::after {
+.nav__toggle.open-collapse .nav__hamburger::after {
   transform: rotate(-45deg) translate(5.5px, 5.5px);
+}
+
+/* Menu Mobile */
+
+.nav__toggle.open-collapse ~ .nav__collapse {
+  box-shadow: 0px 6px 5px -1px rgba(43, 60, 106, 0.12);
+  top: 78px;
+  overflow-y: auto;
+  opacity: 1;
+  /* right: 0; */
+  /* z-index: 10; */
+  /* background: aquamarine; */
+}
+@media only screen and (min-width: 1115px) {
+  .nav__toggle.open-collapse ~ .nav__collapse {
+    box-shadow: initial;
+    flex-direction: initial;
+    position: initial;
+    padding: 0;
+    overflow: initial;
+    width: calc(100% - 112px - 8px - 56px);
+  }
+}
+
+.nav__item:not(:last-of-type) {
+  border-bottom: 2px solid var(--color-light-blue);
+}
+@media only screen and (min-width: 1115px) {
+  .nav__item:not(:last-of-type) {
+    border-bottom: none;
+  }
+}
+
+.nav__item button {
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 0;
+}
+.nav__item button svg {
+  transition: transform .4s ease;
+}
+.nav__item button.active {
+  background: var(--color-blue-buk);
+  color: var(--color-white);
+  margin: 0 -5.5%;
+  width: 111%;
+  padding: 20px 5.5%;
+}
+.nav__item button.active svg {
+  transform: rotate(180deg);
+}
+.nav__item button.active svg path {
+  fill: #fff;
+}
+.nav__item > a {
+  display: inline-block;
+  width: 100%;
+  padding: 20px 0;
+}
+@media only screen and (min-width: 1115px) {
+  .nav__item button {
+    width: initial;
+    padding: initial;
+  }
+  .nav__item button.active {
+    background: initial;
+    color: initial;
+  }
+  .nav__item > a {
+    width: initial;
+    padding: initial;
+  }
+}
+/* .nav__item:hover .nav__submenu {
+  height: 800px;
+  overflow: visible;
+  opacity: 1;
+} */
+
+
+/* @media only screen and (min-width: 1115px) {
+  .nav__item button {
+    margin: initial;
+    padding: initial;
+    justify-content: initial;
+    width: 100%;
+  }
+  .nav__item a {
+    margin: initial;
+    padding: initial;
+    width: 100%;
+  }
+} */
+
+.nav__submenu {
+  background: var(--color-white);
+  margin: 0 -5.5%;
+  height: 0;
+  overflow: hidden;
+  transition: height .5s ease-in-out;
+  /* opacity: 0; */
+  /* padding: 32px 5.5%; */
+  /* display: none; */
+}
+/* .nav__submenu.open {
+  max-height: 800px;
+} */
+@media only screen and (min-width: 1115px) {
+  .nav__submenu {
+    display: none;
+  }
+}
+
+.nav__submenu-wrap {
+  padding: 32px 5.5%;
+}
+
+.nav_submenu-item {
+  display: flex;
+  align-items: center;
+}
+
+
+/* .nav__submenu-list {
+  margin-bottom: 24px;
+} */
+
+.nav__submenu-label > a {
+  display: inline-block;
+}
+.nav__submenu-label:not(:last-of-type) > a {
+  padding-bottom: 16px;
+}
+
+.nav__actions {
+  background: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  margin: 0 -5.5%;
+  padding: 32px 5.5%;
+  height: 100%;
+}
+@media only screen and (min-width: 1115px) {
+  .nav__actions {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    height: initial;
+    padding: initial;
+    margin: initial;
+  }
+}
+@media only screen and (min-width: 1300px) {
+  .nav__actions {
+    gap: 2rem;
+  }
 }
