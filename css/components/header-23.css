@@ -4,6 +4,9 @@ header {
   top: 0;
   z-index: 20;
 }
+header.shadow {
+  box-shadow: var(--box-shadow-2);
+}
 
 header nav { height: 78px; }
 @media only screen and (min-width: 1115px) {
@@ -176,6 +179,7 @@ header nav { height: 78px; }
   outline: none;
   position: relative;
   transition: all 1s ease-in-out;
+  z-index: 15;
 }
 @media only screen and (min-width: 1115px) {
   .nav__toggle { display: none; }
@@ -248,11 +252,18 @@ header nav { height: 78px; }
 .nav__item:not(:last-of-type) {
   border-bottom: 2px solid var(--color-light-blue);
 }
+.nav__item.item-selected {
+  border-bottom: none;
+}
 @media only screen and (min-width: 1115px) {
   .nav__item:not(:last-of-type) {
     border-bottom: none;
   }
+  .nav__item.item-selected {
+    border-bottom: none;
+  }
 }
+
 
 .nav__item button {
   justify-content: space-between;
@@ -261,6 +272,7 @@ header nav { height: 78px; }
 }
 .nav__item button svg {
   transition: transform .4s ease;
+  margin-right: .8rem;
 }
 .nav__item button.active {
   background: var(--color-blue-buk);
@@ -287,33 +299,19 @@ header nav { height: 78px; }
   }
   .nav__item button.active {
     background: initial;
-    color: initial;
+    color: var(--color-blue-buk);
+  }
+  .nav__item button svg {
+    margin-right: initial;
+  }
+  .nav__item button.active svg path {
+    fill: var(--color-blue-buk);
   }
   .nav__item > a {
     width: initial;
     padding: initial;
   }
 }
-/* .nav__item:hover .nav__submenu {
-  height: 800px;
-  overflow: visible;
-  opacity: 1;
-} */
-
-
-/* @media only screen and (min-width: 1115px) {
-  .nav__item button {
-    margin: initial;
-    padding: initial;
-    justify-content: initial;
-    width: 100%;
-  }
-  .nav__item a {
-    margin: initial;
-    padding: initial;
-    width: 100%;
-  }
-} */
 
 .nav__submenu {
   background: var(--color-white);
@@ -328,25 +326,96 @@ header nav { height: 78px; }
 /* .nav__submenu.open {
   max-height: 800px;
 } */
-@media only screen and (min-width: 1115px) {
-  .nav__submenu {
-    display: none;
-  }
-}
-
 .nav__submenu-wrap {
   padding: 32px 5.5%;
 }
 
 .nav_submenu-item {
   display: flex;
+  flex-direction: column;
+}
+.nav__submenu-item-header {
+  display: flex;
   align-items: center;
 }
+.nav__submenu-item-header img {
+  width: 43px;
+  height: 43px;
+}
+.nav__submenu-item-header a, .nav__submenu-item-header p {
+  margin-left: 1rem;
+}
+.nav__submenu-item-header a:hover, .nav__submenu-label a:hover {
+  text-decoration: underline;
+}
+.nav__submenu-item-header .txt--desktop {
+  display: none;
+}
+.nav_submenu-item--mobile {
+  flex-direction: initial;
+  padding-top: 2rem;
+  margin-top: 1rem;
+  border-top: 2px solid var(--color-light-blue);
+}
+.nav__submenu-label--desktop {
+  display: none;
+}
 
+@media only screen and (min-width: 1115px) {
+  .nav__submenu {
+    /* display: none; */
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 109px;
+    border-radius: 0 0 16px 16px;
+    margin: initial;
+  }
+  .nav__submenu.open {
+    /* box-shadow: 0px 3px 10px 3px rgba(43, 60, 106, 0.12); */
+    box-shadow: var(--box-shadow-1);
+  }
+  .nav__submenu-wrap {
+    width: 90%;
+    border-radius: 0 0 16px 16px;
+    padding: 56px 0;
+    margin: 0 auto;
+    max-width: 1200px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .nav_submenu-item {
+    width: calc(25% - 1.5rem);
+  }
+  .nav__submenu-item-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .nav__submenu-item-header img {
+    width: 45px;
+    height: 45px;
+  }
+  .nav__submenu-item-header a, .nav__submenu-item-header p {
+    margin-left: 0;
+  }
+  .nav__submenu-item-header .txt--desktop {
+    display: block;
+    font-family: var(--font-family-body);
+    font-size: 14px;
+  }
 
-/* .nav__submenu-list {
-  margin-bottom: 24px;
-} */
+  .nav_submenu-item--mobile {
+    display: none;
+  }
+  .nav__submenu-label--desktop {
+    display: block;
+    margin-top: 2.5rem;
+  }
+
+}
 
 .nav__submenu-label > a {
   display: inline-block;
@@ -359,10 +428,16 @@ header nav { height: 78px; }
   background: var(--color-white);
   display: flex;
   flex-direction: column;
-  gap: .8rem;
+  gap: 1.5rem;
   margin: 0 -5.5%;
   padding: 32px 5.5%;
   height: 100%;
+}
+.nav__actions .btn:nth-of-type(1) {
+  order: 2;
+}
+.nav__actions .btn:nth-of-type(2) {
+  color: var(--wb-font-color-2);
 }
 @media only screen and (min-width: 1115px) {
   .nav__actions {
@@ -372,6 +447,9 @@ header nav { height: 78px; }
     height: initial;
     padding: initial;
     margin: initial;
+  }
+  .nav__actions .btn:nth-of-type(1) {
+    order: initial;
   }
 }
 @media only screen and (min-width: 1300px) {
