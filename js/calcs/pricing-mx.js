@@ -216,6 +216,7 @@ class PricingBuilder {
     let modules = modulesCheckbox.filter(m => m.checked)
     this.amountModules = modules.length + this.baseValues.module
     modulesCheckbox.forEach(m => m.checked ? m.previousElementSibling.style.fontWeight = "600" : m.previousElementSibling.style.fontWeight = "400")
+    modulesCheckbox.forEach(m => m.checked ? m.classList.add('selected') : m.classList.remove('selected'))
   }
 
   addAddon() {
@@ -223,6 +224,7 @@ class PricingBuilder {
     let addons = addonsCheckbox.filter(a => a.checked)
     this.amountAddons = addons.length
     addonsCheckbox.forEach(a => a.checked ? a.previousElementSibling.style.fontWeight = "600" : a.previousElementSibling.style.fontWeight = "400")
+    addonsCheckbox.forEach(a => a.checked ? a.classList.add('selected') : a.classList.remove('selected'))
   }
 
   searchModules(input) {

@@ -232,9 +232,8 @@ class PricingBuilder {
     this.amountModules = modules.length + this.baseValues.module
     // console.log(this.amountModules)
     // Agregar Font-weight a módulos seleccionados
-    modulesCheckbox.forEach(m => m.checked ? m.previousElementSibling.style.fontWeight = "600" : m.previousElementSibling.style.fontWeight = "400"
-    )
-    
+    modulesCheckbox.forEach(m => m.checked ? m.previousElementSibling.style.fontWeight = "600" : m.previousElementSibling.style.fontWeight = "400")
+    modulesCheckbox.forEach(m => m.checked ? m.classList.add('selected') : m.classList.remove('selected'))
   }
 
   addAddon() {
@@ -243,6 +242,7 @@ class PricingBuilder {
     this.amountAddons = addons.length
     // Agregar Font-weight en addons seleccionados
     addonsCheckbox.forEach(a => a.checked ? a.previousElementSibling.style.fontWeight = "600" : a.previousElementSibling.style.fontWeight = "400")
+    addonsCheckbox.forEach(a => a.checked ? a.classList.add('selected') : a.classList.remove('selected') )
   }
 
   searchModules(input) {
