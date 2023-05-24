@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gratificaciones PE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layouts/calc-cts-pe.css">
+  <link rel="preload" as="style" href="../css/grid-system.css" onload="this.rel='stylesheet'">
+  <link rel="preload" as="style" href="../css/margins-paddings.css" onload="this.rel='stylesheet'">
+</head>
+<body>
+  <header></header>
+
+  <section class="buk-py-6 buk-py-lg-6 calc-gratification">
+    <div class="boxer">
+      <div class="buk-grid">
+        <div class="buk-col buk-col-md-10 buk-col-st-md-2 buk-col-lg-10 buk-col-st-lg-2">
+          <div class="calc-header bg-blue-buk buk-px-2 buk-px-lg-2">
+            <h3>Completa los datos</h3>
+          </div>
+
+          <div class="calc-values bg-white buk-px-2 buk-py-3 buk-px-lg-2 buk-py-lg-2 buk-mt-3">
+            <div class="calc-values__title buk-px-2 buk-px-lg-2 buk-mb-3">
+              <p>Ingresa un periodo</p>
+            </div>
+            <div class="buk-grid buk-px-2 buk-px-lg-2">
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <div class="ds-flex ai-center buk-mb-2">
+                  <img src="https://www.buk.cl/hubfs/2023/Calculadoras/icon-calendar.svg" alt="periodo-cts">
+                  <p class="ft-bold">Periodo de Gratificación</p>
+                </div>
+                <div class="select-group">
+                  <select name="" id="gratf-period" class="select-control" >
+                    <option value="julio-2023">Periodo Julio 2023</option>
+                    <option value="diciembre-2023">Periodo Diciembre 2023</option>
+                    <option value="julio-2024">Periodo Julio 2024</option>
+                    <option value="diciembre-2024">Periodo Diciembre 2024</option>
+                    <option value="julio-2025">Periodo Julio 2025</option>
+                    <option value="diciembre-2025">Periodo Diciembre 2025</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <div class="ds-flex ai-center buk-mb-2">
+                  <img src="https://www.buk.cl/hubfs/2023/Calculadoras/icon-calendar.svg" alt="periodo-cts">
+                  <p class="ft-bold">Fecha de ingreso</p>
+                </div>
+                <div class="date-group">
+                  <input type="date" name="" id="gratf-date" required>
+                </div>
+              </div>
+              
+
+            </div> <!-- end-grid -->
+            <div class="calc-values__title buk-px-2 buk-px-lg-2 buk-my-3">
+              <p>Ingresa los detalles de tu remuneración</p>
+            </div>
+            <div class="buk-grid buk-px-2 buk-px-lg-2 calc-values__fields">
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center pst-relative">
+                <label for="salary">Sueldo</label>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <input type="number" min="0" id="salary">
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center pst-relative">
+                <label for="family-assignment">Asignación familiar</label>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <input type="number" min="0" id="family-assignment">
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center pst-relative">
+                <label for="fix-cost">Otros conceptos fijos</label>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <input type="number" min="0" id="fix-cost">
+              </div>
+            </div> <!-- end-grid -->
+            <div class="calc-values__title buk-px-2 buk-px-lg-2 buk-my-3">
+              <p>Remuneraciones variables complementarias</p>
+            </div>
+            <div class="buk-px-2 buk-pb-3">
+              <p>Ten en cuenta que se debe cumplir el criterio de regularidad es decir recibirlo como minimo en 3 meses en el periodo de 6 para ser
+              considerado en la base de gratificación.</p>
+            </div>
+            <div class="buk-grid buk-px-2 buk-px-lg-2 calc-values__fields">
+              <div class="buk-col buk-col-md-4 buk-col-lg-2">
+                <span class="ds-block buk-mb-1">Enero</span>
+                <input type="number" min="0" data-variable="extra-salary" value="0">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-2">
+                <span class="ds-block buk-mb-1">Febrero</span>
+                <input type="number" min="0" data-variable="extra-salary" value="0">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-2">
+                <span class="ds-block buk-mb-1">Marzo</span>
+                <input type="number" min="0" data-variable="extra-salary" value="0">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-2">
+                <span class="ds-block buk-mb-1">Abril</span>
+                <input type="number" min="0" data-variable="extra-salary" value="0">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-2">
+                <span class="ds-block buk-mb-1">Mayo</span>
+                <input type="number" min="0" data-variable="extra-salary" value="0">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-2">
+                <span class="ds-block buk-mb-1">Junio</span>
+                <input type="number" min="0" data-variable="extra-salary" value="0">
+              </div>
+            </div> <!-- end-grid -->
+            <div class="calc-values__title buk-px-2 buk-px-lg-2 buk-my-3">
+              <p>Tiempo computable</p>
+            </div>
+            <div class="buk-grid buk-px-2 buk-px-lg-2 calc-values__fields">
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <label for="gratf-months">Tiempo computable meses</label>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <input type="text" id="gratf-months" readonly value="0">
+              </div>
+              
+            </div> <!-- end-grid -->
+            <div class="buk-mt-5 txt-center">
+              <button class="btn btn--2" id="calc" >Calcular</button>
+            </div>
+          </div> <!-- end-calc-values -->
+          <div class="buk-grid buk-my-4">
+            <div class="buk-col buk-col-md-6 buk-col-lg-6 calc-values__rst-day-month buk-px-2 buk-py-2 buk-px-md-3">
+              <p class="ft-bold buk-mb-1">Base de gratificación</p>
+              <div id="lbl-base-gratf">0</div>
+            </div>
+            <div class="buk-col buk-col-md-6 buk-col-lg-6 calc-values__rst-day-month buk-px-2 buk-py-2 buk-px-md-3">
+              <p class="ft-bold buk-mb-1">Cálculo de gratificación</p>
+              <div id="lbl-total-gratf">0</div>
+            </div>
+          </div>
+        </div> <!-- end-col -->
+      </div> <!-- end-grid -->
+    </div>
+  </section>
+  
+  <script src="../js/calcs/calc-gratificaciones-pe.js" type="module" defer></script>
+</body>
+</html>
