@@ -49,14 +49,6 @@ class calcGratf {
         console.error(err)
       })
 
-    // await validator.dateInputIsEmpty(inputDate)
-    // await validator.isInRangeDate(inputDate, searchPeriod.startDevengue, searchPeriod.endDevengue)
-    // await this.computableTime(inputDate, searchPeriod)
-    // await this.checkSalariesVariables()
-    // await this.sumSalariesVariables()
-    // await this.base()
-    // await this.total()
-
   }
 
   checkSalariesVariables() {
