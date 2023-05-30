@@ -6,7 +6,7 @@ document.getElementById('gratf-period').addEventListener('change', () => {
   putMonthsPeriods()
 })
 
-document.getElementById('calc').addEventListener('click', () => {
+document.getElementById('btn-calculate').addEventListener('click', () => {
   calc.director()
 })
 
@@ -17,7 +17,7 @@ const peFormatter = new Intl.NumberFormat("es-PE", {
   maximumFractionDigits: 0,
 });
 
-const validate = new Validator()
+const validator = new Validator()
 class calcGratf {
   constructor({ baseGratf=0, totalGratf=0, months=0, amountVariable=0, applyVariables=false}) {
     this.baseGratf = baseGratf
@@ -38,15 +38,24 @@ class calcGratf {
     let inputDate = document.getElementById('gratf-date').value
     let searchPeriod = data.table.find(p => p.period == selectedPeriod)
 
-    if (validate.isInRangeDate(inputDate, searchPeriod.startDevengue, searchPeriod.endDevengue)) {
-      this.computableTime(inputDate, searchPeriod)
-      this.checkSalariesVariables()
-      this.sumSalariesVariables()
-      this.base()
-      this.total()
-    } else {
-      console.log('La fecha no se encuentra en el rango');
-    }
+    validator.dateInputIsEmpty(inputDate)
+      .then(() => validator.isInRangeDate(inputDate, searchPeriod.startDevengue, searchPeriod.endDevengue))
+      .then(() => this.computableTime(inputDate, searchPeriod))
+      .then(() => this.checkSalariesVariables())
+      .then(() => this.sumSalariesVariables())
+      .then(() => this.base())
+      .then(() => this.total())
+      .catch((err) => {
+        console.error(err)
+      })
+
+    // await validator.dateInputIsEmpty(inputDate)
+    // await validator.isInRangeDate(inputDate, searchPeriod.startDevengue, searchPeriod.endDevengue)
+    // await this.computableTime(inputDate, searchPeriod)
+    // await this.checkSalariesVariables()
+    // await this.sumSalariesVariables()
+    // await this.base()
+    // await this.total()
 
   }
 
@@ -74,11 +83,12 @@ class calcGratf {
     let DOMcomputableMonth = document.getElementById('gratf-months')
     let date = new Date(`${inputDate}T00:00:00`)
     let endPeriod = new Date(`${period.endDevengue}T00:00:00`)
+    let maxMonths = 6
 
     let computableDays = days360(date, endPeriod) + 1
     let computableMonths = Math.floor(computableDays / 30)
-    this.months = computableMonths
-    DOMcomputableMonth.value = computableMonths
+    computableMonths >= maxMonths ? this.months = maxMonths : this.months = computableMonths
+    DOMcomputableMonth.value = this.months
   }
 
   base() {
@@ -106,14 +116,11 @@ class calcGratf {
     DOMelement.textContent = amount
   }
 
-
 }
-
 
 const calc = new calcGratf({})
 
 console.log(data)
-// console.log('calc: ', calc)
 
 function putMonthsPeriods() {
   const selectedPeriod = document.getElementById('gratf-period').value
@@ -134,10 +141,23 @@ function putMonthsPeriods() {
       let { previousElementSibling } = item
       previousElementSibling && (previousElementSibling.textContent = monthsDecember[index])
     })
-    // console.log('decem')
   }
 
   console.log(findPeriod)
 
 }
 
+const closeDialog = document.getElementById('close-dialog-errs')
+const dialogErrors = document.querySelector('.buk-modal.buk-modal--control-errs')
+
+closeDialog.addEventListener('click', () => {
+  document.querySelector('body').classList.remove('non-scroll')
+  document.querySelector('.buk-modal.buk-modal--control-errs').classList.remove('buk-modal--show')
+})
+
+dialogErrors.addEventListener('click', function (event) {
+  if (!event.target.closest('.buk-modal__content')) {
+    document.querySelector('body').classList.remove('non-scroll')
+    document.querySelector('.buk-modal.buk-modal--control-errs').classList.remove('buk-modal--show')
+  }
+})
