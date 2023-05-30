@@ -12,6 +12,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layouts/calc-cts-pe.css">
+  <link rel="stylesheet" href="../css/components/modal.css">
   <link rel="preload" as="style" href="../css/grid-system.css" onload="this.rel='stylesheet'">
   <link rel="preload" as="style" href="../css/margins-paddings.css" onload="this.rel='stylesheet'">
 </head>
@@ -129,7 +130,7 @@
               
             </div> <!-- end-grid -->
             <div class="buk-mt-5 txt-center">
-              <button class="btn btn--2" id="calc" >Calcular</button>
+              <button class="btn btn--2" id="btn-calculate" >Calcular</button>
             </div>
           </div> <!-- end-calc-values -->
           <div class="buk-grid buk-my-4">
@@ -146,6 +147,27 @@
       </div> <!-- end-grid -->
     </div>
   </section>
+
+  <div class="buk-modal  buk-modal--control-errs">
+    <div class="buk-modal__dialog">
+      <div class="buk-modal__content">
+        <div class="buk-modal__header">
+          <p>No pudimos calcular tu gratificación</p>
+          <button id="close-dialog-errs">
+            <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.40723 15.0015L15.8423 1.5665" stroke="#2f48a7" stroke-width="2.3" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M2.40723 1.5665L15.8423 15.0015" stroke="#2f48a7" stroke-width="2.3" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+        <div class="buk-modal__body buk-pt-2 buk-pb-1">
+          <p id="error-description"></p>
+        </div>
+      </div>
+    </div>
+  </div>
   
   <script src="../js/calcs/calc-gratificaciones-pe.js" type="module" defer></script>
 </body>
