@@ -39,6 +39,15 @@ select {
   width: 100%;
 }
 
+input[type="radio"] {
+  margin-left: 1rem;
+  width: initial;
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
 label {
   font-size: inherit;
 }
@@ -70,6 +79,13 @@ label {
   border-radius: 16px;
   border-color: var(--color-primary);
   outline: 0;
+}
+
+.select-group .select-control {
+  background-image: url("https://www.buk.cl/hubfs/2022/Icons/arrow-down-color-primary.svg");
+  background-position-x: calc(100% - 9px);
+  background-position-y: 6px;
+  background-repeat: no-repeat;
 }
 
 .date-group input[type="date"]:hover,
@@ -120,7 +136,7 @@ label {
 .calc-values__fields input[readonly] {
  /* border-color: #Fafafa ; */
  /* background: #F6F5F5; */
-  background: #f9f9f9;
+  background: #f3f3f3;
 }
 .calc-values__fields input[readonly]:focus {
   outline: 0;
@@ -130,6 +146,9 @@ label {
     font-size: 1.125rem;
     padding: .375rem 1.25rem;
     text-align: end;
+  }
+  .calc-values__fields input[data-variable] {
+    text-align: start;
   }
 }
 

@@ -83,6 +83,16 @@
               <div class="buk-col buk-col-md-6 buk-col-lg-6">
                 <input type="number" min="0" id="fix-cost">
               </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center pst-relative">
+                <label >Seguridad social</label>
+              </div> <!-- end-col -->
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <div class="ds-flex ai-center jc-md-en radio-control">
+                  <label for="soc-essalud" class="buk-mx-1">EsSalud<input type="radio" name="social-security" id="soc-essalud"
+                      checked="checked"></label>
+                  <label for="soc-eps" class="buk-mx-1">EPS<input type="radio" name="social-security" id="soc-eps"></label>
+                </div>
+              </div>
             </div> <!-- end-grid -->
             <div class="calc-values__title buk-px-2 buk-px-lg-2 buk-my-3">
               <p>Remuneraciones variables complementarias</p>
@@ -126,6 +136,12 @@
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-6">
                 <input type="text" id="gratf-months" readonly value="0">
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <label for="gratf-months">Promedio ingresos variables</label>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <input type="text" readonly value="0" id="gratf-avg-variables">
               </div>
               
             </div> <!-- end-grid -->

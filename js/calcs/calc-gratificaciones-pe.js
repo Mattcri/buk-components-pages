@@ -19,9 +19,10 @@ const peFormatter = new Intl.NumberFormat("es-PE", {
 
 const validator = new Validator()
 class calcGratf {
-  constructor({ baseGratf=0, totalGratf=0, months=0, amountVariable=0, applyVariables=false}) {
+  constructor({ baseGratf=0, totalGratf=0, bonus=0, months=0, amountVariable=0, applyVariables=false}) {
     this.baseGratf = baseGratf
     this.totalGratf = totalGratf
+    this.bonus = bonus
     this.months = months
     this.amountVariable = amountVariable
     this.applyVariables = applyVariables
@@ -43,6 +44,7 @@ class calcGratf {
       .then(() => this.computableTime(inputDate, searchPeriod))
       .then(() => this.checkSalariesVariables())
       .then(() => this.sumSalariesVariables())
+      .then(() => this.avgSalariesVariables())
       .then(() => this.base())
       .then(() => this.total())
       .catch((err) => {
@@ -71,6 +73,17 @@ class calcGratf {
     
   }
 
+  avgSalariesVariables() {
+    let DOMavg = document.getElementById('gratf-avg-variables')
+    if (this.applyVariables === true) {
+      let avg = this.amountVariable / 6
+      this.displayValue('val', DOMavg, peFormatter.format(avg))
+      console.log('avg: ', avg);
+    } else {
+      this.displayValue('val', DOMavg, peFormatter.format(0))
+    }
+  }
+
   computableTime (inputDate, period) {
     let DOMcomputableMonth = document.getElementById('gratf-months')
     let date = new Date(`${inputDate}T00:00:00`)
@@ -83,6 +96,16 @@ class calcGratf {
     DOMcomputableMonth.value = this.months
   }
 
+  healthBonus() {
+    let esSalud = document.getElementById('soc-essalud')
+    let eps = document.getElementById('soc-eps')
+    if (esSalud.checked === true) {
+      return 0.09
+    } else if (eps.checked === true) {
+      return 0.0675
+    }
+  }
+
   base() {
     let salary = Number(document.getElementById('salary').value)
     let family = Number(document.getElementById('family-assignment').value)
@@ -93,19 +116,27 @@ class calcGratf {
     let baseAmount = Number((sumAmount).toFixed(2))
 
     this.baseGratf = baseAmount
-    this.displayValue(DOMlblBaseGratf, this.baseGratf)
+    this.displayValue('dom', DOMlblBaseGratf, this.baseGratf)
   }
 
   total() {
     let DOMlblTotal = document.getElementById('lbl-total-gratf')
     let calcTotal = this.baseGratf / 6 * this.months
+    let bonification = Number(calcTotal.toFixed(2)) * this.healthBonus()
     this.totalGratf = Number(calcTotal.toFixed(2))
-    this.displayValue(DOMlblTotal, peFormatter.format(this.totalGratf))
+    this.bonus = Number(bonification.toFixed(2))
+    let totalDeposit = this.totalGratf + this.bonus
+
+    this.displayValue('dom',DOMlblTotal, peFormatter.format(totalDeposit))
     console.log(this)
   }
 
-  displayValue(DOMelement, amount) {
-    DOMelement.textContent = amount
+  displayValue(type, DOMelement, amount) {
+    if (type === 'dom') {
+      DOMelement.textContent = amount
+    } else if (type === 'val') {
+      DOMelement.value = amount
+    }
   }
 
 }
