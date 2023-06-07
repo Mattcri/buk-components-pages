@@ -1,64 +1,7 @@
-// function CalculateFactorAdelantos() {
-//   const numberCollaborators = document.getElementById('n-colab').value
-//   const RANGES = [
-//     { 'start': 1, 'end': 100, 'factor': 0.5 },
-//     { 'start': 101, 'end': 500, 'factor': 0.65 },
-//     { 'start': 501, 'end': 1000, 'factor': 0.7 },
-//     { 'start': 1001, 'end': 2500, 'factor': 0.7 },
-//     { 'start': 2501, 'end': 5000, 'factor': 0.75 },
-//     { 'start': 5001, 'end': 7500, 'factor': 0.8 },
-//     { 'start': 7501, 'end': 10000, 'factor': 0.8 },
-//     { 'start': 10001, 'end': 15000, 'factor': 0.8 },
-//     { 'start': 15001, 'end': 20000, 'factor': 0.8 },
-//   ]
-
-//   const lastRange = RANGES[RANGES.length - 1]
-//   const factorOverRanges = lastRange.factor
-
-//   if (numberCollaborators <= lastRange.end) {
-//     for (let i = 0; i < RANGES.length; i++) {
-//       let range = RANGES[i]
-//       // console.log(range)
-//       if (range.start <= numberCollaborators && range.end >= numberCollaborators) {
-//         let findFactor = range.factor
-//         // console.log('Factor Encontrado: ', findFactor)
-//         return findFactor
-//       }
-
-//     }
-//   } else {
-//     return factorOverRanges
-//   }
-
-// }
-
-// function calcFactorLME() {
-//   const employees = document.getElementById('n-colab').value
-//   const RANGES = [
-//     { 'start': 1, 'end': 100, 'factor': 0.59 },
-//     { 'start': 101, 'end': 500, 'factor': 0.5 },
-//     { 'start': 501, 'end': 1000, 'factor': 0.2 },
-//     { 'start': 1001, 'end': 2500, 'factor': 0.2 },
-//     { 'start': 2501, 'end': 5000, 'factor': 0.15 },
-//     { 'start': 5001, 'end': 7500, 'factor': 0.14 },
-//     { 'start': 7501, 'end': 10000, 'factor': 0.14 },
-//     { 'start': 10001, 'end': 15000, 'factor': 0.13 },
-//     { 'start': 15001, 'end': 20000, 'factor': 0.13 },
-//   ]
-
-//   let lastRange = RANGES[RANGES.length - 1]
-//   let factorOverRanges = lastRange.factor
-//   let findFactor = RANGES.find(search => {
-//     if (employees >= search.start && employees <= search.end) return search
-//   })
-
-//   // employees <= lastRange.end ? findFactor : factorOverRanges
-//   if (employees <= lastRange.end) {
-//     return findFactor.factor
-//   } else {
-//     return factorOverRanges
-//   }
-// }
+function additionalAdelantosCO() {
+  const numEmployees = document.getElementById('n-colab').value
+  return 8500 * numEmployees
+}
 
 const coFormatter = new Intl.NumberFormat("es-CO", {
   style: "currency",
@@ -234,7 +177,7 @@ class PricingBuilder {
       { name: 'm-remu', factor: 1 },
       // { name: 'm-asist', factor: 0.8 },
       { name: 'm-firma', factor: 0.26 },
-      // { name: 'm-adela', factor: CalculateFactorAdelantos() },
+      { name: 'm-adela', factor: 1 },
       { name: 'm-desep', factor: 0.6 },
       { name: 'm-capac', factor: 0.62 },
       { name: 'm-comun', factor: 0.28 },
@@ -270,7 +213,11 @@ class PricingBuilder {
     // Se aplica - 1 pq dentro del valor basePeopleManagment va el valor basico, sobrando un módulo si se toma en cuenta el valor this.amountModules
     let calcMinPrice = Number(( basePeopleManagment + (priceForModule * (this.amountModules - 1 + this.amountAddons)) ))
     console.log('Min Price: ', calcMinPrice)
-    return calcMinPrice
+    if (document.getElementById('module-4').checked == true) {
+      return calcMinPrice + additionalAdelantosCO()
+    } else {
+      return calcMinPrice
+    }
   }
 
   additionalAmount() {
@@ -354,7 +301,12 @@ class PricingBuilder {
     let price = (additionalCost * additionalAmount + basisCost) * this.amountFactors
     console.log('Price Total: ', price)
     console.log('CANTIDAD ADICIONAL: ', additionalAmount)
-    return price
+    console.log(document.getElementsByName('m-adela'))
+    if (document.getElementById('module-4').checked == true) {
+      return price + additionalAdelantosCO()
+    } else {
+      return price
+    }
   }
 
   displayPrice(amount) {
