@@ -116,17 +116,22 @@ class calcGratf {
     let baseAmount = Number((sumAmount).toFixed(2))
 
     this.baseGratf = baseAmount
-    this.displayValue('dom', DOMlblBaseGratf, this.baseGratf)
+    this.displayValue('val', DOMlblBaseGratf, this.baseGratf)
   }
 
   total() {
     let DOMlblTotal = document.getElementById('lbl-total-gratf')
+    let DOMgratfOrdinary = document.getElementById('lbl-ordinary')
+    let DOMgratfBonus = document.getElementById('lbl-bonus')
+
     let calcTotal = this.baseGratf / 6 * this.months
     let bonification = Number(calcTotal.toFixed(2)) * this.healthBonus()
     this.totalGratf = Number(calcTotal.toFixed(2))
     this.bonus = Number(bonification.toFixed(2))
     let totalDeposit = this.totalGratf + this.bonus
 
+    this.displayValue('dom', DOMgratfOrdinary, peFormatter.format(calcTotal))
+    this.displayValue('dom', DOMgratfBonus, peFormatter.format(bonification))
     this.displayValue('dom',DOMlblTotal, peFormatter.format(totalDeposit))
     console.log(this)
   }

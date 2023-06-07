@@ -128,11 +128,11 @@
               </div>
             </div> <!-- end-grid -->
             <div class="calc-values__title buk-px-2 buk-px-lg-2 buk-my-3">
-              <p>Tiempo computable</p>
+              <p>Datos computable</p>
             </div>
             <div class="buk-grid buk-px-2 buk-px-lg-2 calc-values__fields">
               <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                <label for="gratf-months">Tiempo computable meses</label>
+                <label for="gratf-months">Tiempo computable en meses</label>
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-6">
                 <input type="text" id="gratf-months" readonly value="0">
@@ -143,6 +143,12 @@
               <div class="buk-col buk-col-md-6 buk-col-lg-6">
                 <input type="text" readonly value="0" id="gratf-avg-variables">
               </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <label for="lbl-base-gratf">Base de gratificación</label>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <input type="text" readonly value="0" id="lbl-base-gratf">
+              </div>
               
             </div> <!-- end-grid -->
             <div class="buk-mt-5 txt-center">
@@ -151,14 +157,28 @@
           </div> <!-- end-calc-values -->
           <div class="buk-grid buk-my-4">
             <div class="buk-col buk-col-md-6 buk-col-lg-6 calc-values__rst-day-month buk-px-2 buk-py-2 buk-px-md-3">
-              <p class="ft-bold buk-mb-1">Base de gratificación</p>
-              <div id="lbl-base-gratf">0</div>
+              <p class="ft-bold buk-mb-1">Monto gratificación ordinaria (A)</p>
+              <div id="lbl-ordinary">0</div>
             </div>
             <div class="buk-col buk-col-md-6 buk-col-lg-6 calc-values__rst-day-month buk-px-2 buk-py-2 buk-px-md-3">
-              <p class="ft-bold buk-mb-1">Cálculo de gratificación</p>
-              <div id="lbl-total-gratf">0</div>
+              <p class="ft-bold buk-mb-1">Monto bonificación tipo de seguro (B)</p>
+              <div id="lbl-bonus">0</div>
             </div>
           </div>
+
+          <div class="bg-blue-buk buk-py-3 calc-values__rst-total">
+            <div class="buk-grid buk-px-3">
+              <div class="buk-col buk-col-md-8 buk-col-st-md-3 buk-col-lg-8 buk-col-st-lg-3">
+                <h3 class="buk-mb-3 txt-center">Gratificación calculada (A+B):</h3>
+                <div class="input-total txt-center">
+                  <span id="lbl-total-gratf">0</span>
+                </div>
+                <p class="buk-mt-3">*De acuerdo a la Ley Nº 27735. Ley que Regula el Otorgamiento de las Gratificaciones
+                  para los Trabajadores del Régimen de la Actividad Privada por Fiestas Patrias y Navidad</p>
+              </div>
+            </div>
+          </div>
+
         </div> <!-- end-col -->
       </div> <!-- end-grid -->
     </div>
