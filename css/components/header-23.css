@@ -111,6 +111,7 @@ header nav { height: 78px; }
   border: none;
   background: transparent;
   cursor: pointer;
+  position: relative;
 }
 .buk-countries svg {
   transition: transform .4s ease;
@@ -120,6 +121,58 @@ header nav { height: 78px; }
 }
 
 .buk-countries__submenu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 180px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0px 0px 14px 0px rgba(43, 60, 106, 0.09);
+  /* padding: 4px; */
+  z-index: 5;
+  transition: height .5s;
+  height: 0;
+  overflow: hidden;
+}
+.buk-countries.show .buk-countries__submenu {
+  height: 156.2px;
+}
+@media only screen and (min-width: 767px) {
+  .buk-countries__submenu {
+    width: 200px;
+  }
+}
+
+.buk-countries__wrap {
+  border-radius: 16px;
+  padding: 4px;
+}
+
+.buk-countries__link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.buk-countries__link span {
+  color: var(--color-blue-buk);
+  font-size: 1.125rem;
+}
+
+.buk-countries__item {
+  border-radius: 14px;
+  text-align: initial;
+  padding: 8px 12px;
+}
+.buk-countries__item:hover {
+  background-color: var(--wb-bg-modules);
+}
+
+.buk-countries__submenu .buk-flag__xs {
+  width: 20px;
+  height: 20px;
+}
+
+/* .buk-countries__submenu {
   position: absolute;
   top: 35px;
   bottom: auto;
@@ -159,12 +212,8 @@ header nav { height: 78px; }
 
 .buk-countries__link img.buk-flag__xs {
   margin-right: 6px;
-}
+} */
 
-.buk-countries__submenu .buk-flag__xs {
-  width: 20px;
-  height: 20px;
-}
 
 /* Button collapse */
 .nav__toggle {
