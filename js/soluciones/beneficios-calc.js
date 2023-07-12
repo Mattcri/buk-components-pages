@@ -2,9 +2,10 @@
 moment.locale('es')
 
 const getUF = async () => {
+  const today = new Date().toISOString().slice(0, 10)
   const response = await fetch('https://d3nk1otf0qe6jp.cloudfront.net/data.json')
     .then(r => r.json())
-    .then(data => data.UF)
+    .then(data => data.UF.find(uf => uf.Fecha === today))
     .catch(err => console.error(err))
   console.log(response)
   return response
@@ -32,14 +33,23 @@ const operateRun = () => {
   const allCheckbox = [...document.querySelectorAll('input[type="checkbox"]')]
   const gympassCore = document.getElementById('bn-3')
   const gympassStarter = document.getElementById('bn-4')
+  const inputInsurance = [...document.querySelectorAll('input[data-input-type="insurance"]')]
+
+  const insuranceTrue = inputInsurance.filter(e => e.checked)
+  const insuranceFalse = inputInsurance.filter(e => !e.checked)
+  console.log('Seguros True: ', insuranceTrue)
+  console.log('Seguros False: ', insuranceFalse)
 
   if (gympassCore.checked && gympassStarter.checked) {
     console.log('ERROR')
     showError()
+  } else if (insuranceTrue.length > 1) {
+    showInsuranceErr(insuranceTrue, insuranceFalse)
   } else {
     calculateValue(allCheckbox)
     fontWeightSelectInputs(allCheckbox)
     hideError()
+    hideInsurandeErr(inputInsurance)
   }
 
   // console.log(element)
@@ -93,6 +103,33 @@ const showError = () => {
   DOMuf.classList.add('txt-error')
   gympassCore.parentElement.classList.add('control-error')
   gympassStarter.parentElement.classList.add('control-error')
+  
+  // switch (gympassCore.checked) {
+  //   case true:
+  //     gympassCore.parentElement.classList.add('control-error')
+  //     break
+  //   case false:
+  //     gympassCore.parentElement.classList.remove('control-error')
+  // }
+
+  // switch (gympassStarter.checked) {
+  //   case true:
+  //     gympassStarter.parentElement.classList.add('control-error')
+  //     break
+  //   case false:
+  //     gympassStarter.parentElement.classList.remove('control-error')
+  // }
+}
+
+const showInsuranceErr = (DOMelemTrue, DOMelemFalse) => {
+  console.log('ERROR SEGUROS')
+  const DOMuf = document.getElementById('price-uf')
+  const DOMclp = document.getElementById('price-clp')
+  DOMuf.textContent = 'Selecciona solo una versión de Seguros Zurich'
+  DOMclp.textContent = 'Aprox $0 CLP'
+  DOMuf.classList.add('txt-error')
+  DOMelemTrue.forEach(item => item.parentElement.classList.add('control-error'))
+  DOMelemFalse.forEach(item => item.parentElement.classList.remove('control-error'))
 }
 
 const hideError = () => {
@@ -102,6 +139,12 @@ const hideError = () => {
   DOMuf.classList.remove('txt-error')
   gympassCore.parentElement.classList.remove('control-error')
   gympassStarter.parentElement.classList.remove('control-error')
+}
+
+const hideInsurandeErr = (DOMelement) => {
+  const DOMuf = document.getElementById('price-uf')
+  DOMuf.classList.remove('txt-error')
+  DOMelement.forEach(item => item.parentElement.classList.remove('control-error'))
 }
 
 const initialClick = async () => {
