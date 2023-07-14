@@ -29,34 +29,28 @@ const valuesUF = {
   'date': ''
 }
 
-const operateRun = () => {
+const operateRun = (inputClick) => {
   const allCheckbox = [...document.querySelectorAll('input[type="checkbox"]')]
-  const gympassCore = document.getElementById('bn-3')
-  const gympassStarter = document.getElementById('bn-4')
-  const inputInsurance = [...document.querySelectorAll('input[data-input-type="insurance"]')]
+  // const gympassCore = document.getElementById('bn-3')
+  // const gympassStarter = document.getElementById('bn-4')
+  const inputsInsurance = [...document.querySelectorAll('input[data-input-type="insurance"]')]
+  const inputsGympass = [...document.querySelectorAll('input[data-input-type="gympass"]')]
 
-  const insuranceTrue = inputInsurance.filter(e => e.checked)
-  const insuranceFalse = inputInsurance.filter(e => !e.checked)
-  console.log('Seguros True: ', insuranceTrue)
-  console.log('Seguros False: ', insuranceFalse)
+  const gympassTrue = inputsGympass.filter(e => e.checked)
+  const gympassFalse = inputsGympass.filter(e => !e.checked)
+  const insuranceTrue = inputsInsurance.filter(e => e.checked)
+  const insuranceFalse = inputsInsurance.filter(e => !e.checked)
 
-  if (gympassCore.checked && gympassStarter.checked) {
-    console.log('ERROR')
-    showError()
-  } else if (insuranceTrue.length > 1) {
-    showInsuranceErr(insuranceTrue, insuranceFalse)
+  if (gympassTrue.length > 1 || insuranceTrue.length > 1) {
+    showError(gympassTrue, gympassFalse)
+    showError(insuranceTrue, insuranceFalse)
+    selectedInputs(allCheckbox)
+    messageError(inputClick)
   } else {
     calculateValue(allCheckbox)
-    fontWeightSelectInputs(allCheckbox)
-    hideError()
-    hideInsurandeErr(inputInsurance)
+    selectedInputs(allCheckbox)
+    hideError(allCheckbox)
   }
-
-  // console.log(element)
-  // element.checked
-  //   ? add(init, currentPrice)
-  //   ? total = total + currentPrice
-  //   : total = total - currentPrice
 
 }
 
@@ -64,7 +58,7 @@ const calculateValue = (checkbox) => {
   const actives = checkbox.filter(c => c.checked)
   const values = actives.map(v => parseFloat(v.value))
   const total = values.reduce((prev, acum) => prev + acum, 0)
-  putPricesInDOM(total.toFixed(3))
+  putPricesInDOM(total.toFixed(4))
   // console.log(checkbox)
   // console.log(actives)
   console.log('Suma de valores: ', values)
@@ -78,6 +72,7 @@ const putPricesInDOM = (price) => {
   const DOMclp = document.getElementById('price-clp')
   price > 0 ? price : price = '0'
   DOMuf.textContent = `UF ${price}`
+  DOMuf.classList.remove('txt-error')
 
   const ufToClp = (price * parseFloat(ufPrice))
   const clp = ufToClp.toLocaleString('es-CL', {
@@ -93,67 +88,67 @@ const putPricesInDOM = (price) => {
   console.log('CLP: ',clp)
 }
 
-const showError = () => {
-  const gympassCore = document.getElementById('bn-3')
-  const gympassStarter = document.getElementById('bn-4')
-  const DOMuf = document.getElementById('price-uf')
-  const DOMclp = document.getElementById('price-clp')
-  DOMuf.textContent = 'Selecciona solo una versión de Gympass'
-  DOMclp.textContent = 'Aprox $0 CLP'
-  DOMuf.classList.add('txt-error')
-  gympassCore.parentElement.classList.add('control-error')
-  gympassStarter.parentElement.classList.add('control-error')
-  
-  // switch (gympassCore.checked) {
-  //   case true:
-  //     gympassCore.parentElement.classList.add('control-error')
-  //     break
-  //   case false:
-  //     gympassCore.parentElement.classList.remove('control-error')
-  // }
+const showError = (DOMelemTrue, DOMelemFalse) => {
+  console.log('ERROR')
 
-  // switch (gympassStarter.checked) {
-  //   case true:
-  //     gympassStarter.parentElement.classList.add('control-error')
-  //     break
-  //   case false:
-  //     gympassStarter.parentElement.classList.remove('control-error')
-  // }
+  if (DOMelemTrue.length > 1) {
+    DOMelemTrue.forEach(item => item.parentElement.classList.add('control-error'))
+    DOMelemFalse.forEach(item => item.parentElement.classList.remove('control-error'))
+  } else if (DOMelemTrue.length == 1) {
+    // Si es igual a 1 elemento en True eliminar los errores de todos los inputs type
+    DOMelemTrue.forEach(item => item.parentElement.classList.remove('control-error'))
+    DOMelemFalse.forEach(item => item.parentElement.classList.remove('control-error'))
+  }
 }
 
-const showInsuranceErr = (DOMelemTrue, DOMelemFalse) => {
-  console.log('ERROR SEGUROS')
-  const DOMuf = document.getElementById('price-uf')
-  const DOMclp = document.getElementById('price-clp')
-  DOMuf.textContent = 'Selecciona solo una versión de Seguros Zurich'
-  DOMclp.textContent = 'Aprox $0 CLP'
-  DOMuf.classList.add('txt-error')
-  DOMelemTrue.forEach(item => item.parentElement.classList.add('control-error'))
-  DOMelemFalse.forEach(item => item.parentElement.classList.remove('control-error'))
+const hideError = (DOMelem) => {
+  DOMelem.forEach(e => e.parentElement.classList.remove('control-error'))
 }
 
-const hideError = () => {
-  const gympassCore = document.getElementById('bn-3')
-  const gympassStarter = document.getElementById('bn-4')
-  const DOMuf = document.getElementById('price-uf')
-  DOMuf.classList.remove('txt-error')
-  gympassCore.parentElement.classList.remove('control-error')
-  gympassStarter.parentElement.classList.remove('control-error')
-}
+const messageError = (inputType) => {
+  const inputsInsurance = [...document.querySelectorAll('input[data-input-type="insurance"]')]
+  const inputsGympass = [...document.querySelectorAll('input[data-input-type="gympass"]')]
 
-const hideInsurandeErr = (DOMelement) => {
-  const DOMuf = document.getElementById('price-uf')
-  DOMuf.classList.remove('txt-error')
-  DOMelement.forEach(item => item.parentElement.classList.remove('control-error'))
+  const msgErrGympass = 'Selecciona solo una versión de Gympass'
+  const msgErrInsurance = 'Selecciona solo una versión de Seguros Zurich'
+
+  const gympassWithErr = inputsGympass.filter(e => e.parentElement.classList.contains('control-error'))
+  const insuranceWithErr = inputsInsurance.filter(e => e.parentElement.classList.contains('control-error'))
+  const inputClicked = inputType.dataset.inputType
+
+  console.log('Input Type: ', inputType.dataset.inputType)
+
+  const putErrMessageInDOM = (msg) => {
+    const DOMuf = document.getElementById('price-uf')
+    const DOMclp = document.getElementById('price-clp')
+    DOMuf.textContent = msg
+    DOMuf.classList.add('txt-error')
+    DOMclp.textContent = 'Aprox $0 CLP'
+  }
+
+  // Cambia el mensaje según el último input al que se le da Click
+  if (gympassWithErr.length > 1 && inputClicked == 'gympass') {
+    putErrMessageInDOM(msgErrGympass)
+  } else if (insuranceWithErr.length > 1 && inputClicked == 'insurance') {
+    putErrMessageInDOM(msgErrInsurance)
+  }
+
+  // Cambia el mensaje cuando seguros o gympass esta sin errores por el contrario que aún presenta errores
+  if (gympassWithErr.length == 0) {
+    putErrMessageInDOM(msgErrInsurance)
+  } else if (insuranceWithErr.length == 0) {
+    putErrMessageInDOM(msgErrGympass)
+  }
+
 }
 
 const initialClick = async () => {
   document.getElementById('bn-2').click()
 }
 
-const fontWeightSelectInputs = (checkbox) => {
+const selectedInputs = (checkbox) => {
   checkbox.forEach(mod => {
-    mod.checked ? mod.nextElementSibling.style.fontWeight = "600" : mod.nextElementSibling.style.fontWeight = "400"
+    mod.checked ? mod.nextElementSibling.firstElementChild.style.fontWeight = "600" : mod.nextElementSibling.firstElementChild.style.fontWeight = "400"
   })
   
 }

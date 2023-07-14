@@ -143,8 +143,10 @@
 .seguros {
   background: var(--bg-dark-sky-blue);
   border-radius: 9px;
-  /* margin-left: -0.5rem; */
-  /* padding-left: 0.5rem; */
+  margin-left: -0.5rem;
+  padding-left: 0.5rem;
+  margin-right: -0.5rem;
+  padding-right: 0.5rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
