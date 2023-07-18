@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Remuneraciones Colombia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/main-23.css">
+  <link rel="stylesheet" href="../css/grid-system.css">
+  <link rel="stylesheet" href="../css/utilities-spaces-23.css">
+  <link rel="stylesheet" href="../css/layouts/calc-remu-CO.css">
+</head>
+<body>
+  <header></header>
+  <main>
+    <section class="buk-py-11 buk-py-lg-15">
+      <div class="boxer">
+        <h2 class="txt-center buk-mb-7">Valores Nacionales</h2>
+        <div class="buk-grid calc-national-values">
+          <div class="buk-col buk-col-lg-10 buk-col-st-lg-2">
+            <div class="buk-grid">
+              <div class="buk-col buk-col-md-4 buk-col-lg-4 buk-p-3 buk-p-md-4 shadow-1 rounded-16">
+                <label for="">Sueldo Mínimo</label>
+                <input type="text" class="buk-mt-2 buk-px-3 buk-px-md-4 buk-py-2 rounded-16" readonly value="0">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-4 buk-p-3 buk-p-md-4 shadow-1 rounded-16">
+                <label for="">Auxilio de Transporte</label>
+                <input type="text" class="buk-mt-2 buk-px-3 buk-px-md-4 buk-py-2 rounded-16" readonly value="0">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-4 buk-p-3 buk-p-md-4 shadow-1 rounded-16">
+                <label for="">UVT</label>
+                <input type="text" class="buk-mt-2 buk-px-3 buk-px-md-4 buk-py-2 rounded-16" readonly value="0">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <h2 class="txt-center buk-my-7">Calculadora Remuneraciones Colombia</h2>
+        <div class="buk-grid calc-fields">
+          <div class="buk-col buk-col-md-7 buk-col-lg-7">
+            <div class="buk-p-3 buk-p-md-4 shadow-1 rounded-16">
+              <h3 class="buk-mb-2">Devengos</h3>
+              <div class="buk-grid">
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="">Salario</label>
+                  <input type="number">
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="">Bono Prestacional</label>
+                  <input type="number">
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="">Bono No prestacional Tributable</label>
+                  <input type="number">
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="">Bono No prestacional No Tributable</label>
+                  <input type="number">
+                </div>
+                <div class="buk-col">
+                  <hr>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="">Auxilio de Transporte</label>
+                  <input type="number">
+                </div>
+              </div> <!-- end-grid -->
+              <h3 class="buk-my-3">Descuentos y Alivios Tributarios</h3>
+              <div class="buk-grid">
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="">Otros descuentos</label>
+                  <input type="number">
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="">Medicina Prepagada</label>
+                  <input type="number">
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="">Planes de Atencion Complementario (PAC)</label>
+                  <input type="number">
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="">Aporte Voluntario a Pensiones Obligatorias</label>
+                  <input type="number">
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="">Aporte a Fondos Voluntarios de Pensiones</label>
+                  <input type="number">
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="">AFC</label>
+                  <input type="number">
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="">Interés de Vivienda</label>
+                  <input type="number">
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <span>Deducción Dependiente</span>
+                  <div class="control-radio ds-flex ai-center gap--16">
+                    <label for="">Sí
+                      <input type="radio" name="deduccion-dependiente" checked>
+                    </label>
+                    <label for="">No
+                      <input type="radio" name="deduccion-dependiente">
+                    </label>
+                  </div>
+                </div>
+                <div class="buk-col">
+                  <hr>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="">Total Deducciones exentas</label>
+                  <input type="number">
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="">Renta Exenta</label>
+                  <input type="number">
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="">Total Exento</label>
+                  <input type="number">
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <label for="">Tope Ley 1819</label>
+                  <input type="number">
+                </div>
+              </div> <!-- end-grid -->
+            </div>
+          </div>
+          <div class="buk-col buk-col-md-5 buk-col-lg-5 buk-pl-lg-3">
+            <div class="buk-p-3 buk-p-md-4 shadow-1 rounded-16">
+
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </section>
+  </main>
+  
+</body>
+</html>

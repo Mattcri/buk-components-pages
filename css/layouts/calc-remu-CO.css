@@ -1,0 +1,24 @@
+header {
+  height: 60px;
+  background-color: var(--color-blue-buk);
+}
+
+label { font-size: 1.125rem; }
+
+.calc-national-values input,
+.calc-fields input {
+  width: 100%;
+}
+
+.calc-fields .control-radio input {
+  width: initial;
+}
+
+.calc-national-values input[readonly] {
+  background: var(--wb-bg-modules) !important;
+  border: 1px solid #d9e3fc;
+  color: var(--color-blue-buk);
+  font-family: var(--font-family-title);
+  font-size: 1.75rem;
+  font-weight: 700;
+}
