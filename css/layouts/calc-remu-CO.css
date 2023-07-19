@@ -10,15 +10,79 @@ label { font-size: 1.125rem; }
   width: 100%;
 }
 
+.calc-national-values input[readonly]:focus,
+.calc-fields input[readonly]:focus {
+  outline: 0;
+}
+
 .calc-fields .control-radio input {
   width: initial;
 }
 
 .calc-national-values input[readonly] {
-  background: var(--wb-bg-modules) !important;
+  background: var(--wb-bg-modules);
   border: 1px solid #d9e3fc;
   color: var(--color-blue-buk);
   font-family: var(--font-family-title);
   font-size: 1.75rem;
   font-weight: 700;
+}
+
+.calc-fields input {
+  color: inherit;
+  font-family: var(--font-family-body);
+  font-size: 1.125rem;
+}
+
+.calc-fields input:not([readonly]) {
+  background: var(--wb-bg-modules);
+  border: 2px solid #fff;
+  border-radius: 21px;
+  cursor: pointer;
+  padding: 0.625rem 1rem;
+}
+
+.calc-fields input:not([readonly]):focus,
+.calc-fields input:not([readonly]):hover {
+  border-color: var(--color-blue-buk);
+  outline: 0;
+}
+
+.calc-fields input[readonly] {
+  background: #f3f3f3;
+  border: 2px solid #fff;
+  border-radius: 21px;
+  padding: 0.625rem 1rem;
+}
+
+@media only screen and (min-width: 767px) {
+  .sticky-box {
+    position: sticky;
+    top: 84px;
+  }
+}
+
+.calc-fields .lbl-total-discount {
+  background: var(--wb-bg-modules);
+  border: 1px solid #d9e3fc;
+  color: var(--color-blue-buk);
+  font-family: var(--font-family-title);
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 0.625rem 1rem;
+}
+
+.lbl-total-salary {
+  background: var(--color-blue-buk);
+  border: 1px solid var(--color-blue-buk);
+  color: var(--color-white);
+  font-family: var(--font-family-title);
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 0.625rem 1rem;
+}
+
+.calc-fields--results [class*="buk-col"] {
+  padding-top: 0;
+  padding-bottom: 0;
 }
