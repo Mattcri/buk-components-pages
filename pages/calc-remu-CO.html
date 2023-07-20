@@ -24,16 +24,16 @@
           <div class="buk-col buk-col-lg-10 buk-col-st-lg-2">
             <div class="buk-grid">
               <div class="buk-col buk-col-md-4 buk-col-lg-4 buk-p-3 buk-p-md-4 shadow-1 rounded-16">
-                <label for="">Sueldo Mínimo</label>
-                <input type="text" class="buk-mt-2 buk-px-3 buk-px-md-4 buk-py-2 rounded-16" readonly value="0">
+                <label for="nv-min-salary">Sueldo Mínimo</label>
+                <input type="text" id="nv-min-salary" class="buk-mt-2 buk-px-3 buk-px-md-4 buk-py-2 rounded-16" readonly value="0">
               </div>
               <div class="buk-col buk-col-md-4 buk-col-lg-4 buk-p-3 buk-p-md-4 shadow-1 rounded-16">
-                <label for="">Auxilio de Transporte</label>
-                <input type="text" class="buk-mt-2 buk-px-3 buk-px-md-4 buk-py-2 rounded-16" readonly value="0">
+                <label for="nv-aux-transport">Auxilio de Transporte</label>
+                <input type="text" id="nv-aux-transport" class="buk-mt-2 buk-px-3 buk-px-md-4 buk-py-2 rounded-16" readonly value="0">
               </div>
               <div class="buk-col buk-col-md-4 buk-col-lg-4 buk-p-3 buk-p-md-4 shadow-1 rounded-16">
-                <label for="">UVT</label>
-                <input type="text" class="buk-mt-2 buk-px-3 buk-px-md-4 buk-py-2 rounded-16" readonly value="0">
+                <label for="nv-uvt">UVT</label>
+                <input type="text" id="nv-uvt" class="buk-mt-2 buk-px-3 buk-px-md-4 buk-py-2 rounded-16" readonly value="0">
               </div>
             </div>
           </div>
@@ -46,20 +46,20 @@
               <h3 class="buk-mb-2">Devengos</h3>
               <div class="buk-grid">
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                  <label for="">Salario</label>
-                  <input type="number" min="0" class="buk-mt-2">
+                  <label for="fld-salary">Salario</label>
+                  <input type="number" id="fld-salary" min="0" class="buk-mt-2">
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                  <label for="">Bono Prestacional</label>
-                  <input type="number" min="0" class="buk-mt-2">
+                  <label for="fld-bonus">Bono Prestacional</label>
+                  <input type="number" id="fld-bonus" min="0" class="buk-mt-2">
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                  <label for="">Bono No prestacional Tributable</label>
-                  <input type="number" min="0" class="buk-mt-2">
+                  <label for="fld-tax-bonus">Bono No prestacional Tributable</label>
+                  <input type="number" id="fld-tax-bonus" min="0" class="buk-mt-2">
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                  <label for="">Bono No prestacional No Tributable</label>
-                  <input type="number" min="0" class="buk-mt-2">
+                  <label for="fld-not-tax-bonus">Bono No prestacional No Tributable</label>
+                  <input type="number" id="fld-not-tax-bonus" min="0" class="buk-mt-2">
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
                   <p>Sueldo integral</p>
@@ -76,45 +76,45 @@
                   <hr>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                  <label for="">Auxilio de Transporte</label>
-                  <input type="number" min="0" value="0" readonly class="buk-mt-2">
+                  <label for="fld-aux-transport">Auxilio de Transporte</label>
+                  <input type="text" id="fld-aux-transport" value="0" readonly class="buk-mt-2">
                 </div>
               </div> <!-- end-grid -->
               <h3 class="buk-my-3">Descuentos y Alivios Tributarios</h3>
               <div class="buk-grid">
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                  <label for="">Otros descuentos</label>
-                  <input type="number" min="0" class="buk-mt-2">
+                  <label for="fld-other-discounts">Otros descuentos</label>
+                  <input type="number" id="fld-other-discounts" min="0" class="buk-mt-2">
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                  <label for="">Medicina Prepagada</label>
-                  <input type="number" min="0" class="buk-mt-2">
+                  <label for="fld-medicine">Medicina Prepagada</label>
+                  <input type="number" id="fld-medicine" min="0" class="buk-mt-2">
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                  <label for="">Planes de Atencion Complementario (PAC)</label>
-                  <input type="number" min="0" class="buk-mt-2">
+                  <label for="fld-pac">Planes de Atencion Complementario (PAC)</label>
+                  <input type="number" id="fld-pac" min="0" class="buk-mt-2">
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                  <label for="">Aporte Voluntario a Pensiones Obligatorias</label>
-                  <input type="number" min="0" class="buk-mt-2">
+                  <label for="fld-mandatory-pensions">Aporte Voluntario a Pensiones Obligatorias</label>
+                  <input type="number" id="fld-mandatory-pensions" min="0" class="buk-mt-2">
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                  <label for="">Aporte a Fondos Voluntarios de Pensiones</label>
-                  <input type="number" min="0" class="buk-mt-2">
+                  <label for="fld-voluntary-pensions">Aporte a Fondos Voluntarios de Pensiones</label>
+                  <input type="number" id="fld-voluntary-pensions" min="0" class="buk-mt-2">
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                  <label for="">AFC</label>
-                  <input type="number" min="0" class="buk-mt-2">
+                  <label for="fld-afc">AFC</label>
+                  <input type="number" id="fld-afc" min="0" class="buk-mt-2">
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                  <label for="">Interés de Vivienda</label>
-                  <input type="number" min="0" class="buk-mt-2">
+                  <label for="fld-housting-interest">Interés de Vivienda</label>
+                  <input type="number" id="fld-housting-interest" min="0" class="buk-mt-2">
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
                   <p>Deducción Dependiente</p>
                   <div class="control-radio ds-flex ai-center gap--16 buk-mt-2">
                     <label for="">Sí
-                      <input type="radio" name="deduccion-dependiente" checked>
+                      <input type="radio" name="deduccion-dependiente" id="bol-dependents" checked>
                     </label>
                     <label for="">No
                       <input type="radio" name="deduccion-dependiente">
@@ -125,23 +125,23 @@
                   <hr>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                  <label for="">Total Deducciones exentas</label>
-                  <input type="number" min="0" value="0" readonly class="buk-mt-2">
+                  <label for="fld-exempt-deductions">Total Deducciones exentas</label>
+                  <input type="text" id="fld-exempt-deductions" value="0" readonly class="buk-mt-2">
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
                   <label for="">Renta Exenta</label>
-                  <input type="number" min="0" value="0" readonly class="buk-mt-2">
+                  <input type="text" value="0" readonly class="buk-mt-2">
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
                   <label for="">Total Exento</label>
-                  <input type="number" min="0" value="0" readonly class="buk-mt-2">
+                  <input type="text" value="0" readonly class="buk-mt-2">
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6">
                   <label for="">Tope Ley 1819</label>
-                  <input type="number" min="0" value="0" readonly class="buk-mt-2">
+                  <input type="text" value="0" readonly class="buk-mt-2">
                 </div>
                 <div class="buk-col txt-center">
-                  <button class="btn btn--2">Calcular</button>
+                  <button class="btn btn--2" id="btn-calculate">Calcular</button>
                 </div>
               </div> <!-- end-grid -->
             </div>
@@ -249,5 +249,6 @@
     </section>
   </main>
   
+  <script type="module" src="../js/calcs/calc-remu-co.js" defer></script>
 </body>
 </html>
