@@ -28,7 +28,14 @@ class Director {
       calc.calcPensions(mandatoryPensions, voluntaryPensions, afc),
       calc.calcDependents(),
       calc.calcHousingInterest(interest),
-      calc.totalExemptDeductions(),
+      calc.exemptDeductions(),
+      calc.totalBenefitDevengos(salary, bonus),
+      calc.totalDevengosWithoutAuxTransport(taxBonus, notTaxBonus),
+      calc.fortyPct(salary, bonus, taxBonus, notTaxBonus),
+      calc.excessLaw1393(taxBonus, notTaxBonus),
+      calc.ibcSocialSecurity(salary, bonus),
+      calc.health(),
+      calc.pension(),
       calc.log()
 
     ])
