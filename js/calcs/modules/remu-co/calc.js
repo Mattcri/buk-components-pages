@@ -1,4 +1,5 @@
 import { coFormatter } from "../currencyCO.js"
+import { upperLimit } from "./dataTables.js"
 import { nationalValues } from "./initialValues.js"
 
 class CalcRemu {
@@ -170,6 +171,50 @@ class CalcRemu {
     let DOMfld = document.getElementById('fld-pension')
     this.discountPension = calcPension
     this.displayInDOM('value', DOMfld, calcPension)
+  }
+
+  solidarityAndSubsistence() {
+    let ibc = this.ibc
+    let lastLimit = upperLimit.table[upperLimit.table.length - 1].limit
+    let range = ibc < lastLimit
+      ? upperLimit.table.find(item => this.searchUpperLimit(item.limit, ibc, item))
+      : { 'limit': ibc, 'pct': 2, 'solidarity': 0.5, 'subsistence': 1.5 }
+    console.log('rango', range)
+    let calcSolidarity = ibc * (range.solidarity / 100)
+    let calcSubsistence = ibc * (range.subsistence / 100)
+    let DOMfldSolidarity = document.getElementById('fld-solidarity')
+    let DOMfldSubsistence = document.getElementById('fld-subsistence')
+
+    this.discountSolidarity = calcSolidarity
+    this.discountSubsistence = calcSubsistence
+    this.displayInDOM('value', DOMfldSolidarity, calcSolidarity)
+    this.displayInDOM('value', DOMfldSubsistence, calcSubsistence)
+  }
+
+  searchUpperLimit ( limit, ibc,  obj) {
+    if (ibc <= limit) {
+      console.log('ibc method', ibc);
+      return obj
+    } 
+  }
+
+  sumLegalDiscount () {
+    let sumDiscount = (this.discountHealth + this.discountPension + this.discountSolidarity + this.discountSubsistence)
+    let DOMfld = document.getElementById('fld-legal-discount')
+    this.legalDiscounts = sumDiscount
+    this.displayInDOM('value', DOMfld, sumDiscount)
+  }
+
+  exemptIncome () {
+    let maxAmount = nationalValues.maxExemptIncome
+    let pctExempt = (this.totalTaxDevengos - this.legalDiscounts - this.totalExemptDeductions) * 0.25
+    let DOMfld = document.getElementById('fld-exemt-income')
+    if (pctExempt > maxAmount) {
+      this.exempt = maxAmount
+    } else {
+      this.exempt = pctExempt
+    }
+    this.displayInDOM('value', DOMfld, this.exempt)
   }
 
   displayInDOM (type, element, amount) {

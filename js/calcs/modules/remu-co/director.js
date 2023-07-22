@@ -36,6 +36,9 @@ class Director {
       calc.ibcSocialSecurity(salary, bonus),
       calc.health(),
       calc.pension(),
+      calc.solidarityAndSubsistence(),
+      calc.sumLegalDiscount(),
+      calc.exemptIncome(),
       calc.log()
 
     ])
