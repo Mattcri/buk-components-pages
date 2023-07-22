@@ -39,6 +39,7 @@ class Director {
       calc.solidarityAndSubsistence(),
       calc.sumLegalDiscount(),
       calc.exemptIncome(),
+      calc.totalExemptIncome(),
       calc.log()
 
     ])

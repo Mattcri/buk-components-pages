@@ -209,13 +209,15 @@ class CalcRemu {
     let maxAmount = nationalValues.maxExemptIncome
     let pctExempt = (this.totalTaxDevengos - this.legalDiscounts - this.totalExemptDeductions) * 0.25
     let DOMfld = document.getElementById('fld-exemt-income')
-    if (pctExempt > maxAmount) {
-      this.exempt = maxAmount
-    } else {
-      this.exempt = pctExempt
-    }
+    pctExempt > maxAmount ? this.exempt = maxAmount : this.exempt = pctExempt
     this.displayInDOM('value', DOMfld, this.exempt)
   }
+
+  totalExemptIncome () {
+    let sumValues = this.totalExemptDeductions + this.exempt
+    let DOMfld = document.getElementById('fld-total-exempt')
+    this.displayInDOM('value', DOMfld, sumValues)
+  } 
 
   displayInDOM (type, element, amount) {
     if (type == 'value') {
