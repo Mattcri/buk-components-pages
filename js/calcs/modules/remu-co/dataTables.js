@@ -14,4 +14,14 @@ const upperLimit = new TableBuilder([
   // { 'upperLimit': 23200000, 'pct': 2, 'solidarity': 0.5, 'subsistence': 1.5 },
 ])
 
-export { upperLimit }
+const retentionTable = new TableBuilder([
+  { 'rangeSt': 0, 'rangeEd': 95, 'marginalRate': 0, 'basePay': 0 },
+  { 'rangeSt': 95, 'rangeEd': 150, 'marginalRate': 19, 'basePay': 0 },
+  { 'rangeSt': 150, 'rangeEd': 360, 'marginalRate': 28, 'basePay': 10 },
+  { 'rangeSt': 360, 'rangeEd': 640, 'marginalRate': 33, 'basePay': 69 },
+  { 'rangeSt': 640, 'rangeEd': 945, 'marginalRate': 35, 'basePay': 162 },
+  { 'rangeSt': 945, 'rangeEd': 2300, 'marginalRate': 37, 'basePay': 268 },
+  { 'rangeSt': 2300, 'rangeEd': 10000, 'marginalRate': 39, 'basePay': 770 },
+])
+
+export { upperLimit, retentionTable }

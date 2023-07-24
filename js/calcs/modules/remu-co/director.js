@@ -39,7 +39,10 @@ class Director {
       calc.solidarityAndSubsistence(),
       calc.sumLegalDiscount(),
       calc.exemptIncome(),
-      calc.totalExemptIncome(),
+      calc.totalExempt(),
+      calc.maxLaw1819(),
+      calc.rsltTaxBase(),
+      calc.holdingSource(),
       calc.log()
 
     ])

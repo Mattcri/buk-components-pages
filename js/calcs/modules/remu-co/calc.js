@@ -1,5 +1,5 @@
 import { coFormatter } from "../currencyCO.js"
-import { upperLimit } from "./dataTables.js"
+import { upperLimit, retentionTable } from "./dataTables.js"
 import { nationalValues } from "./initialValues.js"
 
 class CalcRemu {
@@ -18,6 +18,9 @@ class CalcRemu {
     fortyPercent = 0,
     law1393 = 0,
     ibc = 0,
+    taxBase = 0,
+    taxBaseUvt = 0,
+    source = 0,
     discountHealth = 0,
     discountPension = 0,
     discountSolidarity = 0,
@@ -41,6 +44,9 @@ class CalcRemu {
     this.fortyPercent = fortyPercent
     this.law1393 = law1393
     this.ibc = ibc
+    this.taxBase = taxBase
+    this.taxBaseUvt = taxBaseUvt
+    this.source = source
     this.discountHealth = discountHealth
     this.discountPension = discountPension
     this.discountSolidarity = discountSolidarity
@@ -213,11 +219,54 @@ class CalcRemu {
     this.displayInDOM('value', DOMfld, this.exempt)
   }
 
-  totalExemptIncome () {
+  totalExempt () {
     let sumValues = this.totalExemptDeductions + this.exempt
     let DOMfld = document.getElementById('fld-total-exempt')
     this.displayInDOM('value', DOMfld, sumValues)
-  } 
+  }
+
+  maxLaw1819() {
+    let maxAmount = nationalValues.maxLaw1819
+    let calcLaw1819 = (this.totalTaxDevengos - this.legalDiscounts) * 0.4
+    let DOMfld = document.getElementById('fld-law-1819')
+    calcLaw1819 > maxAmount ? this.law1819 = maxAmount : this.law1819 = calcLaw1819
+    this.displayInDOM('value', DOMfld, this.law1819)
+  }
+
+  rsltTaxBase() {
+    let totalExempt = this.totalExemptDeductions + this.exempt
+    let DOMfld = document.getElementById('fld-tax-base')
+    let DOMfldTaxBaseUvt = document.getElementById('fld-tax-base-uvt')
+    totalExempt > this.law1819
+      ? this.taxBase = (this.totalTaxDevengos - this.legalDiscounts - this.law1819)
+      : this.taxBase = (this.totalTaxDevengos - this.legalDiscounts - totalExempt)
+    this.taxBaseUvt = Math.floor(this.taxBase / nationalValues.uvt)
+    this.displayInDOM('value', DOMfld, this.taxBase)
+    this.displayInDOM('value', DOMfldTaxBaseUvt, this.taxBaseUvt)
+  }
+
+  async holdingSource() {
+    let range = await retentionTable.table.find(item => this.searchRetentionValues(item.rangeSt, item.rangeEd, this.taxBaseUvt, item))
+    let lowerLimit = range.rangeSt
+    let marginalRate = range.marginalRate / 100
+    let basePay = range.basePay
+    let uvt = nationalValues.uvt
+
+    let calcSource = ((this.taxBaseUvt - lowerLimit) * marginalRate + basePay) * uvt
+    let DOMfld = document.getElementById('fld-holding-source')
+    this.source = calcSource
+    this.displayInDOM('value', DOMfld, calcSource)
+
+    console.log('limite inferior: ', lowerLimit)
+    console.log('costo marginal: ', marginalRate)
+    console.log('pago base: ', basePay)
+    console.log('retencion fuente: ', calcSource)
+
+  }
+
+  searchRetentionValues(start, end, valueUvt, obj) {
+    if (valueUvt > start && valueUvt <= end) return obj
+  }
 
   displayInDOM (type, element, amount) {
     if (type == 'value') {
