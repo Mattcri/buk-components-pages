@@ -43,6 +43,9 @@ class Director {
       calc.maxLaw1819(),
       calc.rsltTaxBase(),
       calc.holdingSource(),
+      calc.rsltTotalDevengos(salary, bonus, taxBonus, notTaxBonus),
+      calc.rsltTotalDiscounts(),
+      calc.rsltNetSalary(),
       calc.log()
 
     ])

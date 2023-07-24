@@ -245,8 +245,8 @@ class CalcRemu {
     this.displayInDOM('value', DOMfldTaxBaseUvt, this.taxBaseUvt)
   }
 
-  async holdingSource() {
-    let range = await retentionTable.table.find(item => this.searchRetentionValues(item.rangeSt, item.rangeEd, this.taxBaseUvt, item))
+  holdingSource() {
+    let range = retentionTable.table.find(item => this.searchRetentionValues(item.rangeSt, item.rangeEd, this.taxBaseUvt, item))
     let lowerLimit = range.rangeSt
     let marginalRate = range.marginalRate / 100
     let basePay = range.basePay
@@ -262,6 +262,28 @@ class CalcRemu {
     console.log('pago base: ', basePay)
     console.log('retencion fuente: ', calcSource)
 
+  }
+
+  rsltTotalDevengos(salary, bonus, taxBonus, notTaxBonus) {
+    let sumValues = salary + bonus + taxBonus + notTaxBonus
+    let DOMelement = document.getElementById('total-devengos')
+    this.totalDevengos = sumValues
+    this.displayInDOM('content', DOMelement, sumValues)
+  }
+
+  rsltTotalDiscounts() {
+    let sumValues = this.discountHealth + this.discountPension + this.discountSolidarity + this.discountSubsistence + this.source
+    let DOMelement = document.getElementById('total-discounts')
+    this.totalDiscounts = sumValues
+    this.displayInDOM('content', DOMelement, sumValues)
+    console.log('total descuentos', sumValues)
+  }
+
+  rsltNetSalary() {
+    let salary = this.totalDevengos - this.totalDiscounts
+    let DOMelement = document.getElementById('net-salary')
+    this.rsltTotalNetSalary = salary
+    this.displayInDOM('content', DOMelement, salary)
   }
 
   searchRetentionValues(start, end, valueUvt, obj) {
