@@ -240,7 +240,7 @@ class CalcRemu {
     totalExempt > this.law1819
       ? this.taxBase = (this.totalTaxDevengos - this.legalDiscounts - this.law1819)
       : this.taxBase = (this.totalTaxDevengos - this.legalDiscounts - totalExempt)
-    this.taxBaseUvt = Math.floor(this.taxBase / nationalValues.uvt)
+    this.taxBaseUvt = this.taxBase / nationalValues.uvt
     this.displayInDOM('value', DOMfld, this.taxBase)
     this.displayInDOM('value', DOMfldTaxBaseUvt, this.taxBaseUvt)
   }
@@ -282,12 +282,21 @@ class CalcRemu {
   rsltNetSalary() {
     let salary = this.totalDevengos - this.totalDiscounts
     let DOMelement = document.getElementById('net-salary')
-    this.rsltTotalNetSalary = salary
+    this.totalNetSalary = salary
     this.displayInDOM('content', DOMelement, salary)
   }
 
   searchRetentionValues(start, end, valueUvt, obj) {
     if (valueUvt > start && valueUvt <= end) return obj
+  }
+
+  middleSimpleValues(mandatoryPension, voluntaryPension, afc) {
+    let DOMfldMandatoyryPension = document.getElementById('fld-read-mandatory-pension')
+    let DOMfldVoluntaryPension = document.getElementById('fld-read-voluntary-pensions')
+    let DOMfldAfc = document.getElementById('fld-read-afc')
+    this.displayInDOM('value', DOMfldMandatoyryPension, mandatoryPension)
+    this.displayInDOM('value', DOMfldVoluntaryPension, voluntaryPension)
+    this.displayInDOM('value', DOMfldAfc, afc)
   }
 
   displayInDOM (type, element, amount) {

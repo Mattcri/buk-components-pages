@@ -46,6 +46,7 @@ class Director {
       calc.rsltTotalDevengos(salary, bonus, taxBonus, notTaxBonus),
       calc.rsltTotalDiscounts(),
       calc.rsltNetSalary(),
+      calc.middleSimpleValues(mandatoryPensions, voluntaryPensions, afc),
       calc.log()
 
     ])

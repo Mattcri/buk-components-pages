@@ -86,3 +86,14 @@ label { font-size: 1.125rem; }
   padding-top: 0;
   padding-bottom: 0;
 }
+
+.pi-end {
+  place-items: end;
+}
+
+.buk-col hr {
+  border-width: 0px;
+  border-radius: 14px;
+  height: 2px;
+  background: var(--color-light-blue);
+}
