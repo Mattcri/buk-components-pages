@@ -242,7 +242,7 @@ class CalcRemu {
       : this.taxBase = (this.totalTaxDevengos - this.legalDiscounts - totalExempt)
     this.taxBaseUvt = this.taxBase / nationalValues.uvt
     this.displayInDOM('value', DOMfld, this.taxBase)
-    this.displayInDOM('value', DOMfldTaxBaseUvt, this.taxBaseUvt)
+    this.displayInDOM('textValue', DOMfldTaxBaseUvt, this.taxBaseUvt)
   }
 
   holdingSource() {
@@ -304,7 +304,10 @@ class CalcRemu {
       element.value = coFormatter.format(amount)
     } else if (type == 'content') {
       element.textContent = coFormatter.format(amount)
+    } else if (type == 'textValue') {
+      element.value = Math.floor(amount)
     }
+
   }
 
   log () {
