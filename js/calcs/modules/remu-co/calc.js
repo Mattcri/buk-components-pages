@@ -72,7 +72,7 @@ class CalcRemu {
     }
   }
 
-  calcPrepaidMedicine(medicine, pac) {
+  rsltPrepaidMedicine(medicine, pac) {
     let maxAmount = nationalValues.maxMedicinePac
     if ((medicine + pac) > maxAmount) {
       this.prepaidMedicine = maxAmount
@@ -81,9 +81,9 @@ class CalcRemu {
     }
   }
 
-  calcPensions (mandatoryPensions, voluntaryPensions, afc) {
+  rsltPensions (voluntaryPensions, afc) {
     let thirtyPercentTaxDevengos = 0.3 * this.totalTaxDevengos
-    let sumFields = mandatoryPensions + voluntaryPensions + afc
+    let sumFields = voluntaryPensions + afc
 
     if (sumFields > thirtyPercentTaxDevengos) {
       this.pensions = thirtyPercentTaxDevengos
@@ -92,7 +92,7 @@ class CalcRemu {
     }
   }
 
-  calcDependents () {
+  rsltDependents () {
     let dependentsOption = document.getElementById('bol-dependents')
     let maxAmount = nationalValues.maxDependents
     let taxDevengos = this.totalTaxDevengos
@@ -106,7 +106,7 @@ class CalcRemu {
     }
   }
 
-  calcHousingInterest (interest) {
+  rsltHousingInterest (interest) {
     let maxAmount = nationalValues.housingInterest
     interest > maxAmount
       ? this.housingInterest = maxAmount 
@@ -204,8 +204,10 @@ class CalcRemu {
     } 
   }
 
-  sumLegalDiscount () {
-    let sumDiscount = (this.discountHealth + this.discountPension + this.discountSolidarity + this.discountSubsistence)
+  sumLegalDiscount (pensionContribution) {
+    let maxPension = 0.25 * this.totalTaxDevengos
+    let pensionContributionLimit = pensionContribution > maxPension ? maxPension : pensionContribution
+    let sumDiscount = (this.discountHealth + this.discountPension + this.discountSolidarity + this.discountSubsistence + pensionContributionLimit)
     let DOMfld = document.getElementById('fld-legal-discount')
     this.legalDiscounts = sumDiscount
     this.displayInDOM('value', DOMfld, sumDiscount)
@@ -271,8 +273,8 @@ class CalcRemu {
     this.displayInDOM('content', DOMelement, sumValues)
   }
 
-  rsltTotalDiscounts() {
-    let sumValues = this.discountHealth + this.discountPension + this.discountSolidarity + this.discountSubsistence + this.source
+  rsltTotalDiscounts(otherDisc) {
+    let sumValues = (this.discountHealth + this.discountPension + this.discountSolidarity + this.discountSubsistence + this.source) + otherDisc
     let DOMelement = document.getElementById('total-discounts')
     this.totalDiscounts = sumValues
     this.displayInDOM('content', DOMelement, sumValues)

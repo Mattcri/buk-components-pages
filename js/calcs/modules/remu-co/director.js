@@ -17,17 +17,15 @@ class Director {
     let afc = Number(document.getElementById('fld-afc').value)
     let interest = Number(document.getElementById('fld-housting-interest').value)
 
-
-
     console.log(taxBonus)
 
     Promise.all([
       calc.taxDevengos(salary, bonus, taxBonus),
       calc.auxTransport(salary, bonus),
-      calc.calcPrepaidMedicine(medicine, pac),
-      calc.calcPensions(mandatoryPensions, voluntaryPensions, afc),
-      calc.calcDependents(),
-      calc.calcHousingInterest(interest),
+      calc.rsltPrepaidMedicine(medicine, pac),
+      calc.rsltPensions(voluntaryPensions, afc),
+      calc.rsltDependents(),
+      calc.rsltHousingInterest(interest),
       calc.exemptDeductions(),
       calc.totalBenefitDevengos(salary, bonus),
       calc.totalDevengosWithoutAuxTransport(taxBonus, notTaxBonus),
@@ -37,14 +35,14 @@ class Director {
       calc.health(),
       calc.pension(),
       calc.solidarityAndSubsistence(),
-      calc.sumLegalDiscount(),
+      calc.sumLegalDiscount(mandatoryPensions),
       calc.exemptIncome(),
       calc.totalExempt(),
       calc.maxLaw1819(),
       calc.rsltTaxBase(),
       calc.holdingSource(),
       calc.rsltTotalDevengos(salary, bonus, taxBonus, notTaxBonus),
-      calc.rsltTotalDiscounts(),
+      calc.rsltTotalDiscounts(otherDiscounts),
       calc.rsltNetSalary(),
       calc.middleSimpleValues(mandatoryPensions, voluntaryPensions, afc),
       calc.log()
