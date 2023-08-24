@@ -7,7 +7,7 @@ document.getElementById('gratf-period').addEventListener('change', () => {
 })
 
 document.getElementById('btn-calculate').addEventListener('click', () => {
-  calc.director()
+  director.gratification()
 })
 
 const peFormatter = new Intl.NumberFormat("es-PE", {
@@ -18,6 +18,28 @@ const peFormatter = new Intl.NumberFormat("es-PE", {
 });
 
 const validator = new Validator()
+
+class Director {
+  gratification () {
+    let selectedPeriod = document.getElementById('gratf-period').value
+    let inputDate = document.getElementById('gratf-date').value
+    let searchPeriod = data.table.find(p => p.period == selectedPeriod)
+
+    validator.dateInputIsEmpty(inputDate)
+      .then(() => validator.isInRangeDate(inputDate, searchPeriod.startDevengue, searchPeriod.endDevengue))
+      .then(() => calc.computableTime(inputDate, searchPeriod))
+      .then(() => calc.checkSalariesVariables())
+      .then(() => calc.sumSalariesVariables())
+      .then(() => calc.avgSalariesVariables())
+      .then(() => calc.base())
+      .then(() => calc.total())
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+}
+
+const director = new Director()
 class calcGratf {
   constructor({ baseGratf=0, totalGratf=0, bonus=0, months=0, amountVariable=0, applyVariables=false}) {
     this.baseGratf = baseGratf
@@ -32,25 +54,6 @@ class calcGratf {
   async init() {
     await putMonthsPeriods()
     document.getElementById('gratf-period').click()
-  }
-
-  director() {
-    let selectedPeriod = document.getElementById('gratf-period').value
-    let inputDate = document.getElementById('gratf-date').value
-    let searchPeriod = data.table.find(p => p.period == selectedPeriod)
-
-    validator.dateInputIsEmpty(inputDate)
-      .then(() => validator.isInRangeDate(inputDate, searchPeriod.startDevengue, searchPeriod.endDevengue))
-      .then(() => this.computableTime(inputDate, searchPeriod))
-      .then(() => this.checkSalariesVariables())
-      .then(() => this.sumSalariesVariables())
-      .then(() => this.avgSalariesVariables())
-      .then(() => this.base())
-      .then(() => this.total())
-      .catch((err) => {
-        console.error(err)
-      })
-
   }
 
   checkSalariesVariables() {
@@ -112,7 +115,7 @@ class calcGratf {
     let fixCost = Number(document.getElementById('fix-cost').value)
     let DOMlblBaseGratf = document.getElementById('lbl-base-gratf')
     
-    let sumAmount = this.applyVariables === true ? (salary + family + fixCost) + (this.amountVariable / 6) : (salary + family + fixCost)
+    let sumAmount = this.applyVariables === true ? (salary + family + fixCost) + (this.amountVariable / this.months) : (salary + family + fixCost)
     let baseAmount = Number((sumAmount).toFixed(2))
 
     this.baseGratf = baseAmount
@@ -123,8 +126,9 @@ class calcGratf {
     let DOMlblTotal = document.getElementById('lbl-total-gratf')
     let DOMgratfOrdinary = document.getElementById('lbl-ordinary')
     let DOMgratfBonus = document.getElementById('lbl-bonus')
+    let absentDays = Number(document.getElementById('absent-days').value)
 
-    let calcTotal = this.baseGratf / 6 * this.months
+    let calcTotal = (this.baseGratf / 6 * this.months) - (this.baseGratf / 180 * absentDays)
     let bonification = Number(calcTotal.toFixed(2)) * this.healthBonus()
     this.totalGratf = Number(calcTotal.toFixed(2))
     this.bonus = Number(bonification.toFixed(2))
