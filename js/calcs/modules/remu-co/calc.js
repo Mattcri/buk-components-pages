@@ -274,8 +274,8 @@ class CalcRemu {
     this.displayInDOM('content', DOMelement, sumValues)
   }
 
-  rsltTotalDiscounts(otherDisc) {
-    let sumValues = (this.discountHealth + this.discountPension + this.discountSolidarity + this.discountSubsistence + this.source) + otherDisc
+  rsltTotalDiscounts(otherDisc, mandatoryPens, voluntaryPens, afc) {
+    let sumValues = (this.discountHealth + this.discountPension + this.discountSolidarity + this.discountSubsistence + this.source) + otherDisc + mandatoryPens + voluntaryPens + afc
     let DOMelement = document.getElementById('total-discounts')
     this.totalDiscounts = sumValues
     this.displayInDOM('content', DOMelement, sumValues)
