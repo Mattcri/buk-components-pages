@@ -255,9 +255,10 @@ class CalcRemu {
     let uvt = nationalValues.uvt
 
     let calcSource = ((this.taxBaseUvt - lowerLimit) * marginalRate + basePay) * uvt
+    let roundSource = this.roundUpMultipleThousand(calcSource)
     let DOMfld = document.getElementById('fld-holding-source')
     this.source = calcSource
-    this.displayInDOM('value', DOMfld, calcSource)
+    this.displayInDOM('value', DOMfld, roundSource)
 
     console.log('limite inferior: ', lowerLimit)
     console.log('costo marginal: ', marginalRate)
@@ -310,6 +311,10 @@ class CalcRemu {
       element.value = Math.floor(amount)
     }
 
+  }
+
+  roundUpMultipleThousand(value) {
+    return Math.ceil(value / 1000) * 1000
   }
 
   log () {
