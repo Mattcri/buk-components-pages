@@ -9,7 +9,14 @@ document.getElementById('nv-uvt').value = coFormatter.format(nationalValues.uvt)
 const calculate = new Director()
 
 const btnCalculate = document.getElementById('btn-calculate')
+const FLDauxTransport = document.getElementById('fld-aux-transport')
 
 btnCalculate.addEventListener('click', function() {
   calculate.remuneration()
+})
+
+FLDauxTransport.addEventListener('change', function() {
+  if (FLDauxTransport.value > nationalValues.auxTransport) {
+    FLDauxTransport.value = nationalValues.auxTransport
+  }
 })

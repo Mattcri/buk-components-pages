@@ -21,7 +21,7 @@ class Director {
 
     Promise.all([
       calc.taxDevengos(salary, bonus, taxBonus),
-      calc.auxTransport(salary, bonus),
+      // calc.auxTransport(salary, bonus),
       calc.rsltPrepaidMedicine(medicine, pac),
       calc.rsltPensions(voluntaryPensions, afc),
       calc.rsltDependents(),
