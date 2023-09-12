@@ -162,13 +162,19 @@ class PricingBuilder {
     this.addFactor()
     this.addModule()
     this.addAddon()
-    if (this.minPrice() > this.calcPrice()) {
+    
+    let minPrice = this.minPrice()
+    let priceDiscount = this.amountModules >= 4 ? this.discount() : this.calcPrice()
+    let calcPrice = this.calcPrice()
+    
+    if (minPrice > calcPrice || minPrice > priceDiscount) {
       this.hideDOMblocks()
-      this.displayPrice(this.minPrice())
+      this.displayPrice(minPrice)
     } else {
       this.handlerDOMactions()
-      this.amountModules >= 4 ? this.displayPrice(this.discount()) : this.displayPrice(this.calcPrice())
+      this.amountModules >= 4 ? this.displayPrice(priceDiscount) : this.displayPrice(calcPrice)
     }
+
   }
 
   checkPlan() {
@@ -257,7 +263,7 @@ class PricingBuilder {
       { name: 'm-benef', factor: 0.3 },
       { name: 'm-encue', factor: 0.2 },
       { name: 'm-selec', factor: 0.6 },
-      { name: 'm-onboa', factor: 0.18 }
+      { name: 'm-onboa', factor: 0.22 }
     ]
     let matches = VALUEMODULES.filter(module => input.includes(module.name))
     // return input.indexOf(module.name) !== -1
@@ -359,7 +365,9 @@ class PricingBuilder {
     let priceWithDiscount = price - (price * getPercent)
     // let factorWithDiscount = this.amountFactors - (this.amountFactors * getPercent)
     // this.amountFactors = factorWithDiscount
-    this.displayPreviousPrice(price, percent)
+    if (this.amountModules >= 4) {
+      this.displayPreviousPrice(price, percent)
+    }
     return priceWithDiscount
   }
 
