@@ -107,7 +107,7 @@ class CalcRemu {
   }
 
   rsltHousingInterest (interest) {
-    let maxAmount = nationalValues.housingInterest
+    let maxAmount = nationalValues.maxHousingInterest
     interest > maxAmount
       ? this.housingInterest = maxAmount 
       : this.housingInterest = interest
@@ -274,8 +274,8 @@ class CalcRemu {
     this.displayInDOM('content', DOMelement, sumValues)
   }
 
-  rsltTotalDiscounts(otherDisc, mandatoryPens, voluntaryPens, afc) {
-    let sumValues = (this.discountHealth + this.discountPension + this.discountSolidarity + this.discountSubsistence + this.source) + otherDisc + mandatoryPens + voluntaryPens + afc
+  rsltTotalDiscounts(otherDisc, mandatoryPens, voluntaryPens, afc, auxTransp) {
+    let sumValues = (this.discountHealth + this.discountPension + this.discountSolidarity + this.discountSubsistence + this.source) + otherDisc + mandatoryPens + voluntaryPens + afc + auxTransp
     let DOMelement = document.getElementById('total-discounts')
     this.totalDiscounts = sumValues
     this.displayInDOM('content', DOMelement, sumValues)

@@ -9,6 +9,7 @@ class Director {
     let bonus = Number(document.getElementById('fld-bonus').value)
     let taxBonus = Number(document.getElementById('fld-tax-bonus').value)
     let notTaxBonus = Number(document.getElementById('fld-not-tax-bonus').value)
+    let auxTransport = Number(document.getElementById('fld-aux-transport').value)
     let otherDiscounts = Number(document.getElementById('fld-other-discounts').value)
     let medicine = Number(document.getElementById('fld-medicine').value)
     let pac = Number(document.getElementById('fld-pac').value)
@@ -42,7 +43,7 @@ class Director {
       calc.rsltTaxBase(),
       calc.holdingSource(),
       calc.rsltTotalDevengos(salary, bonus, taxBonus, notTaxBonus),
-      calc.rsltTotalDiscounts(otherDiscounts, mandatoryPensions, voluntaryPensions, afc),
+      calc.rsltTotalDiscounts(otherDiscounts, mandatoryPensions, voluntaryPensions, afc, auxTransport),
       calc.rsltNetSalary(),
       calc.middleSimpleValues(mandatoryPensions, voluntaryPensions, afc),
       calc.log()
