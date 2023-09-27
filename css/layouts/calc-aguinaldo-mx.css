@@ -1,0 +1,163 @@
+
+.calc input {
+  border-radius: 21px;
+  padding: .375rem 1.25rem;
+  width: 100%;
+  font-family: inherit;
+}
+
+.calc label {
+  font-size: 1.125rem;
+}
+
+.date-group input[type="date"]::-webkit-calendar-picker-indicator {
+  content: "";
+  cursor: pointer;
+  background: url("https://www.buk.cl/hubfs/2023/Icons/Calendario%20icono.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 15px;
+  width: 15px;
+}
+
+.calc__title {
+  border-radius: 67px;
+}
+
+@media only screen and (min-width: 767px) {
+  .calc__title p {
+    font-size: 1.25rem;
+  }
+}
+
+.date-group input[type="date"] {
+  border: 2px solid #e0e0e0;
+  cursor: pointer;
+  font-size: 1.125rem;
+}
+
+.date-group input[type="date"]:hover,
+.date-group input[type="date"]:focus {
+  border-color: var(--color-blue-buk);
+  outline: 0;
+}
+
+.calc__fields [class*="buk-col"] {
+  padding-top: .2rem;
+  padding-bottom: .2rem;
+}
+
+.calc__fields input {
+  font-size: 1.125rem;
+  text-align: right;
+}
+
+.calc__fields input:not([readonly]) {
+  border: 2px solid #e0e0e0;
+  cursor: pointer;
+}
+
+.calc__fields input:not([readonly]):focus,
+.calc__fields input:not([readonly]):hover {
+  border-color: var(--color-blue-buk);
+  outline: 0;
+}
+
+.calc__fields input[readonly] {
+  background: var(--wb-bg-modules);
+  border: 2px solid var(--wb-bg-modules);
+  cursor: initial;
+}
+.calc__fields input[readonly]:focus {
+  outline: 0;
+}
+
+.calc__fields--dropdown {
+  border-radius: 0 0 16px 16px;
+  height: 0;
+  overflow: hidden;
+  transition: height .5s;
+}
+
+.calc--btn-dropdown button {
+  background: var(--wb-bg-modules);
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  color: var(--color-blue-buk);
+  font-family: var(--font-family-title);
+  font-size: 1.125rem;
+  font-weight: 700;
+  outline: 0;
+  padding: .75rem 1.5rem;
+  position: relative;
+  text-align: left;
+  width: 100%;
+}
+.calc--btn-dropdown button.active {
+  border-radius: 16px 16px 0 0;
+}
+
+.calc--btn-dropdown button::after {
+  background: url(https://www.buk.cl/hubfs/2023/Calculadoras/flecha.svg);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  content: "";
+  height: 25px;
+  position: absolute;
+  right: 2.5%;
+  transform: rotate(180deg);
+  transition: transform .5s;
+  width: 25px;
+}
+.calc--btn-dropdown button.active::after {
+  transform: rotate(0deg);
+}
+
+.calc--btn-dropdown .active ~ .calc__fields--dropdown {
+  height: 834px;
+}
+@media only screen and (min-width: 1020px) {
+  .calc--btn-dropdown .active ~ .calc__fields--dropdown {
+    height: 477px;
+  }
+
+  .calc--btn-dropdown button {
+    font-size: 1.5rem;
+  }
+
+  .calc--btn-dropdown button::after {
+    height: 32px;
+  }
+}
+
+.calc__fields--dropdown label {
+  color: var(--color-blue-buk);
+  font-weight: 600;
+}
+
+.calc__fields--dropdown .buk-col hr {
+  /* height: 2px; */
+  border: 2px solid #D9E3FC;
+}
+
+.calc__results .buk-col {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.calc__input-result {
+  border: 1px solid #D9E3FC;
+  border-radius: 21px;
+  padding: 1rem 1.5rem;
+}
+.calc__input-result p {
+  color: var(--color-blue-buk);
+  font-family: var(--font-family-title);
+  font-weight: 700;
+  text-align: center;
+}

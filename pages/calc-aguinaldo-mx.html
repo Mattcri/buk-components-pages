@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Aguinaldo MX</title>
+  <link rel="stylesheet" href="../css/main-23.css">
+  <link rel="stylesheet" href="../css/utilities-spaces-23.css">
+  <link rel="stylesheet" href="../css/grid-system.css">
+  <link rel="stylesheet" href="../css/layouts/calc-aguinaldo-mx.css">
+</head>
+<body>
+  <header></header>
+
+  <main class="buk-py-13">
+    <div class="boxer">
+      <h2 class="buk-mb-4 buk-mb-md-5 txt-center">Calculadora de Aguinaldo</h2>
+
+      <div class="buk-grid">
+        <div class="buk-col buk-col-lg-10 buk-col-st-lg-2">
+
+          <div class="calc shadow-1 rounded-16 buk-p-3 buk-px-lg-4 buk-py-lg-7">
+
+            <div class="calc__title ff-title bg-blue-buk buk-px-2 buk-py-1 buk-px-lg-4 buk-py-lg-2 buk-mb-4">
+              <p>Ingresa el periodo laboral, indicando: fecha de ingreso y fecha de baja de la empresa</p>
+            </div>
+            <div class="buk-grid buk-px-2 buk-px-lg-4">
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <div class="ds-flex ai-center buk-mb-2">
+                  <img src="https://www.buk.cl/hubfs/2023/Calculadoras/icon-calendar.svg" alt="periodo-cts">
+                  <p class="ft-bold">Fecha de ingreso</p>
+                </div>
+                <div class="date-group">
+                  <input type="date" name="date-admission" id="date-admission" class="pst-relative">
+                </div>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <div class="ds-flex ai-center buk-mb-2">
+                  <img src="https://www.buk.cl/hubfs/2023/Calculadoras/icon-calendar.svg" alt="periodo-cts">
+                  <p class="ft-bold">Fecha de baja</p>
+                </div>
+                <div class="date-group">
+                  <input type="date" name="discharge-date" id="discharge-date" class="pst-relative">
+                </div>
+              </div>
+            </div>
+
+            <div class="calc__title ff-title bg-blue-buk buk-px-2 buk-py-1 buk-px-lg-4 buk-py-lg-2 buk-my-4">
+              <p>Ingresa días de aguinaldo y salario mensual</p>
+            </div>
+            <div class="calc__fields buk-grid calc-fields buk-px-2 buk-px-lg-4">
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center">
+                <label for="">Días de aguinaldo</label>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <input type="number" placeholder="0">
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center">
+                <label for="">Salario mensual</label>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <input type="number" placeholder="0">
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center">
+                <label for="">Salario diario</label>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <input type="text" readonly value="0">
+              </div>
+              <div class="buk-col buk-mt-6 txt-center">
+                <button class="btn btn--2">Calcular</button>
+              </div>
+            </div>
+
+
+          </div> <!-- end-calc -->
+
+          <div class="calc calc--btn-dropdown shadow-1 rounded-16 buk-my-7">
+            <button id="lisr-detail" class="active">LISR</button>
+            <div class="bg-white calc__fields calc__fields--dropdown">
+              <div class="buk-grid buk-px-3 buk-px-lg-6 buk-py-3 buk-pt-lg-4 buk-pb-lg-5">
+                <div class="buk-col buk-col-lg-6">
+                  <label for="">Días año</label>
+                  <input type="text" class="buk-mt-2" readonly value="0">
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <label for="">Días de aguinaldo</label>
+                  <input type="text" class="buk-mt-2" readonly value="0">
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <label for="">Aguinaldo proporcional</label>
+                  <input type="text" class="buk-mt-2" readonly value="$0">
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <label for="">Aguinaldo exento</label>
+                  <input type="text" class="buk-mt-2" readonly value="$0">
+                </div>
+                <div class="buk-col buk-my-1">
+                  <hr>
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <label for="">Base gravable aguinaldo</label>
+                  <input type="text" class="buk-mt-2" readonly value="$0">
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <label for="">Base gravable (aguinaldo)</label>
+                  <input type="text" class="buk-mt-2" readonly value="$0">
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <label for="">I.S.R. base + aguinaldo</label>
+                  <input type="text" class="buk-mt-2" readonly value="$0">
+                </div>
+                <div class="buk-col buk-col-lg-6">
+                  <label for="">I.S.R. mes</label>
+                  <input type="text" class="buk-mt-2" readonly value="$0">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="txt-center buk-mb-7">El detalle de tu aguinaldo es:</h2>
+
+          <div class="buk-grid calc__results">
+            <div class="buk-col buk-col-md-5 buk-col-lg-4 shadow-1 rounded-16 ">
+              <div class="buk-p-3 buk-p-md-4">
+                <p class="buk-mb-3">Aguinaldo</p>
+                <div class="calc__input-result bg-light-modules">
+                  <p id="lbl-aguinald" class="h4">$0</p>
+                </div>
+              </div>
+            </div>
+            <div class="buk-col buk-col-md-5 buk-col-lg-4 shadow-1 rounded-16">
+              <div class="buk-p-3 buk-p-md-4">
+                <p class="buk-mb-3">Aguinaldo</p>
+                <div class="calc__input-result bg-light-modules">
+                  <p id="lbl-isr-aguinald" class="h4">$0</p>
+                </div>
+              </div>
+            </div>
+            <div class="buk-col buk-col-md-5 buk-col-lg-4 bg-blue-buk shadow-1 rounded-16">
+              <div class="buk-p-3 buk-p-md-4">
+                <p class="buk-mb-3">Aguinaldo</p>
+                <div class="calc__input-result bg-light-modules">
+                  <p id="lbl-total-deposit" class="h4 txt-blue-buk">$0</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div> <!-- end-col -->
+      </div> <!-- end-grid -->
+
+    </div>
+  </main>
+  
+  <script type="module" src="../js/calcs/calc-aguinaldo-mx.js" defer></script>
+</body>
+</html>
