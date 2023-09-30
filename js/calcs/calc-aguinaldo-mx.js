@@ -1,3 +1,10 @@
+import { DefaultValues } from "./modules/aguinaldo-mx/defaultValues.js"
+
+const dfValues = new DefaultValues()
+
+console.log('first day year: ', dfValues.firstDayYear().getMonth())
+console.log('last day year: ', dfValues.lastDayYear())
+
 const lisrDetail = document.getElementById('lisr-detail')
 
 lisrDetail.addEventListener('click', function() {
