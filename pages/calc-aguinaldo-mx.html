@@ -37,7 +37,7 @@
               <div class="buk-col buk-col-md-6 buk-col-lg-6">
                 <div class="ds-flex ai-center buk-mb-2">
                   <img src="https://www.buk.cl/hubfs/2023/Calculadoras/icon-calendar.svg" alt="periodo-cts">
-                  <p class="ft-bold">Fecha de baja</p>
+                  <p class="ft-bold">Fecha de baja (opcional)</p>
                 </div>
                 <div class="date-group">
                   <input type="date" name="discharge-date" id="discharge-date" class="pst-relative">
@@ -53,22 +53,22 @@
                 <label for="">Días de aguinaldo</label>
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                <input type="number" placeholder="0">
+                <input type="number" placeholder="0" id="aguinaldo-days">
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center">
                 <label for="">Salario mensual</label>
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                <input type="number" placeholder="0">
+                <input type="number" placeholder="0" id="salary">
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center">
                 <label for="">Salario diario</label>
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                <input type="text" readonly value="0">
+                <input type="text" readonly value="0" id="fld-salary-day">
               </div>
               <div class="buk-col buk-mt-6 txt-center">
-                <button class="btn btn--2">Calcular</button>
+                <button class="btn btn--2" id="btn-calculate-aguinaldo">Calcular</button>
               </div>
             </div>
 
@@ -81,7 +81,7 @@
               <div class="buk-grid buk-px-3 buk-px-lg-6 buk-py-3 buk-pt-lg-4 buk-pb-lg-5">
                 <div class="buk-col buk-col-lg-6">
                   <label for="">Días año</label>
-                  <input type="text" class="buk-mt-2" readonly value="0">
+                  <input type="text" id="fld-days-year" class="buk-mt-2" readonly value="0">
                 </div>
                 <div class="buk-col buk-col-lg-6">
                   <label for="">Días de aguinaldo</label>
@@ -153,7 +153,10 @@
 
     </div>
   </main>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.4/moment-timezone-with-data.min.js"></script>
   <script type="module" src="../js/calcs/calc-aguinaldo-mx.js" defer></script>
+  
+
 </body>
 </html>

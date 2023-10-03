@@ -12,6 +12,10 @@ class DefaultValues {
   daysPerYear () {
     return 365
   }
+
+  UMA () {
+    return 96.22
+  }
 }
 
 
