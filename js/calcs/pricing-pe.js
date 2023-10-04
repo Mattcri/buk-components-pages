@@ -256,6 +256,7 @@ class PricingBuilder {
       { name: 'a-sso', factor: 0.1 },
       { name: 'a-api', factor: 0.1 },
       { name: 'a-play', factor: 0.62 },
+      { name: 'a-svcola', factor: 0.3 }
     ]
     let matches = VALUEADDONS.filter(addon => input.includes(addon.name))
     let factorsValues = matches.map(e => e.factor)
