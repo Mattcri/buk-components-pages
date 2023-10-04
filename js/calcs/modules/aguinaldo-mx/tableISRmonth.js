@@ -14,8 +14,7 @@ const ISRdataMonth = new TableBuilder([
   { lowerLimit: 26988.51, upperLimit: 42537.58, fixedFee: 4323.58, overExc: 23.52},
   { lowerLimit: 42537.59, upperLimit: 81211.25, fixedFee: 7980.73, overExc: 30},
   { lowerLimit: 81211.26, upperLimit: 108281.67, fixedFee: 19582.83, overExc: 32},
-  { lowerLimit: 108281.68, upperLimit: 324845.01, fixedFee: 28245.36, overExc: 34},
-  { lowerLimit: 324845.02, upperLimit: null, fixedFee: 101876.9, overExc: 35},
+  { lowerLimit: 108281.68, upperLimit: 324845.01, fixedFee: 28245.36, overExc: 34}
 ])
 
 export { ISRdataMonth }
