@@ -16,11 +16,6 @@ class CalcAguinaldo {
     baseTaxFT = 0,
     ISRbase = 0,
     ISRmonth = 0,
-    aguinaldoLISR = 0,
-
-    totalAguinaldo = 0,
-    totalISR = 0,
-    totalToPay = 0
   }) {
     this.aguinaldoDays = aguinaldoDays
     this.aguinaldoPR = aguinaldoPR
@@ -32,11 +27,6 @@ class CalcAguinaldo {
     this.baseTaxFT = baseTaxFT
     this.ISRbase = ISRbase
     this.ISRmonth = ISRmonth
-    this.aguinaldoLISR = aguinaldoLISR
-
-    this.totalAguinaldo = totalAguinaldo
-    this.totalISR = totalISR
-    this.totalToPay = totalToPay
   }
 
   getDates(addmissionDate, dischargeDate) {
@@ -78,7 +68,7 @@ class CalcAguinaldo {
     let salaryPerDay = salary / 30
     let calcProportional = this.aguinaldoDays * salaryPerDay
     this.aguinaldoPR = calcProportional
-    console.log('pr: ', calcProportional)
+    // console.log('pr: ', calcProportional)
     this.displayValues('currency', DOMfldProportional, calcProportional)
     this.displayValues('currency', DOMfldSalaryPerDay, salaryPerDay)
   }
@@ -95,7 +85,7 @@ class CalcAguinaldo {
     let uma = dfv.UMA()
     let calcTax = (this.aguinaldoPR - 30 * uma)
     let rsltBaseTax = calcTax > 0 ? calcTax : 0
-    console.log('base tax: ', rsltBaseTax)
+    // console.log('base tax: ', rsltBaseTax)
     this.baseTax = rsltBaseTax
     this.displayValues('currency', DOMfldBaseTax, rsltBaseTax)
   }
@@ -113,7 +103,7 @@ class CalcAguinaldo {
     let searchRslt = this.calcLimitsISRtablePerMonth(this.baseTaxFT)
     this.ISRbase = searchRslt
     this.displayValues('currency', DOMfldISRbase, searchRslt)
-    console.log('resultado: ', searchRslt)
+    // console.log('resultado: ', searchRslt)
   }
 
   getISRmonth(salary) {
@@ -122,6 +112,19 @@ class CalcAguinaldo {
     let searchRslt = this.calcLimitsISRtablePerMonth(salaryPerDay * 30)
     this.ISRmonth = searchRslt
     this.displayValues('currency', DOMfldISRmonth, searchRslt)
+  }
+
+  getTotalsValues() {
+    let DOMfldTotalAguinaldo = document.getElementById('fld-aguinaldo')
+    let DOMfldTotalISR = document.getElementById('fld-isr')
+    let DOMfldTotalToPay = document.getElementById('fld-total-deposit')
+    let totalAguinaldo = this.aguinaldoPR
+    let totalISR = (this.ISRbase - this.ISRmonth)
+    let totalToPay = (totalAguinaldo - totalISR)
+
+    this.displayValues('content', DOMfldTotalAguinaldo, totalAguinaldo)
+    this.displayValues('content', DOMfldTotalISR, totalISR)
+    this.displayValues('content', DOMfldTotalToPay, totalToPay)
   }
 
   calcLimitsISRtablePerMonth(amount) {
@@ -146,6 +149,8 @@ class CalcAguinaldo {
       element.value = mxFormatter.format(value)
     } else if (type == 'text') {
       element.value = value
+    } else if (type == 'content') {
+      element.textContent = mxFormatter.format(value)
     }
   }
 

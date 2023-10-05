@@ -1,4 +1,4 @@
-import { CalcAguinaldo } from "./calcAguinald.js";
+import { CalcAguinaldo } from "./calc.js";
 
 const calc = new CalcAguinaldo({})
 
@@ -19,6 +19,7 @@ class Director {
       calc.getBaseTaxFT(salary),
       calc.getISRbase(),
       calc.getISRmonth(salary),
+      calc.getTotalsValues(),
 
       calc.printLog()
     ])

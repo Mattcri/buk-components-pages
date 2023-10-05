@@ -1,14 +1,6 @@
-import { DefaultValues } from "./modules/aguinaldo-mx/defaultValues.js"
 import { Director } from "./modules/aguinaldo-mx/director.js"
 
-
-const dfValues = new DefaultValues()
 const director = new Director()
-
-console.log('first day year: ', moment(dfValues.firstDayYear()).format("DD-MM-YYYY") )
-console.log('last day year: ', dfValues.lastDayYear())
-console.log('current day: ', moment( new Date() ))
-
 
 const lisrDetail = document.getElementById('lisr-detail')
 
