@@ -53,7 +53,7 @@
                 <label for="">Días de aguinaldo</label>
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-6">
-                <input type="number" placeholder="0" id="aguinaldo-days">
+                <input type="number" placeholder="15" id="aguinaldo-days">
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center">
                 <label for="">Salario mensual</label>
@@ -85,34 +85,34 @@
                 </div>
                 <div class="buk-col buk-col-lg-6">
                   <label for="">Días de aguinaldo</label>
-                  <input type="text" class="buk-mt-2" readonly value="0">
+                  <input type="text" id="fld-aguinaldo-day" class="buk-mt-2" readonly value="0">
                 </div>
                 <div class="buk-col buk-col-lg-6">
                   <label for="">Aguinaldo proporcional</label>
-                  <input type="text" class="buk-mt-2" readonly value="$0">
+                  <input type="text" id="fld-proportional" class="buk-mt-2" readonly value="$0">
                 </div>
                 <div class="buk-col buk-col-lg-6">
                   <label for="">Aguinaldo exento</label>
-                  <input type="text" class="buk-mt-2" readonly value="$0">
+                  <input type="text" id="fld-exempt" class="buk-mt-2" readonly value="$0">
                 </div>
                 <div class="buk-col buk-my-1">
                   <hr>
                 </div>
                 <div class="buk-col buk-col-lg-6">
                   <label for="">Base gravable aguinaldo</label>
-                  <input type="text" class="buk-mt-2" readonly value="$0">
+                  <input type="text" id="fld-base-tax" class="buk-mt-2" readonly value="$0">
                 </div>
                 <div class="buk-col buk-col-lg-6">
                   <label for="">Base gravable (aguinaldo)</label>
-                  <input type="text" class="buk-mt-2" readonly value="$0">
+                  <input type="text" id="fld-base-tax-ft" class="buk-mt-2" readonly value="$0">
                 </div>
                 <div class="buk-col buk-col-lg-6">
                   <label for="">I.S.R. base + aguinaldo</label>
-                  <input type="text" class="buk-mt-2" readonly value="$0">
+                  <input type="text" id="fld-isr-base" class="buk-mt-2" readonly value="$0">
                 </div>
                 <div class="buk-col buk-col-lg-6">
                   <label for="">I.S.R. mes</label>
-                  <input type="text" class="buk-mt-2" readonly value="$0">
+                  <input type="text" id="fld-isr-month" class="buk-mt-2" readonly value="$0">
                 </div>
               </div>
             </div>
@@ -125,7 +125,7 @@
               <div class="buk-p-3 buk-p-md-4">
                 <p class="buk-mb-3">Aguinaldo</p>
                 <div class="calc__input-result bg-light-modules">
-                  <p id="lbl-aguinald" class="h4">$0</p>
+                  <p id="fld-aguinaldo" class="h4">$0</p>
                 </div>
               </div>
             </div>
@@ -133,7 +133,7 @@
               <div class="buk-p-3 buk-p-md-4">
                 <p class="buk-mb-3">I.S.R. Aguinaldo</p>
                 <div class="calc__input-result bg-light-modules">
-                  <p id="lbl-isr-aguinald" class="h4">$0</p>
+                  <p id="fld-isr" class="h4">$0</p>
                 </div>
               </div>
             </div>
@@ -141,7 +141,7 @@
               <div class="buk-p-3 buk-p-md-4">
                 <p class="buk-mb-3">Total a pagar</p>
                 <div class="calc__input-result bg-light-modules">
-                  <p id="lbl-total-deposit" class="h4 txt-blue-buk">$0</p>
+                  <p id="fld-total-deposit" class="h4 txt-blue-buk">$0</p>
                 </div>
               </div>
             </div>

@@ -1,3 +1,6 @@
 node_modules/
 img/
 js/buk-numbers/structureData.json
+
+js/calcs/test*
+.parcel-cache
