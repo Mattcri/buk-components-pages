@@ -20,7 +20,6 @@
         <div class="buk-col buk-col-lg-10 buk-col-st-lg-2">
 
           <div class="calc shadow-1 rounded-16 buk-p-3 buk-px-lg-4 buk-py-lg-7">
-
             <div class="calc__title ff-title bg-blue-buk buk-px-2 buk-py-1 buk-px-lg-4 buk-py-lg-2 buk-mb-4">
               <p>Ingresa el periodo laboral, indicando: fecha de ingreso y fecha de baja de la empresa</p>
             </div>
@@ -34,17 +33,30 @@
                   <input type="date" name="date-admission" id="date-admission" class="pst-relative">
                 </div>
               </div>
+          
               <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <p>Fecha de baja</p>
+                <div class="control-radio ds-flex ai-center gap--16 buk-mt-2 buk-mt-md-3">
+                  <label for="bol-discharge-date-true">Sí
+                    <input type="radio" id="bol-discharge-date-true" name="discharge-date-option">
+                  </label>
+                  <label for="bol-discharge-date-false">No
+                    <input type="radio" id="bol-discharge-date-false" name="discharge-date-option" checked>
+                  </label>
+                </div>
+              </div>
+          
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-none" id="discharge-date-visibility">
                 <div class="ds-flex ai-center buk-mb-2">
                   <img src="https://www.buk.cl/hubfs/2023/Calculadoras/icon-calendar.svg" alt="periodo-cts">
-                  <p class="ft-bold">Fecha de baja (opcional)</p>
+                  <p class="ft-bold">Seleccionar fecha de baja</p>
                 </div>
                 <div class="date-group">
                   <input type="date" name="discharge-date" id="discharge-date" class="pst-relative">
                 </div>
               </div>
             </div>
-
+          
             <div class="calc__title ff-title bg-blue-buk buk-px-2 buk-py-1 buk-px-lg-4 buk-py-lg-2 buk-my-4">
               <p>Ingresa días de aguinaldo y salario mensual</p>
             </div>
@@ -62,17 +74,26 @@
                 <input type="number" placeholder="0" id="salary">
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center">
+                <label for="">Tipo de impuesto</label>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <div class="select-group">
+                  <select name="type-tax" id="type-tax" class="select-control">
+                    <option value="risr">RISR</option>
+                    <option value="isr">LISR</option>
+                  </select>
+                </div>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center">
                 <label for="">Salario diario</label>
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-6">
                 <input type="text" readonly value="0" id="fld-salary-day">
               </div>
-              <div class="buk-col buk-mt-6 txt-center">
+              <div class="buk-col buk-mt-4 txt-center">
                 <button class="btn btn--2" id="btn-calculate-aguinaldo">Calcular</button>
               </div>
             </div>
-
-
           </div> <!-- end-calc -->
 
           <div class="calc calc--btn-dropdown shadow-1 rounded-16 buk-my-7">

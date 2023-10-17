@@ -1,12 +1,13 @@
-
-.calc input {
+.calc input,
+.select-group .select-control {
   border-radius: 21px;
-  padding: .375rem 1.25rem;
+  padding: .5rem 1.25rem;
   width: 100%;
   font-family: inherit;
 }
 
-.calc label {
+.calc label,
+.select-group .select-control {
   font-size: 1.125rem;
 }
 
@@ -56,13 +57,16 @@
   text-align: right;
 }
 
-.calc__fields input:not([readonly]) {
+.calc__fields input:not([readonly]),
+.select-group .select-control {
   border: 2px solid #e0e0e0;
   cursor: pointer;
 }
 
 .calc__fields input:not([readonly]):focus,
-.calc__fields input:not([readonly]):hover {
+.calc__fields input:not([readonly]):hover,
+.select-group .select-control:focus,
+.select-group .select-control:hover {
   border-color: var(--color-blue-buk);
   outline: 0;
 }
@@ -72,6 +76,7 @@
   border: 2px solid var(--wb-bg-modules);
   cursor: initial;
 }
+
 .calc__fields input[readonly]:focus {
   outline: 0;
 }
@@ -98,6 +103,7 @@
   text-align: left;
   width: 100%;
 }
+
 .calc--btn-dropdown button.active {
   border-radius: 16px 16px 0 0;
 }
@@ -114,15 +120,17 @@
   transition: transform .5s;
   width: 25px;
 }
+
 .calc--btn-dropdown button.active::after {
   transform: rotate(0deg);
 }
 
-.calc--btn-dropdown .active ~ .calc__fields--dropdown {
+.calc--btn-dropdown .active~.calc__fields--dropdown {
   height: 834px;
 }
+
 @media only screen and (min-width: 1020px) {
-  .calc--btn-dropdown .active ~ .calc__fields--dropdown {
+  .calc--btn-dropdown .active~.calc__fields--dropdown {
     height: 477px;
   }
 
@@ -155,9 +163,25 @@
   border-radius: 21px;
   padding: 1rem 1.5rem;
 }
+
 .calc__input-result p {
   color: var(--color-blue-buk);
   font-family: var(--font-family-title);
   font-weight: 700;
   text-align: center;
+}
+
+.calc .control-radio input[type="radio"] {
+  cursor: pointer;
+  height: 17px;
+  vertical-align: middle;
+  width: 17px !important;
+}
+
+.select-group .select-control {
+  appearance: none;
+  background-image: url(https://www.buk.cl/hubfs/2022/Icons/arrow-down-color-primary.svg);
+  background-position-x: calc(100% - 15px);
+  background-position-y: 6px;
+  background-repeat: no-repeat
 }
