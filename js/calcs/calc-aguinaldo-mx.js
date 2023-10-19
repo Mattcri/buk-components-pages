@@ -18,7 +18,7 @@ dischargeDateOptions.forEach(option => {
   })
 })
 
-lisrDetail.addEventListener('click', function() {
+lisrDetail.addEventListener('click', function () {
   let dropdown = document.querySelector('.calc__fields.calc__fields--dropdown')
   this.classList.toggle('active')
 
@@ -32,6 +32,29 @@ lisrDetail.addEventListener('click', function() {
 
 const btnCalc = document.getElementById('btn-calculate-aguinaldo')
 
-btnCalc.addEventListener('click', function() {
+btnCalc.addEventListener('click', function () {
+  let taxOption = document.getElementById('type-tax')
+  let selectTax = [...document.querySelectorAll('[data-display-type-tax="tax"]')]
+  taxOption.value === 'risr'
+    ? selectTax.forEach(item => item.textContent = 'RISR')
+    : selectTax.forEach(item => item.textContent = 'LISR')
+
   director.calculate()
+
+})
+
+
+const closeDialog = document.getElementById('close-dialog-errs')
+const dialogErrors = document.querySelector('.buk-modal.buk-modal--control-errs')
+
+closeDialog.addEventListener('click', () => {
+  document.querySelector('body').classList.remove('non-scroll')
+  document.querySelector('.buk-modal.buk-modal--control-errs').classList.remove('buk-modal--show')
+})
+
+dialogErrors.addEventListener('click', function (event) {
+  if (!event.target.closest('.buk-modal__content')) {
+    document.querySelector('body').classList.remove('non-scroll')
+    document.querySelector('.buk-modal.buk-modal--control-errs').classList.remove('buk-modal--show')
+  }
 })

@@ -9,24 +9,24 @@ class CalcAguinaldo {
     aguinaldoDays = 0,
     aguinaldoPR = 0,
     aguinaldoExempt = 0,
+    aguinaldoTaxed = 0,
     countDays = 0,
     dates = null,
 
-    baseTax = 0,
-    baseTaxFT = 0,
-    ISRbase = 0,
-    ISRmonth = 0,
+    ISRbase1 = 0,
+    ISRbase2 = 0,
+    ISRtotal = 0,
   }) {
     this.aguinaldoDays = aguinaldoDays
     this.aguinaldoPR = aguinaldoPR
     this.aguinaldoExempt = aguinaldoExempt
+    this.aguinaldoTaxed = aguinaldoTaxed
     this.countDays = countDays
     this.dates = dates
 
-    this.baseTax = baseTax
-    this.baseTaxFT = baseTaxFT
-    this.ISRbase = ISRbase
-    this.ISRmonth = ISRmonth
+    this.ISRbase1 = ISRbase1
+    this.ISRbase2 = ISRbase2
+    this.ISRtotal = ISRtotal
   }
 
   getDates(addmissionDate, dischargeDate) {
@@ -35,11 +35,11 @@ class CalcAguinaldo {
     let inputDateStart = new Date(`${addmissionDate}T00:00:00`)
     let inputDateEnd = new Date(`${dischargeDate}T00:00:00`)
     let validateStartDate = inputDateStart < firstDay ? firstDay : inputDateStart
-    let validateEndDate = inputDateEnd > lastDay 
-                            ? lastDay 
-                            : dischargeDate === '' 
-                              ? lastDay 
-                              : inputDateEnd
+    let validateEndDate = inputDateEnd > lastDay
+      ? lastDay
+      : dischargeDate === ''
+        ? lastDay
+        : inputDateEnd
     this.dates = {
       start: moment(validateStartDate).format(),
       end: moment(validateEndDate).format()
@@ -57,16 +57,16 @@ class CalcAguinaldo {
 
   getAguinaldoDays(day) {
     let DOMfldAguinaldoDays = document.getElementById('fld-aguinaldo-day')
-    let result = Number( ((this.countDays / dfv.daysPerYear()) * day).toFixed(2) )
+    let result = Number(((this.countDays / dfv.daysPerYear()) * day).toFixed(2))
     this.aguinaldoDays = result
     this.displayValues('text', DOMfldAguinaldoDays, result)
   }
 
-  getProportional(salary) {
+  getProportional(salary, day) {
     let DOMfldProportional = document.getElementById('fld-proportional')
     let DOMfldSalaryPerDay = document.getElementById('fld-salary-day')
     let salaryPerDay = salary / 30
-    let calcProportional = this.aguinaldoDays * salaryPerDay
+    let calcProportional = ((day / dfv.daysPerYear()) * this.countDays * salaryPerDay)
     this.aguinaldoPR = calcProportional
     // console.log('pr: ', calcProportional)
     this.displayValues('currency', DOMfldProportional, calcProportional)
@@ -80,38 +80,49 @@ class CalcAguinaldo {
     this.displayValues('currency', DOMfldExempt, calcExempt)
   }
 
-  getBaseTax() {
-    let DOMfldBaseTax = document.getElementById('fld-base-tax')
-    let uma = dfv.UMA()
-    let calcTax = (this.aguinaldoPR - 30 * uma)
-    let rsltBaseTax = calcTax > 0 ? calcTax : 0
-    // console.log('base tax: ', rsltBaseTax)
-    this.baseTax = rsltBaseTax
-    this.displayValues('currency', DOMfldBaseTax, rsltBaseTax)
+  getTaxed() {
+    let DOMfldTaxed = document.getElementById('fld-taxed')
+    let calcTaxed = this.aguinaldoPR - this.aguinaldoExempt
+    this.aguinaldoTaxed = calcTaxed
+    this.displayValues('currency', DOMfldTaxed, calcTaxed)
   }
 
-  getBaseTaxFT(salary) {
-    let DOMfldBaseTaxFT = document.getElementById('fld-base-tax-ft')
-    let salaryPerDay = salary / 30
-    let calc = this.baseTax + (salaryPerDay * 30)
-    this.baseTaxFT = calc
-    this.displayValues('currency', DOMfldBaseTaxFT, calc)
-  }
+  getISRvalues(salary, tax) {
+    let DOMfldLisrOrRisr = document.getElementById('fld-risr-lisr')
 
-  getISRbase() {
-    let DOMfldISRbase = document.getElementById('fld-isr-base')
-    let searchRslt = this.calcLimitsISRtablePerMonth(this.baseTaxFT)
-    this.ISRbase = searchRslt
-    this.displayValues('currency', DOMfldISRbase, searchRslt)
-    // console.log('resultado: ', searchRslt)
-  }
+    if (tax === 'risr') {
+      let perMonth = this.calcRISRaguinaldoMonth(this.aguinaldoTaxed)
+      let base1 = (salary + perMonth)
+      let base2 = salary
+      let isr1 = Number(this.calcLimitsISRtablePerMonth(base1).toFixed(2))
+      let isr2 = Number(this.calcLimitsISRtablePerMonth(base2).toFixed(2))
+      let diff = Number((isr1 - isr2).toFixed(2))
+      let percent = (diff / perMonth)
+      let risr = Number((this.aguinaldoTaxed * percent).toFixed(3))
 
-  getISRmonth(salary) {
-    let DOMfldISRmonth = document.getElementById('fld-isr-month')
-    let salaryPerDay = salary / 30
-    let searchRslt = this.calcLimitsISRtablePerMonth(salaryPerDay * 30)
-    this.ISRmonth = searchRslt
-    this.displayValues('currency', DOMfldISRmonth, searchRslt)
+      this.ISRbase1 = isr1
+      this.ISRbase2 = isr2
+      this.ISRtotal = risr
+      this.displayValues('currency', DOMfldLisrOrRisr, risr)
+
+      console.log('base1: ', base1)
+      console.log('base2: ', base2)
+      console.log('diff: ', diff)
+      console.log('%: ', percent)
+    } else {
+      let base1 = (salary + this.aguinaldoTaxed)
+      let base2 = salary
+      let isr1 = Number(this.calcLimitsISRtablePerMonth(base1).toFixed(2))
+      let isr2 = Number(this.calcLimitsISRtablePerMonth(base2).toFixed(2))
+      let lisr = Number((isr1 - isr2).toFixed(2))
+
+      this.ISRbase1 = isr1
+      this.ISRbase2 = isr2
+      this.ISRtotal = lisr
+
+      this.displayValues('currency', DOMfldLisrOrRisr, lisr)
+
+    }
   }
 
   getTotalsValues() {
@@ -119,7 +130,7 @@ class CalcAguinaldo {
     let DOMfldTotalISR = document.getElementById('fld-isr')
     let DOMfldTotalToPay = document.getElementById('fld-total-deposit')
     let totalAguinaldo = this.aguinaldoPR
-    let totalISR = (this.ISRbase - this.ISRmonth)
+    let totalISR = this.ISRtotal
     let totalToPay = (totalAguinaldo - totalISR)
 
     this.displayValues('content', DOMfldTotalAguinaldo, totalAguinaldo)
@@ -127,12 +138,16 @@ class CalcAguinaldo {
     this.displayValues('content', DOMfldTotalToPay, totalToPay)
   }
 
+  calcRISRaguinaldoMonth(amount) {
+    return Number(((amount / 365) * 30.4).toFixed(2))
+  }
+
   calcLimitsISRtablePerMonth(amount) {
     let lastRange = ISRdataMonth.table[ISRdataMonth.table.length - 1]
 
     let findRange = amount <= lastRange.upperLimit
-                      ? ISRdataMonth.table.find(item => this.betweenLimits(item.lowerLimit, item.upperLimit, amount, item))
-                      : { lowerLimit: 324845.02, fixedFee: 101876.9, overExc: 35 }
+      ? ISRdataMonth.table.find(item => this.betweenLimits(item.lowerLimit, item.upperLimit, amount, item))
+      : { lowerLimit: 324845.02, fixedFee: 101876.9, overExc: 35 }
     let lowerLimit = findRange.lowerLimit
     let overExc = findRange.overExc / 100
     let fixedFee = findRange.fixedFee
@@ -145,7 +160,7 @@ class CalcAguinaldo {
   }
 
   displayValues(type, element, value) {
-    if(type == 'currency') {
+    if (type == 'currency') {
       element.value = mxFormatter.format(value)
     } else if (type == 'text') {
       element.value = value
