@@ -1,4 +1,4 @@
-const btnOptions = [...document.querySelectorAll("button[data-target-solution]")]
+const btnOptionsSolutions = [...document.querySelectorAll("[data-target-solution].target-solution")]
 const solutionContent =[...document.querySelectorAll('[data-solution]')]
 const solutions = document.getElementById('solutions-content')
 
@@ -25,9 +25,11 @@ function showContent (btn) {
   const urlParam = new URLSearchParams(window.location.search)
   let findParemeter = ''
   for (const value of urlParam.values()) {
+    // console.log('param exc: ', value);
     findParemeter = value
   }
   console.log('param: ', findParemeter)
+  
 
   dataBtn == findParemeter
     ? dataSection.forEach(e => e.classList.add('solution-show'))
@@ -35,7 +37,7 @@ function showContent (btn) {
 }
 
 function btnClickActions (button) {
-  btnOptions.forEach(e => e.classList.remove('selected'))
+  btnOptionsSolutions.forEach(e => e.classList.remove('selected'))
   button.classList.add('selected')
   solutionContent.forEach(e => e.classList.remove('solution-show'))
   // solutionText.forEach(e => e.classList.add('ds-none'))
@@ -56,7 +58,7 @@ function urlParemeter(btn) {
   console.log('---paremeter---')
 }
 
-btnOptions.forEach((btn) => {
+btnOptionsSolutions.forEach((btn) => {
   btn.addEventListener('click', function () {
     btnClickActions(btn)
   })
@@ -64,17 +66,36 @@ btnOptions.forEach((btn) => {
 
 switch (window.location.search) {
   case '?section=atrae':
-    btnOptions[0].click()
+    btnOptionsSolutions[0].click()
     break
   case '?section=gestiona':
-    btnOptions[1].click()
+    btnOptionsSolutions[1].click()
     break
   case '?section=potencia':
-    btnOptions[2].click()
+    btnOptionsSolutions[2].click()
     break
   case '?section=compromete':
-    btnOptions[3].click()
+    btnOptionsSolutions[3].click()
     break
   default:
-    btnOptions[0].click()
+    btnOptionsSolutions[0].click()
 }
+
+const btnTypeSolutions = [...document.querySelectorAll("button[data-target-type]")]
+const solutionTypeContent = [...document.querySelectorAll('[data-type]')]
+
+btnTypeSolutions.forEach(button => {
+  button.addEventListener('click', function() {
+    btnTypeSolutions.forEach(btn => btn.classList.remove('active'))
+    button.classList.add('active')
+
+    let dataTargetType = this.dataset.targetType
+    let dataType = document.querySelector(`[data-type=${dataTargetType}]`)
+    // console.log(dataType)
+    solutionTypeContent.forEach(e => e.classList.add('ds-none'))
+    dataType.classList.remove('ds-none')
+
+  })
+})
+
+btnTypeSolutions[0].click()
