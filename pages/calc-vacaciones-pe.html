@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Vacaciones PE</title>
+  <link rel="stylesheet" href="../css/main-23.css">
+  <link rel="stylesheet" href="../css/utilities-spaces-23.css">
+  <link rel="stylesheet" href="../css/grid-system.css">
+  <link rel="stylesheet" href="../css/components/calc-styles.css">
+</head>
+<body>
+
+  <main class="buk-py-13">
+    <div class="boxer">
+
+      <h2 class="txt-center buk-mb-6">Calculadora de Vacaciones PE</h2>
+
+      <div class="buk-grid">
+        <div class="buk-col buk-col-lg-10 buk-col-st-lg-2">
+
+          <div class="calc shadow-1 rounded-16 buk-p-3 buk-px-lg-4 buk-py-lg-7">
+            
+            <div class="calc__title ff-title bg-blue-buk buk-px-2 buk-py-1 buk-px-lg-4 buk-py-lg-2 buk-mb-4">
+              <p>Ingresa el detalle de las fechas a consultar y otros parámetros a calcular</p>
+            </div>
+
+            <div class="buk-grid buk-px-2 buk-px-lg-4">
+
+              <div class="buk-col buk-col-md-6 buk-col-lg-6">
+                <div class="ds-flex ai-center buk-mb-2">
+                  <img src="https://www.buk.cl/hubfs/2023/Calculadoras/icon-calendar.svg" alt="ingresa a la empresa">
+                  <p class="ft-bold">Fecha de ingreso a la empresa</p>
+                </div>
+                <div class="date-group">
+                  <input type="date" name="date-admission" id="date-admission" class="pst-relative">
+                </div>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6" >
+                <div class="ds-flex ai-center buk-mb-2">
+                  <img src="https://www.buk.cl/hubfs/2023/Calculadoras/icon-calendar.svg" alt="consulta de vacaciones">
+                  <p class="ft-bold">Fecha de consulta</p>
+                </div>
+                <div class="date-group">
+                  <input type="date" name="holidays-date" id="holidays-date" class="pst-relative">
+                </div>
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-4">
+                <div class="buk-mb-2">
+                  <label for="absent-days">Días de inasistencia en el semestre</label>
+                </div>
+                <input type="number" min="0" placeholder="0" id="absent-days" class="input-num-user">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-4 ai-self-md-end">
+                <div class="buk-mb-2">
+                  <label for="holidays-taken">Vacaciones gozadas</label>
+                </div>
+                <input type="number" min="0" placeholder="0" id="holidays-taken" class="input-num-user">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-4 ai-self-md-end">
+                <div class="buk-mb-2">
+                  <label for="holidays-to-take">Días de vacaciones a tomar</label>
+                </div>
+                <input type="number" min="0" placeholder="0" id="holidays-to-take" class="input-num-user">
+              </div>
+
+            </div> <!-- end-grid -->
+
+            <div class="calc__title ff-title bg-blue-buk buk-px-2 buk-py-1 buk-px-lg-4 buk-py-lg-2 buk-my-4">
+              <p>Ingresa tu remuneración, asignación familiar, concepto fijo y pagos variables</p>
+            </div>
+
+            <div class="buk-grid buk-px-2 buk-px-lg-2 ">
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center pst-relative calc__fields--py-xs">
+                <label for="salary">Sueldo</label>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-ed-lg-13 calc__fields--py-xs">
+                <input type="number" min="0" id="salary">
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center pst-relative calc__fields--py-xs">
+                <label for="family-assignment">Asignación familiar</label>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-ed-lg-13 calc__fields--py-xs">
+                <input type="number" min="0" id="family-assignment">
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center pst-relative calc__fields--py-xs">
+                <label for="fix-cost">Otros conceptos fijos</label>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-ed-lg-13 calc__fields--py-xs">
+                <input type="number" min="0" id="fix-cost">
+              </div>
+              <div class="buk-col">
+                <p class="fw-bold ">Ten en cuenta que se debe cumplir el criterio de regularidad, es decir recibirlo como minimo en 3 meses en el periodo de
+                6 para ser considerado en la base de tus vacaciones.</p>
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-4 ">
+                <div class="ds-flex ai-center pst-relative buk-mb-2">
+                  <span>Variable xx</span>
+                </div> <!-- end-flex -->
+                <input type="number" min="0" placeholder="0" data-variable="extra-salary">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-4">
+                <div class="ds-flex ai-center pst-relative buk-mb-2">
+                  <span>Variable xx</span>
+                </div> <!-- end-flex -->
+                <input type="number" min="0" placeholder="0" data-variable="extra-salary">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-4">
+                <div class="ds-flex ai-center pst-relative buk-mb-2">
+                  <span>Variable xx</span>
+                </div> <!-- end-flex -->
+                <input type="number" min="0" placeholder="0" data-variable="extra-salary">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-4">
+                <div class="ds-flex ai-center pst-relative buk-mb-2">
+                  <span>Variable xx</span>
+                </div> <!-- end-flex -->
+                <input type="number" min="0" placeholder="0" data-variable="extra-salary">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-4">
+                <div class="ds-flex ai-center pst-relative buk-mb-2">
+                  <span>Variable xx</span>
+                </div> <!-- end-flex -->
+                <input type="number" min="0" placeholder="0" data-variable="extra-salary">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-4">
+                <div class="ds-flex ai-center pst-relative buk-mb-2">
+                  <span>Variable xx</span>
+                </div> <!-- end-flex -->
+                <input type="number" min="0" placeholder="0" data-variable="extra-salary">
+              </div>
+
+            </div> <!-- end-grid -->
+            <div class="buk-mt-5 txt-center">
+              <button class="btn btn--2">Calcular</button>
+            </div>
+
+          </div> <!-- end-calc -->
+
+          <div class="calc calc__results shadow-1 rounded-16  buk-mt-9">
+            <div class="calc__title-details ff-title bg-light-modules buk-p-2 buk-px-lg-4">
+              <p class="h5 txt-blue-buk fw-bold">Montos computables</p>
+            </div>
+            <div class="buk-p-3 buk-px-lg-4 buk-pt-lg-5 buk-pb-lg-7">
+              <div class="buk-grid">
+                <div class="buk-col buk-col-md-4 buk-col-lg-4 ai-self-md-end">
+                  <div class="buk-mb-2">
+                    <label for="holidays-taken">Vacaciones acumuladas</label>
+                  </div>
+                  <input type="text" value="0" id="accum-holidays" readonly>
+                </div>
+                <div class="buk-col buk-col-md-4 buk-col-lg-4 ai-self-md-end">
+                  <div class="buk-mb-2">
+                    <label for="">Saldo de vacaciones</label>
+                  </div>
+                  <input type="text" value="0" id="" readonly>
+                </div>
+                <div class="buk-col buk-my-1">
+                  <hr>
+                </div>
+                <div class="buk-col buk-col-md-4 buk-col-lg-4 ai-self-md-end">
+                  <div class="buk-mb-2">
+                    <label for="base-holidays">Base de vacaciones</label>
+                  </div>
+                  <input type="text" value="0" id="base-holidays" readonly>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-blue-buk buk-mt-11 rounded-16 buk-py-3 buk-py-lg-4 calc-values__rst-total">
+            <div class="buk-grid buk-px-3">
+              <div class="buk-col buk-col-md-8 buk-col-st-md-3 buk-col-lg-8 buk-col-st-lg-3">
+                <h3 class="buk-mb-3 txt-center">Total de vacaciones brutas</h3>
+                <div class="input-total txt-center bg-white buk-p-2 rounded-16 ">
+                  <span id="lbl-total-cts" class="h3 fw-bold txt-blue-buk">0</span>
+                </div>
+                <p class="buk-mt-3">*Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium suscipit aspernatur ab quas provident. Illo et voluptates molestias. Praesentium ullam esse dicta saepe odit nesciunt consectetur recusandae reprehenderit fugit sit.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div> <!-- end-grid -->
+
+    </div>
+  </main>
+  
+</body>
+</html>

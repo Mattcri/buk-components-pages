@@ -1,0 +1,93 @@
+.calc input,
+.select-group .select-control {
+  border-radius: 21px;
+  padding: .5rem 1.25rem;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.125rem;
+}
+
+.calc label,
+.calc span,
+.select-group .select-control {
+  font-size: 1.125rem;
+}
+
+.calc__title {
+  border-radius: 12px;
+}
+
+@media only screen and (min-width: 767px) {
+  .calc__title {
+    border-radius: 67px;
+  }
+  .calc__title p {
+    font-size: 1.25rem;
+  }
+}
+@media only screen and (min-width: 1020px) {
+  .calc__title p {
+    font-size: 1.35rem;
+  }
+}
+
+.date-group input[type="date"]::-webkit-calendar-picker-indicator {
+  content: "";
+  cursor: pointer;
+  background: url("https://www.buk.cl/hubfs/2023/Icons/Calendario%20icono.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 15px;
+  width: 15px;
+}
+
+.calc input:not([readonly]) {
+  border: 2px solid #e0e0e0;
+  cursor: pointer;
+}
+
+.calc input[type="number"] {
+  text-align: right;
+}
+
+.calc input:not([readonly]):focus,
+.calc input:not([readonly]):hover,
+.select-group .select-control:focus,
+.select-group .select-control:hover {
+  border-color: var(--color-blue-buk);
+  outline: 0;
+}
+
+.calc input[readonly] {
+  background: var(--wb-bg-modules);
+  border: 2px solid var(--wb-bg-modules);
+  cursor: initial;
+}
+.calc input[readonly]:focus {
+  outline: 0;
+}
+
+.calc .buk-col hr {
+  /* height: 2px; */
+  border: 2px solid #D9E3FC;
+}
+
+@media only screen and (max-width: 767px) {
+  .calc [class*="buk-col"] {
+    padding-top: .2rem;
+    padding-bottom: .2rem;
+  }
+}
+
+.calc__fields--py-xs {
+  padding-top: .2rem;
+  padding-bottom: .2rem;
+}
+
+.calc__title-details {
+  border-radius: 16px 16px 0 0;
+}
