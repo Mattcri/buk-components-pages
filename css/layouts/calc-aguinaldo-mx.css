@@ -131,7 +131,7 @@
 
 @media only screen and (min-width: 1020px) {
   .calc--btn-dropdown .active~.calc__fields--dropdown {
-    height: 477px;
+    height: 557px;
   }
 
   .calc--btn-dropdown button {
