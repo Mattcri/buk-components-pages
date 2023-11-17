@@ -1,0 +1,203 @@
+header {
+  background: var(--color-primary);
+  height: 60px;
+}
+
+.calc-header {
+  border-radius: 16px;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.calc-header h3,
+.calc-header h2 {
+  color: var(--color-white);
+}
+
+.calc-values {
+  box-shadow: 0 0 11px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+}
+
+.calc-values__title {
+  background: var(--bg-dark-sky-blue);
+  border-radius: 16px;
+  color: var(--color-primary);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.calc-values__title p {
+  font-weight: 700;
+  font-family: var(--font-family-title);
+  font-size: 1.25rem;
+}
+
+input,
+select {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  width: 100%;
+}
+
+label {
+  font-size: inherit;
+}
+
+@media only screen and (min-width: 767px) {
+  label {
+    font-size: 1.125rem;
+  }
+}
+
+.select-group .select-control,
+.date-group input[type="date"] {
+  appearance: none;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 16px;
+  border: 2px solid rgba(112, 112, 112, 0.22);
+  padding: .375rem .75rem;
+  width: 100%;
+}
+
+.select-group .select-control:focus {
+  border-radius: 16px;
+  border-color: var(--color-primary);
+  /* box-shadow: 0 0 0 .125rem rgba(47, 72, 167, 0.25); */
+  outline: 0;
+}
+
+.select-group .select-control:hover {
+  border-radius: 16px;
+  border-color: var(--color-primary);
+  outline: 0;
+}
+
+.select-group .select-control {
+  background-image: url("https://www.buk.cl/hubfs/2022/Icons/arrow-down-color-primary.svg");
+  background-position-x: calc(100% - 9px);
+  background-position-y: 6px;
+  background-repeat: no-repeat;
+}
+
+.date-group input[type="date"]:hover,
+.date-group input[type="date"]:focus {
+  border-color: var(--color-primary);
+  outline: 0;
+}
+
+/* .calc-values__cts-period option {
+  border-bottom: 1px solid rgba(112, 112, 112, 0.22);
+} */
+
+@media only screen and (min-width: 767px) {
+  .select-group .select-control {
+    font-size: 1.125rem;
+    padding: .375rem 1.25rem;
+  }
+
+  .date-group input[type="date"] {
+    padding: .375rem 1.25rem;
+    font-size: 1.063rem;
+  }
+}
+
+.ft-bold {
+  font-weight: 600;
+}
+
+.calc-values__fields [class*="buk-col"] {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.calc-values__fields input {
+  border-radius: 16px;
+  border: 2px solid #E0E0E0;
+  padding: .375rem .75rem;
+}
+
+.calc-values__fields input[type="number"]:focus {
+  border-color: var(--color-primary);
+  /* box-shadow: 0 0 0px 0.188rem rgba(13, 110, 253, 0.25); */
+  outline: 0;
+}
+
+.calc-values__fields input[type="number"]:hover {
+  border-color: var(--color-primary);
+}
+
+.calc-values__fields input[type="number"] {
+  cursor: pointer;
+}
+
+.calc-values__fields input[readonly] {
+  /* border-color: #Fafafa ; */
+  /* background: #F6F5F5; */
+  background: #f3f3f3;
+}
+
+.calc-values__fields input[readonly]:focus {
+  outline: 0;
+}
+
+@media only screen and (min-width: 767px) {
+  .calc-values__fields input {
+    font-size: 1.125rem;
+    padding: .375rem 1.25rem;
+    text-align: end;
+  }
+  .calc-values__fields input[data-variable] {
+    text-align: start;
+  }
+}
+
+.calc-values__fields hr {
+  border: 1px solid #B8C7CE;
+}
+
+.calc-values__rst-day-month {
+  background: #DAE5FAB2;
+  border: 4px solid #fff;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  font-size: 1.125rem;
+}
+
+.calc-values__rst-day-month p {
+  font-size: 1.125rem;
+}
+
+/* @media only screen and (min-width:767px) {
+  .calc-values__rst-day-month {
+    font-size: 1.5rem;
+  }
+} */
+
+.calc-values__rst-total {
+  border-radius: 16px;
+}
+
+.calc-values__rst-total h3,
+.calc-values__rst-total p {
+  color: var(--color-white);
+}
+
+.calc-values__rst-total .input-total {
+  background: #fff;
+  border-radius: 5px;
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: .375rem .75rem;
+}
+
+@media only screen and (min-width:767px) {
+  .calc-values__rst-total .input-total {
+    padding: .375rem 1.25rem;
+    font-size: 2rem;
+  }
+}
