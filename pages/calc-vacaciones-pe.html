@@ -131,42 +131,34 @@
               </div>
 
             </div> <!-- end-grid -->
-            <div class="buk-mt-5 txt-center">
+            <div class="calc__title ff-title bg-blue-buk buk-px-2 buk-py-1 buk-px-lg-4 buk-py-lg-2 buk-my-4">
+              <p>Datos computables (según los datos ingresados anteriormente)</p>
+            </div>
+            <div class="buk-grid buk-px-2 buk-px-lg-4">
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center pst-relative calc__fields--py-xs">
+                <label for="accum-holidays">Vacaciones acumuladas</label>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-ed-lg-13 calc__fields--py-xs">
+                <input type="text" value="0" id="accum-holidays" readonly>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center pst-relative calc__fields--py-xs">
+                <label for="balance-holidays">Saldo de vacaciones</label>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-ed-lg-13 calc__fields--py-xs">
+                <input type="text" value="0" id="balance-holidays" readonly>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center pst-relative calc__fields--py-xs">
+                <label for="base-holidays">Base de vacaciones</label>
+              </div>
+              <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-ed-lg-13 calc__fields--py-xs">
+                <input type="text" value="0" id="base-holidays" readonly>
+              </div>
+            </div>
+            <div class="buk-mt-6 txt-center">
               <button class="btn btn--2">Calcular</button>
             </div>
 
           </div> <!-- end-calc -->
-
-          <div class="calc calc__results shadow-1 rounded-16  buk-mt-9">
-            <div class="calc__title-details ff-title bg-light-modules buk-p-2 buk-px-lg-4">
-              <p class="h5 txt-blue-buk fw-bold">Montos computables</p>
-            </div>
-            <div class="buk-p-3 buk-px-lg-4 buk-pt-lg-5 buk-pb-lg-7">
-              <div class="buk-grid">
-                <div class="buk-col buk-col-md-4 buk-col-lg-4 ai-self-md-end">
-                  <div class="buk-mb-2">
-                    <label for="holidays-taken">Vacaciones acumuladas</label>
-                  </div>
-                  <input type="text" value="0" id="accum-holidays" readonly>
-                </div>
-                <div class="buk-col buk-col-md-4 buk-col-lg-4 ai-self-md-end">
-                  <div class="buk-mb-2">
-                    <label for="">Saldo de vacaciones</label>
-                  </div>
-                  <input type="text" value="0" id="" readonly>
-                </div>
-                <div class="buk-col buk-my-1">
-                  <hr>
-                </div>
-                <div class="buk-col buk-col-md-4 buk-col-lg-4 ai-self-md-end">
-                  <div class="buk-mb-2">
-                    <label for="base-holidays">Base de vacaciones</label>
-                  </div>
-                  <input type="text" value="0" id="base-holidays" readonly>
-                </div>
-              </div>
-            </div>
-          </div>
 
           <div class="bg-blue-buk buk-mt-11 rounded-16 buk-py-3 buk-py-lg-4 calc-values__rst-total">
             <div class="buk-grid buk-px-3">
