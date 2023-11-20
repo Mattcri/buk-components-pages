@@ -139,25 +139,25 @@
                 <label for="accum-holidays">Vacaciones acumuladas</label>
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-ed-lg-13 calc__fields--py-xs">
-                <input type="text" value="0" id="accum-holidays" readonly>
+                <input type="text" value="0" id="accum-holidays" readonly class="txt-right">
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center pst-relative calc__fields--py-xs">
                 <label for="balance-holidays">Saldo de vacaciones</label>
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-ed-lg-13 calc__fields--py-xs">
-                <input type="text" value="0" id="balance-holidays" readonly>
+                <input type="text" value="0" id="balance-holidays" readonly class="txt-right">
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center pst-relative calc__fields--py-xs">
                 <label for="base-holidays">Base de vacaciones</label>
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-ed-lg-13 calc__fields--py-xs">
-                <input type="text" value="0" id="base-holidays" readonly>
+                <input type="text" value="0" id="base-holidays" readonly class="txt-right">
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center pst-relative calc__fields--py-xs">
                 <label for="base-holidays">Promedio sueldos variables</label>
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-ed-lg-13 calc__fields--py-xs">
-                <input type="text" value="0" id="avg-variables-salaries" readonly>
+                <input type="text" value="0" id="avg-variables-salaries" readonly class="txt-right">
               </div>
             </div>
             <div class="buk-mt-6 txt-center">
@@ -171,7 +171,7 @@
               <div class="buk-col buk-col-md-8 buk-col-st-md-3 buk-col-lg-8 buk-col-st-lg-3">
                 <h3 class="buk-mb-3 txt-center">Total de vacaciones brutas</h3>
                 <div class="input-total txt-center bg-white buk-p-2 rounded-16 ">
-                  <span id="lbl-total-cts" class="h3 fw-bold txt-blue-buk">0</span>
+                  <span id="lbl-total-holidays" class="h3 fw-bold txt-blue-buk">0</span>
                 </div>
                 <p class="buk-mt-3">*Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium suscipit aspernatur ab quas provident. Illo et voluptates molestias. Praesentium ullam esse dicta saepe odit nesciunt consectetur recusandae reprehenderit fugit sit.</p>
               </div>
@@ -184,6 +184,10 @@
     </div>
   </main>
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"
+    crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/es.min.js"
+    crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
   <script type="module" src="../js/calcs/calc-vacaciones-pe.js" defer></script>
 </body>
 </html>

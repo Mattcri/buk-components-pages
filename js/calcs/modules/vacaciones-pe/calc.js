@@ -39,8 +39,6 @@ class CalcHolidays {
     this.sumVariablesDivAccumHolidays = Number((sumExtSalaries() / this.accumHolidays).toFixed(2))
     this.displayValue('curr', DOMavgSalaries, avg)
     console.log('array Salaries: ', extSalariesValues)
-    console.log('sum Salaries: ', sumExtSalaries())
-    console.log('accum Holidays 2: ', this.accumHolidays)
   }
 
   holidaysBalance (dateAdmission, dateRequest, absentDays) {
@@ -58,6 +56,7 @@ class CalcHolidays {
 
     console.log('accum: ', countDays / 30 * 2.5)
     console.log('balance: ', (calcDays - absentDays) - (absentDays / 30 * 2.5))
+    console.log('total days: ', days360(dateAdmission, dateRequest) + 1)
   }
 
   rsltBase(salary, familyBonus, otherFix) {
@@ -67,9 +66,15 @@ class CalcHolidays {
     this.displayValue('val', DOMbaseHolidays, calcBase)
   }
 
+  rsltTotal(daysToTake) {
+    let DOMlblTotal = document.getElementById('lbl-total-holidays')
+    this.total = this.baseHolidays / 30 * daysToTake
+    this.displayValue('dom', DOMlblTotal, this.total)
+  }
+
   displayValue(type, DOMelement, amount) {
     if (type === 'dom') {
-      DOMelement.textContent = amount
+      DOMelement.textContent = peFormatter.format(amount)
     } else if (type === 'val') {
       DOMelement.value = amount
     } else if (type === 'curr') {
