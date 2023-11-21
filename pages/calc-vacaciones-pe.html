@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora Vacaciones PE</title>
+  <link rel="stylesheet" href="../css/components/calc-styles.css">
+  <link rel="stylesheet" href="../css/components/modal-23.css">
   <link rel="stylesheet" href="../css/main-23.css">
   <link rel="stylesheet" href="../css/utilities-spaces-23.css">
   <link rel="stylesheet" href="../css/grid-system.css">
-  <link rel="stylesheet" href="../css/components/calc-styles.css">
 </head>
 <body>
 
@@ -75,19 +76,19 @@
                 <label for="salary">Sueldo</label>
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-ed-lg-13 calc__fields--py-xs">
-                <input type="number" min="0" id="salary">
+                <input type="number" min="0" placeholder="0" id="salary">
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center pst-relative calc__fields--py-xs">
                 <label for="family-assignment">Asignación familiar</label>
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-ed-lg-13 calc__fields--py-xs">
-                <input type="number" min="0" id="family-assignment">
+                <input type="number" min="0" placeholder="0" id="family-assignment">
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex ai-center pst-relative calc__fields--py-xs">
                 <label for="fix-cost">Otros conceptos fijos</label>
               </div>
               <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-ed-lg-13 calc__fields--py-xs">
-                <input type="number" min="0" id="fix-cost">
+                <input type="number" min="0" placeholder="0" id="fix-cost">
               </div>
               <div class="buk-col">
                 <p class="fw-bold ">Ten en cuenta que se debe cumplir el criterio de regularidad, es decir recibirlo como minimo en 3 meses en el periodo de
@@ -183,6 +184,27 @@
 
     </div>
   </main>
+
+  <div class="buk-modal  buk-modal--control-errs">
+    <div class="buk-modal__dialog">
+      <div class="buk-modal__content">
+        <div class="buk-modal__header">
+          <p>No pudimos calcular tus vacaciones</p>
+          <button id="close-dialog-errs">
+            <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.40723 15.0015L15.8423 1.5665" stroke="#2f48a7" stroke-width="2.3" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M2.40723 1.5665L15.8423 15.0015" stroke="#2f48a7" stroke-width="2.3" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+        <div class="buk-modal__body buk-pt-2 buk-pb-1">
+          <p id="error-description"></p>
+        </div>
+      </div>
+    </div>
+  </div>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"
     crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>

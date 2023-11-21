@@ -20,7 +20,7 @@ class CalcHolidays {
     let extraSalaries = [...document.querySelectorAll('[data-variable="extra-salary"]')]
     let variablesWithAmounts = 0
     extraSalaries.forEach(item => Number(item.value) > 0 ? variablesWithAmounts++ : false)
-    console.log('cantidad de sueldos variables: ', variablesWithAmounts)
+    // console.log('cantidad de sueldos variables: ', variablesWithAmounts)
     variablesWithAmounts >= 3 ? this.applyVariables = true : this.applyVariables = false
   }
 
@@ -38,7 +38,7 @@ class CalcHolidays {
     let avg = sumExtSalaries() / 6
     this.sumVariablesDivAccumHolidays = Number((sumExtSalaries() / this.accumHolidays).toFixed(2))
     this.displayValue('curr', DOMavgSalaries, avg)
-    console.log('array Salaries: ', extSalariesValues)
+    // console.log('array Salaries: ', extSalariesValues)
   }
 
   holidaysBalance (dateAdmission, dateRequest, absentDays) {
@@ -54,8 +54,8 @@ class CalcHolidays {
     this.displayValue('val', DOMaccumHolidays, this.accumHolidays)
     this.displayValue('val', DOMbalanceHolidays, balance)
 
-    console.log('accum: ', countDays / 30 * 2.5)
-    console.log('balance: ', (calcDays - absentDays) - (absentDays / 30 * 2.5))
+    // console.log('accum: ', countDays / 30 * 2.5)
+    // console.log('balance: ', (calcDays - absentDays) - (absentDays / 30 * 2.5))
     console.log('total days: ', days360(dateAdmission, dateRequest) + 1)
   }
 

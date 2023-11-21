@@ -1,6 +1,8 @@
 import { CalcHolidays } from "./calc.js"
+import { Validator } from "./validations.js"
 
 const calc = new CalcHolidays({})
+const validate = new Validator()
 
 class Director {
   calculate () {
@@ -12,12 +14,16 @@ class Director {
     let dateAdmission = new Date(`${document.getElementById('date-admission').value}T00:00:00`) 
     let dateRequest = new Date(`${document.getElementById('holidays-date').value}T00:00:00`)
 
-    calc.checkSalariesVariables()
-    calc.holidaysBalance(dateAdmission, dateRequest, absentDays)
-    calc.avgAndSumVariables()
-    calc.rsltBase(salary, familyBonus, otherFix)
-    calc.rsltTotal(daysToTake)
-    calc.logConsole()
+    validate.isAnyDateIsEmpty(dateAdmission, dateRequest)
+      .then(() => validate.dateAdmIsLowerToDateReq(dateAdmission, dateRequest))
+      .then(() => validate.daysToTakeIsNotEmpty(daysToTake))
+      .then(() => validate.salaryIsNotEmpty(salary))
+      .then(() => calc.checkSalariesVariables())
+      .then(() => calc.holidaysBalance(dateAdmission, dateRequest, absentDays))
+      .then(() => calc.avgAndSumVariables())
+      .then(() => calc.rsltBase(salary, familyBonus, otherFix))
+      .then(() => calc.rsltTotal(daysToTake))
+      .then(() => calc.logConsole())
 
   }
 }
