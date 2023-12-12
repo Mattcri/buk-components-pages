@@ -1,0 +1,120 @@
+.button-large {
+  display: flex;
+  display: -ms-flexbox;
+  -ms-flex-pack: justify;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  padding: 16px 32px;
+  border: 0px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 16px;
+}
+
+.button-large__color {
+  background-color: var(--color-light-blue);
+  color: var(--color-blue-buk);
+}
+
+.button-large__color:hover {
+  background-color: var(--color-light-blue);
+  color: var(--color-blue-buk) !important;
+}
+
+.button-large:after {
+  border-radius: 16px 16px 0px 0px
+}
+
+.button-large:after {
+  -webkit-transition: .6s ease-in-out;
+  -o-transition: .6s ease-in-out;
+  transition: .6s ease-in-out;
+  content: '\2212';
+  color: #fff0;
+  position: relative;
+  width: 28px;
+  background: url("https://www.buk.cl/hubfs/2023/Calculadoras/flecha.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transform: rotate(180deg);
+}
+
+.button-large.active:after {
+  content: " \002B";
+  transform: rotate(0deg);
+}
+
+.button-large.active {
+  border-radius: 16px 16px 0px 0px;
+  background-color: var(--color-light-blue);
+  color: var(--color-blu-buk);
+}
+
+.button-large.active h3 {
+  font-weight: 600 !important;
+}
+
+.button-large h3 {
+  color: var(--color-blue-buk) !important;
+  font-weight: 600;
+  font-family: var(--font-family-title);
+  font-size: 22px;
+}
+
+
+.panel-info {
+  background-color: white;
+  max-height: 0px;
+  overflow: hidden;
+  -webkit-transition: .6s ease-in-out;
+  -o-transition: .6s ease-in-out;
+  transition: .6s ease-in-out;
+  opacity: 0;
+  width: 100%;
+  border-radius: 0px 0px 16px 16px;
+}
+
+.panel-info.show {
+  opacity: 1;
+  max-height: 950px;
+}
+
+.txt-faq {
+  width: 92%;
+}
+
+.txt-loop {
+  padding-right: 5px;
+  font-weight: 900;
+  font-size: 1.25rem
+}
+
+.buk-col[class*=buk-col] {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+@media only screen and (min-width: 767px) {
+  .text-questions {
+    font-weight: bold;
+  }
+}
+
+.text-questions {
+  font-size: 1.063rem !important;
+  line-height: 1.5;
+  color: var(--color-blue-buk);
+  font-weight: 500;
+}
+
+.button-large.active .text-questions,
+.text-questions:hover {
+  color: var(--color-white);
+}

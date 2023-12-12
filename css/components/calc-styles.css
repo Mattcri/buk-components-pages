@@ -1,11 +1,25 @@
 .calc input,
 .select-group .select-control {
   border-radius: 21px;
-  padding: .5rem 1.25rem;
+  cursor: pointer;
+  padding: .5rem 1.45rem .5rem 1.25rem;
   width: 100%;
   font-family: inherit;
   font-size: 1.125rem;
+  border: 2px solid #d9e3fc;
 }
+
+.select-group select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("https://www.buk.cl/hubfs/2023/Calculadoras/flecha-select.svg");
+  background-position-x: calc(100% - 17px);
+  background-position-y: 16px;
+  background-repeat: no-repeat;
+  /*background: white;*/
+}
+
 
 .calc label,
 .calc span,
@@ -17,14 +31,25 @@
   border-radius: 12px;
 }
 
+.calc-box__section {
+  background: var(--color-light-blue);
+}
+
+.calc-box__section p {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
 @media only screen and (min-width: 767px) {
   .calc__title {
     border-radius: 67px;
   }
+
   .calc__title p {
     font-size: 1.25rem;
   }
 }
+
 @media only screen and (min-width: 1020px) {
   .calc__title p {
     font-size: 1.35rem;
@@ -46,8 +71,9 @@
 }
 
 .calc input:not([readonly]) {
-  border: 2px solid #e0e0e0;
+  border: 2px solid #d9e3fc;
   cursor: pointer;
+  background: white;
 }
 
 .calc input[type="number"] {
@@ -67,12 +93,12 @@
   border: 2px solid var(--wb-bg-modules);
   cursor: initial;
 }
+
 .calc input[readonly]:focus {
   outline: 0;
 }
 
 .calc .buk-col hr {
-  /* height: 2px; */
   border: 2px solid #D9E3FC;
 }
 
@@ -90,4 +116,99 @@
 
 .calc__title-details {
   border-radius: 16px 16px 0 0;
+}
+
+/*radio button*/
+input[type=radio] {
+  cursor: pointer;
+  height: 17px;
+  margin-left: 1rem;
+  vertical-align: middle;
+  width: auto;
+  width: 17px;
+}
+
+.calc-box__label {
+  color: var(--color-blue-buk);
+  font-family: var(--font-family-body);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.box-label__tooltip {
+  width: 85%;
+}
+
+.box-label__tooltip.tooltip {
+  width: 10%;
+}
+
+.cal-detail__title {
+  background: var(--wb-bg-modules);
+}
+
+.cal-detail__title p {
+  font-size: 1.125rem;
+}
+
+.cal-detail__item {
+  border-bottom: 2px solid var(--color-light-blue);
+}
+
+.cal-detail__item p {
+  font-size: 1rem;
+}
+
+.cal-boxblue__total {
+  font-size: 2rem;
+}
+
+
+/*{# styles tooltip#}*/
+
+/* content text */
+.tooltip {
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 8px;
+  position: relative;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  visibility: hidden;
+  background-color: var(--wb-bg-modules);
+  color: var(--wb-font-color-1);
+  text-align: left;
+  padding: 16px;
+  border-radius: 16px;
+  opacity: 0;
+  transition: opacity 0.5s;
+  bottom: 150%;
+  transform: translateX(-50%);
+  min-width: 260px;
+  max-width: 260px;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1000;
+  box-shadow: 0 0 10px 4px rgba(43, 60, 106, .12);
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip-trigger:hover+.tooltiptext {
+  visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  /* At the bottom of the tooltip */
+  left: 50%;
+}
+
+.tooltip:hover .tooltiptext {
+  opacity: 1;
 }
