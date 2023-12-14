@@ -35,7 +35,7 @@ variableSalaryRadio.forEach(radio => {
 
     if (document.getElementById('true-remuneracion').checked !== true) {
       varaibleSection.classList.add('ds-none')
-      variableInputs.forEach(input => input.value = 0)
+      variableInputs.forEach(input => input.value = '')
     } else {
       varaibleSection.classList.remove('ds-none')
     }

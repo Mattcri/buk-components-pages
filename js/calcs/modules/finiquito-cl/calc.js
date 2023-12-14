@@ -51,6 +51,34 @@ class CalcFiniquito {
 
   }
 
+  rsltAvgVariableRent(variableCheck) {
+    if(variableCheck == true) {
+      let DOMlblVariableRent = document.getElementById('lbl-variable-rent')
+      let variableInputs = [...document.querySelectorAll('[data-variable-salary="true"]')]
+      let values = variableInputs.map(input => input.valueAsNumber)
+      let sumValues = values.reduce((prev, acum) => prev + acum, 0)
+      let avg = (sumValues / 3)
+  
+      this.avgVariableRent = Number(avg.toFixed(0))
+
+      this.displayValue('clp', DOMlblVariableRent, avg)
+    } else {
+      let avg = 0
+      this.avgVariableRent = avg
+
+      this.displayValue('clp', DOMlblVariableRent, avg)
+    }
+
+  }
+
+  sumBaseRent() {
+    let DOMlblBaseRent = document.getElementById('lbl-base-rent')
+    let sumValues = this.sumFixRent + this.avgVariableRent
+
+    this.baseRent = Number((sumValues).toFixed(0))
+    this.displayValue('clp', DOMlblBaseRent, sumValues)
+  }
+
   displayValue(type, element, amount) {
     if(type == 'clp') {
       element.textContent = clFormatter.format(amount)

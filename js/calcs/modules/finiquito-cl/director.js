@@ -13,11 +13,13 @@ class Director {
     let baseSalary = Number(document.getElementById('base-salary').value)
     let taxableFixedRemu = Number(document.getElementById('taxable-fixed-remu').value)
     let nonTaxableFixedRemu = Number(document.getElementById('non-taxable-fixed-remu').value)
-    let variableRemuIsTrue = document.getElementById('true-remuneracion')
+    let variableRemuIsTrue = document.getElementById('true-remuneracion').checked
 
     calc.rslTimeWorked(dateAdmission, endContractDate)
     calc.rsltVacationDays()
     calc.rsltFixedRent(baseSalary, taxableFixedRemu)
+    calc.rsltAvgVariableRent(variableRemuIsTrue)
+    calc.sumBaseRent()
 
     calc.log()
 
