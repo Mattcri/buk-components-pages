@@ -106,7 +106,7 @@
                   </div>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 calc__fields--py-xs">
-                  <input type="number" min="0" placeholder="0" id="">
+                  <input type="number" min="0" placeholder="0" id="vacations-taken">
                 </div>
               </div>
 
@@ -127,7 +127,7 @@
                       </span>
                     </div>
                   </div> <!-- end-flex -->
-                  <input type="number" min="0" placeholder="0" data-variable="">
+                  <input type="number" min="0" placeholder="0" id="base-salary">
                 </div>
 
                 <div class="buk-col buk-col-md-6 buk-col-lg-4">
@@ -141,7 +141,7 @@
                       </span>
                     </div>
                   </div> <!-- end-flex -->
-                  <input type="number" min="0" placeholder="0" data-variable="">
+                  <input type="number" min="0" placeholder="0" id="taxable-fixed-remu">
                 </div>
 
                 <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-st-md-4 buk-mt-md-2 buk-mt-lg-0">
@@ -156,7 +156,7 @@
                       </span>
                     </div>
                   </div> <!-- end-flex -->
-                  <input type="number" min="0" placeholder="0" data-variable="">
+                  <input type="number" min="0" placeholder="0" id="non-taxable-fixed-remu">
                 </div>
 
               </div> <!-- end-grid -->
@@ -173,16 +173,16 @@
                   </div>
                 </div>
                 <div class="buk-col buk-col-md-4 buk-col-lg-4 calc__fields--py-xs">
-                  <div class="ds-flex ai-center jc-md-between jc-around{#radio-control#}">
+                  <div class="ds-flex ai-center jc-md-between jc-around">
                     <label for="true-remuneracion" class="buk-mx-1">Si<input type="radio" name="remu-variable"
-                        id="true-remuneracion" checked=""></label>
+                        id="true-remuneracion" checked></label>
                     <label for="false-remuneracion" class="buk-mx-1">No<input type="radio" name="remu-variable"
                         id="false-remuneracion"></label>
                   </div>
                 </div>
               </div>
 
-              <div class="buk-grid buk-px-md-2 buk-mt-4">
+              <div class="buk-grid buk-px-md-2 buk-mt-4" id="apply-variable-salary">
                 <div class="buk-col buk-col-md-6 buk-col-lg-4 ">
                   <div class="ds-flex ai-center buk-mb-2">
                     <label class="calc-box__label">Noviembre 2023</label>
@@ -193,7 +193,7 @@
                     </span>
                   </div> -->
                   </div> <!-- end-flex -->
-                  <input type="number" min="0" placeholder="0" data-variable="">
+                  <input type="number" min="0" placeholder="0" data-variable-salary="true">
                 </div>
 
                 <div class="buk-col buk-col-md-6 buk-col-lg-4 ">
@@ -206,7 +206,7 @@
                     </span>
                   </div>#} -->
                   </div> <!-- end-flex -->
-                  <input type="number" min="0" placeholder="0" data-variable="">
+                  <input type="number" min="0" placeholder="0" data-variable-salary="true">
                 </div>
 
                 <div class="buk-col buk-col-md-6 buk-col-lg-4 ">
@@ -219,7 +219,7 @@
                     </span>
                   </div>#} -->
                   </div> <!-- end-flex -->
-                  <input type="number" min="0" placeholder="0" data-variable="">
+                  <input type="number" min="0" placeholder="0" data-variable-salary="true">
                 </div>
 
               </div>
@@ -311,7 +311,7 @@
                 <div class="boxer">
                   <div class="ds-flex jc-between buk-p-2 cal-detail__item">
                     <p>Remuneración<br class="v-mobile"> fija</p>
-                    <p>$ 640,000</p>
+                    <p id="lbl-fixed-rent">$ 0</p>
                   </div>
 
                   <div class="ds-flex jc-between buk-p-2 cal-detail__item">
@@ -327,7 +327,7 @@
 
                   <div class="ds-flex jc-between buk-p-2 cal-detail__item buk-mb-4">
                     <p>Gratificación</p>
-                    <p>$ 125,000</p>
+                    <p id="lbl-gratification">$ 0</p>
                   </div>
                 </div>
               </div>
