@@ -20,6 +20,7 @@ class Director {
     calc.rsltFixedRent(baseSalary, taxableFixedRemu)
     calc.rsltAvgVariableRent(variableRemuIsTrue)
     calc.sumBaseRent()
+    
 
     calc.log()
 

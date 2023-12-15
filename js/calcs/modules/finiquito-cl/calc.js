@@ -52,8 +52,8 @@ class CalcFiniquito {
   }
 
   rsltAvgVariableRent(variableCheck) {
+    let DOMlblVariableRent = document.getElementById('lbl-variable-rent')
     if(variableCheck == true) {
-      let DOMlblVariableRent = document.getElementById('lbl-variable-rent')
       let variableInputs = [...document.querySelectorAll('[data-variable-salary="true"]')]
       let values = variableInputs.map(input => input.valueAsNumber)
       let sumValues = values.reduce((prev, acum) => prev + acum, 0)
@@ -78,6 +78,33 @@ class CalcFiniquito {
     this.baseRent = Number((sumValues).toFixed(0))
     this.displayValue('clp', DOMlblBaseRent, sumValues)
   }
+
+  rentsPerDays() {
+    let baseSalary = Number(document.getElementById('base-salary').value)
+    
+    let compensationFixed = Number((this.baseRent / 30).toFixed(0))
+    let compensationVariable = Number((this.avgVariableRent / 30).toFixed(0))
+    let compensationTotal = compensationFixed + compensationVariable
+
+    let vacationFixed = Number((baseSalary / 30).toFixed(0))
+    let vacationVariable = Number((this.avgVariableRent / 30).toFixed(0))
+    let vacationTotal = vacationFixed + vacationVariable
+
+    return {
+      compensation: {
+        fixed: compensationFixed,
+        variable: compensationVariable,
+        total: compensationTotal
+      },
+      vacations: {
+        fixed: vacationFixed,
+        variable: vacationVariable,
+        total: vacationTotal
+      }
+    }
+
+  }
+
 
   displayValue(type, element, amount) {
     if(type == 'clp') {

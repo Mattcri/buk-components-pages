@@ -4,6 +4,7 @@ function diffDates (startDate, endDate) {
   let end = moment(endDate)
 
   let years = end.diff(start, 'years')
+  let amountMonths = end.diff(start, 'months')
   start.add(years, 'years')
   let months = end.diff(start, 'months')
   start.add(months, 'months')
@@ -12,6 +13,7 @@ function diffDates (startDate, endDate) {
   return {
     years,
     months,
+    amountMonths,
     days
   }
 }
