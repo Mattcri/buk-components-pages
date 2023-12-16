@@ -55,7 +55,7 @@ class CalcFiniquito {
     let DOMlblVariableRent = document.getElementById('lbl-variable-rent')
     if(variableCheck == true) {
       let variableInputs = [...document.querySelectorAll('[data-variable-salary="true"]')]
-      let values = variableInputs.map(input => input.valueAsNumber)
+      let values = variableInputs.map(input => Number(input.value))
       let sumValues = values.reduce((prev, acum) => prev + acum, 0)
       let avg = (sumValues / 3)
   
@@ -104,6 +104,126 @@ class CalcFiniquito {
     }
 
   }
+
+  vacationsValues(daysTaken, endDate) {
+    let years = this.timeWorked.years
+    let months = this.timeWorked.amountMonths
+    let days = this.timeWorked.days
+    let balanceDays = this.accumVacationDays - daysTaken
+    let pendingDays = balanceDays > 0 ? balanceDays : 0
+
+    let proportionalDays = balanceDays <= 0
+      ? balanceDays + 1.25 * (months - years * 12 + days / 30)
+      : 1.25 * (months - years * 12 + days / 30)
+
+    let buildParam = Math.ceil(proportionalDays) + Number(pendingDays.toFixed(2))
+
+    let consecutiveDays = this.countWeekendsAndFinalWorkingDay(endDate, buildParam)
+
+    console.log(consecutiveDays)
+
+    this.vacation = {
+      pendingDays: Number(pendingDays.toFixed(2)),
+      proportionalDays: Number(proportionalDays.toFixed(2)),
+      holidays: '',
+      consecutiveDays: ''
+    }
+
+  }
+
+  countWeekendsAndFinalWorkingDay(date, param) {
+    let endContractDate = moment(date)
+    let firstDate = endContractDate.clone()
+    let endLaboralDate = endContractDate.clone()
+    let advancedLaboralDays = 0
+    let weekends = 0
+
+    while (advancedLaboralDays < param) {
+      endLaboralDate.add(1, 'days')
+      console.log('print endLaboralDate: ', endLaboralDate.format('DD-MM-YYYY'))
+      if (endLaboralDate.day() !== 0 && endLaboralDate.day() !== 6) {
+        advancedLaboralDays++
+      }
+    }
+
+    let toMonday = firstDate.day() === 6 
+                    ? 2 
+                    : firstDate.day() === 0
+                      ? 1
+                      : 0
+
+    if (firstDate.day() === 5) {
+      weekends--
+    }
+    let finalDate = moment(endLaboralDate)
+    firstDate.add(toMonday, 'days')
+
+    while (firstDate.isBefore(finalDate)) {
+      if (firstDate.day() === 0 || firstDate.day() === 6) {
+        weekends++
+      }
+      firstDate.add(1, 'days')
+    }
+
+    let lastLaboralDay = endLaboralDate.format('DD-MM-YYYY')
+
+    return {
+      weekends,
+      lastLaboralDay,
+      endContractDate: endContractDate.format('DD-MM-YYYY')
+    }
+
+  }
+
+  countConsecutiveDays(date, param) {
+    let endContract = moment(date)
+    let getDayOfWeek = endContract.day()
+    let goToMonday = getDayOfWeek === 6 ? 2 : getDayOfWeek === 0 ? 1 : 0
+    let initDayToCount = moment(date).add(goToMonday, 'days')
+    let endConsecutiveDays = moment(initDayToCount)
+    let holidays = 0
+    let weekends = 0
+
+    console.log('param', param)
+    console.log('end: ', endContract.format('DD-MM-YYYY'))
+    console.log('next monday: ', initDayToCount.format('DD-MM-YYYY'));
+    // console.log('firts end consecutive days: ', endConsecutiveDays.format('DD-MM-YYYY'));
+    
+    while (param > 0) {
+      if(endConsecutiveDays.day() !== 6 || endConsecutiveDays.day() !== 0 || endConsecutiveDays.day() !== 1 ) {
+        endConsecutiveDays.add(1, 'days')
+      }
+
+
+      let nextDay = endConsecutiveDays.clone().add(1, 'days')
+      let dayAfterNextDay = nextDay.clone().add(1, 'days')
+      let daysAddToNextWorkingDay = nextDay.day() === 6 
+                                      ? 2 
+                                      : nextDay.day() === 0 
+                                        ? 1 
+                                        : 0
+      
+      // let nextWorkingDay = nextDay.day() !== 6 || nextDay.day() !== 0
+      //                       ? nextDay.clone().add(daysAddToNextWorkingDay, 'days') 
+      //                       : nextDay.clone().add(1, 'days')
+      let nextWorkingDay = nextDay.clone().add(daysAddToNextWorkingDay, 'days')
+
+
+      console.log('end consecutive days: ', endConsecutiveDays.format('DD-MM-YYYY'));
+      console.log('next consecutive days: ', nextDay.format('DD-MM-YYYY'))
+      console.log('day after next day: ', dayAfterNextDay.format('DD-MM-YYYY'))
+      console.log('next working day: ', nextWorkingDay.format('DD-MM-YYYY'))
+      console.log('-------------------');
+
+      if (nextDay.day() === 6 || nextDay.day() === 0) holidays++
+      if (dayAfterNextDay.day() === 6 || dayAfterNextDay.day() === 0) holidays++
+
+      param--
+    }
+
+    return holidays
+  }
+
 
 
   displayValue(type, element, amount) {
