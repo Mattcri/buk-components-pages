@@ -90,7 +90,7 @@ class CalcFiniquito {
     let vacationVariable = Number((this.avgVariableRent / 30).toFixed(0))
     let vacationTotal = vacationFixed + vacationVariable
 
-    return {
+    this.baseRentPerDay = {
       compensation: {
         fixed: compensationFixed,
         variable: compensationVariable,
@@ -118,20 +118,24 @@ class CalcFiniquito {
 
     let buildParam = Math.ceil(proportionalDays) + Number(pendingDays.toFixed(2))
 
-    let consecutiveDays = this.countWeekendsAndFinalWorkingDay(endDate, buildParam)
+    let countVacations = this.countWeekendsHolidaysAndFinalWorkingDay(endDate, buildParam)
+    let consecutiveDays = (countVacations.weekends + countVacations.holidays + proportionalDays + pendingDays)
 
-    console.log(consecutiveDays)
+    // console.log(countVacations)
 
     this.vacation = {
       pendingDays: Number(pendingDays.toFixed(2)),
       proportionalDays: Number(proportionalDays.toFixed(2)),
-      holidays: '',
-      consecutiveDays: ''
+      weekends: countVacations.weekends,
+      holidays: countVacations.holidays,
+      consecutiveDays: Number(consecutiveDays.toFixed(2)),
+      lastLaboralDay: countVacations.lastLaboralDay,
+      endContractDate: countVacations.endContractDate
     }
 
   }
 
-  countWeekendsAndFinalWorkingDay(date, param) {
+  countWeekendsHolidaysAndFinalWorkingDay(date, param) {
     let endContractDate = moment(date)
     let firstDate = endContractDate.clone()
     let endLaboralDate = endContractDate.clone()
@@ -140,7 +144,7 @@ class CalcFiniquito {
 
     while (advancedLaboralDays < param) {
       endLaboralDate.add(1, 'days')
-      console.log('print endLaboralDate: ', endLaboralDate.format('DD-MM-YYYY'))
+      // console.log('print endLaboralDate: ', endLaboralDate.format('DD-MM-YYYY'))
       if (endLaboralDate.day() !== 0 && endLaboralDate.day() !== 6) {
         advancedLaboralDays++
       }
@@ -166,12 +170,51 @@ class CalcFiniquito {
     }
 
     let lastLaboralDay = endLaboralDate.format('DD-MM-YYYY')
+    let holidays = this.countHolidays(endContractDate, finalDate)
 
     return {
       weekends,
+      holidays,
       lastLaboralDay,
       endContractDate: endContractDate.format('DD-MM-YYYY')
     }
+
+  }
+
+  countHolidays(startDate, endDate) {
+    let stDate = moment(startDate)
+    let initCounterDate = stDate.clone()
+    let edDate = moment(endDate)
+    let convertHolidaysToMoment = natv.getHolidaysDates().map(date => moment(date))
+
+    let holidays = 0
+
+    console.log('init counter date: ', initCounterDate);
+    console.log('edDate: ', edDate);
+
+    while (initCounterDate.isBefore(edDate)) {
+      initCounterDate.add(1, 'days')
+
+      console.log('counter date: ', initCounterDate.format('DD-MM-YYYY'));
+
+      let findIndex = convertHolidaysToMoment.findIndex(date => initCounterDate.isSame(date))
+      let findDate = convertHolidaysToMoment.find(date => initCounterDate.isSame(date))
+      console.log('holiday find index: ', findIndex);
+      console.log('holiday find: ', findDate);
+
+      if (initCounterDate.isSame(findDate)) {
+        holidays++
+      }
+
+      if (findIndex !== -1) {
+        convertHolidaysToMoment.splice(findIndex, 1)
+      }
+
+      console.log('delete date find in holidays array: ', convertHolidaysToMoment);
+
+    }
+    
+    return holidays
 
   }
 

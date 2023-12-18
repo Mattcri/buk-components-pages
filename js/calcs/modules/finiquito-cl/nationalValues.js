@@ -38,6 +38,15 @@ class NationalValues {
     }
   }
 
+  getHolidaysDates() {
+    return [
+      '2023-12-08',
+      '2023-12-25',
+      '2024-01-01',
+      '2024-04-29'
+    ]
+  }
+
   getIMM() {
     return 460000
   }
