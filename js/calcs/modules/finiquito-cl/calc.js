@@ -79,9 +79,7 @@ class CalcFiniquito {
     this.displayValue('clp', DOMlblBaseRent, sumValues)
   }
 
-  rentsPerDays() {
-    let baseSalary = Number(document.getElementById('base-salary').value)
-    
+  rentsPerDays(baseSalary) {
     let compensationFixed = Number((this.baseRent / 30).toFixed(0))
     let compensationVariable = Number((this.avgVariableRent / 30).toFixed(0))
     let compensationTotal = compensationFixed + compensationVariable
@@ -122,6 +120,8 @@ class CalcFiniquito {
     let consecutiveDays = (countVacations.weekends + countVacations.holidays + proportionalDays + pendingDays)
 
     // console.log(countVacations)
+    let vacationsCompensation = this.baseRentPerDay.vacations.total
+    let totalCompensation = vacationsCompensation * consecutiveDays < 0 ? 0 : vacationsCompensation * consecutiveDays
 
     this.vacation = {
       pendingDays: Number(pendingDays.toFixed(2)),
@@ -129,9 +129,12 @@ class CalcFiniquito {
       weekends: countVacations.weekends,
       holidays: countVacations.holidays,
       consecutiveDays: Number(consecutiveDays.toFixed(2)),
+      compensationAmount: Number(totalCompensation.toFixed(0)),
       lastLaboralDay: countVacations.lastLaboralDay,
       endContractDate: countVacations.endContractDate
     }
+
+    this.showVacationValuesInDOM()
 
   }
 
@@ -216,6 +219,22 @@ class CalcFiniquito {
     
     return holidays
 
+  }
+
+  showVacationValuesInDOM() {
+    let DOMlblPendingDays = document.getElementById('lbl-vacation-pending-days')
+    let DOMlblPropotionalDays = document.getElementById('lbl-vacation-proportional-days')
+    let DOMlblHolidays = document.getElementById('lbl-vacation-holidays')
+    let DOMlblConsecutiveDays = document.getElementById('lbl-vacation-consecutive-days')
+    let DOMlblTotalCompensation = document.getElementById('lbl-vacation-compensation')
+
+    let sumHolidaysAndWeekends = this.vacation.holidays + this.vacation.weekends
+
+    this.displayValue('days', DOMlblPendingDays, this.vacation.pendingDays)
+    this.displayValue('days', DOMlblPropotionalDays, this.vacation.proportionalDays)
+    this.displayValue('days', DOMlblHolidays, sumHolidaysAndWeekends)
+    this.displayValue('days', DOMlblConsecutiveDays, this.vacation.consecutiveDays)
+    this.displayValue('clp', DOMlblTotalCompensation, this.vacation.compensationAmount)
   }
 
   countConsecutiveDays(date, param) {

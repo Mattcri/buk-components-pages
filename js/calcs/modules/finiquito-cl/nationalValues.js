@@ -5,7 +5,7 @@ class NationalValues {
 
   async getUF() {
     try {
-      const URLdata = 'https://d3nk1otf0qe6jp.cloudfront.net/data.json'
+      const URLdata = 'https://d3nk1otf0qe6j.cloudfront.net/data.json'
       const data = await fetch(URLdata)
                           .then(response => {
                             if(response.status === 200) {
