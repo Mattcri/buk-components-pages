@@ -346,7 +346,6 @@ class CalcFiniquito {
     }
     
     this.showLegalCompensationsInDOM()
-    // this.rsltTotalLiquidation()
 
   }
 

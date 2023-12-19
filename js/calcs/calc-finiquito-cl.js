@@ -1,14 +1,12 @@
 import { Director } from "./modules/finiquito-cl/director.js"
-import { NationalValues } from "./modules/finiquito-cl/nationalValues.js"
+
+moment.locale('es')
 
 const director = new Director()
-// const ntv = new NationalValues()
 const btn = document.getElementById('btn-calc-finiquito')
 
 btn.addEventListener('click', () => {
   director.calculateFiniquito()
-  // console.log('UF: ', ntv.UFvalue.Valor)
-
 })
 
 const acc = [...document.getElementsByClassName("button-large ")];
@@ -42,9 +40,77 @@ variableSalaryRadio.forEach(radio => {
   })
 })
 
+let typeCausal = document.getElementById('type_causal')
+let compDismiss = [...document.querySelectorAll('[data-type-causal="dismiss"]')]
+let compConclusionService = [...document.querySelectorAll('[data-type-causal="conclusion-service"]')]
+
+typeCausal.addEventListener('change', () => {
+  let blockNoticeDate = document.getElementById('block-notice-date')
+
+  blockNoticeDate.classList.add('ds-none')
+  compConclusionService.forEach(item => item.classList.add('ds-none'))
+  compDismiss.forEach(item => item.classList.add('ds-none'))
+
+  if (typeCausal.value == '3') {
+    compConclusionService.forEach(item => item.classList.remove('ds-none'))
+    
+    let noticeDate = document.getElementById('notice-date')
+    noticeDate.value = ''
+  } else if (typeCausal.value !== '4') {
+    let noticeDate = document.getElementById('notice-date')
+    noticeDate.value = ''
+  } else if (typeCausal.value == '4') {
+    compDismiss.forEach(item => item.classList.remove('ds-none'))
+
+    blockNoticeDate.classList.remove('ds-none')
+  }
+
+})
+
+if (typeCausal.value !== '4') {
+  let blockNoticeDate = document.getElementById('block-notice-date')
+  blockNoticeDate.classList.add('ds-none')
+
+  compDismiss.forEach(item => item.classList.add('ds-none'))
+}
+
+if (typeCausal.value !== '3') {
+  compConclusionService.forEach(item => item.classList.add('ds-none'))
+}
+
+let endContractDate = document.getElementById('end-contract-date')
+
+
+endContractDate.addEventListener('change', () => {
+  let valueDate = new Date(`${endContractDate.value}T00:00:00`)
+  let date = moment(valueDate)
+  let maxMonths = 3
+  let findDates = []
+  let DOMlabels = [...document.querySelectorAll('[data-month="variable"]')]
+
+  for (let i = 0; i < maxMonths; i++) {
+    let numMonth = date.month()
+    let year = date.year()
+    let nameMonth = moment().month(numMonth).format('MMMM')
+
+    findDates.push(
+      { 
+        month: nameMonth.charAt(0).toUpperCase() + nameMonth.slice(1),
+        year
+      }
+    )
+
+    date.subtract(1, 'months')
+  }
+
+  DOMlabels.forEach((label, index) => {
+    label.textContent = `${findDates[index].month} ${findDates[index].year}`
+  })
+
+})
+
+
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.button-large.button-large__color').click()
-  // ntv.getUF()
-  
 })
 

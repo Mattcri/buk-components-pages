@@ -34,12 +34,12 @@
               </div>
 
               <div class="buk-grid">
-                <div class="buk-col buk-col-md-8 buk-col-lg-6 buk-col-st-lg-4 buk-col-st-md-3">
+                <div class="buk-col buk-col-md-8 buk-col-lg-8 buk-col-st-lg-3 buk-col-st-md-3">
                   <div class="select-group">
-                    <select class="wi-100 select-control required" required="" aria-required="true" id="type_causal">
+                    <select class="wi-100 select-control required txt-center" required="" aria-required="true" id="type_causal">
                       <option value="1">Art. 159 número 2: <strong>Renuncia</strong></option>
                       <option value="2">Art. 159 número 4: <strong>Vencimiento del plazo</strong></option>
-                      <option value="3">Art. 159 número 5: <strong>Concusión del trabajo o servicio</strong></option>
+                      <option value="3">Art. 159 número 5: <strong>Conclusión del trabajo o servicio</strong></option>
                       <option value="4">Art. 159 inciso 1: <strong>Necesidades de la empresa</strong></option>
                     </select>
                   </div>
@@ -75,7 +75,7 @@
                 </div>
 
                 <!-- {# fecha de aviso aplica solo para una opcion #} -->
-                <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-st-md-4 buk-mt-md-2 buk-mt-lg-0">
+                <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-st-md-4 buk-mt-md-2 buk-mt-lg-0" id="block-notice-date">
                   <div class="ds-flex ai-center buk-mb-2">
                     <img src="https://www.buk.cl/hubfs/2023/Calculadoras/icon-calendar.svg" alt="fecha de aviso"
                       aria-hidden="true" width="auto" height="20">
@@ -185,7 +185,7 @@
               <div class="buk-grid buk-px-md-2 buk-mt-4" id="apply-variable-salary">
                 <div class="buk-col buk-col-md-6 buk-col-lg-4 ">
                   <div class="ds-flex ai-center buk-mb-2">
-                    <label class="calc-box__label">Noviembre 2023</label>
+                    <label class="calc-box__label"><span data-month="variable">Noviembre 2023</span></label>
                     <!-- <div class="tooltip">
                     <img src="https://www.buk.cl/hubfs/2023/Calculadoras/tooltip-info.svg" tabindex="1" class="tooltip-trigger">
                     <span class="tooltiptext">
@@ -198,7 +198,7 @@
 
                 <div class="buk-col buk-col-md-6 buk-col-lg-4 ">
                   <div class="ds-flex ai-center buk-mb-2">
-                    <label class="calc-box__label">Octubre 2023</label>
+                    <label class="calc-box__label"><span data-month="variable">Octubre 2023</span></label>
                     <!-- {# <div class="tooltip">
                     <img src="https://www.buk.cl/hubfs/2023/Calculadoras/tooltip-info.svg" tabindex="1" class="tooltip-trigger">
                     <span class="tooltiptext">
@@ -211,7 +211,7 @@
 
                 <div class="buk-col buk-col-md-6 buk-col-lg-4 ">
                   <div class="ds-flex ai-center buk-mb-2">
-                    <label class="calc-box__label">Septiembre 2023</label>
+                    <label class="calc-box__label"><span data-month="variable">Septiembre 2023</span></label>
                     <!-- {# <div class="tooltip">
                     <img src="https://www.buk.cl/hubfs/2023/Calculadoras/tooltip-info.svg" tabindex="1" class="tooltip-trigger">
                     <span class="tooltiptext">
@@ -258,7 +258,7 @@
                     <article class="buk-col buk-col-lg-6">
                       <div class="ds-flex jc-between buk-p-2 cal-detail__item">
                         <p>Días vacaciones <br class="v-mobile"> proporcionales </p>
-                        <p id="lbl-vacation-proportional-days">1.46 días</p>
+                        <p id="lbl-vacation-proportional-days">0 días</p>
                       </div>
                     </article>
 
@@ -279,14 +279,14 @@
                     <article class="buk-col buk-col-lg-6">
                       <div class="ds-flex jc-between buk-p-2 cal-detail__item">
                         <p>Feriados</p>
-                        <p id="lbl-vacation-holidays">2 días</p>
+                        <p id="lbl-vacation-holidays">0 días</p>
                       </div>
                     </article>
 
                     <article class="buk-col buk-col-lg-6">
                       <div class="ds-flex jc-between buk-p-2 cal-detail__item">
                         <p>Total días corridos</p>
-                        <p id="lbl-vacation-consecutive-days">3.46 días</p>
+                        <p id="lbl-vacation-consecutive-days">0 días</p>
                       </div>
                     </article>
 
@@ -346,7 +346,7 @@
                     <p>Indemnización legal <br class="v-mobile">por año de servicio</p>
                     <p id="lbl-compesation-years-of-service">$ 0</p>
                   </div>
-                  <div class="ds-flex jc-between buk-p-2 cal-detail__item" data-type-causal="dismiss">
+                  <div class="ds-flex jc-between buk-p-2 cal-detail__item" data-type-causal="dismiss" >
                     <p>Indemnización sustitutiva <br class="v-mobile">previo aviso</p>
                     <p id="lbl-compesation-prev-notification">$ 0</p>
                   </div>
