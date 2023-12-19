@@ -4,7 +4,7 @@ const calc = new CalcFiniquito({})
 
 class Director {
 
-  calculateFiniquito() {
+  async calculateFiniquito() {
     let typeCausal = document.getElementById('type_causal').value
     let dateAdmission = new Date(`${document.getElementById('date-admission').value}T00:00:00`)
     let endContractDate = new Date(`${document.getElementById('end-contract-date').value}T00:00:00`)
@@ -22,6 +22,8 @@ class Director {
     calc.sumBaseRent()
     calc.rentsPerDays(baseSalary)
     calc.vacationsValues(vacationsTaken, endContractDate)
+    await calc.rsltCompensations(typeCausal, endContractDate, noticeDate)
+    calc.rsltTotalLiquidation()
 
     calc.log()
 

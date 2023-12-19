@@ -80,7 +80,7 @@ class CalcFiniquito {
   }
 
   rentsPerDays(baseSalary) {
-    let compensationFixed = Number((this.baseRent / 30).toFixed(0))
+    let compensationFixed = Number((this.sumFixRent / 30).toFixed(0))
     let compensationVariable = Number((this.avgVariableRent / 30).toFixed(0))
     let compensationTotal = compensationFixed + compensationVariable
 
@@ -164,16 +164,28 @@ class CalcFiniquito {
     }
     let finalDate = moment(endLaboralDate)
     firstDate.add(toMonday, 'days')
+    
+    let holidays = this.countHolidays(endContractDate, finalDate)
+    finalDate.add(holidays, 'days')
 
-    while (firstDate.isBefore(finalDate)) {
+    finalDate.day() === 6 
+      ? finalDate.add(2, 'days')
+      : finalDate.day() === 0
+        ? finalDate.add(1, 'days')
+        : finalDate.add(0, 'days')
+
+
+    while (firstDate.isSameOrBefore(finalDate)) {
       if (firstDate.day() === 0 || firstDate.day() === 6) {
         weekends++
       }
+      console.log('weekends: ', weekends)
+      console.log('date weekend: ', firstDate.format('DD-MM-YYYY'))
       firstDate.add(1, 'days')
     }
 
-    let lastLaboralDay = endLaboralDate.format('DD-MM-YYYY')
-    let holidays = this.countHolidays(endContractDate, finalDate)
+    let lastLaboralDay = finalDate.format('DD-MM-YYYY')
+    
 
     return {
       weekends,
@@ -192,18 +204,18 @@ class CalcFiniquito {
 
     let holidays = 0
 
-    console.log('init counter date: ', initCounterDate);
-    console.log('edDate: ', edDate);
+    // console.log('init counter date: ', initCounterDate);
+    // console.log('edDate: ', edDate);
 
     while (initCounterDate.isBefore(edDate)) {
       initCounterDate.add(1, 'days')
 
-      console.log('counter date: ', initCounterDate.format('DD-MM-YYYY'));
+      // console.log('counter date: ', initCounterDate.format('DD-MM-YYYY'));
 
       let findIndex = convertHolidaysToMoment.findIndex(date => initCounterDate.isSame(date))
       let findDate = convertHolidaysToMoment.find(date => initCounterDate.isSame(date))
       console.log('holiday find index: ', findIndex);
-      console.log('holiday find: ', findDate);
+      // console.log('holiday find: ', findDate);
 
       if (initCounterDate.isSame(findDate)) {
         holidays++
@@ -213,7 +225,7 @@ class CalcFiniquito {
         convertHolidaysToMoment.splice(findIndex, 1)
       }
 
-      console.log('delete date find in holidays array: ', convertHolidaysToMoment);
+      // console.log('delete date find in holidays array: ', convertHolidaysToMoment);
 
     }
     
@@ -286,7 +298,116 @@ class CalcFiniquito {
     return holidays
   }
 
+  async rsltCompensations(causal, endContractDay, noticeDay) {
+    await natv.getUF()
 
+    let yearsOfService = this.yearsOfService()
+    let top = natv.UFvalue.Valor * 90
+    let avgHaberes = Math.min(top, this.baseRent)
+
+    console.log('uf calc: ', natv.UFvalue.Valor)
+
+    let yearsOfCompensation = 0
+    let monthsServiceCompensation = 0
+    let preNotification = 0
+
+    if (causal === '4') {
+      yearsOfCompensation = avgHaberes * yearsOfService
+      preNotification = this.prevNotificationDismiss(avgHaberes, endContractDay, noticeDay)
+    } else {
+      yearsOfCompensation = 0
+      preNotification = 0
+    }
+
+    if (causal === '3') {
+      let years = this.timeWorked.years
+      let months = this.timeWorked.months
+      let days = this.timeWorked.days
+      let compensation = this.baseRentPerDay.compensation.total
+      let days2xByCompesation = Number((2.5 * compensation).toFixed(0))
+
+      monthsServiceCompensation = days >= 15
+                                    ? (months + 1 + (years * 12)) * days2xByCompesation
+                                    : (months + (years * 12)) * days2xByCompesation
+
+    } else {
+      monthsServiceCompensation = 0
+    }
+
+    let totalCompensation = (yearsOfCompensation + preNotification + monthsServiceCompensation)
+
+    this.legalCompesations = {
+      yearsOfService,
+      avgHaberes,
+      yearsOfCompensation,
+      preNotification,
+      monthsServiceCompensation,
+      totalCompensation
+    }
+    
+    this.showLegalCompensationsInDOM()
+    // this.rsltTotalLiquidation()
+
+  }
+
+  yearsOfService () {
+    let yearsWorked = this.timeWorked.years
+    let monthsWorked = this.timeWorked.months
+
+    let years = 0
+
+    if (yearsWorked < 11) {
+      years = yearsWorked >= 1 && monthsWorked >= 6
+        ? yearsWorked + 1
+        : yearsWorked
+    } else {
+      years = 11
+    }
+
+    return years
+  }
+
+  prevNotificationDismiss(haberes, endContractDate, notificationDate) {
+    let end = moment(endContractDate)
+    let notification = moment(notificationDate)
+
+    let diffDates = end.diff(notification, 'day')
+
+    console.info('diff dates: ', diffDates)
+
+    if (diffDates < 30) {
+      return Math.min(this.baseRent, haberes)
+    } else {
+      return 0
+    }
+
+  }
+
+  showLegalCompensationsInDOM() {
+    let DOMyearsOfService = document.getElementById('lbl-years-of-service')
+    let DOMcompensationYearsService = document.getElementById('lbl-compesation-years-of-service')
+    let DOMprevNotification = document.getElementById('lbl-compesation-prev-notification')
+    let DOMmonthServiceCompensation = document.getElementById('lbl-compesation-end-service')
+    let DOMtotalLegalCompensations = document.getElementById('lbl-total-compensation')
+
+    let compensation = this.legalCompesations
+
+    this.displayValue('txt', DOMyearsOfService, compensation.yearsOfService)
+    this.displayValue('clp', DOMcompensationYearsService, compensation.yearsOfCompensation)
+    this.displayValue('clp', DOMprevNotification, compensation.preNotification)
+    this.displayValue('clp', DOMmonthServiceCompensation, compensation.monthsServiceCompensation)
+    this.displayValue('clp', DOMtotalLegalCompensations, compensation.totalCompensation)
+
+  }
+
+  rsltTotalLiquidation() {
+    let DOMtotal = document.getElementById('lbl-total-liquidation')
+    let vacation = this.vacation.compensationAmount
+    let compensation = this.legalCompesations.totalCompensation
+    let total = vacation + compensation
+
+    this.displayValue('clp', DOMtotal, total)
+  }
 
   displayValue(type, element, amount) {
     if(type == 'clp') {
@@ -295,6 +416,8 @@ class CalcFiniquito {
       amount != 1
         ? element.textContent = `${amount} días`
         : element.textContent = `${amount} día`
+    } else if (type == 'txt') {
+      element.textContent = amount
     }
   }
 

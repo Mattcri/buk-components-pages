@@ -2,12 +2,12 @@ import { Director } from "./modules/finiquito-cl/director.js"
 import { NationalValues } from "./modules/finiquito-cl/nationalValues.js"
 
 const director = new Director()
-const ntv = new NationalValues()
+// const ntv = new NationalValues()
 const btn = document.getElementById('btn-calc-finiquito')
 
 btn.addEventListener('click', () => {
   director.calculateFiniquito()
-  console.log('UF: ', ntv.UFvalue.Valor)
+  // console.log('UF: ', ntv.UFvalue.Valor)
 
 })
 
@@ -44,7 +44,7 @@ variableSalaryRadio.forEach(radio => {
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.button-large.button-large__color').click()
-  ntv.getUF()
+  // ntv.getUF()
   
 })
 
