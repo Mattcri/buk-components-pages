@@ -155,7 +155,7 @@
 .buk-py-13 { padding-top: 6.5rem;padding-bottom: 6.5rem;}
 .buk-py-14 { padding-top: 7rem;padding-bottom: 7rem;}
 .buk-py-15 { padding-top: 7.5rem;padding-bottom: 7.5rem; } /* uso frecuente */
-.buk-py-20 { padding-top: 2.75rem; padding-bottom: 2.75rem; }
+.buk-py-20 { padding-top: 2.75rem; padding-bottom: 2.75rem; } 
 .buk-py-21 { padding-top: 3.75rem; padding-bottom: 3.75rem; } 
 
 .buk-px-0 { padding-left: 0; padding-right: 0; }
@@ -399,8 +399,8 @@
 .buk-py-md-13 { padding-top: 6.5rem;padding-bottom: 6.5rem;}
 .buk-py-md-14 { padding-top: 7rem;padding-bottom: 7rem;}
 .buk-py-md-15 { padding-top: 7.5rem;padding-bottom: 7.5rem; } /* uso frecuente */
-.buk-py-md-20 { padding-top: 2.75rem; padding-bottom: 2.75rem; }
-.buk-py-md-21 { padding-top: 3.75rem; padding-bottom: 3.75rem; } 
+.buk-py-md-20 { padding-top: 2.75rem; padding-bottom: 2.75rem; } 
+.buk-py-md-21 { padding-top: 3.75rem; padding-bottom: 3.75rem; }
 
 .buk-px-md-0 { padding-left: 0; padding-right: 0; }  
 .buk-px-md-1 { padding-left: .5rem; padding-right: .5rem; }
@@ -545,41 +545,41 @@
 .buk-ml-lg-1 { margin-left: .5rem;}
 .buk-ml-lg-2 { margin-left: 1rem; }   /* uso frecuente 16px*/
 .buk-ml-lg-3 { margin-left: 1.5rem; } /* uso frecuente 24px*/
-.buk-ml-lg-4 { margin-left: 2rem; }   /* uso frecuente 32px*/
-.buk-ml-lg-5 { margin-left: 2.5rem; }
+.buk-ml-lg-4 { margin-left: 2rem; }
+.buk-ml-lg-5 { margin-left: 2.5rem;}
 .buk-ml-lg-6 { margin-left: 3rem; }
-.buk-ml-lg-7 { margin-left: 3.5rem; } /* uso frecuente 56px*/
+.buk-ml-lg-7 { margin-left: 3.5rem;} 
 .buk-ml-lg-8 { margin-left: 4rem; }
-.buk-ml-lg-9 { margin-left: 4.5rem; }
-.buk-ml-lg-10 { margin-left: 5rem; }
-.buk-ml-lg-11 { margin-left: 5.5rem;} /* uso frecuente 88px*/
+.buk-ml-lg-9 { margin-left: 4.5rem;}
+.buk-ml-lg-10 { margin-left: 5rem;}
+.buk-ml-lg-11 { margin-left: 5.5rem;}
 .buk-ml-lg-12 { margin-left: 6rem;}
 .buk-ml-lg-13 { margin-left: 6.5rem;}
 .buk-ml-lg-14 { margin-left: 7rem;}
-.buk-ml-lg-15 { margin-left: 7.5rem;} /* uso frecuente 120px*/
+.buk-ml-lg-15 { margin-left: 7.5rem;} 
 
 .buk-mr-lg-0 { margin-right: 0; }
-.buk-mr-lg-1 { margin-right: .5rem; }
-.buk-mr-lg-2 { margin-right: 1rem; } /* uso frecuente */
-.buk-mr-lg-3 { margin-right: 1.5rem; } /* uso frecuente */
-.buk-mr-lg-4 { margin-right: 2rem; } /* uso frecuente */
-.buk-mr-lg-5 { margin-right: 2.5rem; }
+.buk-mr-lg-1 { margin-right: .5rem;}
+.buk-mr-lg-2 { margin-right: 1rem; }
+.buk-mr-lg-3 { margin-right: 1.5rem;} 
+.buk-mr-lg-4 { margin-right: 2rem; }
+.buk-mr-lg-5 { margin-right: 2.5rem;}
 .buk-mr-lg-6 { margin-right: 3rem; }
-.buk-mr-lg-7 { margin-right: 3.5rem; } /* uso frecuente */
+.buk-mr-lg-7 { margin-right: 3.5rem;}
 .buk-mr-lg-8 { margin-right: 4rem; }
-.buk-mr-lg-9 { margin-right: 4.5rem; }
-.buk-mr-lg-10 { margin-right: 5rem; }
-.buk-mr-lg-11 { margin-right: 5.5rem;} /* uso frecuente */
+.buk-mr-lg-9 { margin-right: 4.5rem;}
+.buk-mr-lg-10 { margin-right: 5rem;}
+.buk-mr-lg-11 { margin-right: 5.5rem;}
 .buk-mr-lg-12 { margin-right: 6rem;}
 .buk-mr-lg-13 { margin-right: 6.5rem;}
 .buk-mr-lg-14 { margin-right: 7rem;}
-.buk-mr-lg-15 { margin-right: 7.5rem;} /* uso frecuente */  
+.buk-mr-lg-15 { margin-right: 7.5rem;}
 
 .buk-mx-lg-auto { margin-left: auto; margin-right: auto; }
 .buk-mx-lg-0 { margin-left: 0; margin-right: 0; } 
 .buk-mx-lg-1 { margin-left: .5rem; margin-right: .5rem; }
 .buk-mx-lg-2 { margin-left: 1rem; margin-right: 1rem; } /* uso frecuente */
-.buk-mx-lg-3 { margin-left: 1.5rem; margin-right: 1.5rem; } /* uso frecuente */
+.buk-mx-lg-3 { margin-left: 1.5rem; margin-right: 1.5rem; }
 .buk-mx-lg-4 { margin-left: 2rem; margin-right: 2rem; } /* uso frecuente */
 .buk-mx-lg-5 { margin-left: 2.5rem; margin-right: 2.5rem; } 
 .buk-mx-lg-6 { margin-left: 3rem; margin-right: 3rem; }
@@ -662,7 +662,7 @@
 .buk-px-lg-14 { padding-left: 7rem;padding-right: 7rem;}
 .buk-px-lg-15 { padding-left: 7.5rem;padding-right: 7.5rem; } /* uso frecuente */
 .buk-py-lg-20 { padding-top: 2.75rem; padding-bottom: 2.75rem; }
-.buk-py-lg-21 { padding-top: 3.75rem; padding-bottom: 3.75rem; } 
+.buk-py-lg-21 { padding-top: 3.75rem; padding-bottom: 3.75rem; }
 
 .buk-pt-lg-0 { padding-top: 0; }
 .buk-pt-lg-1 { padding-top: .5rem; }

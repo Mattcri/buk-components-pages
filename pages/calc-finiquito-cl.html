@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora finiquito Chile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Sans+Pro:wght@300;400;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/components/calc-styles.css">
+  <link rel="stylesheet" href="../css/components/desplegable.css">
+  <link rel="stylesheet" href="../css/components/modal-23.css">
+  <link rel="stylesheet" href="../css/grid-system.css">
+  <link rel="stylesheet" href="../css/utilities-spaces-23.css">
+  <link rel="stylesheet" href="../css/main-23.css">
+</head>
+
+<body>
+  <main>
+    <section class="buk-py-11 buk-py-lg-15">
+      <div class="boxer">
+
+        <h2 class="txt-center buk-mb-6">Calculadora de finiquito</h2>
+
+        <div class="buk-grid">
+          <div class="buk-col buk-col-lg-10 buk-col-st-lg-2">
+            <div class="calc shadow-1 rounded-16 buk-p-3 buk-px-lg-4 buk-py-lg-7">
+
+              <div
+                class="ff-title calc-box__section txt-blue-buk rounded-23 rounded-md-49 buk-px-2 buk-py-1 buk-px-lg-4 buk-py-md-2 buk-mb-4">
+                <p>Escoge la causa de la finalización del vínculo laboral</p>
+              </div>
+
+              <div class="buk-grid">
+                <div class="buk-col buk-col-md-8 buk-col-lg-8 buk-col-st-lg-3 buk-col-st-md-3">
+                  <div class="select-group">
+                    <select class="wi-100 select-control required txt-center" required="" aria-required="true" id="type_causal">
+                      <option value="1">Art. 159 número 2: <strong>Renuncia</strong></option>
+                      <option value="2">Art. 159 número 4: <strong>Vencimiento del plazo</strong></option>
+                      <option value="3">Art. 159 número 5: <strong>Conclusión del trabajo o servicio</strong></option>
+                      <option value="4">Art. 159 inciso 1: <strong>Necesidades de la empresa</strong></option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="ff-title calc-box__section txt-blue-buk rounded-23 rounded-md-49 buk-px-2 buk-px-lg-4 buk-py-md-2 buk-py-1 buk-mb-4 buk-mt-7">
+                <p>Ingresa fecha de ingreso, término de periodo laboral y días de vacaciones</p>
+              </div>
+
+              <div class="buk-grid buk-px-md-2">
+                <div class="buk-col buk-col-md-6 buk-col-lg-4">
+                  <div class="ds-flex ai-center buk-mb-2">
+                    <img src="https://www.buk.cl/hubfs/2023/Calculadoras/icon-calendar.svg" alt="icono calendar"
+                      aria-hidden="true" width="auto" height="20">
+                    <label for="date-admission" class="calc-box__label">Fecha de ingreso*</label>
+                  </div>
+                  <div class="date-group">
+                    <input type="date" name="date-admission" id="date-admission" class="pst-relative">
+                  </div>
+                </div>
+
+                <div class="buk-col buk-col-md-6 buk-col-lg-4">
+                  <div class="ds-flex ai-center buk-mb-2">
+                    <img src="https://www.buk.cl/hubfs/2023/Calculadoras/icon-calendar.svg"
+                      alt="fecha de termino laboral" aria-hidden="true" width="auto" height="20">
+                    <label for="end-contract-date" class="calc-box__label">Fecha fin de contrato*</label>
+                  </div>
+                  <div class="date-group">
+                    <input type="date" name="end-contract-date" id="end-contract-date" class="pst-relative">
+                  </div>
+                </div>
+
+                <!-- {# fecha de aviso aplica solo para una opcion #} -->
+                <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-st-md-4 buk-mt-md-2 buk-mt-lg-0" id="block-notice-date">
+                  <div class="ds-flex ai-center buk-mb-2">
+                    <img src="https://www.buk.cl/hubfs/2023/Calculadoras/icon-calendar.svg" alt="fecha de aviso"
+                      aria-hidden="true" width="auto" height="20">
+                    <label class="calc-box__label">Fecha de aviso*</label>
+                    <div class="tooltip">
+                      <img src="https://www.buk.cl/hubfs/2023/Calculadoras/tooltip-info.svg" tabindex="1"
+                        class="tooltip-trigger">
+                      <span class="tooltiptext">
+                        Corresponde a la fecha en la que tu empleador te avisa que dejas de pertenecer a la empresa.
+                      </span>
+                    </div>
+                  </div>
+                  <div class="date-group">
+                    <input type="date" name="notice-date" id="notice-date" class="pst-relative">
+                  </div>
+                </div>
+              </div> <!-- end-grid -->
+
+              <div class="buk-grid buk-px-md-2 ai-center buk-mt-4">
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 {#ds-flex ai-center pst-relative#} calc__fields--py-xs">
+                  <label for="salary" class="calc-box__label">Días de vacaciones tomadas*</label>
+                  <div class="tooltip">
+                    <img src="https://www.buk.cl/hubfs/2023/Calculadoras/tooltip-info.svg" tabindex="1"
+                      class="tooltip-trigger">
+                    <span class="tooltiptext">
+                      Corresponde a la cantidad de días tomados hasta el día de la simulación de finiquito (hoy).
+                    </span>
+                  </div>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 calc__fields--py-xs">
+                  <input type="number" min="0" placeholder="0" id="vacations-taken">
+                </div>
+              </div>
+
+              <div
+                class="ff-title calc-box__section txt-blue-buk rounded-23 rounded-md-49 buk-px-2 buk-px-lg-4 buk-py-md-2 buk-py-1 buk-mb-4 buk-mt-7">
+                <p>Ingresa montos relacionados a tus ingresos </p>
+              </div>
+
+              <div class="buk-grid buk-px-md-2">
+                <div class="buk-col buk-col-md-6 buk-col-lg-4 ">
+                  <div class="ds-flex ai-center buk-mb-2 buk-mb-md-5">
+                    <label class="calc-box__label">Sueldo base*</label>
+                    <div class="tooltip">
+                      <img src="https://www.buk.cl/hubfs/2023/Calculadoras/tooltip-info.svg" tabindex="1"
+                        class="tooltip-trigger">
+                      <span class="tooltiptext">
+                        ...
+                      </span>
+                    </div>
+                  </div> <!-- end-flex -->
+                  <input type="number" min="0" placeholder="0" id="base-salary">
+                </div>
+
+                <div class="buk-col buk-col-md-6 buk-col-lg-4">
+                  <div class="d-flex ai-start {#pst-relative#} buk-mb-2">
+                    <label class="calc-box__label box-label__tooltip">Otras remuneraciones fijas imponibles</label>
+                    <div class="box-label__tooltip tooltip">
+                      <img src="https://www.buk.cl/hubfs/2023/Calculadoras/tooltip-info.svg" tabindex="1"
+                        class="tooltip-trigger">
+                      <span class="tooltiptext">
+                        ...
+                      </span>
+                    </div>
+                  </div> <!-- end-flex -->
+                  <input type="number" min="0" placeholder="0" id="taxable-fixed-remu">
+                </div>
+
+                <div class="buk-col buk-col-md-6 buk-col-lg-4 buk-col-st-md-4 buk-mt-md-2 buk-mt-lg-0">
+                  <div class="d-flex ai-start {#pst-relative#} buk-mb-2">
+                    <label class="calc-box__label box-label__tooltip">Otras remuneraciones fijas <strong>no</strong>
+                      imponibles</label>
+                    <div class="box-label__tooltip tooltip">
+                      <img src="https://www.buk.cl/hubfs/2023/Calculadoras/tooltip-info.svg" tabindex="1"
+                        class="tooltip-trigger">
+                      <span class="tooltiptext">
+                        ...
+                      </span>
+                    </div>
+                  </div> <!-- end-flex -->
+                  <input type="number" min="0" placeholder="0" id="non-taxable-fixed-remu">
+                </div>
+
+              </div> <!-- end-grid -->
+
+              <div class="buk-grid buk-px-md-2 ai-center buk-mt-4">
+                <div class="buk-col buk-col-md-5 buk-col-lg-4 {#ds-flex ai-center pst-relative#} calc__fields--py-xs">
+                  <label for="remuneracion-variable" class="calc-box__label">Remuneración variable*</label>
+                  <div class="tooltip">
+                    <img src="https://www.buk.cl/hubfs/2023/Calculadoras/tooltip-info.svg" tabindex="1"
+                      class="tooltip-trigger">
+                    <span class="tooltiptext">
+                      Corresponde a ...
+                    </span>
+                  </div>
+                </div>
+                <div class="buk-col buk-col-md-4 buk-col-lg-4 calc__fields--py-xs">
+                  <div class="ds-flex ai-center jc-md-between jc-around">
+                    <label for="true-remuneracion" class="buk-mx-1">Si<input type="radio" name="remu-variable"
+                        id="true-remuneracion" checked></label>
+                    <label for="false-remuneracion" class="buk-mx-1">No<input type="radio" name="remu-variable"
+                        id="false-remuneracion"></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="buk-grid buk-px-md-2 buk-mt-4" id="apply-variable-salary">
+                <div class="buk-col buk-col-md-6 buk-col-lg-4 ">
+                  <div class="ds-flex ai-center buk-mb-2">
+                    <label class="calc-box__label"><span data-month="variable">Noviembre 2023</span></label>
+                    <!-- <div class="tooltip">
+                    <img src="https://www.buk.cl/hubfs/2023/Calculadoras/tooltip-info.svg" tabindex="1" class="tooltip-trigger">
+                    <span class="tooltiptext">
+                      ...
+                    </span>
+                  </div> -->
+                  </div> <!-- end-flex -->
+                  <input type="number" min="0" placeholder="0" data-variable-salary="true">
+                </div>
+
+                <div class="buk-col buk-col-md-6 buk-col-lg-4 ">
+                  <div class="ds-flex ai-center buk-mb-2">
+                    <label class="calc-box__label"><span data-month="variable">Octubre 2023</span></label>
+                    <!-- {# <div class="tooltip">
+                    <img src="https://www.buk.cl/hubfs/2023/Calculadoras/tooltip-info.svg" tabindex="1" class="tooltip-trigger">
+                    <span class="tooltiptext">
+                      ...
+                    </span>
+                  </div>#} -->
+                  </div> <!-- end-flex -->
+                  <input type="number" min="0" placeholder="0" data-variable-salary="true">
+                </div>
+
+                <div class="buk-col buk-col-md-6 buk-col-lg-4 ">
+                  <div class="ds-flex ai-center buk-mb-2">
+                    <label class="calc-box__label"><span data-month="variable">Septiembre 2023</span></label>
+                    <!-- {# <div class="tooltip">
+                    <img src="https://www.buk.cl/hubfs/2023/Calculadoras/tooltip-info.svg" tabindex="1" class="tooltip-trigger">
+                    <span class="tooltiptext">
+                      ...
+                    </span>
+                  </div>#} -->
+                  </div> <!-- end-flex -->
+                  <input type="number" min="0" placeholder="0" data-variable-salary="true">
+                </div>
+
+              </div>
+
+
+              <div class="buk-mt-7 txt-center buk-mb-7 buk-mb-md-0">
+                <button class="btn btn--2" id="btn-calc-finiquito">Calcular finiquito</button>
+              </div>
+
+            </div> <!-- end-calc -->
+
+            <!-- {# empieza el desplegable con detalle #} -->
+            <div class="buk-col buk-col-lg-10 buk-col-st-lg-2 shadow-1 rounded-16 buk-mt-7">
+              <button class="button-large button-large__color">
+                <h3 class="txt-left">Detalle finiquito</h3>
+              </button>
+              <div class="panel-info">
+
+                <!-- {# titulo item seccion vacaciones#} -->
+                <div class="cal-detail__title">
+                  <div class="boxer buk-py-2">
+                    <p class="fw-semi-bold">Vacaciones</p>
+                  </div>
+                </div>
+
+                <!-- {# detalle seccion vacaiones#} -->
+                <div class="boxer">
+                  <div class="buk-grid buk-row-lg-4 gap--0">
+                    <article class="buk-col buk-col-lg-6">
+                      <div class="ds-flex jc-between buk-p-2 cal-detail__item">
+                        <p>Días vacaciones <br class="v-mobile"> pendientes </p>
+                        <p id="lbl-vacation-pending-days">0 días</p>
+                      </div>
+                    </article>
+
+                    <article class="buk-col buk-col-lg-6">
+                      <div class="ds-flex jc-between buk-p-2 cal-detail__item">
+                        <p>Días vacaciones <br class="v-mobile"> proporcionales </p>
+                        <p id="lbl-vacation-proportional-days">0 días</p>
+                      </div>
+                    </article>
+
+                    <!-- <article class="buk-col buk-col-lg-6">
+                      <div class="ds-flex jc-between buk-p-2 cal-detail__item">
+                        <p>Días pendientes</p>
+                        <p>0 días</p>
+                      </div>
+                    </article> -->
+
+                    <!-- <article class="buk-col buk-col-lg-6">
+                      <div class="ds-flex jc-between buk-p-2 cal-detail__item">
+                        <p>Días proporcionales</p>
+                        <p>1.46 días</p>
+                      </div>
+                    </article> -->
+
+                    <article class="buk-col buk-col-lg-6">
+                      <div class="ds-flex jc-between buk-p-2 cal-detail__item">
+                        <p>Feriados</p>
+                        <p id="lbl-vacation-holidays">0 días</p>
+                      </div>
+                    </article>
+
+                    <article class="buk-col buk-col-lg-6">
+                      <div class="ds-flex jc-between buk-p-2 cal-detail__item">
+                        <p>Total días corridos</p>
+                        <p id="lbl-vacation-consecutive-days">0 días</p>
+                      </div>
+                    </article>
+
+
+                  </div>
+
+                  <!-- {# resultado de sección vacaciones #} -->
+                  <div class="ds-flex jc-between buk-py-2 buk-mb-4">
+                    <p class="fw-semi-bold txt-blue-buk">Indemnización <br class="v-mobile"> vacaciones pendientes</p>
+                    <p class="fw-semi-bold txt-blue-buk buk-mr-md-2" id="lbl-vacation-compensation">$ 0</p>
+                  </div>
+                </div>
+
+                <!-- {# titulo item seccion remuneraciones #} -->
+                <div class="cal-detail__title">
+                  <div class="boxer buk-py-2">
+                    <p class="fw-semi-bold">Remuneración global</p>
+                  </div>
+                </div>
+
+                <!-- {# detalle seccion remuneraciones #} -->
+                <div class="boxer">
+                  <div class="ds-flex jc-between buk-p-2 cal-detail__item">
+                    <p>Remuneración<br class="v-mobile"> fija</p>
+                    <p id="lbl-fixed-rent">$ 0</p>
+                  </div>
+
+                  <div class="ds-flex jc-between buk-p-2 cal-detail__item">
+                    <p>Remuneración<br class="v-mobile"> variable</p>
+                    <p id="lbl-variable-rent">$ 0</p>
+                  </div>
+
+                  <!-- {# resultado de sección remuneraciones #} -->
+                  <div class="ds-flex jc-between buk-py-2 buk-mb-4">
+                    <p class="fw-semi-bold txt-blue-buk">Remuneración base</p>
+                    <p class="fw-semi-bold txt-blue-buk buk-mr-md-2" id="lbl-base-rent">$ 0</p>
+                  </div>
+
+                  <div class="ds-flex jc-between buk-p-2 cal-detail__item buk-mb-4">
+                    <p>Gratificación</p>
+                    <p id="lbl-gratification">$ 0</p>
+                  </div>
+                </div>
+
+                <div class="cal-detail__title">
+                  <div class="boxer buk-py-2">
+                    <p class="fw-semi-bold">Indemnizaciones legales</p>
+                  </div>
+                </div>
+
+                <div class="boxer">
+                  <div class="ds-flex jc-between buk-p-2 cal-detail__item">
+                    <p>Años de <br class="v-mobile"> servicio</p>
+                    <p id="lbl-years-of-service">0</p>
+                  </div>
+                  <div class="ds-flex jc-between buk-p-2 cal-detail__item" data-type-causal="dismiss">
+                    <p>Indemnización legal <br class="v-mobile">por año de servicio</p>
+                    <p id="lbl-compesation-years-of-service">$ 0</p>
+                  </div>
+                  <div class="ds-flex jc-between buk-p-2 cal-detail__item" data-type-causal="dismiss-and-conclusion-service" >
+                    <p>Indemnización sustitutiva <br class="v-mobile">previo aviso</p>
+                    <p id="lbl-compesation-prev-notification">$ 0</p>
+                  </div>
+                  <div class="ds-flex jc-between buk-p-2 cal-detail__item" data-type-causal="conclusion-service">
+                    <p>Indemnización legal por <br class="v-mobile">meses de servicio en obra</p>
+                    <p id="lbl-compesation-end-service">$ 0</p>
+                  </div>
+
+                  <div class="ds-flex jc-between buk-py-2 buk-mb-4">
+                    <p class="fw-semi-bold txt-blue-buk">Total indemnizaciones legales</p>
+                    <p class="fw-semi-bold txt-blue-buk buk-mr-md-2" id="lbl-total-compensation">$ 0</p>
+                  </div>
+
+                </div>
+
+              </div>
+            </div><!--  {# fin de contenido desplegable #} -->
+
+            <div class="buk-mt-4">
+              <div class="rounded-16 buk-p-3 buk-grid ai-center bg-blue-buk buk-p-md-4">
+
+                <article class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <p class="fw-semi-bold h5">Finiquito calculado</p>
+                </article>
+
+                <article class="buk-col buk-col-md-6 buk-col-lg-6">
+                  <div class="bg-white rounded-16 buk-py-2 buk-px-4">
+                    <p id="lbl-total-liquidation" class="fw-bold txt-right txt-blue-buk cal-boxblue__total"> 0 </p>
+                  </div>
+                </article>
+
+                <div class="buk-mt-4 buk-col buk-col-md-12 buk-col-lg-12">
+                  <p class="fw-regular" style="font-size: 1rem;">*El cálculo obtenido en esta calculadora puede variar
+                    en caso de que el colaborador y empleador hayan pactado previamente otras indemnizaciones. </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div> <!-- end-grid -->
+
+      </div>
+    </section>
+
+  </main>
+
+  <div class="buk-modal  buk-modal--control-errs">
+    <div class="buk-modal__dialog">
+      <div class="buk-modal__content">
+        <div class="buk-modal__header">
+          <p>No pudimos calcular tu finiquito</p>
+          <button id="close-dialog-errs">
+            <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.40723 15.0015L15.8423 1.5665" stroke="#2f48a7" stroke-width="2.3" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M2.40723 1.5665L15.8423 15.0015" stroke="#2f48a7" stroke-width="2.3" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+        <div class="buk-modal__body buk-pt-2 buk-pb-1">
+          <p id="error-description"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- fin contenido -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" crossorigin="anonymous"
+    referrerpolicy="no-referrer" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/es.min.js" crossorigin="anonymous"
+    referrerpolicy="no-referrer" defer></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js" defer></script> -->
+  <script src="../js/calcs/calc-finiquito-cl.js" type="module" defer></script>
+</body>
+
+</html>
