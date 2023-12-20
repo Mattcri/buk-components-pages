@@ -1,6 +1,8 @@
 import { CalcFiniquito } from "./calc.js"
+import { Validator } from "./validations.js"
 
 const calc = new CalcFiniquito({})
+const validate = new Validator()
 
 class Director {
 
@@ -15,17 +17,23 @@ class Director {
     let nonTaxableFixedRemu = Number(document.getElementById('non-taxable-fixed-remu').value)
     let variableRemuIsTrue = document.getElementById('true-remuneracion').checked
 
-    calc.rslTimeWorked(dateAdmission, endContractDate)
-    calc.rsltVacationDays()
-    calc.rsltFixedRent(baseSalary, taxableFixedRemu)
-    calc.rsltAvgVariableRent(variableRemuIsTrue)
-    calc.sumBaseRent()
-    calc.rentsPerDays(baseSalary)
-    calc.vacationsValues(vacationsTaken, endContractDate)
-    await calc.rsltCompensations(typeCausal, endContractDate, noticeDate)
-    calc.rsltTotalLiquidation()
+    validate.datesIsNotEmpty(dateAdmission, endContractDate)
+      .then(() => validate.dateAdmissionIsBefore(dateAdmission, endContractDate))
+      .then(() => validate.dateNoticationIsNotEmpty(typeCausal, noticeDate))
+      .then(() => validate.dateNotificationIsSameOrBeforeEndContract(typeCausal, noticeDate, endContractDate))
+      .then(() => validate.dateNotificationIsAfterAdmission(typeCausal, noticeDate, dateAdmission))
+      .then(() => validate.baseSalaryNotEmpty(baseSalary))
+      .then(() => calc.rslTimeWorked(dateAdmission, endContractDate))
+      .then(() => calc.rsltVacationDays())
+      .then(() => calc.rsltFixedRent(baseSalary, taxableFixedRemu, nonTaxableFixedRemu))
+      .then(() => calc.rsltAvgVariableRent(variableRemuIsTrue))
+      .then(() => calc.sumBaseRent())
+      .then(() => calc.rentsPerDays(baseSalary))
+      .then(() => calc.vacationsValues(vacationsTaken, endContractDate))
+      .then(() => calc.rsltCompensations(typeCausal, endContractDate, noticeDate))
+      .then(() => calc.rsltTotalLiquidation())
+      .then(() => calc.log())
 
-    calc.log()
 
   }
 }

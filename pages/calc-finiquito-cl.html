@@ -12,6 +12,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="../css/components/calc-styles.css">
   <link rel="stylesheet" href="../css/components/desplegable.css">
+  <link rel="stylesheet" href="../css/components/modal-23.css">
   <link rel="stylesheet" href="../css/grid-system.css">
   <link rel="stylesheet" href="../css/utilities-spaces-23.css">
   <link rel="stylesheet" href="../css/main-23.css">
@@ -346,7 +347,7 @@
                     <p>Indemnización legal <br class="v-mobile">por año de servicio</p>
                     <p id="lbl-compesation-years-of-service">$ 0</p>
                   </div>
-                  <div class="ds-flex jc-between buk-p-2 cal-detail__item" data-type-causal="dismiss" >
+                  <div class="ds-flex jc-between buk-p-2 cal-detail__item" data-type-causal="dismiss-and-conclusion-service" >
                     <p>Indemnización sustitutiva <br class="v-mobile">previo aviso</p>
                     <p id="lbl-compesation-prev-notification">$ 0</p>
                   </div>
@@ -392,6 +393,29 @@
     </section>
 
   </main>
+
+  <div class="buk-modal  buk-modal--control-errs">
+    <div class="buk-modal__dialog">
+      <div class="buk-modal__content">
+        <div class="buk-modal__header">
+          <p>No pudimos calcular tu finiquito</p>
+          <button id="close-dialog-errs">
+            <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.40723 15.0015L15.8423 1.5665" stroke="#2f48a7" stroke-width="2.3" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M2.40723 1.5665L15.8423 15.0015" stroke="#2f48a7" stroke-width="2.3" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+        <div class="buk-modal__body buk-pt-2 buk-pb-1">
+          <p id="error-description"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <!-- fin contenido -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" crossorigin="anonymous"
     referrerpolicy="no-referrer" defer></script>

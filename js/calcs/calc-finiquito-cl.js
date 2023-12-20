@@ -43,6 +43,7 @@ variableSalaryRadio.forEach(radio => {
 let typeCausal = document.getElementById('type_causal')
 let compDismiss = [...document.querySelectorAll('[data-type-causal="dismiss"]')]
 let compConclusionService = [...document.querySelectorAll('[data-type-causal="conclusion-service"]')]
+let compDismissAndConclusion = [...document.querySelectorAll('[data-type-causal="dismiss-and-conclusion-service"]')]
 
 typeCausal.addEventListener('change', () => {
   let blockNoticeDate = document.getElementById('block-notice-date')
@@ -50,28 +51,31 @@ typeCausal.addEventListener('change', () => {
   blockNoticeDate.classList.add('ds-none')
   compConclusionService.forEach(item => item.classList.add('ds-none'))
   compDismiss.forEach(item => item.classList.add('ds-none'))
+  compDismissAndConclusion.forEach(item => item.classList.add('ds-none'))
 
   if (typeCausal.value == '3') {
     compConclusionService.forEach(item => item.classList.remove('ds-none'))
-    
-    let noticeDate = document.getElementById('notice-date')
-    noticeDate.value = ''
-  } else if (typeCausal.value !== '4') {
-    let noticeDate = document.getElementById('notice-date')
-    noticeDate.value = ''
-  } else if (typeCausal.value == '4') {
-    compDismiss.forEach(item => item.classList.remove('ds-none'))
+    compDismissAndConclusion.forEach(item => item.classList.remove('ds-none'))
 
     blockNoticeDate.classList.remove('ds-none')
+  } else if (typeCausal.value == '4') {
+    compDismiss.forEach(item => item.classList.remove('ds-none'))
+    compDismissAndConclusion.forEach(item => item.classList.remove('ds-none'))
+
+    blockNoticeDate.classList.remove('ds-none')
+  } else if (typeCausal.value !== '4' || typeCausal.value !== '3') {
+    let noticeDate = document.getElementById('notice-date')
+    noticeDate.value = ''
   }
 
 })
 
-if (typeCausal.value !== '4') {
+if (typeCausal.value !== '4' || typeCausal.value !== '3' ) {
   let blockNoticeDate = document.getElementById('block-notice-date')
   blockNoticeDate.classList.add('ds-none')
 
   compDismiss.forEach(item => item.classList.add('ds-none'))
+  compDismissAndConclusion.forEach(item => item.classList.add('ds-none'))
 }
 
 if (typeCausal.value !== '3') {
@@ -79,7 +83,6 @@ if (typeCausal.value !== '3') {
 }
 
 let endContractDate = document.getElementById('end-contract-date')
-
 
 endContractDate.addEventListener('change', () => {
   let valueDate = new Date(`${endContractDate.value}T00:00:00`)
@@ -107,6 +110,21 @@ endContractDate.addEventListener('change', () => {
     label.textContent = `${findDates[index].month} ${findDates[index].year}`
   })
 
+})
+
+const closeDialog = document.getElementById('close-dialog-errs')
+const dialogErrors = document.querySelector('.buk-modal.buk-modal--control-errs')
+
+closeDialog.addEventListener('click', () => {
+  document.querySelector('body').classList.remove('non-scroll')
+  document.querySelector('.buk-modal.buk-modal--control-errs').classList.remove('buk-modal--show')
+})
+
+dialogErrors.addEventListener('click', function (event) {
+  if (!event.target.closest('.buk-modal__content')) {
+    document.querySelector('body').classList.remove('non-scroll')
+    document.querySelector('.buk-modal.buk-modal--control-errs').classList.remove('buk-modal--show')
+  }
 })
 
 

@@ -36,12 +36,12 @@ class CalcFiniquito {
     this.accumVacationDays = this.timeWorked.years * 15
   }
 
-  rsltFixedRent(baseSalary, taxableRemu) {
+  rsltFixedRent(baseSalary, taxableRemu, nonTaxableRemu) {
     let DOMlblFixedRentAmount = document.getElementById('lbl-fixed-rent')
     let DOMlblGratification = document.getElementById('lbl-gratification')
     let imm = natv.getIMM()
     let gratification = Math.min(baseSalary * 0.25, 4.75 * imm / 12)
-    let sumFixedValues = baseSalary + taxableRemu + gratification
+    let sumFixedValues = baseSalary + taxableRemu + gratification + nonTaxableRemu
 
     this.sumFixRent = Number((sumFixedValues).toFixed(0))
     this.gratification = Number((gratification).toFixed(0))
@@ -163,24 +163,28 @@ class CalcFiniquito {
       weekends--
     }
     let finalDate = moment(endLaboralDate)
+    // console.log('FECHA FINAL: ', endLaboralDate)
     firstDate.add(toMonday, 'days')
     
     let holidays = this.countHolidays(endContractDate, finalDate)
-    finalDate.add(holidays, 'days')
 
-    finalDate.day() === 6 
-      ? finalDate.add(2, 'days')
-      : finalDate.day() === 0
-        ? finalDate.add(1, 'days')
-        : finalDate.add(0, 'days')
+    if (holidays > 0 && firstDate.day() !== 5) {
+      finalDate.add(holidays, 'days')
+      
+      finalDate.day() === 6 
+        ? finalDate.add(2, 'days')
+        : finalDate.day() === 0
+          ? finalDate.add(1, 'days')
+          : finalDate.add(0, 'days')
+    }
 
 
     while (firstDate.isSameOrBefore(finalDate)) {
       if (firstDate.day() === 0 || firstDate.day() === 6) {
         weekends++
       }
-      console.log('weekends: ', weekends)
       console.log('date weekend: ', firstDate.format('DD-MM-YYYY'))
+      console.log('weekends: ', weekends)
       firstDate.add(1, 'days')
     }
 
@@ -249,55 +253,6 @@ class CalcFiniquito {
     this.displayValue('clp', DOMlblTotalCompensation, this.vacation.compensationAmount)
   }
 
-  countConsecutiveDays(date, param) {
-    let endContract = moment(date)
-    let getDayOfWeek = endContract.day()
-    let goToMonday = getDayOfWeek === 6 ? 2 : getDayOfWeek === 0 ? 1 : 0
-    let initDayToCount = moment(date).add(goToMonday, 'days')
-    let endConsecutiveDays = moment(initDayToCount)
-    let holidays = 0
-    let weekends = 0
-
-    console.log('param', param)
-    console.log('end: ', endContract.format('DD-MM-YYYY'))
-    console.log('next monday: ', initDayToCount.format('DD-MM-YYYY'));
-    // console.log('firts end consecutive days: ', endConsecutiveDays.format('DD-MM-YYYY'));
-    
-    while (param > 0) {
-      if(endConsecutiveDays.day() !== 6 || endConsecutiveDays.day() !== 0 || endConsecutiveDays.day() !== 1 ) {
-        endConsecutiveDays.add(1, 'days')
-      }
-
-
-      let nextDay = endConsecutiveDays.clone().add(1, 'days')
-      let dayAfterNextDay = nextDay.clone().add(1, 'days')
-      let daysAddToNextWorkingDay = nextDay.day() === 6 
-                                      ? 2 
-                                      : nextDay.day() === 0 
-                                        ? 1 
-                                        : 0
-      
-      // let nextWorkingDay = nextDay.day() !== 6 || nextDay.day() !== 0
-      //                       ? nextDay.clone().add(daysAddToNextWorkingDay, 'days') 
-      //                       : nextDay.clone().add(1, 'days')
-      let nextWorkingDay = nextDay.clone().add(daysAddToNextWorkingDay, 'days')
-
-
-      console.log('end consecutive days: ', endConsecutiveDays.format('DD-MM-YYYY'));
-      console.log('next consecutive days: ', nextDay.format('DD-MM-YYYY'))
-      console.log('day after next day: ', dayAfterNextDay.format('DD-MM-YYYY'))
-      console.log('next working day: ', nextWorkingDay.format('DD-MM-YYYY'))
-      console.log('-------------------');
-
-      if (nextDay.day() === 6 || nextDay.day() === 0) holidays++
-      if (dayAfterNextDay.day() === 6 || dayAfterNextDay.day() === 0) holidays++
-
-      param--
-    }
-
-    return holidays
-  }
-
   async rsltCompensations(causal, endContractDay, noticeDay) {
     await natv.getUF()
 
@@ -313,9 +268,13 @@ class CalcFiniquito {
 
     if (causal === '4') {
       yearsOfCompensation = avgHaberes * yearsOfService
-      preNotification = this.prevNotificationDismiss(avgHaberes, endContractDay, noticeDay)
     } else {
       yearsOfCompensation = 0
+    }
+
+    if (causal === '4' || causal === '3') {
+      preNotification = this.prevNotificationDismiss(avgHaberes, endContractDay, noticeDay)
+    } else {
       preNotification = 0
     }
 
