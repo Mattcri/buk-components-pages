@@ -43,7 +43,6 @@ variableSalaryRadio.forEach(radio => {
 let typeCausal = document.getElementById('type_causal')
 let compDismiss = [...document.querySelectorAll('[data-type-causal="dismiss"]')]
 let compConclusionService = [...document.querySelectorAll('[data-type-causal="conclusion-service"]')]
-let compDismissAndConclusion = [...document.querySelectorAll('[data-type-causal="dismiss-and-conclusion-service"]')]
 
 typeCausal.addEventListener('change', () => {
   let blockNoticeDate = document.getElementById('block-notice-date')
@@ -51,31 +50,26 @@ typeCausal.addEventListener('change', () => {
   blockNoticeDate.classList.add('ds-none')
   compConclusionService.forEach(item => item.classList.add('ds-none'))
   compDismiss.forEach(item => item.classList.add('ds-none'))
-  compDismissAndConclusion.forEach(item => item.classList.add('ds-none'))
 
   if (typeCausal.value == '3') {
     compConclusionService.forEach(item => item.classList.remove('ds-none'))
-    compDismissAndConclusion.forEach(item => item.classList.remove('ds-none'))
 
-    blockNoticeDate.classList.remove('ds-none')
   } else if (typeCausal.value == '4') {
     compDismiss.forEach(item => item.classList.remove('ds-none'))
-    compDismissAndConclusion.forEach(item => item.classList.remove('ds-none'))
 
     blockNoticeDate.classList.remove('ds-none')
-  } else if (typeCausal.value !== '4' || typeCausal.value !== '3') {
+  } else if (typeCausal.value !== '4') {
     let noticeDate = document.getElementById('notice-date')
     noticeDate.value = ''
   }
 
 })
 
-if (typeCausal.value !== '4' || typeCausal.value !== '3' ) {
+if (typeCausal.value !== '4' ) {
   let blockNoticeDate = document.getElementById('block-notice-date')
   blockNoticeDate.classList.add('ds-none')
 
   compDismiss.forEach(item => item.classList.add('ds-none'))
-  compDismissAndConclusion.forEach(item => item.classList.add('ds-none'))
 }
 
 if (typeCausal.value !== '3') {

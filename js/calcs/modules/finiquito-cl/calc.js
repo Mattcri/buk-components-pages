@@ -36,11 +36,11 @@ class CalcFiniquito {
     this.accumVacationDays = this.timeWorked.years * 15
   }
 
-  rsltFixedRent(baseSalary, taxableRemu, nonTaxableRemu) {
+  rsltFixedRent(baseSalary, taxableRemu, nonTaxableRemu, lastVariableRent) {
     let DOMlblFixedRentAmount = document.getElementById('lbl-fixed-rent')
     let DOMlblGratification = document.getElementById('lbl-gratification')
     let imm = natv.getIMM()
-    let gratification = Math.min(baseSalary * 0.25, 4.75 * imm / 12)
+    let gratification = Math.min((baseSalary + taxableRemu + lastVariableRent) * 0.25, 4.75 * imm / 12)
     let sumFixedValues = baseSalary + taxableRemu + gratification + nonTaxableRemu
 
     this.sumFixRent = Number((sumFixedValues).toFixed(0))
@@ -268,13 +268,9 @@ class CalcFiniquito {
 
     if (causal === '4') {
       yearsOfCompensation = avgHaberes * yearsOfService
-    } else {
-      yearsOfCompensation = 0
-    }
-
-    if (causal === '4' || causal === '3') {
       preNotification = this.prevNotificationDismiss(avgHaberes, endContractDay, noticeDay)
     } else {
+      yearsOfCompensation = 0
       preNotification = 0
     }
 
@@ -378,7 +374,6 @@ class CalcFiniquito {
       element.textContent = amount
     }
   }
-
 
   log() {
     console.log(this)
