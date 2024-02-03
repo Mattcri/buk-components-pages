@@ -186,7 +186,7 @@
               <div class="buk-grid buk-px-md-2 buk-mt-4" id="apply-variable-salary">
                 <div class="buk-col buk-col-md-6 buk-col-lg-4 ">
                   <div class="ds-flex ai-center buk-mb-2">
-                    <label class="calc-box__label"><span data-month="variable">Noviembre 2023</span></label>
+                    <label class="calc-box__label"><span data-month="variable">Noviembre</span></label>
                     <!-- <div class="tooltip">
                     <img src="https://www.buk.cl/hubfs/2023/Calculadoras/tooltip-info.svg" tabindex="1" class="tooltip-trigger">
                     <span class="tooltiptext">
@@ -194,12 +194,12 @@
                     </span>
                   </div> -->
                   </div> <!-- end-flex -->
-                  <input type="number" min="0" placeholder="0" data-variable-salary="true">
+                  <input type="number" min="0" placeholder="0" id="last-variable-rent" data-variable-salary="true">
                 </div>
 
                 <div class="buk-col buk-col-md-6 buk-col-lg-4 ">
                   <div class="ds-flex ai-center buk-mb-2">
-                    <label class="calc-box__label"><span data-month="variable">Octubre 2023</span></label>
+                    <label class="calc-box__label"><span data-month="variable">Octubre</span></label>
                     <!-- {# <div class="tooltip">
                     <img src="https://www.buk.cl/hubfs/2023/Calculadoras/tooltip-info.svg" tabindex="1" class="tooltip-trigger">
                     <span class="tooltiptext">
@@ -212,7 +212,7 @@
 
                 <div class="buk-col buk-col-md-6 buk-col-lg-4 ">
                   <div class="ds-flex ai-center buk-mb-2">
-                    <label class="calc-box__label"><span data-month="variable">Septiembre 2023</span></label>
+                    <label class="calc-box__label"><span data-month="variable">Septiembre</span></label>
                     <!-- {# <div class="tooltip">
                     <img src="https://www.buk.cl/hubfs/2023/Calculadoras/tooltip-info.svg" tabindex="1" class="tooltip-trigger">
                     <span class="tooltiptext">
@@ -238,7 +238,6 @@
                 <h3 class="txt-left">Detalle finiquito</h3>
               </button>
               <div class="panel-info">
-
                 <!-- {# titulo item seccion vacaciones#} -->
                 <div class="cal-detail__title">
                   <div class="boxer buk-py-2">
@@ -307,25 +306,25 @@
                     <p class="fw-semi-bold">Remuneración global</p>
                   </div>
                 </div>
-
+                
                 <!-- {# detalle seccion remuneraciones #} -->
                 <div class="boxer">
                   <div class="ds-flex jc-between buk-p-2 cal-detail__item">
                     <p>Remuneración<br class="v-mobile"> fija</p>
                     <p id="lbl-fixed-rent">$ 0</p>
                   </div>
-
+                
                   <div class="ds-flex jc-between buk-p-2 cal-detail__item">
                     <p>Remuneración<br class="v-mobile"> variable</p>
                     <p id="lbl-variable-rent">$ 0</p>
                   </div>
-
+                
                   <!-- {# resultado de sección remuneraciones #} -->
-                  <div class="ds-flex jc-between buk-py-2 buk-mb-4">
+                  <div class="ds-flex jc-between buk-py-2 buk-mb-1">
                     <p class="fw-semi-bold txt-blue-buk">Remuneración base</p>
                     <p class="fw-semi-bold txt-blue-buk buk-mr-md-2" id="lbl-base-rent">$ 0</p>
                   </div>
-
+                
                   <div class="ds-flex jc-between buk-p-2 cal-detail__item buk-mb-4">
                     <p>Gratificación</p>
                     <p id="lbl-gratification">$ 0</p>
@@ -347,7 +346,7 @@
                     <p>Indemnización legal <br class="v-mobile">por año de servicio</p>
                     <p id="lbl-compesation-years-of-service">$ 0</p>
                   </div>
-                  <div class="ds-flex jc-between buk-p-2 cal-detail__item" data-type-causal="dismiss-and-conclusion-service" >
+                  <div class="ds-flex jc-between buk-p-2 cal-detail__item" data-type-causal="dismiss">
                     <p>Indemnización sustitutiva <br class="v-mobile">previo aviso</p>
                     <p id="lbl-compesation-prev-notification">$ 0</p>
                   </div>

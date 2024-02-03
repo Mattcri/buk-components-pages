@@ -15,6 +15,7 @@ class Director {
     let baseSalary = Number(document.getElementById('base-salary').value)
     let taxableFixedRemu = Number(document.getElementById('taxable-fixed-remu').value)
     let nonTaxableFixedRemu = Number(document.getElementById('non-taxable-fixed-remu').value)
+    let lastVariableRent = Number(document.getElementById('last-variable-rent').value)
     let variableRemuIsTrue = document.getElementById('true-remuneracion').checked
 
     validate.datesIsNotEmpty(dateAdmission, endContractDate)
@@ -25,7 +26,7 @@ class Director {
       .then(() => validate.baseSalaryNotEmpty(baseSalary))
       .then(() => calc.rslTimeWorked(dateAdmission, endContractDate))
       .then(() => calc.rsltVacationDays())
-      .then(() => calc.rsltFixedRent(baseSalary, taxableFixedRemu, nonTaxableFixedRemu))
+      .then(() => calc.rsltFixedRent(baseSalary, taxableFixedRemu, nonTaxableFixedRemu, lastVariableRent))
       .then(() => calc.rsltAvgVariableRent(variableRemuIsTrue))
       .then(() => calc.sumBaseRent())
       .then(() => calc.rentsPerDays(baseSalary))

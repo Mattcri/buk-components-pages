@@ -26,7 +26,7 @@ class Validator {
   dateNoticationIsNotEmpty(causal, notificationDate) {
     let txt = 'Para la causal actual, debes ingresar una fecha de aviso en la cual se le comunique al colaborador el termino de sus funciones'
     return new Promise((resolve, reject) => {
-      if (causal === '3' || causal === '4') {
+      if (causal === '4') {
         if (moment(notificationDate).isValid() !== false) {
           resolve()
         } else {
@@ -41,7 +41,7 @@ class Validator {
   dateNotificationIsSameOrBeforeEndContract(causal, notificationDate, endContractDate) {
     let txt = 'La fecha de aviso no puede ser posterior a la fecha del fin de contrato'
     return new Promise((resolve, reject) => {
-      if (causal === '3' || causal === '4') {
+      if (causal === '4') {
         if (moment(notificationDate).isSameOrBefore(endContractDate)) {
           resolve()
         } else {
@@ -56,7 +56,7 @@ class Validator {
   dateNotificationIsAfterAdmission(causal, notification, admission) {
     let txt = 'La fecha de aviso debe ser posterior a la fecha de ingreso a la empresa'
     return new Promise((resolve, reject) => {
-      if (causal === '3' || causal === '4') {
+      if (causal === '4') {
         if (moment(notification).isAfter(admission)) {
           resolve()
         } else {
