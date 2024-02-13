@@ -6,7 +6,7 @@
   align-items: center;
   cursor: pointer;
   width: 100%;
-  padding: 16px 32px;
+  padding: 16px 24px;
   border: 0px;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -96,7 +96,7 @@
   font-size: 1.25rem
 }
 
-.buk-col[class*=buk-col] {
+.calc-detail .buk-col[class*=buk-col] {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
 }
