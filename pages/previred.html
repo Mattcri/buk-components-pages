@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previred Dinamic Tables</title>
+  <link rel="stylesheet" href="../css/grid-system.css">
+  <link rel="stylesheet" href="../css/utilities-spaces-23.css">
+  <link rel="stylesheet" href="../css/main-23.css">
+  
+</head>
+<body>
+
+  <section class="buk-py-11 buk-py-lg-15">
+    <div class="boxer">
+      <h2 class="txt-md-center buk-mb-6">Proyecto previred</h2>
+
+      <div id="app">
+        <div class="buk-grid">
+          <div class="buk-col buk-col-md-6">
+            <tables />
+          </div>
+          <div class="buk-col buk-col-md-6">
+            <h3>{{ foo }}</h3>
+            {{ currentMonthData }}
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js" defer></script>
+
+  <script type="module" defer>
+    import tableComponent from '../js/vue/components/pr-tables.js'
+
+    const URL = 'https://mattguz.github.io/previred-project/datos_indicadores_previsionales.json'
+
+    const app = Vue.createApp({
+      data() {
+        return {
+          previredAllData: [],
+          currentMonthData: [],
+          foo: undefined
+        }
+      },
+      methods: {
+        async getCurrentMonth() {
+          const lastItem = await Object.keys(this.previredAllData).pop()
+          console.log('curr', this.previredAllData[lastItem]);
+
+          this.foo = 'hola foo'
+        }
+        
+      },
+      beforeCreate() {
+        fetch(URL)
+        .then(response => {
+          console.log('status respose', response.status)
+          if (!response.ok) {
+            throw new Error(`Solicitud con estado: ${response.statusText}`)
+          }
+          return response.json()
+        })
+        .then(data => {
+          this.previredAllData = data
+
+          const lastItem = Object.keys(this.previredAllData).pop()
+
+          this.currentMonthData = data[lastItem]
+          
+          this.getCurrentMonth()
+        })
+        .catch(error => console.error(error.message))
+        
+      },
+      
+
+    })
+    // const app = Vue.createApp({
+    //   components: {
+    //     tableComponent
+    //   },
+    //   template: `
+    //   <div class="buk-grid">
+    //     <div class="buk-col buk-col-md-6">
+    //       <tableComponent />
+    //     </div>
+    //   </div>
+    //   `
+    // })
+    
+
+    app.component('tables', tableComponent)
+    app.mount('#app')
+    
+
+  </script>
+  
+</body>
+</html>
