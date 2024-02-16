@@ -17,12 +17,26 @@
 
       <div id="app">
         <div class="buk-grid">
-          <div class="buk-col buk-col-md-6">
-            <tables />
+          <div class="buk-col buk-col-md-7 buk-col-lg-7">
+            <div class="buk-mb-7">
+              <select @change="selectMonth">
+                <option v-for="(item, index) in getMonthsNameAndKeys" :key="item[index]" :value="item.idMonth">
+                  {{ item.nameMonth }}
+                </option>
+              </select>
+
+              <div class="buk-mt-3">
+                <h5>{{ month }}</h5>
+                <p>Nodo: {{ keyMonth }}</p>
+              </div>
+            </div>
+
+            
+            <tables-data :current="previredAllData[keyMonth]" :month="month" />
           </div>
-          <div class="buk-col buk-col-md-6">
-            <h3>{{ foo }}</h3>
-            {{ currentMonthData }}
+          <div class="buk-col buk-col-md-5 buk-col-lg-5">
+            <h3>{{ msg }}</h3>
+            {{ previredAllData[keyMonth] }}
           </div>
           
         </div>
@@ -31,70 +45,120 @@
     </div>
   </section>
 
-  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js" defer></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
 
   <script type="module" defer>
-    import tableComponent from '../js/vue/components/pr-tables.js'
+    // import countBtn from '../js/vue/components/pr-count-btn.js'
+    import tablesData from '../js/vue/components/prTablesValues.js'
+
 
     const URL = 'https://mattguz.github.io/previred-project/datos_indicadores_previsionales.json'
 
     const app = Vue.createApp({
+      setup() {
+        const previredAllData = Vue.ref({})
+        const month = Vue.ref({})
+        const keyMonth = Vue.ref({})
+
+        const fetchSetupData = async () => {
+          try {
+            const response = await fetch(URL)
+
+            if (!response.ok) {
+              throw new Error(`Solicitud con estado: ${response.statusText}`);
+            }
+
+            const data = await response.json()
+            const lastItem = Object.keys(data).pop()
+
+            // currentMonthData.value = data[lastItem]
+            previredAllData.value = data
+            month.value = data[lastItem]["valor_utm_uta"]["valor"][0]
+            keyMonth.value = lastItem
+
+          } catch (error) {
+            console.error(error.message)
+          }
+        }
+
+        fetchSetupData()
+
+        return {
+          previredAllData,
+          month,
+          keyMonth
+        }
+
+      },
       data() {
         return {
-          previredAllData: [],
-          currentMonthData: [],
-          foo: undefined
+          msg: 'Hola Vue.js',
         }
       },
       methods: {
-        async getCurrentMonth() {
-          const lastItem = await Object.keys(this.previredAllData).pop()
-          console.log('curr', this.previredAllData[lastItem]);
+        selectMonth(event) {
+          let selectedMonth = this.getMonthsNameAndKeys.find(e => e.idMonth === event.target.value)
+          let nameMonth = selectedMonth ? selectedMonth.nameMonth : null
 
-          this.foo = 'hola foo'
-        }
+          this.keyMonth = event.target.value
+          this.month = nameMonth.toString()
+        },
         
       },
-      beforeCreate() {
-        fetch(URL)
-        .then(response => {
-          console.log('status respose', response.status)
-          if (!response.ok) {
-            throw new Error(`Solicitud con estado: ${response.statusText}`)
-          }
-          return response.json()
-        })
-        .then(data => {
-          this.previredAllData = data
+      computed: {
+        getMonthsNameAndKeys() {
+          const keysMonths = []
 
-          const lastItem = Object.keys(this.previredAllData).pop()
+          Object.keys(this.previredAllData).forEach((key, index) => {
+            let monthsKeys = this.previredAllData[key]["valor_utm_uta"]["valor"]
 
-          this.currentMonthData = data[lastItem]
-          
-          this.getCurrentMonth()
-        })
-        .catch(error => console.error(error.message))
+            let buildObj = {
+              idMonth: key,
+              nameMonth: monthsKeys[0]
+            }
+
+            keysMonths.push(buildObj)
+          })
+
+          return keysMonths.reverse()
+        },
         
       },
-      
+      // beforeCreate() {
+      //   fetch(URL)
+      //     .then(response => {
+      //       console.log('status respose', response.status)
+      //       if (!response.ok) {
+      //         throw new Error(`Solicitud con estado: ${response.statusText}`)
+      //       }
+      //       return response.json()
+      //     })
+      //     .then(data => {
+      //       this.previredAllData = data
+
+      //       const lastItem = Object.keys(this.previredAllData).pop()
+
+      //       this.currentMonthData = data[lastItem]
+      //       this.month = data[lastItem]["valor_utm_uta"]["valor"][0]
+      //       this.keyMonth = lastItem
+
+      //       console.log('++++++')
+
+
+      //     })
+      //     .catch(error => console.error(error.message))
+        
+      // },
+
+      components: {
+        tablesData
+      }
 
     })
-    // const app = Vue.createApp({
-    //   components: {
-    //     tableComponent
-    //   },
-    //   template: `
-    //   <div class="buk-grid">
-    //     <div class="buk-col buk-col-md-6">
-    //       <tableComponent />
-    //     </div>
-    //   </div>
-    //   `
-    // })
-    
 
-    app.component('tables', tableComponent)
+    // app.component('count-btn', countBtn)
     app.mount('#app')
+    // app.component('tables-data', tablesData)
     
 
   </script>
