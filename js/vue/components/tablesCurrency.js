@@ -54,7 +54,8 @@ export default {
 
   template: /*html*/ `
     <h3 class="h5">Indicadores previsionales periodo {{ month }}</h3>
-    <div class="buk-my-2 buk-grid" v-if="!loading">
+    
+    <div class="buk-my-2 buk-col buk-grid" v-if="!loading">
       <div class="buk-col buk-col-md-6 buk-col-lg-6">
         <table class="wi-100 border-1-light rounded-8" style="border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-light-blue);">
           <thead class="bg-blue-buk wi-100">
@@ -105,6 +106,8 @@ export default {
           </tr>
         </table>
       </div>
+
+
     </div>
     <div class="buk-my-6" v-else>
       <p>Cargando datos ... </p>

@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="../css/grid-system.css">
   <link rel="stylesheet" href="../css/utilities-spaces-23.css">
   <link rel="stylesheet" href="../css/main-23.css">
+
+  <style>
+    #app table .buk-grid [class*="buk-col"] {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  </style>
   
 </head>
 <body>
@@ -16,29 +23,30 @@
       <h2 class="txt-md-center buk-mb-6">Proyecto previred</h2>
 
       <div id="app">
+        <div class="buk-my-3">
+          <select @change="selectMonth">
+            <option v-for="(item, index) in getMonthsNameAndKeys" :key="item[index]" :value="item.idMonth">
+              {{ item.nameMonth }}
+            </option>
+          </select>
+          <div class="buk-mt-3">
+            <h5>{{ month }}</h5>
+            <p>Nodo: {{ keyMonth }}</p>
+          </div>
+        </div>
+
         <div class="buk-grid">
           <div class="buk-col buk-col-md-7 buk-col-lg-7">
-            <div class="buk-mb-7">
-              <select @change="selectMonth">
-                <option v-for="(item, index) in getMonthsNameAndKeys" :key="item[index]" :value="item.idMonth">
-                  {{ item.nameMonth }}
-                </option>
-              </select>
-
-              <div class="buk-mt-3">
-                <h5>{{ month }}</h5>
-                <p>Nodo: {{ keyMonth }}</p>
-              </div>
-            </div>
-
-            
-            <tables-data :current="previredAllData[keyMonth]" :month="month" />
-          </div>
-          <div class="buk-col buk-col-md-5 buk-col-lg-5">
-            <h3>{{ msg }}</h3>
-            {{ previredAllData[keyMonth] }}
+            <tables-data-currencys :current="currencyData" :month="month" />
           </div>
           
+          <div class="buk-col buk-col-md-5 buk-col-lg-5">
+            <h3>{{ msg }}</h3>
+            {{ legalData }}
+          </div>
+          <div class="buk-col">
+            <tables-legal-data :current="previredAllData[keyMonth]" />
+          </div>
         </div>
       </div>
 
@@ -49,8 +57,8 @@
 
   <script type="module" defer>
     // import countBtn from '../js/vue/components/pr-count-btn.js'
-    import tablesData from '../js/vue/components/prTablesValues.js'
-
+    import tablesDataCurrencys from '../js/vue/components/tablesCurrency.js'
+    import tablesLegalData from '../js/vue/components/tablesLegalData.js'
 
     const URL = 'https://mattguz.github.io/previred-project/datos_indicadores_previsionales.json'
 
@@ -122,7 +130,34 @@
 
           return keysMonths.reverse()
         },
-        
+        currencyData() {
+          const selectedMonthData = this.previredAllData[this.keyMonth]
+
+          return {
+            valor_uf: selectedMonthData ? selectedMonthData.valor_uf : null,
+            valor_utm_uta: selectedMonthData ? selectedMonthData.valor_utm_uta : null,
+            deposito_convenido: selectedMonthData ? selectedMonthData.deposito_convenido : null
+          };
+        },
+        legalData() {
+          const selectedMonthData = this.previredAllData[this.keyMonth]
+
+          let findLegalData = null
+
+          if(selectedMonthData) {
+            findLegalData = Object.entries(selectedMonthData).reduce((acumulador, [key, value]) => {
+              if (key !== 'valor_uf' && key !== 'deposito_convenido') {
+                acumulador[key] = value
+              }
+              return acumulador
+            }, {})
+          }
+
+          console.log('legal: ', findLegalData);
+
+          return findLegalData 
+
+        }
       },
       // beforeCreate() {
       //   fetch(URL)
@@ -151,15 +186,13 @@
       // },
 
       components: {
-        tablesData
+        tablesDataCurrencys,
+        tablesLegalData
       }
 
     })
 
-    // app.component('count-btn', countBtn)
     app.mount('#app')
-    // app.component('tables-data', tablesData)
-    
 
   </script>
   
