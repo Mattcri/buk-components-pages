@@ -13,6 +13,14 @@
       padding-top: 0;
       padding-bottom: 0;
     }
+
+    table tbody tr:last-of-type td {
+      border-radius: 0 0 8px 8px;
+    }
+
+    table thead th {
+      border-radius: 8px 8px 0 0;
+    }
   </style>
   
 </head>
@@ -42,10 +50,10 @@
           
           <div class="buk-col buk-col-md-5 buk-col-lg-5">
             <h3>{{ msg }}</h3>
-            {{ legalData }}
+            
           </div>
           <div class="buk-col">
-            <tables-legal-data :current="previredAllData[keyMonth]" />
+            <tables-legal-data :current="legalData" />
           </div>
         </div>
       </div>
