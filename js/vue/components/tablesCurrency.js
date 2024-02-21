@@ -2,12 +2,10 @@ export default {
   props: {
     current: Object,
     month: ''
-    // foo: String
   },
   data() {
     return {
       loading: true,
-      // currentData: this.currentPropData || {}
     }
   },
   watch: {
@@ -50,7 +48,6 @@ export default {
     }
 
   },
-
 
   template: /*html*/ `
     <div class="buk-grid buk-py-0" v-if="!loading">

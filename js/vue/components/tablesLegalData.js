@@ -101,77 +101,34 @@ export default {
 
   template: /*html*/ `
     <div class="buk-mb-2 buk-col buk-grid buk-py-0" v-if="!loading">
-
-      <div class="buk-col buk-col-md-6 buk-col-lg-6">
+      <div class="buk-col buk-col-md-8 buk-col-lg-7">
         <table class="wi-100 border-1-light rounded-8" style="border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-light-blue);">
           <thead class="bg-blue-buk wi-100">
             <tr>
-              <th class="buk-py-1 txt-white">Rentas topes imponibles</th>
+              <th class="buk-py-1 buk-pl-1 txt-white border--left-top-radius">AFP</th>
+              <th class="buk-py-1 txt-white border--not-radius">Tasa dependientes</th>
+              <th class="buk-py-1 txt-white border--not-radius">SIS dependientes</th>
+              <th class="buk-py-1 buk-pr-1 txt-white border--right-top-radius">Tasa independientes</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) in rentasTopeImponible" :key="item[index]">
-              <td class="buk-grid buk-py-1 buk-px-1" :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
-                <div class="buk-col-2 buk-col-md-7 buk-col-lg-8">  {{ item.group }}  </div>
-                <div class="buk-col-2 buk-col-md-5 buk-col-lg-4 txt-right">  {{ item.value }} </div>
+            <tr v-for="(item, index) in dataAfp" :key="item[index]">
+              <td class="buk-py-1 buk-px-1 txt-center"  :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
+                {{ item.afp }}
+              </td>
+              <td class="buk-py-1 buk-px-1 txt-center"  :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
+                {{ item.dependents }}
+              </td>
+              <td class="buk-py-1 buk-px-1 txt-center"  :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
+                {{ item.sis_dependents }}
+              </td>
+              <td class="buk-py-1 buk-px-1 txt-center"  :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
+                {{ item.independents }}
               </td>
             </tr>
           </tbody>
         </table>
-      </div>
-      <div class="buk-col buk-col-md-6 buk-col-lg-6">
-        <table class="wi-100 border-1-light rounded-8" style="border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-light-blue);">
-          <thead class="bg-blue-buk wi-100">
-            <tr>
-              <th class="buk-py-1 txt-white">Ahorro previsional voluntario</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in ahorroPrevisionalVoluntario" :key="item[index]">
-              <td class="buk-grid buk-py-1 buk-px-1" :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
-                <div class="buk-col-2 buk-col-md-7 buk-col-lg-8">  {{ item.limit }}  </div>
-                <div class="buk-col-2 buk-col-md-5 buk-col-lg-4 txt-right">  {{ item.value }} </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="buk-col buk-col-md-6 buk-col-lg-6">
-        <table class="wi-100 border-1-light rounded-8" style="border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-light-blue);">
-          <thead class="bg-blue-buk wi-100">
-            <tr>
-              <th class="buk-py-1 txt-white">Distribución 7%</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in distri7porciento" :key="item[index]">
-              <td class="buk-grid buk-py-1 buk-px-1" :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
-                <div class="buk-col-2 buk-col-md-7 buk-col-lg-8">  {{ item.destiny }}  </div>
-                <div class="buk-col-2 buk-col-md-5 buk-col-lg-4 txt-right">  {{ item.percent }} </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="buk-col buk-col-md-6 buk-col-lg-6">
-        <table class="wi-100 border-1-light rounded-8" style="border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-light-blue);">
-          <thead class="bg-blue-buk wi-100">
-            <tr>
-              <th class="buk-py-1 txt-white">Rentas mínimas imponibles</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in rentasMinimasImponible" :key="item[index]">
-              <td class="buk-grid buk-py-1 buk-px-1" :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
-                <div class="buk-col-2 buk-col-md-7 buk-col-lg-8">  {{ item.group }}  </div>
-                <div class="buk-col-2 buk-col-md-5 buk-col-lg-4 txt-right">  {{ item.value }} </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="buk-col buk-col-md-6 buk-col-lg-6">
-        <h3 class="buk-mb-2">Seguro de Cesantía</h3>
+        <h3 class="buk-my-3">Seguro de Cesantía</h3>
         <table class="wi-100 border-1-light rounded-8" style="border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-light-blue);">
           <thead class="bg-blue-buk wi-100">
             <tr>
@@ -190,6 +147,68 @@ export default {
               </td>
               <td class="buk-py-1 buk-px-1 txt-center" :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
                 {{ item.finan_employer }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="buk-col buk-col-md-4 buk-col-lg-5">
+        <table class="wi-100 border-1-light rounded-8" style="border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-light-blue);">
+          <thead class="bg-blue-buk wi-100">
+            <tr>
+              <th class="buk-py-1 txt-white">Rentas topes imponibles</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(item, index) in rentasTopeImponible" :key="item[index]">
+              <td class="buk-grid buk-py-1 buk-px-1" :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
+                <div class="buk-col-2 buk-col-md-7 buk-col-lg-8">  {{ item.group }}  </div>
+                <div class="buk-col-2 buk-col-md-5 buk-col-lg-4 txt-right">  {{ item.value }} </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="wi-100 border-1-light rounded-8 buk-mt-2" style="border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-light-blue);">
+          <thead class="bg-blue-buk wi-100">
+            <tr>
+              <th class="buk-py-1 txt-white">Rentas mínimas imponibles</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(item, index) in rentasMinimasImponible" :key="item[index]">
+              <td class="buk-grid buk-py-1 buk-px-1" :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
+                <div class="buk-col-2 buk-col-md-7 buk-col-lg-8">  {{ item.group }}  </div>
+                <div class="buk-col-2 buk-col-md-5 buk-col-lg-4 txt-right">  {{ item.value }} </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="wi-100 border-1-light rounded-8 buk-mt-2" style="border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-light-blue);">
+          <thead class="bg-blue-buk wi-100">
+            <tr>
+              <th class="buk-py-1 txt-white">Ahorro previsional voluntario</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(item, index) in ahorroPrevisionalVoluntario" :key="item[index]">
+              <td class="buk-grid buk-py-1 buk-px-1" :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
+                <div class="buk-col-2 buk-col-md-7 buk-col-lg-8">  {{ item.limit }}  </div>
+                <div class="buk-col-2 buk-col-md-5 buk-col-lg-4 txt-right">  {{ item.value }} </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="wi-100 border-1-light rounded-8 buk-mt-2" style="border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-light-blue);">
+          <thead class="bg-blue-buk wi-100">
+            <tr>
+              <th class="buk-py-1 txt-white">Distribución 7%</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(item, index) in distri7porciento" :key="item[index]">
+              <td class="buk-grid buk-py-1 buk-px-1" :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
+                <div class="buk-col-2 buk-col-md-7 buk-col-lg-8">  {{ item.destiny }}  </div>
+                <div class="buk-col-2 buk-col-md-5 buk-col-lg-4 txt-right">  {{ item.percent }} </div>
               </td>
             </tr>
           </tbody>
@@ -215,34 +234,6 @@ export default {
               </td>
               <td class="buk-py-1 buk-px-1 txt-center"  :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
                 {{ item.rent }}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="buk-col buk-col-md-6 buk-col-lg-6">
-        <table class="wi-100 border-1-light rounded-8" style="border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-light-blue);">
-          <thead class="bg-blue-buk wi-100">
-            <tr>
-              <th class="buk-py-1 buk-pl-1 txt-white border--left-top-radius">AFP</th>
-              <th class="buk-py-1 txt-white border--not-radius">Tasa dependientes</th>
-              <th class="buk-py-1 txt-white border--not-radius">SIS dependientes</th>
-              <th class="buk-py-1 buk-pr-1 txt-white border--right-top-radius">Tasa independientes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in dataAfp" :key="item[index]">
-              <td class="buk-py-1 buk-px-1 txt-center"  :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
-                {{ item.afp }}
-              </td>
-              <td class="buk-py-1 buk-px-1 txt-center"  :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
-                {{ item.dependents }}
-              </td>
-              <td class="buk-py-1 buk-px-1 txt-center"  :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
-                {{ item.sis_dependents }}
-              </td>
-              <td class="buk-py-1 buk-px-1 txt-center"  :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
-                {{ item.independents }}
               </td>
             </tr>
           </tbody>
