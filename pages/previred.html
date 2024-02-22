@@ -52,6 +52,32 @@
     .select-control:focus {
       outline-color: var(--color-blue-buk);
     }
+
+    @media only screen and (max-width: 920px) {
+      .table-responsive {
+        overflow-x: scroll;
+      }
+      .table-responsive::-webkit-scrollbar {
+        height: .7rem;
+      }
+      .table-responsive::-webkit-scrollbar-thumb {
+        background-color: var(--color-dark-blue);
+        border-radius: 8px;
+      }
+      .table-responsive::-webkit-scrollbar-track-piece {
+        background-color: var(--wb-font-color-2);
+        border-radius: 8px;
+      }
+      .table-responsive table {
+        min-width: 700px;
+      }
+      .table-responsive.responsive--xl table {
+        min-width: 800px;
+      }
+      .table-responsive.responsive--md table {
+        min-width: 620px;
+      }
+    }
   </style>
   
 </head>
@@ -71,7 +97,7 @@
           
         </div>
         <div class="buk-grid buk-my-2">
-          <div class="buk-col-md-5 buk-col-lg-4">
+          <div class="buk-col buk-col-md-5 buk-col-lg-4">
             <select @change="selectMonth" class="select-control txt-blue-buk">
               <option v-for="(item, index) in getMonthsNameAndKeys" :key="item[index]" :value="item.idMonth">
                 Periodo {{ item.nameMonth }}
@@ -81,16 +107,19 @@
         </div>
 
         <div class="buk-grid">
-          <div class="buk-col buk-col-md-7 buk-col-lg-7">
-            <tables-data-currencys :current="currencyData" :month="month" />
+          <div class="buk-col buk-col-md-6 buk-col-lg-7">
+            <tables-principal-data :current="principalData" :month="month" />
           </div>
           
-          <div class="buk-col buk-col-md-5 buk-col-lg-5 v-desktop v-tablet">
-            <div class="shadow-1 rounded-8 buk-px-4 buk-py-3">
+          <div class="buk-col buk-col-md-6 buk-col-lg-5 ">
+            <div class="shadow-1 rounded-16 buk-px-4 buk-py-3 v-desktop v-tablet">
               <p class="p2 txt-blue-buk">Noticias</p>
               <p class="buk-my-2">El sueldo grado 1-A de la escala única de sueldos del sector público asciende a $683.350 (circular n°1 del 09 de enero de 2024) para los periodos de diciembre 2023, enero 2024 y febrero 2024.</p>
               <p class="txt-blue-buk" style="font-style: italic;"><a href="https://www.sii.cl/normativa_legislacion/circulares/2024/circu1.pdf" target="_blank">Ref: Normativa Legislacion Circulares 2024</a></p>
             </div>
+
+            <tables-second-data :current="secondData" />
+
           </div>
           <div class="buk-col">
             <tables-legal-data :current="legalData" />
@@ -104,11 +133,11 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
 
   <script type="module" defer>
-    // import countBtn from '../js/vue/components/pr-count-btn.js'
-    import tablesDataCurrencys from '../js/vue/components/tablesCurrency.js'
+    import tablesPrincipalData from '../js/vue/components/tablesPrincipalData.js'
     import tablesLegalData from '../js/vue/components/tablesLegalData.js'
+    import tablesSecondData from '../js/vue/components/tablesSecondData.js'
 
-    const URL = 'https://mattguz.github.io/previred-project/datos_indicadores_previsionales.json'
+    const URL = 'https://assets.buktechnology.com/indicadores_previsionales/datos_indicadores_previsionales.json'
 
     const app = Vue.createApp({
       setup() {
@@ -178,13 +207,31 @@
 
           return keysMonths.reverse()
         },
-        currencyData() {
+        principalData() {
+          const selectedMonthData = this.previredAllData[this.keyMonth]
+
+          let findData = null
+
+          if (selectedMonthData) {
+            findData = Object.entries(selectedMonthData).reduce((acumulador, [key, value]) => {
+              if (key === 'valor_uf' || key === 'valor_utm_uta' || key === 'rentas_topes_imponibles' || key === 'rentas_minimas_imponibles' || key === 'afp') {
+                acumulador[key] = value
+              }
+              return acumulador
+            }, {})
+          }
+
+          return findData
+        },
+        secondData() {
           const selectedMonthData = this.previredAllData[this.keyMonth]
 
           return {
-            valor_uf: selectedMonthData ? selectedMonthData.valor_uf : null,
-            valor_utm_uta: selectedMonthData ? selectedMonthData.valor_utm_uta : null,
-            deposito_convenido: selectedMonthData ? selectedMonthData.deposito_convenido : null
+            ahorro_previsional_voluntario: selectedMonthData ? selectedMonthData.ahorro_previsional_voluntario : null,
+            cotizacion_trabajos_pesados: selectedMonthData ? selectedMonthData.cotizacion_trabajos_pesados : null,
+            deposito_convenido: selectedMonthData ? selectedMonthData.deposito_convenido : null,
+            distribucion_7_porciento: selectedMonthData ? selectedMonthData.distribucion_7_porciento : null,
+
           };
         },
         legalData() {
@@ -194,7 +241,7 @@
 
           if(selectedMonthData) {
             findLegalData = Object.entries(selectedMonthData).reduce((acumulador, [key, value]) => {
-              if (key !== 'valor_uf' && key !== 'deposito_convenido') {
+              if (key === 'asignacion_familiar' || key === 'seguro_de_cesantia' || key === 'impuestosegundacatsii') {
                 acumulador[key] = value
               }
               return acumulador
@@ -232,8 +279,9 @@
       // },
 
       components: {
-        tablesDataCurrencys,
-        tablesLegalData
+        tablesPrincipalData,
+        tablesLegalData,
+        tablesSecondData
       }
 
     })
