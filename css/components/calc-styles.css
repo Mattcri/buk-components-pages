@@ -54,6 +54,11 @@
   .calc__title p {
     font-size: 1.35rem;
   }
+
+  .calc-box__section p {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
 }
 
 .date-group input[type="date"]::-webkit-calendar-picker-indicator {
@@ -161,6 +166,13 @@ input[type=radio] {
 
 .cal-boxblue__total {
   font-size: 2rem;
+}
+
+@media only screen and (min-width: 767px) {
+  .calc-detail--separator {
+    padding-right: 16px;
+    border-right: 2px solid var(--color-light-blue);
+  }
 }
 
 

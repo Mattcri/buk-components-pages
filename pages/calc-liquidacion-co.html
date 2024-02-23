@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Liquidación CO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Sans+Pro:wght@300;400;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/components/calc-styles.css">
+  <link rel="stylesheet" href="../css/components/desplegable.css">
+  <link rel="stylesheet" href="../css/components/modal-23.css">
+  <link rel="stylesheet" href="../css/grid-system.css">
+  <link rel="stylesheet" href="../css/utilities-spaces-23.css">
+  <link rel="stylesheet" href="../css/main-23.css">
+
+</head>
+
+<body>
+  <section class="buk-py-8 buk-py-lg-15">
+    <div class="boxer">
+
+      <h2 class="txt-md-center buk-mb-4">Calcula tus Liquidaciones</h2>
+
+      <div class="buk-grid">
+        <div class="buk-col buk-col-lg-10 buk-col-st-lg-2">
+
+          <div class="buk-grid calc buk-mb-4">
+            <div class="buk-col buk-col-md-6 buk-col-lg-4 rounded-16 shadow-1">
+              <div class="buk-p-2">
+                <label class="buk-ml-1">Mi Salario Básico</label>
+                <input type="text" class="buk-mt-1" value="$1.300.000" readonly style="border: 1px solid #d9e3fc;">
+              </div>
+            </div>
+            <div class="buk-col buk-col-md-6 buk-col-lg-4 rounded-16 shadow-1">
+              <div class="buk-p-2">
+                <label class="buk-ml-1">Auxilio de Transporte</label>
+                <input type="text" class="buk-mt-1" value="$162.000" readonly style="border: 1px solid #d9e3fc;">
+              </div>
+            </div>
+            <div class="buk-col buk-col-md-6 buk-col-st-md-4 buk-col-lg-4 rounded-16 shadow-1">
+              <div class="buk-p-2">
+                <label class="buk-ml-1">UVT</label>
+                <input type="text" class="buk-mt-1" value="$47.065" readonly style="border: 1px solid #d9e3fc;">
+              </div>
+            </div>
+          </div>
+
+          <div class="buk-grid calc rounded-16 shadow-1 buk-py-3 buk-px-2 buk-py-md-4 buk-px-md-3">
+            <div
+              class="buk-col ff-title calc-box__section txt-blue-buk rounded-23 rounded-md-49 buk-px-2 buk-px-lg-3 buk-mb-2">
+              <p class="buk-py-1">Datos Básicos</p>
+            </div>
+            <div class="buk-col buk-col-md-4 buk-col-lg-4">
+              <label for="" class="txt-blue-buk fw-semi-bold">Salario básico</label>
+              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+            </div>
+            <div class="buk-col buk-col-md-4 buk-col-lg-4">
+              <label for="" class="txt-blue-buk fw-semi-bold">Días laburados al mes</label>
+              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+            </div>
+            <div class="buk-col buk-col-md-4 buk-col-lg-4">
+              <label for="" class="txt-blue-buk fw-semi-bold">Días no laborados</label>
+              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+            </div>
+            <div class="buk-col buk-col-md-6 buk-col-lg-6">
+              <label for="" class="txt-blue-buk fw-semi-bold">Tipo de salario</label>
+              <div class="select-group buk-mt-1 wi-100">
+                <select name="" id="" class="select-control">
+                  <option value="">Ordinario</option>
+                  <option value="">Integral</option>
+                </select>
+              </div>
+            </div>
+            <div class="buk-col buk-col-md-6 buk-col-lg-6">
+              <label for="" class="txt-blue-buk fw-semi-bold">Tipo de contrato</label>
+              <div class="select-group buk-mt-1 wi-100">
+                <select id="" class="select-control">
+                  <option value="">Plazo fijo</option>
+                  <option value="">Indefinido</option>
+                  <option value="">Obra o labor contratada</option>
+                  <option value="">Aprendizaje</option>
+                </select>
+              </div>
+            </div>
+            <div class="buk-col">
+              <label for="" class="txt-blue-buk fw-semi-bold">Motivo de retiro</label>
+              <div class="select-group buk-mt-1 wi-100">
+                <select id="" class="select-control">
+                  <option value="">Renuncia voluntaria</option>
+                  <option value="">Terminación con justa causa</option>
+                  <option value="">Terminación sin justa causa</option>
+                  <option value="">Mutuo acuerdo</option>
+                  <option value="">Terminación obra o labor</option>
+                  <option value="">Vencimiento contrato fijo</option>
+                  <option value="">Terminación contrato aprendizaje</option>
+                </select>
+              </div>
+            </div>
+            <div class="buk-col buk-col-md-4 buk-col-lg-4">
+              <label for="" class="txt-blue-buk fw-semi-bold">Fecha de ingreso</label>
+              <div class="date-group buk-mt-2">
+                <input type="date" name="" id="" class="pst-relative">
+              </div>
+            </div>
+            <div class="buk-col buk-col-md-4 buk-col-lg-4">
+              <label for="" class="txt-blue-buk fw-semi-bold">Fecha de retiro</label>
+              <div class="date-group buk-mt-2">
+                <input type="date" name="" id="" class="pst-relative">
+              </div>
+            </div>
+            <div class="buk-col buk-col-md-4 buk-col-lg-4">
+              <label for="" class="txt-blue-buk fw-semi-bold">Fecha de contrato</label>
+              <div class="date-group buk-mt-2">
+                <input type="date" name="" id="" class="pst-relative">
+              </div>
+            </div>
+            <div class="buk-col buk-col-md-4 buk-col-lg-4">
+              <label for="" class="txt-blue-buk fw-semi-bold">Otros salariales</label>
+              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+            </div>
+            <div class="buk-col buk-col-md-4 buk-col-lg-4">
+              <label for="" class="txt-blue-buk fw-semi-bold">Otros no salariales</label>
+              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+            </div>
+            <div class="buk-col buk-col-md-4 buk-col-lg-4">
+              <label for="" class="txt-blue-buk fw-semi-bold">Días pendientes de vacaciones</label>
+              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+            </div>
+            <div
+              class="buk-col ff-title calc-box__section txt-blue-buk rounded-23 rounded-md-49 buk-px-2 buk-px-lg-3 buk-my-2">
+              <p class="buk-py-1">Base de liquidación</p>
+            </div>
+            <div class="buk-col buk-col-md-4 buk-col-lg-4 ai-self-md-end">
+              <label for="" class="txt-blue-buk fw-semi-bold">Suma de conceptos variables prima</label>
+              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+            </div>
+            <div class="buk-col buk-col-md-4 buk-col-lg-4">
+              <label for="" class="txt-blue-buk fw-semi-bold">Suma de conceptos variables cesantias</label>
+              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+            </div>
+            <div class="buk-col buk-col-md-4 buk-col-lg-4">
+              <label for="" class="txt-blue-buk fw-semi-bold">Suma de conceptos variables vacaciones</label>
+              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+            </div>
+            <div class="buk-col txt-center buk-mt-2">
+              <button class="btn btn--2b">Calcular tu liquidación</button>
+            </div>
+
+          </div> <!-- end-calc -->
+
+          <div class="buk-my-4 buk-p-2 buk-p-md-3 bg-gradient-blue rounded-16">
+            <h2 class="txt-center txt-white h3 buk-mb-4">El valor de tu liquidación</h2>
+            <div class="buk-grid">
+              <div class="buk-col buk-md-4 buk-col-lg-4 buk-px-2 rounded-16 bg-white txt-center">
+                <p class="p2 fw-semi-bold">Total Devengados</p>
+                <p class="h5 ff-title txt-blue-buk fw-bold">$0</p>
+              </div>
+              <div class="buk-col buk-md-4 buk-col-lg-4 buk-px-2 rounded-16 bg-white txt-center">
+                <p class="p2 fw-semi-bold">Total Descuentos</p>
+                <p class="h5 ff-title txt-blue-buk fw-bold">$0</p>
+              </div>
+              <div class="buk-col buk-md-4 buk-col-lg-4 buk-px-2 rounded-16 bg-white txt-center">
+                <p class="p2 fw-semi-bold">Valor a Pagar</p>
+                <p class="h5 ff-title txt-blue-buk fw-bold">$0</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-1-light rounded-16 calc-detail">
+            <button class="button-large button-large__color">
+              <h3 class="txt-left">Tu liquidación incluye además los siguientes valores:</h3>
+            </button>
+            <div class="panel-info">
+          
+              <div class="cal-detail__title">
+                <div class="buk-py-11px buk-px-2 buk-px-md-3">
+                  <p class="fw-semi-bold txt-blue-buk">Días período de liquidación</p>
+                </div>
+              </div>
+
+              <div class="buk-my-11px buk-px-2 buk-px-md-3 buk-grid gap--8 gap-md--16">
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
+                  <p>Fecha inicio prima</p>
+                  <p class="txt-blue-buk">42</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
+                  <p>Fecha inicio cesantías</p>
+                  <p class="txt-blue-buk">219</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
+                  <p>Días liquidación</p>
+                  <p class="txt-blue-buk">505</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
+                  <p>Días indemnización</p>
+                  <p class="txt-blue-buk">79,00</p>
+                </div>
+              </div>
+          
+              <div class="cal-detail__title">
+                <div class="buk-py-11px buk-px-2 buk-px-md-3">
+                  <p class="fw-semi-bold txt-blue-buk">Liquidación</p>
+                </div>
+              </div>
+
+              <div class="buk-my-11px buk-px-2 buk-px-md-3 buk-grid gap--8 gap-md--16">
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
+                  <p>Salario</p>
+                  <p class="txt-blue-buk">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
+                  <p>Prima</p>
+                  <p class="txt-blue-buk">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
+                  <p>Cesantias</p>
+                  <p class="txt-blue-buk">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
+                  <p>Intereses cesantias</p>
+                  <p class="txt-blue-buk">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
+                  <p>Vacaciones</p>
+                  <p class="txt-blue-buk">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
+                  <p>Descuento salud</p>
+                  <p class="txt-blue-buk">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
+                  <p>Descuento pensión</p>
+                  <p class="txt-blue-buk">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
+                  <p>Fondo solidaridad</p>
+                  <p class="txt-blue-buk">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
+                  <p>Otro descuentos</p>
+                  <p class="txt-blue-buk">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
+                  <p>Retención en la fuente</p>
+                  <p class="txt-blue-buk">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
+                  <p>Indemnización</p>
+                  <p class="txt-blue-buk">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
+                  <p>Retención Indemnización</p>
+                  <p class="txt-blue-buk">$0</p>
+                </div>
+              </div>
+          
+            </div> <!-- end-panel-info -->
+          </div><!--  {# fin de contenido desplegable #} -->
+
+        </div> <!-- end-col-10 -->
+
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" crossorigin="anonymous"
+    referrerpolicy="no-referrer" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/es.min.js" crossorigin="anonymous"
+    referrerpolicy="no-referrer" defer></script>
+
+  <script>
+    const acc = [...document.getElementsByClassName("button-large ")];
+
+      acc.forEach(item => {
+        item.addEventListener('click', function () {
+          let active = document.querySelector(".button-large.active")
+          let mql = window.matchMedia('(min-width:1020px)')
+          if (active && active != this && mql.matches) {
+            active.classList.remove("active");
+            active.nextElementSibling.classList.remove("show");
+          }
+          this.classList.toggle("active");
+          this.nextElementSibling.classList.toggle("show");
+        })
+      })
+
+      acc[0].click()
+  </script>
+</body>
+
+</html>

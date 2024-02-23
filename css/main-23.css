@@ -177,6 +177,7 @@ header.sticky { box-shadow: 0px 7px 7px 0px rgba(51,51,51,0.3) }
 .order-5 { order: 5; }
 .pi-center { place-items: center; }
 
+.bg-gradient-blue { background: var(--bg-cta-2-hover); }
 .bg-naranja-buk{ background: var(--color-orange-buk);}
 .bg-amarillo-buk {background: var(--color-yellow-buk)}
 .bg-light-modules { background: var(--wb-bg-modules); }
@@ -191,6 +192,7 @@ header.sticky { box-shadow: 0px 7px 7px 0px rgba(51,51,51,0.3) }
 .txt-white {color: var(--color-white);}
 .txt-black-buk {color: var(--wb-font-color-1);}
 .txt-grey { color: var(--wb-font-color-2); }
+.border-1-light { border: 1px solid var(--color-light-blue); }
 
 .bg-blue-buk h1, .bg-blue-buk .h1,
 .bg-blue-buk h2, .bg-blue-buk .h2,
@@ -239,6 +241,7 @@ footer .carita:after {width: 23px; height: 23px; margin-bottom: -3px;}
   
   .gap-md--0 { gap: 0 !important; }
   .gap-md--8 { gap: .5rem !important; }
+  .gap-md--16 { gap: 1rem !important; }
   .gap-md--24 { gap: 1.5rem !important; }
   .gap-md--32 { gap: 2rem !important; }
   .gap-md--56 { gap: 3.5rem !important; }

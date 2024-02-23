@@ -52,6 +52,8 @@
 .buk-my-14 { margin-top: 7rem;margin-bottom: 7rem;}
 .buk-my-15 { margin-top: 7.5rem;margin-bottom: 7.5rem; } /* uso frecuente */
 
+.buk-my-11px { margin-top: 11px; margin-bottom: 11px; }
+
 .buk-ml-0 { margin-left: 0;}
 .buk-ml-1 { margin-left: .5rem;}
 .buk-ml-2 { margin-left: 1rem; }   /* uso frecuente 16px*/
@@ -157,6 +159,8 @@
 .buk-py-15 { padding-top: 7.5rem;padding-bottom: 7.5rem; } /* uso frecuente */
 .buk-py-20 { padding-top: 2.75rem; padding-bottom: 2.75rem; } 
 .buk-py-21 { padding-top: 3.75rem; padding-bottom: 3.75rem; } 
+
+.buk-py-11px { padding-top: 11px; padding-bottom: 11px; }
 
 .buk-px-0 { padding-left: 0; padding-right: 0; }
 .buk-px-1 { padding-left: .5rem; padding-right: .5rem; }
