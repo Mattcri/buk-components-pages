@@ -138,11 +138,15 @@ header.sticky { box-shadow: 0px 7px 7px 0px rgba(51,51,51,0.3) }
 .shadow-responsive { box-shadow: var(--box-shadow-responsive); }
 
 .of-x { overflow: hidden;}
+.rounded-0 { border-radius: 0px; }
+.rounded-8 { border-radius: 8px; }
 .rounded-16 { border-radius: var(--radius-16); }
 .rounded-23 { border-radius: 23px; }
 .rounded-32 { border-radius: 32px; }
 .rounded-49 { border-radius: 49px; }
 .rounded-56 { border-radius: 56px; }
+.rounded-85 { border-radius: 85px; }
+.rounded-16-top { border-radius: 16px 16px 0 0; }
 
 .gap--0 { gap: 0 !important; }
 .gap--8 { gap: .5rem !important; }

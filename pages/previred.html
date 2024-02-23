@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previred Dinamic Tables</title>
+  <link rel="stylesheet" href="../css/grid-system.css">
+  <link rel="stylesheet" href="../css/utilities-spaces-23.css">
+  <link rel="stylesheet" href="../css/main-23.css">
+
+  <style>
+    #app table .buk-grid [class*="buk-col"] {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    table tbody tr:last-of-type td {
+      border-radius: 0 0 8px 8px;
+    }
+
+    table thead th {
+      border-radius: 8px 8px 0 0;
+    }
+
+    table thead th.border--not-radius {
+      border-radius: 0;
+    }
+    table thead th.border--left-top-radius {
+      border-radius: 8px 0 0 0;
+    }
+    table thead th.border--right-top-radius {
+      border-radius: 0 8px 0 0;
+    }
+
+    .select-control {
+      border-radius: 21px;
+      cursor: pointer;
+      padding: .5rem 1.45rem .5rem 1.25rem;
+      width: 100%;
+      font-family: inherit;
+      font-size: 1.125rem;
+      border: 2px solid #d9e3fc;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("https://www.buk.cl/hubfs/2024/Icons/arrow-down-blue-buk.svg");
+      background-position-x: calc(100% - 17px);
+      background-position-y: 16px;
+      background-repeat: no-repeat;
+    }
+
+    .select-control:focus {
+      outline-color: var(--color-blue-buk);
+    }
+
+    @media only screen and (max-width: 920px) {
+      .table-responsive {
+        overflow-x: scroll;
+      }
+      .table-responsive::-webkit-scrollbar {
+        height: .7rem;
+      }
+      .table-responsive::-webkit-scrollbar-thumb {
+        background-color: var(--color-dark-blue);
+        border-radius: 8px;
+      }
+      .table-responsive::-webkit-scrollbar-track-piece {
+        background-color: var(--wb-font-color-2);
+        border-radius: 8px;
+      }
+      .table-responsive table {
+        min-width: 700px;
+      }
+      .table-responsive.responsive--xl table {
+        min-width: 800px;
+      }
+      .table-responsive.responsive--md table {
+        min-width: 620px;
+      }
+    }
+  </style>
+  
+</head>
+<body>
+
+  <section class="buk-py-11 buk-py-lg-15">
+    <div class="boxer">
+      <h2 class="txt-md-center buk-mb-6">Proyecto previred</h2>
+
+      <div id="app">
+        <h2>Indicadores previsionales periodo {{ month }}</h2>
+        <div class="buk-grid buk-mt-1">
+          <div class="buk-col buk-col-md-11 buk-col-lg-9">
+            <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit
+            mollit. Exercitation veniam consequat sunt nostrud amet minim mollit non desurunt dol.</p>
+          </div>
+          
+        </div>
+        <div class="buk-grid buk-my-2">
+          <div class="buk-col buk-col-md-5 buk-col-lg-4">
+            <select @change="selectMonth" class="select-control txt-blue-buk">
+              <option v-for="(item, index) in getMonthsNameAndKeys" :key="item[index]" :value="item.idMonth">
+                Periodo {{ item.nameMonth }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="buk-grid">
+          <div class="buk-col buk-col-md-6 buk-col-lg-7">
+            <tables-principal-data :current="principalData" :month="month" />
+          </div>
+          
+          <div class="buk-col buk-col-md-6 buk-col-lg-5 ">
+            <div class="shadow-1 rounded-16 buk-px-4 buk-py-3 v-desktop v-tablet">
+              <p class="p2 txt-blue-buk">Noticias</p>
+              <p class="buk-my-2">El sueldo grado 1-A de la escala única de sueldos del sector público asciende a $683.350 (circular n°1 del 09 de enero de 2024) para los periodos de diciembre 2023, enero 2024 y febrero 2024.</p>
+              <p class="txt-blue-buk" style="font-style: italic;"><a href="https://www.sii.cl/normativa_legislacion/circulares/2024/circu1.pdf" target="_blank">Ref: Normativa Legislacion Circulares 2024</a></p>
+            </div>
+
+            <tables-second-data :current="secondData" />
+
+          </div>
+          <div class="buk-col">
+            <tables-legal-data :current="legalData" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+
+  <script type="module" defer>
+    import tablesPrincipalData from '../js/vue/components/tablesPrincipalData.js'
+    import tablesLegalData from '../js/vue/components/tablesLegalData.js'
+    import tablesSecondData from '../js/vue/components/tablesSecondData.js'
+
+    const URL = 'https://assets.buktechnology.com/indicadores_previsionales/datos_indicadores_previsionales.json'
+
+    const app = Vue.createApp({
+      setup() {
+        const previredAllData = Vue.ref({})
+        const month = Vue.ref({})
+        const keyMonth = Vue.ref({})
+
+        const fetchSetupData = async () => {
+          try {
+            const response = await fetch(URL)
+
+            if (!response.ok) {
+              throw new Error(`Solicitud con estado: ${response.statusText}`);
+            }
+
+            const data = await response.json()
+            const lastItem = Object.keys(data).pop()
+
+            // currentMonthData.value = data[lastItem]
+            previredAllData.value = data
+            month.value = data[lastItem]["valor_utm_uta"]["valor"][0]
+            keyMonth.value = lastItem
+
+          } catch (error) {
+            console.error(error.message)
+          }
+        }
+
+        fetchSetupData()
+
+        return {
+          previredAllData,
+          month,
+          keyMonth
+        }
+
+      },
+      data() {
+        return {
+          msg: 'Hola Vue.js',
+        }
+      },
+      methods: {
+        selectMonth(event) {
+          let selectedMonth = this.getMonthsNameAndKeys.find(e => e.idMonth === event.target.value)
+          let nameMonth = selectedMonth ? selectedMonth.nameMonth : null
+
+          this.keyMonth = event.target.value
+          this.month = nameMonth.toString()
+        },
+        
+      },
+      computed: {
+        getMonthsNameAndKeys() {
+          const keysMonths = []
+
+          Object.keys(this.previredAllData).forEach((key, index) => {
+            let monthsKeys = this.previredAllData[key]["valor_utm_uta"]["valor"]
+
+            let buildObj = {
+              idMonth: key,
+              nameMonth: monthsKeys[0]
+            }
+
+            keysMonths.push(buildObj)
+          })
+
+          return keysMonths.reverse()
+        },
+        principalData() {
+          const selectedMonthData = this.previredAllData[this.keyMonth]
+
+          let findData = null
+
+          if (selectedMonthData) {
+            findData = Object.entries(selectedMonthData).reduce((acumulador, [key, value]) => {
+              if (key === 'valor_uf' || key === 'valor_utm_uta' || key === 'rentas_topes_imponibles' || key === 'rentas_minimas_imponibles' || key === 'afp') {
+                acumulador[key] = value
+              }
+              return acumulador
+            }, {})
+          }
+
+          return findData
+        },
+        secondData() {
+          const selectedMonthData = this.previredAllData[this.keyMonth]
+
+          return {
+            ahorro_previsional_voluntario: selectedMonthData ? selectedMonthData.ahorro_previsional_voluntario : null,
+            cotizacion_trabajos_pesados: selectedMonthData ? selectedMonthData.cotizacion_trabajos_pesados : null,
+            deposito_convenido: selectedMonthData ? selectedMonthData.deposito_convenido : null,
+            distribucion_7_porciento: selectedMonthData ? selectedMonthData.distribucion_7_porciento : null,
+
+          };
+        },
+        legalData() {
+          const selectedMonthData = this.previredAllData[this.keyMonth]
+
+          let findLegalData = null
+
+          if(selectedMonthData) {
+            findLegalData = Object.entries(selectedMonthData).reduce((acumulador, [key, value]) => {
+              if (key === 'asignacion_familiar' || key === 'seguro_de_cesantia' || key === 'impuestosegundacatsii') {
+                acumulador[key] = value
+              }
+              return acumulador
+            }, {})
+          }
+
+          return findLegalData 
+
+        }
+      },
+      // beforeCreate() {
+      //   fetch(URL)
+      //     .then(response => {
+      //       console.log('status respose', response.status)
+      //       if (!response.ok) {
+      //         throw new Error(`Solicitud con estado: ${response.statusText}`)
+      //       }
+      //       return response.json()
+      //     })
+      //     .then(data => {
+      //       this.previredAllData = data
+
+      //       const lastItem = Object.keys(this.previredAllData).pop()
+
+      //       this.currentMonthData = data[lastItem]
+      //       this.month = data[lastItem]["valor_utm_uta"]["valor"][0]
+      //       this.keyMonth = lastItem
+
+      //       console.log('++++++')
+
+
+      //     })
+      //     .catch(error => console.error(error.message))
+        
+      // },
+
+      components: {
+        tablesPrincipalData,
+        tablesLegalData,
+        tablesSecondData
+      }
+
+    })
+
+    app.mount('#app')
+
+  </script>
+  
+</body>
+</html>
