@@ -99,10 +99,10 @@ export default {
                   {{ item.contract }}
                 </td>
                 <td class="buk-py-1 buk-px-1 txt-center" :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
-                  {{ item.finan_worker }}
+                  {{ item.finan_employer }}
                 </td>
                 <td class="buk-py-1 buk-px-1 txt-center" :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
-                  {{ item.finan_employer }}
+                  {{ item.finan_worker }}
                 </td>
               </tr>
             </tbody>
