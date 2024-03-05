@@ -64,39 +64,7 @@ export default {
         <table class="wi-100 border-1-light rounded-8" style="border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-light-blue);">
           <thead class="bg-blue-buk wi-100">
             <tr>
-              <th class="buk-py-1 txt-white ">Depósito convenido</th>
-            </tr>
-          </thead>
-          <tr v-for="(item, index) in depositoConvenido" :key="item[index]">
-            <td class="buk-grid buk-py-1 buk-px-1 txt-blue-buk" >
-              <div class="buk-col-2 buk-col-md-7 buk-col-lg-8"> {{ item.group}} </div>
-              <div class="buk-col-2 buk-col-md-5 buk-col-lg-4 txt-right"> {{ item.amount }} </div>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class="buk-col buk-py-0">
-        <table class="wi-100 border-1-light rounded-8 " style="border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-light-blue);">
-          <thead class="bg-blue-buk wi-100">
-            <tr>
-              <th class="buk-py-1 txt-white">Ahorro previsional voluntario</th>
-            </tr>
-          </thead>
-          <tbody class="txt-blue-buk">
-            <tr v-for="(item, index) in ahorroPrevisionalVoluntario" :key="item[index]">
-              <td class="buk-grid buk-py-1 buk-px-1" :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
-                <div class="buk-col-2 buk-col-md-7 buk-col-lg-8">  {{ item.limit }}  </div>
-                <div class="buk-col-2 buk-col-md-5 buk-col-lg-4 txt-right">  {{ item.value }} </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="buk-col buk-py-0">
-        <table class="wi-100 border-1-light rounded-8" style="border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-light-blue);">
-          <thead class="bg-blue-buk wi-100">
-            <tr>
-              <th class="buk-py-1 txt-white">Distribución 7%</th>
+              <th class="buk-py-1 txt-white">Distribución del 7% de salud</th>
             </tr>
           </thead>
           <tbody class="txt-blue-buk">
@@ -108,7 +76,34 @@ export default {
             </tr>
           </tbody>
         </table>
+        <div class="buk-mt-2">
+          <span class="fw-semi-bold txt-grey" style="font-style: italic; font-size: 14px;">(*) Sólo aplica a empleadores que se encuentran afiliados a una Caja de Compensación, de lo contrario se debe cotizar el 7% a Fonasa.</span>
+        </div>
       </div>
+      <div class="buk-col buk-py-0">
+        <table class="wi-100 border-1-light rounded-8 " style="border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-light-blue);">
+          <thead class="bg-blue-buk wi-100">
+            <tr>
+              <th class="buk-py-1 txt-white">Topes APV y Depósito convenido </th>
+            </tr>
+          </thead>
+          <tbody class="txt-blue-buk">
+            <tr v-for="(item, index) in ahorroPrevisionalVoluntario" :key="item[index]">
+              <td class="buk-grid buk-py-1 buk-px-1" :class=" index % 2 !== 0 && index !== 0 ? 'bg-light-modules' : '' ">
+                <div class="buk-col-2 buk-col-md-7 buk-col-lg-8">APV {{ item.limit }}  </div>
+                <div class="buk-col-2 buk-col-md-5 buk-col-lg-4 txt-right">  {{ item.value }} </div>
+              </td>
+            </tr>
+            <tr v-for="(item, index) in depositoConvenido" :key="item[index]">
+              <td class="buk-grid buk-py-1 buk-px-1 txt-blue-buk" >
+                <div class="buk-col-2 buk-col-md-7 buk-col-lg-8">Depósito convenido {{ item.group}} </div>
+                <div class="buk-col-2 buk-col-md-5 buk-col-lg-4 txt-right"> {{ item.amount }} </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
       <div class="buk-col buk-py-0">
         <h3 class="buk-mb-2">Cotización Trabajos Pesados</h3>
         <div class="table-responsive">
