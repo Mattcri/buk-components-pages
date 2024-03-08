@@ -147,7 +147,7 @@ class CalcAguinaldo {
 
     let findRange = amount <= lastRange.upperLimit
       ? ISRdataMonth.table.find(item => this.betweenLimits(item.lowerLimit, item.upperLimit, amount, item))
-      : { lowerLimit: 324845.02, fixedFee: 101876.9, overExc: 35 }
+      : { lowerLimit: 375975.62, fixedFee: 117912.32, overExc: 35 }
     let lowerLimit = findRange.lowerLimit
     let overExc = findRange.overExc / 100
     let fixedFee = findRange.fixedFee

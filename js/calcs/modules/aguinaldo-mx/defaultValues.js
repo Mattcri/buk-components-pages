@@ -14,7 +14,7 @@ class DefaultValues {
   }
 
   UMA () {
-    return 103.74
+    return 108.57
   }
 }
 
