@@ -1,5 +1,5 @@
 import { peFormatter } from "../currencyPE.js"
-import { days360 } from "../days-360.js"
+import { days360, days360v2 } from "../days-360.js"
 
 class CalcHolidays {
   constructor({
@@ -45,7 +45,9 @@ class CalcHolidays {
     let DOMaccumHolidays = document.getElementById('accum-holidays')
     let DOMbalanceHolidays = document.getElementById('balance-holidays')
 
-    let countDays = days360(dateAdmission, dateRequest) + 1
+    console.log('days360v2: ', days360v2(dateAdmission, dateRequest))
+    // let countDays = days360(dateAdmission, dateRequest) + 1
+    let countDays = days360v2(dateAdmission, dateRequest)
     let calcDays = Number((countDays / 30 * 2.5).toFixed(2))
     this.accumHolidays = calcDays
     

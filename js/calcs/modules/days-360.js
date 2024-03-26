@@ -53,4 +53,22 @@ function days360(startDate, endDate, method) {
   return (years * 360) + (months * 30) + days;
 }
 
-export { days360 }
+function days360v2(startDate, endDate) {
+  let start = moment(startDate)
+  let end = moment(endDate)
+
+  let amountMonths = end.diff(start, 'months')
+  // let amountMonthsSub1 = prevMonth.diff(start, 'months')
+  console.log('cantidad de meses: ', amountMonths)
+  let subtractMonth = amountMonths > 0 ? amountMonths-- : amountMonths
+  console.log('cantidad de meses - 1: ',  amountMonths)
+  
+  start.add(subtractMonth, 'months')
+  let calcPreviousDays = subtractMonth * 30
+  let days = end.diff(start, 'days')
+
+  return days + calcPreviousDays
+
+}
+
+export { days360, days360v2 }
