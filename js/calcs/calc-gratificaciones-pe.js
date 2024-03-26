@@ -1,6 +1,6 @@
 import { data } from "./modules/gratificacion-pe/dataTable.js"
 import { Validator } from "./modules/gratificacion-pe/validations.js"
-import { days360 } from "./modules/days-360.js"
+import { days360, days360v2 } from "./modules/days-360.js"
 
 document.getElementById('gratf-period').addEventListener('change', () => {
   putMonthsPeriods()
@@ -93,7 +93,9 @@ class calcGratf {
     let endPeriod = new Date(`${period.endDevengue}T00:00:00`)
     let maxMonths = 6
 
-    let computableDays = days360(date, endPeriod) + 1
+    // let computableDays = days360(date, endPeriod) + 1
+    let computableDays = days360v2(date, endPeriod)
+    console.log('360v2: ', computableDays);
     let computableMonths = Math.floor(computableDays / 30)
     computableMonths >= maxMonths ? this.months = maxMonths : this.months = computableMonths
     DOMcomputableMonth.value = this.months
