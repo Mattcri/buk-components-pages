@@ -88,7 +88,8 @@
       <h2 class="txt-md-center buk-mb-6">Proyecto previred</h2>
 
       <div id="app">
-        <h2>Indicadores previsionales periodo {{ month }}</h2>
+        <h2>Para cotizaciones a pagar en {{ afterMonth }} </h2>
+        <p class="buk-mt-2">Remuneraciones correspondientes al mes de <b>{{ month }}</b></p>
         <div class="buk-grid buk-mt-1">
           <div class="buk-col buk-col-md-11 buk-col-lg-9">
             <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit
@@ -130,12 +131,18 @@
     </div>
   </section>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" crossorigin="anonymous"
+    referrerpolicy="no-referrer" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/es.min.js" crossorigin="anonymous"
+    referrerpolicy="no-referrer" defer></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
 
   <script type="module" defer>
     import tablesPrincipalData from '../js/vue/components/tablesPrincipalData.js'
     import tablesLegalData from '../js/vue/components/tablesLegalData.js'
     import tablesSecondData from '../js/vue/components/tablesSecondData.js'
+
+    moment.locale('es')
 
     const URL = 'https://assets.buktechnology.com/indicadores_previsionales/datos_indicadores_previsionales.json'
 
@@ -250,6 +257,12 @@
 
           return findLegalData 
 
+        },
+        afterMonth() {
+          let currentMonth = moment(this.month, "MMMM YYYY")
+          console.log('current', currentMonth);
+          let afterMonth = currentMonth.add(1, 'month').format("MMMM YYYY")
+          return afterMonth.charAt(0).toUpperCase() + afterMonth.slice(1)
         }
       },
       // beforeCreate() {
