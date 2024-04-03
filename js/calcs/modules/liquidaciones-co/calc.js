@@ -1,5 +1,8 @@
 import { coFormatter } from "../currencyCO.js"
 import { days360v2 } from "../days-360.js"
+import { NationalValuesCO } from "./nationalValues.js"
+
+const nvtCO = new NationalValuesCO()
 
 class CalcLiquidaciones {
   constructor({
@@ -53,6 +56,35 @@ class CalcLiquidaciones {
 
     this.initLayoff = daysLayoff
   }
+
+  rsltCompensationDays(salary, withdrawalReason, contractType, startContractDate, layoffDate, endFixedContractDate, daysNotWorked) {
+    if (withdrawalReason !== "option-3") {
+      this.compensationDays = 0
+      return
+    }
+
+    if (withdrawalReason === "option-3" && contractType === "fixed-term") {
+      this.compensationDays = days360v2(layoffDate, endFixedContractDate)
+      return
+    }
+
+    let countDays = days360v2(startContractDate, layoffDate) - daysNotWorked
+    console.log('días corridos: ', countDays)
+    let extraDays
+    let baseDays
+
+    if ( salary < (nvtCO.getSMLV() * 10) ) {
+      baseDays = 30
+      extraDays = countDays > 360 ? ((countDays - 360) * 20 / 360) : 0
+    } else {
+      baseDays = 20
+      extraDays = countDays > 360 ? ((countDays - 360) * 15 / 360) : 0
+    }
+
+    this.compensationDays = baseDays + extraDays
+    return
+  }
+
 
   logRslt () {
     console.log(this)

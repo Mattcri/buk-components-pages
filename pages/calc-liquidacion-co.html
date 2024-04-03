@@ -55,16 +55,16 @@
               <p class="buk-py-1">Datos Básicos</p>
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
-              <label for="" class="txt-blue-buk fw-semi-bold">Salario básico</label>
-              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+              <label for="salary" class="txt-blue-buk fw-semi-bold">Salario básico</label>
+              <input type="number" id="salary" min="0" placeholder="0" class="buk-mt-2">
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
               <label for="" class="txt-blue-buk fw-semi-bold">Días laburados al mes</label>
               <input type="number" min="0" placeholder="0" class="buk-mt-2" id="days-worked">
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
-              <label for="" class="txt-blue-buk fw-semi-bold">Días no laborados</label>
-              <input type="number" min="0" placeholder="0" class="buk-mt-2" id="days-not-worked">
+              <label for="days-not-worked" class="txt-blue-buk fw-semi-bold">Días no laborados</label>
+              <input type="number" id="days-not-worked" min="0" placeholder="0" class="buk-mt-2">
             </div>
             <div class="buk-col buk-col-md-6 buk-col-lg-6">
               <label for="" class="txt-blue-buk fw-semi-bold">Tipo de salario</label>
@@ -76,44 +76,44 @@
               </div>
             </div>
             <div class="buk-col buk-col-md-6 buk-col-lg-6">
-              <label for="" class="txt-blue-buk fw-semi-bold">Tipo de contrato</label>
+              <label for="contract-type" class="txt-blue-buk fw-semi-bold">Tipo de contrato</label>
               <div class="select-group buk-mt-1 wi-100">
-                <select id="" class="select-control">
-                  <option value="">Plazo fijo</option>
-                  <option value="">Indefinido</option>
-                  <option value="">Obra o labor contratada</option>
-                  <option value="">Aprendizaje</option>
+                <select id="contract-type" class="select-control">
+                  <option value="fixed-term">Plazo fijo</option>
+                  <option value="undefined">Indefinido</option>
+                  <option value="obra">Obra o labor contratada</option>
+                  <option value="learning">Aprendizaje</option>
                 </select>
               </div>
             </div>
             <div class="buk-col">
-              <label for="" class="txt-blue-buk fw-semi-bold">Motivo de retiro</label>
+              <label for="withdrawal-reason" class="txt-blue-buk fw-semi-bold">Motivo de retiro</label>
               <div class="select-group buk-mt-1 wi-100">
-                <select id="" class="select-control">
-                  <option value="">Renuncia voluntaria</option>
-                  <option value="">Terminación con justa causa</option>
-                  <option value="">Terminación sin justa causa</option>
-                  <option value="">Mutuo acuerdo</option>
-                  <option value="">Terminación obra o labor</option>
-                  <option value="">Vencimiento contrato fijo</option>
-                  <option value="">Terminación contrato aprendizaje</option>
+                <select id="withdrawal-reason" class="select-control">
+                  <option value="option-1">Renuncia voluntaria</option>
+                  <option value="option-2">Terminación con justa causa</option>
+                  <option value="option-3">Terminación sin justa causa</option>
+                  <option value="option-4">Mutuo acuerdo</option>
+                  <option value="option-5">Terminación obra o labor</option>
+                  <option value="option-6">Vencimiento contrato fijo</option>
+                  <option value="option-7">Terminación contrato aprendizaje</option>
                 </select>
               </div>
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
-              <label for="" class="txt-blue-buk fw-semi-bold">Fecha de ingreso</label>
+              <label for="start-contract-date" class="txt-blue-buk fw-semi-bold">Fecha de ingreso</label>
               <div class="date-group buk-mt-2">
                 <input type="date" name="" id="start-contract-date" class="pst-relative">
               </div>
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
-              <label for="" class="txt-blue-buk fw-semi-bold">Fecha de retiro</label>
+              <label for="layoff-date" class="txt-blue-buk fw-semi-bold">Fecha de retiro</label>
               <div class="date-group buk-mt-2">
                 <input type="date" name="" id="layoff-date" class="pst-relative">
               </div>
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
-              <label for="" class="txt-blue-buk fw-semi-bold">Fecha fin de contrato fijo</label>
+              <label for="end-contract-fixed-date" class="txt-blue-buk fw-semi-bold">Fecha fin de contrato fijo</label>
               <div class="date-group buk-mt-2">
                 <input type="date" name="" id="end-contract-fixed-date" class="pst-relative">
               </div>
