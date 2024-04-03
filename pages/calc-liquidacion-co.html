@@ -60,11 +60,11 @@
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
               <label for="" class="txt-blue-buk fw-semi-bold">Días laburados al mes</label>
-              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+              <input type="number" min="0" placeholder="0" class="buk-mt-2" id="days-worked">
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
               <label for="" class="txt-blue-buk fw-semi-bold">Días no laborados</label>
-              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+              <input type="number" min="0" placeholder="0" class="buk-mt-2" id="days-not-worked">
             </div>
             <div class="buk-col buk-col-md-6 buk-col-lg-6">
               <label for="" class="txt-blue-buk fw-semi-bold">Tipo de salario</label>
@@ -103,19 +103,19 @@
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
               <label for="" class="txt-blue-buk fw-semi-bold">Fecha de ingreso</label>
               <div class="date-group buk-mt-2">
-                <input type="date" name="" id="" class="pst-relative">
+                <input type="date" name="" id="start-contract-date" class="pst-relative">
               </div>
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
               <label for="" class="txt-blue-buk fw-semi-bold">Fecha de retiro</label>
               <div class="date-group buk-mt-2">
-                <input type="date" name="" id="" class="pst-relative">
+                <input type="date" name="" id="layoff-date" class="pst-relative">
               </div>
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
-              <label for="" class="txt-blue-buk fw-semi-bold">Fecha de contrato</label>
+              <label for="" class="txt-blue-buk fw-semi-bold">Fecha fin de contrato fijo</label>
               <div class="date-group buk-mt-2">
-                <input type="date" name="" id="" class="pst-relative">
+                <input type="date" name="" id="end-contract-fixed-date" class="pst-relative">
               </div>
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
@@ -147,7 +147,7 @@
               <input type="number" min="0" placeholder="0" class="buk-mt-2">
             </div>
             <div class="buk-col txt-center buk-mt-2">
-              <button class="btn btn--2b">Calcular tu liquidación</button>
+              <button class="btn btn--2b" id="btn-calculate">Calcular tu liquidación</button>
             </div>
 
           </div> <!-- end-calc -->
@@ -271,13 +271,15 @@
     referrerpolicy="no-referrer" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/es.min.js" crossorigin="anonymous"
     referrerpolicy="no-referrer" defer></script>
+  
+  <script src="../js/calcs/calc-liquidaciones-co.js" type="module" defer></script>
 
   <script>
-    const acc = [...document.getElementsByClassName("button-large ")];
+    const acc = [...document.querySelectorAll(".calc-detail .button-large")];
 
       acc.forEach(item => {
         item.addEventListener('click', function () {
-          let active = document.querySelector(".button-large.active")
+          let active = document.querySelector(".calc-detail .button-large.active")
           let mql = window.matchMedia('(min-width:1020px)')
           if (active && active != this && mql.matches) {
             active.classList.remove("active");
