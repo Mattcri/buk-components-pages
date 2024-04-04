@@ -59,19 +59,19 @@
               <input type="number" id="salary" min="0" placeholder="0" class="buk-mt-2">
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
-              <label for="" class="txt-blue-buk fw-semi-bold">Días laburados al mes</label>
-              <input type="number" min="0" placeholder="0" class="buk-mt-2" id="days-worked">
+              <label for="" class="txt-blue-buk fw-semi-bold">Días laborados al mes</label>
+              <input type="number" id="days-worked" min="0" placeholder="0" class="buk-mt-2">
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
               <label for="days-not-worked" class="txt-blue-buk fw-semi-bold">Días no laborados</label>
               <input type="number" id="days-not-worked" min="0" placeholder="0" class="buk-mt-2">
             </div>
             <div class="buk-col buk-col-md-6 buk-col-lg-6">
-              <label for="" class="txt-blue-buk fw-semi-bold">Tipo de salario</label>
+              <label for="salary-type" class="txt-blue-buk fw-semi-bold">Tipo de salario</label>
               <div class="select-group buk-mt-1 wi-100">
-                <select name="" id="" class="select-control">
-                  <option value="">Ordinario</option>
-                  <option value="">Integral</option>
+                <select name="salary-type" id="salary-type" class="select-control">
+                  <option value="ordinary">Ordinario</option>
+                  <option value="integral">Integral</option>
                 </select>
               </div>
             </div>
@@ -119,32 +119,32 @@
               </div>
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
-              <label for="" class="txt-blue-buk fw-semi-bold">Otros salariales</label>
-              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+              <label for="other-salaries" class="txt-blue-buk fw-semi-bold">Otros salariales</label>
+              <input type="number" id="other-salaries" min="0" placeholder="0" class="buk-mt-2">
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
-              <label for="" class="txt-blue-buk fw-semi-bold">Otros no salariales</label>
-              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+              <label for="other-not-salaries" class="txt-blue-buk fw-semi-bold">Otros no salariales</label>
+              <input type="number" id="other-not-salaries" min="0" placeholder="0" class="buk-mt-2">
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
-              <label for="" class="txt-blue-buk fw-semi-bold">Días pendientes de vacaciones</label>
-              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+              <label for="vacations-pending" class="txt-blue-buk fw-semi-bold">Días pendientes de vacaciones</label>
+              <input type="number" id="vacations-pending" min="0" placeholder="0" class="buk-mt-2">
             </div>
             <div
               class="buk-col ff-title calc-box__section txt-blue-buk rounded-23 rounded-md-49 buk-px-2 buk-px-lg-3 buk-my-2">
               <p class="buk-py-1">Base de liquidación</p>
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4 ai-self-md-end">
-              <label for="" class="txt-blue-buk fw-semi-bold">Suma de conceptos variables prima</label>
-              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+              <label for="sum-variables-concepts" class="txt-blue-buk fw-semi-bold">Suma de conceptos variables prima</label>
+              <input type="number" id="sum-variables-concepts-prima" min="0" placeholder="0" class="buk-mt-2">
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
-              <label for="" class="txt-blue-buk fw-semi-bold">Suma de conceptos variables cesantias</label>
-              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+              <label for="sum-variables-concepts-unemployment" class="txt-blue-buk fw-semi-bold">Suma de conceptos variables cesantias</label>
+              <input type="number" id="sum-variables-concepts-unemployment" min="0" placeholder="0" class="buk-mt-2">
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
-              <label for="" class="txt-blue-buk fw-semi-bold">Suma de conceptos variables vacaciones</label>
-              <input type="number" min="0" placeholder="0" class="buk-mt-2">
+              <label for="sum-variables-concepts-vacations" class="txt-blue-buk fw-semi-bold">Suma de conceptos variables vacaciones</label>
+              <input type="number" id="sum-variables-concepts-vacations" min="0" placeholder="0" class="buk-mt-2">
             </div>
             <div class="buk-col txt-center buk-mt-2">
               <button class="btn btn--2b" id="btn-calculate">Calcular tu liquidación</button>

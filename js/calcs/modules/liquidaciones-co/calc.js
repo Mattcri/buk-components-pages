@@ -57,7 +57,7 @@ class CalcLiquidaciones {
     this.initLayoff = daysLayoff
   }
 
-  rsltCompensationDays(salary, withdrawalReason, contractType, startContractDate, layoffDate, endFixedContractDate, daysNotWorked) {
+  rsltCompensationDays (salary, withdrawalReason, contractType, startContractDate, layoffDate, endFixedContractDate, daysNotWorked) {
     if (withdrawalReason !== "option-3") {
       this.compensationDays = 0
       return
@@ -81,8 +81,98 @@ class CalcLiquidaciones {
       extraDays = countDays > 360 ? ((countDays - 360) * 15 / 360) : 0
     }
 
-    this.compensationDays = baseDays + extraDays
+    this.compensationDays = Number((baseDays + extraDays).toFixed(2))
     return
+  }
+
+  devengosValues(salary, salaryType, contractType, otherConceptsPrima, otherUnemploymentConcepts, otherSalaries, otherNotSalaries, daysWorked, daysNotWorked, variablesVacationsConcepts, vacationsPending) {
+    let salaryCalc = this.salary(salary, daysWorked)
+    let prima = this.prima(salary, salaryType, contractType, otherConceptsPrima, otherSalaries)
+    let unemployment = this.unemployment(salary, salaryType, contractType, otherUnemploymentConcepts, otherSalaries, daysNotWorked)
+    let unemploymentInterest = this.unemploymentInterest(salary, salaryType, contractType, otherUnemploymentConcepts, otherSalaries, daysNotWorked)
+    let vacations = this.vacations(salary, contractType, variablesVacationsConcepts, otherSalaries, vacationsPending)
+    let compensation = this.compensation(salary, contractType, variablesVacationsConcepts, otherSalaries)
+    let totalDevengos = salaryCalc + prima + unemployment + unemploymentInterest + vacations + compensation + otherSalaries + otherNotSalaries
+
+    this.devengos = {
+      salaryCalc,
+      prima,
+      unemployment,
+      unemploymentInterest,
+      vacations,
+      compensation,
+      totalDevengos
+    }
+  }
+
+  salary (salary, daysWorked) {
+    return Number((salary / 30 * daysWorked).toFixed(0))
+  }
+
+  prima(salary, salaryType, contractType, otherConceptsPrima, otherSalaries) {
+    if (salaryType === 'integral') {
+      return 0
+    }
+
+    if (contractType === 'learning') {
+      return 0
+    }
+
+    let calc = (salary + ((otherConceptsPrima + otherSalaries) / this.initPrima * 30)) * this.initPrima / 360
+
+    return Number(calc.toFixed(0))
+  }
+
+  unemployment(salary, salaryType, contractType, otherUnemploymentConcepts, otherSalaries, daysNotWorked) {
+    if (salaryType === 'integral') {
+      return 0
+    }
+
+    if (contractType === 'learning') {
+      return 0
+    }
+
+    let calcUnemployment = (salary + ((otherUnemploymentConcepts + otherSalaries) / (this.initLayoff + daysNotWorked) * 30)) * this.initLayoff / 360
+
+    return Number(calcUnemployment.toFixed(0))
+  }
+
+  unemploymentInterest(salary, salaryType, contractType, otherUnemploymentConcepts, otherSalaries, daysNotWorked) {
+    if (salaryType === 'integral') {
+      return 0
+    }
+
+    if (contractType === 'learning') {
+      return 0
+    }
+
+    let unemployment = this.unemployment(salary, salaryType, contractType, otherUnemploymentConcepts, otherSalaries, daysNotWorked)
+    let calcInterest = (unemployment * (this.initLayoff + daysNotWorked) * 0.12) / 360
+
+    return Number(calcInterest.toFixed(0))
+  }
+
+  vacations(salary, contractType, variablesVacationsConcepts, otherSalaries, vacationsPending) {
+    if (contractType === 'learning') {
+      return 0
+    }
+
+    let calcVacations = (salary + (variablesVacationsConcepts + otherSalaries) / 12) / 30 * vacationsPending
+
+    return Number(calcVacations.toFixed(0))
+  }
+
+  compensation (salary, contractType, variablesVacationsConcepts, otherSalaries) {
+    if (contractType === 'learning') {
+      return 0
+    }
+
+    console.log('compensation 1: ', (salary + (variablesVacationsConcepts + otherSalaries) / 12))
+    console.log('compensation 2: ', ((salary + (variablesVacationsConcepts + otherSalaries) / 12) / 30))
+
+    let calcCompensation = (salary + (variablesVacationsConcepts + otherSalaries) / 12) / 30 * this.compensationDays
+
+    return Number(calcCompensation.toFixed(0))
   }
 
 
