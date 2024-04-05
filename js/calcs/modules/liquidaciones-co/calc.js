@@ -167,12 +167,47 @@ class CalcLiquidaciones {
       return 0
     }
 
-    console.log('compensation 1: ', (salary + (variablesVacationsConcepts + otherSalaries) / 12))
-    console.log('compensation 2: ', ((salary + (variablesVacationsConcepts + otherSalaries) / 12) / 30))
-
     let calcCompensation = (salary + (variablesVacationsConcepts + otherSalaries) / 12) / 30 * this.compensationDays
 
     return Number(calcCompensation.toFixed(0))
+  }
+
+  legalDiscounts(salary, salaryType, contractType, otherSalaries, otherNotSalaries) {
+    let health = this.healthAndPension(salaryType, contractType, otherSalaries, otherNotSalaries)
+    let pension = this.healthAndPension(salaryType, contractType, otherSalaries, otherNotSalaries)
+    let rtCompensation = this.witholdingCompensation(salary)
+
+    this.discounts = {
+      health,
+      pension,
+      rtCompensation
+    }
+  }
+
+  healthAndPension(salaryType, contractType, otherSalaries, otherNotSalaries) {
+    if (contractType === 'learning') {
+      return 0
+    }
+
+    let sumSalaries = this.devengos.salaryCalc + otherSalaries + otherNotSalaries
+    let discounts = 0
+
+    if (sumSalaries * 0.4 < otherNotSalaries) {
+      discounts = salaryType === 'integral' ? (sumSalaries - (sumSalaries * 0.4)) * 0.7 : sumSalaries - (sumSalaries * 0.4)
+    } else {
+      discounts = salaryType === 'integral' ? (this.devengos.salaryCalc + otherSalaries) * 0.7 : this.devengos.salaryCalc + otherSalaries
+    }
+
+    return Number((Math.min(discounts, nvtCO.getSMLV() * 25) * 0.04).toFixed(0))
+  }
+
+  witholdingCompensation (salary) {
+    let compensation = this.devengos.compensation
+    if (salary > (nvtCO.getUVT() * 204)) {
+      return (compensation - (compensation * 0.25)) * 0.2
+    } else {
+      return 0
+    }
   }
 
 
