@@ -6,6 +6,10 @@ class NationalValuesCO {
   getUVT() {
     return 47065
   }
+
+  maxSocialSecurity() {
+    return Number(this.getSMLV() * 25)
+  }
 }
 
 export { NationalValuesCO }

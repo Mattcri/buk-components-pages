@@ -1,6 +1,7 @@
 import { coFormatter } from "../currencyCO.js"
 import { days360v2 } from "../days-360.js"
 import { NationalValuesCO } from "./nationalValues.js"
+import { upperLimitTable } from "./dataTables.js"
 
 const nvtCO = new NationalValuesCO()
 
@@ -10,6 +11,7 @@ class CalcLiquidaciones {
     initPrima = 0,
     initLayoff = 0,
     compensationDays = 0,
+    ibc = 0,
     devengos = null,
     discounts = null
   }) {
@@ -17,6 +19,7 @@ class CalcLiquidaciones {
     this.initPrima = initPrima
     this.initLayoff = initLayoff
     this.compensationDays = compensationDays
+    this.ibc = ibc
     this.devengos = devengos
     this.discounts = discounts
   }
@@ -118,9 +121,9 @@ class CalcLiquidaciones {
       return 0
     }
 
-    let calc = (salary + ((otherConceptsPrima + otherSalaries) / this.initPrima * 30)) * this.initPrima / 360
+    let calcPrima = (salary + ((otherConceptsPrima + otherSalaries) / this.initPrima * 30)) * this.initPrima / 360
 
-    return Number(calc.toFixed(0))
+    return Number(calcPrima.toFixed(0))
   }
 
   unemployment(salary, salaryType, contractType, otherUnemploymentConcepts, otherSalaries, daysNotWorked) {
@@ -172,15 +175,38 @@ class CalcLiquidaciones {
     return Number(calcCompensation.toFixed(0))
   }
 
-  legalDiscounts(salary, salaryType, contractType, otherSalaries, otherNotSalaries) {
+  ibcSocialSecurity(salary, salaryType, otherSalaries, otherNotSalaries) {
+    let sumSalaries = salary + otherSalaries + otherNotSalaries
+    let maxAmount = nvtCO.maxSocialSecurity()
+    let fortyPct = Number((sumSalaries * 0.4).toFixed(0))
+    let excessLaw1393 = (otherNotSalaries - fortyPct) > 0
+      ? Number(otherNotSalaries - fortyPct)
+      : 0
+    let calcIbc = salaryType === 'integral'
+      ? Number((((sumSalaries * 0.7) + excessLaw1393)).toFixed(0))
+      : Number(salary + otherSalaries + excessLaw1393)
+
+    console.log('40%: ', fortyPct)
+    console.log('excess: ', excessLaw1393)
+
+    if (calcIbc <= maxAmount) {
+      this.ibc = calcIbc
+    } else {
+      this.ibc = maxAmount
+    }
+  }
+
+  discountsValues(salary, salaryType, contractType, otherSalaries, otherNotSalaries) {
     let health = this.healthAndPension(salaryType, contractType, otherSalaries, otherNotSalaries)
     let pension = this.healthAndPension(salaryType, contractType, otherSalaries, otherNotSalaries)
     let rtCompensation = this.witholdingCompensation(salary)
+    let solidarityPlusSubsistence = this.solidarityAndSubsistence()
 
     this.discounts = {
       health,
       pension,
-      rtCompensation
+      rtCompensation,
+      solidarityPlusSubsistence
     }
   }
 
@@ -204,12 +230,35 @@ class CalcLiquidaciones {
   witholdingCompensation (salary) {
     let compensation = this.devengos.compensation
     if (salary > (nvtCO.getUVT() * 204)) {
-      return (compensation - (compensation * 0.25)) * 0.2
+      return Number(((compensation - (compensation * 0.25)) * 0.2).toFixed(0))
     } else {
       return 0
     }
   }
 
+  solidarityAndSubsistence() {
+    let ibc = this.ibc
+    let lastLimit = upperLimitTable[upperLimitTable.length - 1].limit
+    let firstLimit = upperLimitTable[0].limit
+    let range = ibc < lastLimit
+      ? upperLimitTable.find(item => this.searchUpperLimit(item.limit, ibc, item))
+      : { 'limit': ibc, 'pct': 2, 'solidarity': 0.5, 'subsistence': 1.5 }
+    console.log('rango', range)
+    let calcSolidarity = ibc > firstLimit 
+                          ? ibc * (range.solidarity / 100)
+                          : 0
+    let calcSubsistence = ibc > firstLimit 
+                            ? ibc * (range.subsistence / 100)
+                            : 0
+
+    return Number((calcSolidarity + calcSubsistence).toFixed(0))
+  }
+
+  searchUpperLimit(limit, ibc, obj) {
+    if (ibc <= limit) {
+      return obj
+    }
+  }
 
   logRslt () {
     console.log(this)
@@ -217,4 +266,4 @@ class CalcLiquidaciones {
 
 }
 
-export { CalcLiquidaciones }
+export { CalcLiquidaciones, nvtCO }

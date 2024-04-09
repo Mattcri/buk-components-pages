@@ -26,8 +26,9 @@ class Director {
     calc.rsltInitPrima(layoffDate)
     calc.rsltInitLayoff(layoffDate, daysNotWorked)
     calc.rsltCompensationDays(salary, withdrawalReason, contractType, startContractDate, layoffDate, endFixedDate, daysNotWorked)
+    calc.ibcSocialSecurity(salary, salaryType, otherSalaries, otherNotSalaries)
     calc.devengosValues(salary, salaryType, contractType, otherConceptsPrima, otherUnemploymentConcepts, otherSalaries, otherNotSalaries, daysWorked, daysNotWorked, variablesVacationsConcepts, vacationsPending)
-    calc.legalDiscounts(salary, salaryType, contractType, otherSalaries, otherNotSalaries)
+    calc.discountsValues(salary, salaryType, contractType, otherSalaries, otherNotSalaries)
     calc.logRslt()
 
 
