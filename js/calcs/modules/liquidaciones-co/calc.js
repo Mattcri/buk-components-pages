@@ -1,7 +1,7 @@
 import { coFormatter } from "../currencyCO.js"
 import { days360v2 } from "../days-360.js"
 import { NationalValuesCO } from "./nationalValues.js"
-import { upperLimitTable } from "./dataTables.js"
+import { upperLimitTable, retentionTable } from "./dataTables.js"
 
 const nvtCO = new NationalValuesCO()
 
@@ -196,17 +196,23 @@ class CalcLiquidaciones {
     }
   }
 
-  discountsValues(salary, salaryType, contractType, otherSalaries, otherNotSalaries) {
+  discountsValues(salary, salaryType, contractType, otherSalaries, otherNotSalaries, otherDiscounts) {
     let health = this.healthAndPension(salaryType, contractType, otherSalaries, otherNotSalaries)
     let pension = this.healthAndPension(salaryType, contractType, otherSalaries, otherNotSalaries)
     let rtCompensation = this.witholdingCompensation(salary)
     let solidarityPlusSubsistence = this.solidarityAndSubsistence()
+    let source = this.holdingSource(salaryType, contractType, otherSalaries, otherNotSalaries)
+    let totalDiscounts = health + pension + rtCompensation + solidarityPlusSubsistence + source + otherDiscounts
+
+    console.log('holding source: ', source)
 
     this.discounts = {
       health,
       pension,
       rtCompensation,
-      solidarityPlusSubsistence
+      solidarityPlusSubsistence,
+      source,
+      totalDiscounts
     }
   }
 
@@ -243,7 +249,6 @@ class CalcLiquidaciones {
     let range = ibc < lastLimit
       ? upperLimitTable.find(item => this.searchUpperLimit(item.limit, ibc, item))
       : { 'limit': ibc, 'pct': 2, 'solidarity': 0.5, 'subsistence': 1.5 }
-    console.log('rango', range)
     let calcSolidarity = ibc > firstLimit 
                           ? ibc * (range.solidarity / 100)
                           : 0
@@ -257,6 +262,32 @@ class CalcLiquidaciones {
   searchUpperLimit(limit, ibc, obj) {
     if (ibc <= limit) {
       return obj
+    }
+  }
+
+  holdingSource(salaryType, contractType, otherSalaries, otherNotSalaries) {
+    let salary = this.devengos.salaryCalc
+    let vacations = this.devengos.vacations
+    let healthPension = this.healthAndPension(salaryType, contractType, otherSalaries, otherNotSalaries) * 2 
+    let solidaritySubsistence = this.solidarityAndSubsistence()
+    let uvt = nvtCO.getUVT()
+    let sumValues = (salary + otherSalaries + otherNotSalaries + vacations)
+    let calcBase = sumValues - (healthPension + solidaritySubsistence) - ((sumValues - (healthPension + solidaritySubsistence)) * 0.25)
+    let calcTaxRange = calcBase / uvt
+
+    const range = retentionTable.find(item => calcTaxRange >= item.start && calcTaxRange < item.end)
+
+    // console.log('degub 0.25: ', ((sumValues - (healthPension + solidaritySubsistence)) * 0.25)); // check
+    // console.log('debug sumValues: ', sumValues - (healthPension + solidaritySubsistence));
+    // console.log('range source: ', range)
+    // console.log('calc base source: ', calcBase)
+    // console.log('calc tax range: ', calcTaxRange)
+
+    if (range !== undefined) {
+      let calcSource = ((calcTaxRange - range.start) * range.factor) + range.basePay
+      return Number((calcSource * uvt).toFixed(0))
+    } else {
+      return 0
     }
   }
 

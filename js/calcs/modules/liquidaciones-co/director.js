@@ -21,6 +21,7 @@ class Director {
     let otherConceptsPrima = Number(document.getElementById('sum-variables-concepts-prima').value)
     let otherUnemploymentConcepts = Number(document.getElementById('sum-variables-concepts-unemployment').value)
     let variablesVacationsConcepts = Number(document.getElementById('sum-variables-concepts-vacations').value)
+    let otherDiscounts = Number(document.getElementById('other-discounts').value)
 
     calc.rsltLiquidationDays(startContractDate, layoffDate, daysNotWorked)
     calc.rsltInitPrima(layoffDate)
@@ -28,7 +29,7 @@ class Director {
     calc.rsltCompensationDays(salary, withdrawalReason, contractType, startContractDate, layoffDate, endFixedDate, daysNotWorked)
     calc.ibcSocialSecurity(salary, salaryType, otherSalaries, otherNotSalaries)
     calc.devengosValues(salary, salaryType, contractType, otherConceptsPrima, otherUnemploymentConcepts, otherSalaries, otherNotSalaries, daysWorked, daysNotWorked, variablesVacationsConcepts, vacationsPending)
-    calc.discountsValues(salary, salaryType, contractType, otherSalaries, otherNotSalaries)
+    calc.discountsValues(salary, salaryType, contractType, otherSalaries, otherNotSalaries, otherDiscounts)
     calc.logRslt()
 
 
