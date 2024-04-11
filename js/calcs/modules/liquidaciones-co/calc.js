@@ -12,6 +12,7 @@ class CalcLiquidaciones {
     initLayoff = 0,
     compensationDays = 0,
     ibc = 0,
+    totalToPay = 0,
     devengos = null,
     discounts = null
   }) {
@@ -20,6 +21,7 @@ class CalcLiquidaciones {
     this.initLayoff = initLayoff
     this.compensationDays = compensationDays
     this.ibc = ibc
+    this.totalToPay = totalToPay
     this.devengos = devengos
     this.discounts = discounts
   }
@@ -170,7 +172,7 @@ class CalcLiquidaciones {
       return 0
     }
 
-    let calcCompensation = (salary + (variablesVacationsConcepts + otherSalaries) / 12) / 30 * this.compensationDays
+    let calcCompensation = ((salary + (variablesVacationsConcepts + otherSalaries) / 12) / 30) * this.compensationDays
 
     return Number(calcCompensation.toFixed(0))
   }
@@ -186,8 +188,8 @@ class CalcLiquidaciones {
       ? Number((((sumSalaries * 0.7) + excessLaw1393)).toFixed(0))
       : Number(salary + otherSalaries + excessLaw1393)
 
-    console.log('40%: ', fortyPct)
-    console.log('excess: ', excessLaw1393)
+    // console.log('40%: ', fortyPct)
+    // console.log('excess: ', excessLaw1393)
 
     if (calcIbc <= maxAmount) {
       this.ibc = calcIbc
@@ -204,7 +206,7 @@ class CalcLiquidaciones {
     let source = this.holdingSource(salaryType, contractType, otherSalaries, otherNotSalaries)
     let totalDiscounts = health + pension + rtCompensation + solidarityPlusSubsistence + source + otherDiscounts
 
-    console.log('holding source: ', source)
+    // console.log('holding source: ', source)
 
     this.discounts = {
       health,
@@ -289,6 +291,13 @@ class CalcLiquidaciones {
     } else {
       return 0
     }
+  }
+
+  rsltTotal () {
+    let devengos = this.devengos.totalDevengos
+    let discounts = this.discounts.totalDiscounts
+    let totalToPay = devengos - discounts
+    this.totalToPay = totalToPay
   }
 
   logRslt () {
