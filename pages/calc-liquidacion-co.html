@@ -56,11 +56,11 @@
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
               <label for="salary" class="txt-blue-buk fw-semi-bold">Salario básico</label>
-              <input type="number" id="salary" min="0" placeholder="0" class="buk-mt-2">
+              <input type="number" id="salary" min="0" placeholder="0" required class="buk-mt-2">
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
               <label for="" class="txt-blue-buk fw-semi-bold">Días laborados al mes</label>
-              <input type="number" id="days-worked" min="0" placeholder="0" class="buk-mt-2">
+              <input type="number" id="days-worked" min="0" placeholder="0" required class="buk-mt-2">
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
               <label for="days-not-worked" class="txt-blue-buk fw-semi-bold">Días no laborados</label>
@@ -103,19 +103,19 @@
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
               <label for="start-contract-date" class="txt-blue-buk fw-semi-bold">Fecha de ingreso</label>
               <div class="date-group buk-mt-2">
-                <input type="date" name="" id="start-contract-date" class="pst-relative">
+                <input type="date" name="" id="start-contract-date" required class="pst-relative">
               </div>
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
               <label for="layoff-date" class="txt-blue-buk fw-semi-bold">Fecha de retiro</label>
               <div class="date-group buk-mt-2">
-                <input type="date" name="" id="layoff-date" class="pst-relative">
+                <input type="date" name="" id="layoff-date" required class="pst-relative">
               </div>
             </div>
-            <div class="buk-col buk-col-md-4 buk-col-lg-4">
+            <div class="buk-col buk-col-md-4 buk-col-lg-4" data-condition="fixed-term">
               <label for="end-contract-fixed-date" class="txt-blue-buk fw-semi-bold">Fecha fin de contrato fijo</label>
               <div class="date-group buk-mt-2">
-                <input type="date" name="" id="end-contract-fixed-date" class="pst-relative">
+                <input type="date" name="" id="end-contract-fixed-date" required class="pst-relative">
               </div>
             </div>
             <div class="buk-col buk-col-md-4 buk-col-lg-4">
@@ -150,29 +150,30 @@
               <label for="sum-variables-concepts-vacations" class="txt-blue-buk fw-semi-bold">Suma de conceptos variables vacaciones</label>
               <input type="number" id="sum-variables-concepts-vacations" min="0" placeholder="0" class="buk-mt-2">
             </div>
-            <div class="buk-col txt-center buk-mt-2">
+            <div class="buk-col txt-center buk-mt-2" id="calc-results">
               <button class="btn btn--2b" id="btn-calculate">Calcular tu liquidación</button>
             </div>
 
           </div> <!-- end-calc -->
 
-          <div class="buk-my-4 buk-p-2 buk-p-md-3 bg-gradient-blue rounded-16">
+          <div class=" buk-my-5 buk-p-2 buk-p-md-3 bg-gradient-blue rounded-16" >
             <h2 class="txt-center txt-white h3 buk-mb-4">El valor de tu liquidación</h2>
             <div class="buk-grid">
               <div class="buk-col buk-md-4 buk-col-lg-4 buk-px-2 rounded-16 bg-white txt-center">
                 <p class="p2 fw-semi-bold">Total Devengados</p>
-                <p class="h5 ff-title txt-blue-buk fw-bold">$0</p>
+                <p class="h5 ff-title txt-blue-buk fw-bold" id="lbl-total-devengos">$0</p>
               </div>
               <div class="buk-col buk-md-4 buk-col-lg-4 buk-px-2 rounded-16 bg-white txt-center">
                 <p class="p2 fw-semi-bold">Total Descuentos</p>
-                <p class="h5 ff-title txt-blue-buk fw-bold">$0</p>
+                <p class="h5 ff-title txt-blue-buk fw-bold" id="lbl-total-discounts">$0</p>
               </div>
               <div class="buk-col buk-md-4 buk-col-lg-4 buk-px-2 rounded-16 bg-white txt-center">
                 <p class="p2 fw-semi-bold">Valor a Pagar</p>
-                <p class="h5 ff-title txt-blue-buk fw-bold">$0</p>
+                <p class="h5 ff-title txt-blue-buk fw-bold" id="lbl-total-pay">$0</p>
               </div>
             </div>
           </div>
+          
 
           <div class="border-1-light rounded-16 calc-detail">
             <button class="button-large button-large__color">
@@ -189,19 +190,19 @@
               <div class="buk-my-11px buk-px-2 buk-px-md-3 buk-grid gap--8 gap-md--16">
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
                   <p>Fecha inicio prima</p>
-                  <p class="txt-blue-buk">42</p>
+                  <p class="txt-blue-buk" id="lbl-init-prima">42</p>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
                   <p>Fecha inicio cesantías</p>
-                  <p class="txt-blue-buk">219</p>
+                  <p class="txt-blue-buk" id="lbl-init-unemployment">219</p>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
                   <p>Días liquidación</p>
-                  <p class="txt-blue-buk">505</p>
+                  <p class="txt-blue-buk" id="lbl-days-liquidation">505</p>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
                   <p>Días indemnización</p>
-                  <p class="txt-blue-buk">79,00</p>
+                  <p class="txt-blue-buk" id="lbl-days-compensation">79,00</p>
                 </div>
               </div>
           
@@ -214,51 +215,51 @@
               <div class="buk-my-11px buk-px-2 buk-px-md-3 buk-grid gap--8 gap-md--16">
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
                   <p>Salario</p>
-                  <p class="txt-blue-buk">$0</p>
+                  <p class="txt-blue-buk" id="lbl-salary">$0</p>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
                   <p>Prima</p>
-                  <p class="txt-blue-buk">$0</p>
+                  <p class="txt-blue-buk" id="lbl-prima">$0</p>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
                   <p>Cesantias</p>
-                  <p class="txt-blue-buk">$0</p>
+                  <p class="txt-blue-buk" id="lbl-unemployment">$0</p>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
                   <p>Intereses cesantias</p>
-                  <p class="txt-blue-buk">$0</p>
+                  <p class="txt-blue-buk" id="lbl-unemployment-interest">$0</p>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
                   <p>Vacaciones</p>
-                  <p class="txt-blue-buk">$0</p>
+                  <p class="txt-blue-buk" id="lbl-vacations">$0</p>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
-                  <p>Descuento salud</p>
-                  <p class="txt-blue-buk">$0</p>
-                </div>
-                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
-                  <p>Descuento pensión</p>
-                  <p class="txt-blue-buk">$0</p>
-                </div>
-                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
-                  <p>Fondo solidaridad</p>
-                  <p class="txt-blue-buk">$0</p>
-                </div>
-                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
-                  <p>Otro descuentos</p>
-                  <p class="txt-blue-buk">$0</p>
-                </div>
-                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
-                  <p>Retención en la fuente</p>
-                  <p class="txt-blue-buk">$0</p>
-                </div>
-                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
                   <p>Indemnización</p>
-                  <p class="txt-blue-buk">$0</p>
+                  <p class="txt-blue-buk" id="lbl-compensation">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
+                  <p>Descuento salud</p>
+                  <p class="txt-blue-buk" id="lbl-health">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between ">
+                  <p>Descuento pensión</p>
+                  <p class="txt-blue-buk" id="lbl-pension">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
+                  <p>Solidaridad y subsistencia</p>
+                  <p class="txt-blue-buk" id="lbl-solidarity-subsitence">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between ">
+                  <p>Otros descuentos</p>
+                  <p class="txt-blue-buk" id="lbl-other-discounts">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
+                  <p>Retención en la fuente</p>
+                  <p class="txt-blue-buk" id="lbl-source">$0</p>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
                   <p>Retención Indemnización</p>
-                  <p class="txt-blue-buk">$0</p>
+                  <p class="txt-blue-buk" id="lbl-holding-compensation">$0</p>
                 </div>
               </div>
           
@@ -266,6 +267,30 @@
           </div><!--  {# fin de contenido desplegable #} -->
 
         </div> <!-- end-col-10 -->
+
+      </div>
+    </div>
+  </section>
+
+  <section class="buk-modal  buk-modal--control-errs">
+    <div class="buk-modal__dialog">
+      <div class="buk-modal__content">
+  
+        <div class="buk-modal__header buk-pb-2">
+          <h5>Encontramos algunos errores</h5>
+          <button id="close-dialog-errs">
+            <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.40723 15.0015L15.8423 1.5665" stroke="#2f48a7" stroke-width="2.3" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M2.40723 1.5665L15.8423 15.0015" stroke="#2f48a7" stroke-width="2.3" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+        <div class="buk-modal__body">
+          <p class="buk-mt-2">Por favor revisa los siguientes puntos antes de calcular una liquidación:</p>
+          <ul id="errors-list" class="buk-my-1"></ul>
+        </div>
 
       </div>
     </div>

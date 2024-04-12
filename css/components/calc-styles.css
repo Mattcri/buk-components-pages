@@ -175,6 +175,10 @@ input[type=radio] {
   }
 }
 
+.border-error {
+  border-color: var(--color-error) !important;
+}
+
 
 /*{# styles tooltip#}*/
 

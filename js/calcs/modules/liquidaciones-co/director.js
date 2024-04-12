@@ -1,6 +1,8 @@
 import { CalcLiquidaciones } from "./calc.js"
+import { Validator } from "./validations.js"
 
 const calc = new CalcLiquidaciones({})
+const validate = new Validator()
 
 class Director {
 
@@ -23,18 +25,32 @@ class Director {
     let variablesVacationsConcepts = Number(document.getElementById('sum-variables-concepts-vacations').value)
     let otherDiscounts = Number(document.getElementById('other-discounts').value)
 
-    calc.rsltLiquidationDays(startContractDate, layoffDate, daysNotWorked)
-    calc.rsltInitPrima(layoffDate)
-    calc.rsltInitLayoff(layoffDate, daysNotWorked)
-    calc.rsltCompensationDays(salary, withdrawalReason, contractType, startContractDate, layoffDate, endFixedDate, daysNotWorked)
-    calc.ibcSocialSecurity(salary, salaryType, otherSalaries, otherNotSalaries)
-    calc.devengosValues(salary, salaryType, contractType, otherConceptsPrima, otherUnemploymentConcepts, otherSalaries, otherNotSalaries, daysWorked, daysNotWorked, variablesVacationsConcepts, vacationsPending)
-    calc.discountsValues(salary, salaryType, contractType, otherSalaries, otherNotSalaries, otherDiscounts)
-    calc.logRslt()
+    validate.salaryNotEmpty(salary)
+    validate.salaryIsValid(salary)
+    validate.daysWorkedInMonth(daysWorked)
+    validate.datesIsNotEmpty(startContractDate, layoffDate)
+    validate.dateAdmissionIsBefore(startContractDate, layoffDate)
+    validate.dateEndContractIsAfter(startContractDate, layoffDate)
+    validate.dateEndContractFixTermNotEmpty(endFixedDate, withdrawalReason, contractType)
+    validate.dateEndContractFixTermIsAfterAdmission(startContractDate, endFixedDate, withdrawalReason, contractType)
+    validate.raiseUpModal()
+    validate.resetValuesIfFindErrors()
 
+    if (validate.errorsList.length === 0) {
+      calc.rsltLiquidationDays(startContractDate, layoffDate, daysNotWorked)
+      calc.rsltInitPrima(layoffDate)
+      calc.rsltInitLayoff(layoffDate, daysNotWorked)
+      calc.rsltCompensationDays(salary, withdrawalReason, contractType, startContractDate, layoffDate, endFixedDate, daysNotWorked)
+      calc.ibcSocialSecurity(salary, salaryType, otherSalaries, otherNotSalaries)
+      calc.devengosValues(salary, salaryType, contractType, otherConceptsPrima, otherUnemploymentConcepts, otherSalaries, otherNotSalaries, daysWorked, daysNotWorked, variablesVacationsConcepts, vacationsPending)
+      calc.discountsValues(salary, salaryType, contractType, otherSalaries, otherNotSalaries, otherDiscounts)
+      calc.rsltTotal()
+      calc.printInScreen(otherDiscounts)
+      calc.logRslt()
+    }
 
   }
 
 }
 
-export { Director }
+export { Director, validate }

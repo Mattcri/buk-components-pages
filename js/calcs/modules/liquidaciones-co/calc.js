@@ -47,8 +47,8 @@ class CalcLiquidaciones {
 
     let prima = days360v2(datePrima, layoffDate) + 1
 
-    console.log(datePrima.format("DD/MM/YYYY"))
-    console.log('prima: ', prima);
+    // console.log(datePrima.format("DD/MM/YYYY"))
+    // console.log('prima: ', prima);
 
     this.initPrima = prima
   }
@@ -298,6 +298,59 @@ class CalcLiquidaciones {
     let discounts = this.discounts.totalDiscounts
     let totalToPay = devengos - discounts
     this.totalToPay = totalToPay
+  }
+
+  printInScreen (otherDisc) {
+    let totalDevengos = document.getElementById('lbl-total-devengos')
+    let totalDiscounts = document.getElementById('lbl-total-discounts')
+    let totalToPay = document.getElementById('lbl-total-pay')
+
+    let initPrima = document.getElementById('lbl-init-prima')
+    let initUnemployment = document.getElementById('lbl-init-unemployment')
+    let daysLiquidation = document.getElementById('lbl-days-liquidation')
+    let daysCompensation = document.getElementById('lbl-days-compensation')
+
+    let salary = document.getElementById('lbl-salary')
+    let prima = document.getElementById('lbl-prima')
+    let unemployment = document.getElementById('lbl-unemployment')
+    let unemploymentInterest = document.getElementById('lbl-unemployment-interest')
+    let vacations = document.getElementById('lbl-vacations')
+    let compensation = document.getElementById('lbl-compensation')
+    let health = document.getElementById('lbl-health')
+    let pension = document.getElementById('lbl-pension')
+    let solidarityAndSubsistence = document.getElementById('lbl-solidarity-subsitence')
+    let otherDiscounts = document.getElementById('lbl-other-discounts')
+    let source = document.getElementById('lbl-source')
+    let holdingCompensation = document.getElementById('lbl-holding-compensation')
+
+    this.display('currency', totalDevengos, this.devengos.totalDevengos)
+    this.display('currency', totalDiscounts, this.discounts.totalDiscounts)
+    this.display('currency', totalToPay, this.totalToPay)
+    this.display('txt', initPrima, this.initPrima)
+    this.display('txt', initUnemployment, this.initLayoff)
+    this.display('txt', daysLiquidation, this.liquidationsDays)
+    this.display('txt', daysCompensation, this.compensationDays)
+    this.display('currency', salary, this.devengos.salaryCalc)
+    this.display('currency', prima, this.devengos.prima)
+    this.display('currency', unemployment, this.devengos.unemployment)
+    this.display('currency', unemploymentInterest, this.devengos.unemploymentInterest)
+    this.display('currency', vacations, this.devengos.vacations)
+    this.display('currency', compensation, this.devengos.compensation)
+    this.display('currency', health, this.discounts.health)
+    this.display('currency', pension, this.discounts.pension)
+    this.display('currency', solidarityAndSubsistence, this.discounts.solidarityPlusSubsistence)
+    this.display('currency', otherDiscounts, otherDisc)
+    this.display('currency', source, this.discounts.source)
+    this.display('currency', holdingCompensation, this.discounts.rtCompensation)
+
+  }
+
+  display(type, element, amount) {
+    if (type == 'currency') {
+      element.textContent = coFormatter.format(amount)
+    } else if (type == 'txt') {
+      element.textContent = amount
+    }
   }
 
   logRslt () {
