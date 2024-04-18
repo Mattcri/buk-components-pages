@@ -7,6 +7,8 @@ const validate = new Validator()
 class Director {
 
   calculateLiquidation () {
+    const sectionResults = document.getElementById('calc-results')
+
     let salary = Number(document.getElementById('salary').value)
     let salaryType = document.getElementById('salary-type').value
     let contractType = document.getElementById('contract-type').value
@@ -37,6 +39,7 @@ class Director {
     validate.resetValuesIfFindErrors()
 
     if (validate.errorsList.length === 0) {
+      sectionResults.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
       calc.rsltLiquidationDays(startContractDate, layoffDate, daysNotWorked)
       calc.rsltInitPrima(layoffDate)
       calc.rsltInitLayoff(layoffDate, daysNotWorked)

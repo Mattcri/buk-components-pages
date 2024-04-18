@@ -2,12 +2,9 @@ import { Director, validate } from "./modules/liquidaciones-co/director.js"
 
 const director = new Director()
 const btnCalculate = document.getElementById('btn-calculate')
-const sectionResults = document.getElementById('calc-results')
 
 btnCalculate.addEventListener('click', () => {
   director.calculateLiquidation()
-  sectionResults.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
-
 })
 
 const closeDialog = document.getElementById('close-dialog-errs')
