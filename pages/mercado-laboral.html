@@ -1,0 +1,193 @@
+<!doctype html>
+  <html lang="es-cl">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Mercado Laboral</title>
+    <meta name="description" content="">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&amp;family=Source+Sans+Pro:wght@300;400;700;900&amp;display=swap"
+      rel="stylesheet">
+
+    <link rel="stylesheet" media="all and (max-width: 767px)"
+      href="//cdn2.hubspot.net/hub/3790458/hub_generated/template_assets/104981653101/1705608135199/BUK-SITE_2023/CSS/Global/grid-mobile.min.css">
+    <link rel="stylesheet" media="all and (min-width: 767px)"
+      href="//cdn2.hubspot.net/hub/3790458/hub_generated/template_assets/104982428302/1702574504417/BUK-SITE_2023/CSS/Global/grid-tablet.min.css">
+    <link rel="stylesheet" media="all and (min-width: 1020px)"
+      href="//cdn2.hubspot.net/hub/3790458/hub_generated/template_assets/104981653812/1692639553643/BUK-SITE_2023/CSS/Global/grid-desktop.min.css">
+
+
+    <link rel="shortcut icon" href="https://cdn2.hubspot.net/hubfs/3790458/Favicon_buk_32x32.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+      a.cta_button {
+        -moz-box-sizing: content-box !important;
+        -webkit-box-sizing: content-box !important;
+        box-sizing: content-box !important;
+        vertical-align: middle
+      }
+
+      .hs-breadcrumb-menu {
+        list-style-type: none;
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 0px
+      }
+
+      .hs-breadcrumb-menu-item {
+        float: left;
+        padding: 10px 0px 10px 10px
+      }
+
+      .hs-breadcrumb-menu-divider:before {
+        content: '›';
+        padding-left: 10px
+      }
+
+      .hs-featured-image-link {
+        border: 0
+      }
+
+      .hs-featured-image {
+        float: right;
+        margin: 0 0 20px 20px;
+        max-width: 50%
+      }
+
+      @media (max-width: 568px) {
+        .hs-featured-image {
+          float: none;
+          margin: 0;
+          width: 100%;
+          max-width: 100%
+        }
+      }
+
+      .hs-screen-reader-text {
+        clip: rect(1px, 1px, 1px, 1px);
+        height: 1px;
+        overflow: hidden;
+        position: absolute !important;
+        width: 1px
+      }
+    </style>
+
+
+    <link rel="stylesheet"
+      href="//cdn2.hubspot.net/hub/3790458/hub_generated/template_assets/113177898421/1712069268448/BUK-SITE_2023/CSS/Generics/form-ui-kit.min.css">
+    <style>
+      .chart {
+        width: 100%;
+        min-height: 400px;
+      }
+    </style>
+
+    <link rel="stylesheet"
+      href="//cdn2.hubspot.net/hub/3790458/hub_generated/template_assets/104984781101/1715252283774/BUK-SITE_2023/CSS/Global/globals-main.css">
+    <link class="hs-async-css" rel="preload"
+      href="//cdn2.hubspot.net/hub/3790458/hub_generated/template_assets/104985089198/1707789579141/BUK-SITE_2023/CSS/Global/spaces.min.css"
+      as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet"
+        href="//cdn2.hubspot.net/hub/3790458/hub_generated/template_assets/104985089198/1707789579141/BUK-SITE_2023/CSS/Global/spaces.min.css">
+    </noscript>
+    <style>
+      li.active a {
+        background: var(--color-blue-buk);
+        color: var(--color-white);
+        font-weight: 700;
+      }
+
+      .tab-pane {
+        height: 0;
+        overflow: hidden;
+      }
+
+      .tab-pane.active {
+        height: auto;
+      }
+    </style>
+
+    <meta http-equiv="content-language" content="es-cl">
+
+  </head>
+
+<body>
+
+  <main>
+    <div id="hs_cos_wrapper_module_17111188073126"
+      class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget"
+      data-hs-cos-type="module">
+      <section class="buk-py-lg-15 buk-py-11 ">
+        <div class="boxer">
+
+
+          <ul class="nav nav-tabs ds-flex ai-center jc-center gap-lg--24 ">
+            <li class=""><a href="#tab-1" class="btn btn--3" target="_self">Nacional</a></li>
+            <li class=""><a href="#tab-2" class="btn btn--3" target="_self">Tamano</a></li>
+            <li class="active"><a href="#tab-3" class="btn btn--3" target="_self">Industria </a></li>
+          </ul>
+
+
+          <div class="tab-content buk-grid gap--0 buk-mt-7 buk-mt-lg-12">
+            <div class="tab-pane buk-col buk-col-lg-12" id="tab-1">
+              
+              <div id="chart1" class="chart"></div>
+
+            </div>
+            <div class="tab-pane buk-col buk-col-lg-12" id="tab-2">
+              <div id="filtro-fechas-size" class="w-100 formulario buk-grid buk-mb-4">
+                <div class="buk-col buk-col-lg-3">
+                  <select name="fechais" id="fechais">
+                    <option label="Fecha inicio" value="2022-01-01"></option>
+                    <option value="2022-01-01">2022-01-01</option>
+                    <option value="2023-01-01">2023-01-01</option>
+                    <option value="2024-01-01">2024-01-01</option>
+                  </select>
+                </div>
+                <div class="buk-col buk-col-lg-3">
+                  <select name="fechafs" id="fechafs">
+                    <option label="Fecha final" value="2022-12-31"></option>
+                    <option value="2022-12-31">2022-12-31</option>
+                    <option value="2023-12-31">2023-12-31</option>
+                    <option value="2024-12-31">2024-12-31</option>
+                  </select>
+                </div>
+              </div>
+              <div id="chart2" class="chart"></div>
+            </div>
+            <div class="tab-pane active buk-col buk-col-lg-12" id="tab-3">
+
+              <div id="chart3" class="chart"></div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+
+  <script src="../js/mercado-laboral/tab-btn.js" defer></script>
+  <script src="../js/mercado-laboral/chart-1.js" defer></script>
+  <script src="../js/mercado-laboral/chart-2.js" defer></script>
+  <script src="../js/mercado-laboral/chart-3.js" defer></script>
+
+  <!-- <script defer
+    src="//cdn2.hubspot.net/hub/3790458/hub_generated/template_assets/104981911308/1692639551588/BUK-SITE_2023/JS/global-main.min.js"></script> -->
+
+
+
+
+</body>
+
+</html>
