@@ -50,19 +50,68 @@ let industriesSelected = [
   'Actividades de servicios administrativos y de apoyo'
 ]
 
+// const backgroundIndustriesSelected = () => {
+//   let industries = storeChart3[0]
+// }
+
+const addToChart = (newIndustry, chart) => {
+  const chartTarget = echarts.init(document.getElementById(chart))
+  let industryData = industriesMatcher(newIndustry)
+
+  let currentOptions = chartTarget.getOption()
+
+  let newSeries = {
+    name: industryData.nameIndustry,
+    type: 'line',
+    stack: 'value',
+    data: industryData.serieData
+  }
+  
+
+  let industryToRemove = industriesSelected[0]
+
+  industriesSelected.shift()
+  industriesSelected.push(newIndustry)
+  console.log('new indus: ', industriesSelected)
+  // update chart data in options back
+  let indexSerieToRemove = currentOptions.series.findIndex(e => e.name === industryToRemove)
+  currentOptions.series.splice(indexSerieToRemove, 1)
+  currentOptions.series.push(newSeries)
+
+  // update legends in options back
+  currentOptions.legend[0].data = currentOptions.series.map(serie => serie.name)
+  console.log('legend: ', currentOptions.legend[0])
+
+  // update chart in canvas front
+  chartTarget.setOption(currentOptions, { notMerge: false })
+
+}
+
+const updateChart = (DOMitem, chart) => {
+  let industryName = DOMitem.dataset.targetIndustry
+  let isSelected = industriesSelected.some(e => e === industryName)
+  console.log(industryName)
+  console.log(isSelected)
+  
+  if(!isSelected) {
+    addToChart(industryName, chart)
+  }
+  
+}
+
 const getIndustriesNames = async (data) => {
   let DOMsubmenu = document.getElementById('submenu-industries__wrap') 
   const industriesNames = await data[0].industries.map(e => e.industry)
   const builder = (wrapper) => {
     industriesNames.forEach((item, index) => {
       let html = `
-        <li data-target-industry="${item}">${item}</li>
+        <li onclick="updateChart(this, 'chart3')" data-target-industry="${item}">${item}</li>
       `
       wrapper.insertAdjacentHTML('beforeend', html)
     })
   }
   builder(DOMsubmenu)
-  console.log('industries: ', industriesNames)
+  // console.log('industries: ', industriesNames)
 }
 
 const btnSelects = [...document.querySelectorAll('button.btn-select')]
@@ -91,7 +140,7 @@ const getOptionChart3 = (data) => {
 
   const industryTargets = industriesSelected.map(industry => industriesMatcher(industry))
 
-  console.log('return 1: ', industryTargets)
+  // console.log('return 1: ', industryTargets)
 
   let seriesData = industryTargets.map((industry) => {
     return {
@@ -102,7 +151,7 @@ const getOptionChart3 = (data) => {
     };
   })
 
-  console.log('return 2: ', seriesData)
+  // console.log('return 2: ', seriesData)
 
   data.forEach(entry => {
     xAxisData.push(entry.trimester)
