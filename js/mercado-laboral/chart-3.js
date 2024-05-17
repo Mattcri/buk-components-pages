@@ -15,17 +15,17 @@ const fetchDataIndustrias = async (URL) => {
 }
 
 let storeChart3 = undefined
-// let storeDataSelectedChart3 = undefined
 
 const loadDataChart3 = async () => {
   let data = await fetchDataIndustrias('https://assets.buktechnology.com/movilidad_trabajadores/variacion_industria.json')
   storeChart3 = await data
-  await initChartIndustrias()
+  await initChartIndustrias(storeChart3)
+  await getIndustriesNames(storeChart3)
 }
 
-const initChartIndustrias = async () => {
+const initChartIndustrias = async (data) => {
   const chart3 = echarts.init(document.getElementById("chart3"));
-  await chart3.setOption(getOptionChart3(storeChart3))
+  await chart3.setOption(getOptionChart3(data))
 
 }
 
@@ -50,19 +50,50 @@ let industriesSelected = [
   'Actividades de servicios administrativos y de apoyo'
 ]
 
+const getIndustriesNames = async (data) => {
+  let DOMsubmenu = document.getElementById('submenu-industries__wrap') 
+  const industriesNames = await data[0].industries.map(e => e.industry)
+  const builder = (wrapper) => {
+    industriesNames.forEach((item, index) => {
+      let html = `
+        <li data-target-industry="${item}">${item}</li>
+      `
+      wrapper.insertAdjacentHTML('beforeend', html)
+    })
+  }
+  builder(DOMsubmenu)
+  console.log('industries: ', industriesNames)
+}
+
+const btnSelects = [...document.querySelectorAll('button.btn-select')]
+
+btnSelects.forEach(button => {
+  button.addEventListener('click', function() {
+    let submenu = this.nextElementSibling
+    let submenuHeight = submenu.scrollHeight 
+    this.classList.toggle('open')
+    if (this.classList.contains('open')) {
+      this.style.borderRadius = '21px 21px 0 0'
+      submenu.style.height = `${submenuHeight}px`
+      submenu.style.border = '2px solid #D9E3FC'
+      submenu.style.overflowY = 'scroll'
+    } else {
+      this.style.borderRadius = '21px'
+      submenu.style.height = `0px`
+      submenu.style.border = 'none'
+      submenu.style.overflowY = 'hidden'
+    }
+  })
+})
+
 const getOptionChart3 = (data) => {
   const xAxisData = [];
 
   const industryTargets = industriesSelected.map(industry => industriesMatcher(industry))
 
-  // let industryTarget1 = industriesMatcher(industriesSelected[0])
-  // let industryTarget2 = industriesMatcher(industriesSelected[1])
-  // let industryTarget3 = industriesMatcher(industriesSelected[2])
-  // let industryTarget4 = industriesMatcher(industriesSelected[3])
-
   console.log('return 1: ', industryTargets)
 
-  let seriesData = industryTargets.map((industry, index) => {
+  let seriesData = industryTargets.map((industry) => {
     return {
       name: industry.nameIndustry,
       type: 'line',
@@ -72,23 +103,6 @@ const getOptionChart3 = (data) => {
   })
 
   console.log('return 2: ', seriesData)
-
-  // const industriaData1 = [];
-  // const industriaData2 = [];
-  // const industriaData3 = [];
-  // const industriaData4 = [];
-  // const industriaData5 = [];
-  // const industriaData6 = [];
-  // const industriaData7 = [];
-  // const industriaData8 = [];
-  // const industriaData9 = [];
-  // const industriaData10 = [];
-  // const industriaData11 = [];
-  // const industriaData12 = [];
-  // const industriaData13 = [];
-  // const industriaData14 = [];
-  // const industriaData15 = [];
-  // const industriaData16 = [];
 
   data.forEach(entry => {
     xAxisData.push(entry.trimester)
@@ -104,15 +118,14 @@ const getOptionChart3 = (data) => {
         let tooltip = params[0].name + '<br/>';
         params.forEach(function (item) {
           tooltip += `${item.seriesName}: <span style="font-weight: 600;">${item.value}%</span> <br/>`
-          // tooltip += item.seriesName + ': ' + item.value + '%' + '<br/>';
         });
         return tooltip;
       }
     },
     legend: {
       selectedMode: false,
-      borderRadius: [8, 8, 8, 8],
-      padding: [15, 5, 15, 5],
+      // borderRadius: [8, 8, 8, 8],
+      // padding: [15, 5, 15, 5],
       top: 16,
       data: [
         industryTargets[0].nameIndustry, 
@@ -121,34 +134,14 @@ const getOptionChart3 = (data) => {
         industryTargets[3].nameIndustry
       ]
     },
-    // legend: {
-    //   show: true,
-    //   zlevel: 3,
-    //   type: "scroll",
-    //   right: 0,
-    //   top: 20,
-    //   bottom: 20,
-    //   height: '100%',
-    //   width: '45%',
-    //   backgroundColor: "rgb(246 248 254)",
-    //   padding: [15, 5, 15, 5],
-    //   borderRadius: [8, 8, 8, 8],
-    //   orient: "vertical",
-    //   pageTextStyle: {
-    //     width: 50,
-    //   },
-    // },
     dataZoom: [
       {
         zlevel: 0,
         type: 'slider',
         start: 50,
-        end: 100
-      },
-      {
-        type: 'inside',
-        start: 50,
-        end: 100
+        end: 100,
+        minSpan: 30,
+        
       }
     ],
     grid: {

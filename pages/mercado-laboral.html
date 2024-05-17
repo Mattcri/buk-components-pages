@@ -76,7 +76,6 @@
       }
     </style>
 
-
     <link rel="stylesheet"
       href="//cdn2.hubspot.net/hub/3790458/hub_generated/template_assets/113177898421/1712069268448/BUK-SITE_2023/CSS/Generics/form-ui-kit.min.css">
     <style>
@@ -84,6 +83,65 @@
         width: 100%;
         min-height: 400px;
       }
+
+      #submenu-industries {
+        background: var(--color-white);
+        border-top: none !important;
+        border-radius: 0 0 21px 21px;
+        color: var(--color-blue-buk);
+        font-size: 0.938rem;
+        position: absolute;
+        top: 40.8px;
+        left: 0px;
+        /* right: -1px; */
+        /* overflow-y: scroll !important; */
+        max-height: 410px;
+        height: 0;
+        overflow: hidden;
+        /* transition: height .5s ease; */
+        z-index: 10;
+      }
+      /* #submenu-industries ul {
+        border: 2px solid var(--color-light-blue);
+      } */
+      #submenu-industries li:not(:last-of-type) {
+        border-bottom: 2px solid var(--color-light-blue);
+      }
+      #submenu-industries li {
+        padding: .35rem 1rem;
+      }
+
+      .btn-select {
+        border-radius: 21px ;
+        border: 2px solid var(--color-light-blue);
+        background-color: var(--color-white);
+        color: var(--color-blue-buk);
+        cursor: pointer;
+        font-size: 1.125rem;
+        padding: .5rem 1rem;
+        /* margin: 0 2px; */
+        text-align: left;
+        /* transition: border-radius .5s ease; */
+      }
+      .btn-select svg {
+        position: absolute;
+        right: 1rem;
+        top: 16px;
+        transition: transform .3s ease;
+        /* transform: translateY(-52%); */
+        /* transform: rotate(180deg); */
+      }
+
+      /* .btn-select.open {
+        border-bottom: none;
+      } */
+      .btn-select.open svg {
+        transform: rotate(180deg);
+      }
+
+      /* .btn-select.open ~ #submenu-industries {
+        height: ;
+      } */
     </style>
 
     <link rel="stylesheet"
@@ -161,12 +219,22 @@
               <div id="chart2" class="chart"></div>
             </div>
             <div class="tab-pane active buk-col buk-col-lg-12" id="tab-3">
-              <div class="buk-mb-6">
-                <button class="">Seleccionar Industrias</button>
-                <div id="submenu-industries">
-                  <ul class="">
-                    <!-- <li>Seleccionar Industrias</li> -->
-                  </ul>
+              <div class="buk-mb-6 buk-grid">
+                <div class="buk-col buk-col-md-7 buk-col-lg-5 pst-relative">
+                  <button class="pst-relative wi-100 ff-body btn-select" id="btn-industries">
+                    Seleccionar Industrias
+                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M11.3133 0.740995C11.6192 0.997898 11.6589 1.45409 11.4019 1.75993L7.07395 6.9123C6.51082 7.58269 5.4859 7.60302 4.89664 6.95548L0.188326 1.78151C-0.0804997 1.4861 -0.0589466 1.0287 0.236466 0.75987C0.531878 0.491045 0.989283 0.512598 1.25811 0.808011L5.96642 5.98198L10.2944 0.829598C10.5513 0.523761 11.0075 0.484092 11.3133 0.740995Z"
+                        fill="#2F4DAA"></path>
+                    </svg>
+                  </button>
+                  <div id="submenu-industries">
+                    <ul class="" id="submenu-industries__wrap">
+                      
+                    </ul>
+                  </div>
+
                 </div>
               </div>
               <div id="chart3" class="chart"></div>
