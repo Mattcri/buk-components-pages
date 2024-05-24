@@ -58,13 +58,9 @@ const getOptionChart1 = (data) => {
         zlevel: 0,
         type: 'slider',
         start: 50,
-        end: 100
+        end: 100,
+        minSpan: 30,
       },
-      {
-        type: 'inside',
-        start: 50,
-        end: 100
-      }
     ],
     grid: {
       left: '3%',

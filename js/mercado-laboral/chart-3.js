@@ -90,8 +90,6 @@ const addToChart = (newIndustry, chart) => {
 const updateChart = (DOMitem, chart) => {
   let industryName = DOMitem.dataset.targetIndustry
   let isSelected = industriesSelected.some(e => e === industryName)
-  console.log(industryName)
-  console.log(isSelected)
   
   if(!isSelected) {
     addToChart(industryName, chart)
@@ -140,8 +138,6 @@ const getOptionChart3 = (data) => {
 
   const industryTargets = industriesSelected.map(industry => industriesMatcher(industry))
 
-  // console.log('return 1: ', industryTargets)
-
   let seriesData = industryTargets.map((industry) => {
     return {
       name: industry.nameIndustry,
@@ -150,8 +146,6 @@ const getOptionChart3 = (data) => {
       data: industry.serieData
     };
   })
-
-  // console.log('return 2: ', seriesData)
 
   data.forEach(entry => {
     xAxisData.push(entry.trimester)

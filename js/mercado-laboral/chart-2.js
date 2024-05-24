@@ -1,3 +1,33 @@
+
+const fetchDataSize = async (URL) => {
+  try {
+    let response = await fetch(URL)
+    let { data } = await response.json()
+
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response.statusText}`);
+    }
+
+    return data
+
+  } catch (error) {
+    console.error(error.message)
+  }
+}
+
+let storeChart2 = undefined
+
+const loadedDataChart2 = async () => {
+  let data = await fetchDataSize('https://assets.buktechnology.com/movilidad_trabajadores/variacion_companysize.json')
+  storeChart2 = await data
+  await initChartsSize()
+}
+
+const initChartsSize = async () => {
+  const chart2 = echarts.init(document.getElementById("chart2"));
+  chart2.setOption(getOptionChart2(storeChart2))
+}
+
 const getOptionChart2 = (data) => {
 
   const xAxisData = [];
@@ -35,10 +65,19 @@ const getOptionChart2 = (data) => {
     legend: {
       data: ['Microempresa', 'Pequeña Empresa', 'Mediana Empresa', 'Gran Empresa']
     },
+    dataZoom: [
+      {
+        zlevel: 0,
+        type: 'slider',
+        start: 50,
+        end: 100,
+        minSpan: 30,
+      },
+    ],
     grid: {
       left: '3%',
       right: '4%',
-      bottom: '3%',
+      bottom: '17%',
       containLabel: true
     },
     toolbox: {
@@ -81,59 +120,8 @@ const getOptionChart2 = (data) => {
       }
     ]
   };
-};
-
-const fetchDataSize = async (fechaInicioSize, fechaFinSize) => {
-  try {
-    const responseSize = await fetch("https://assets.buktechnology.com/movilidad_trabajadores/variacion_companysize.json");
-    const { data } = await responseSize.json();
-
-    // Filtrar los datos por el período deseado
-    const datosFiltradosSize = data.filter(dato => {
-      const fechaDatoSize = new Date(dato.month);
-      return fechaDatoSize >= fechaInicioSize && fechaDatoSize <= fechaFinSize;
-    });
-
-    return datosFiltradosSize;
-  } catch (error) {
-    console.error("Error al obtener los datos:", error);
-    return null;
-  }
-};
-
-const initChartsSize = async () => {
-  const chart2 = echarts.init(document.getElementById("chart2"));
-  const fechaiSelectSize = document.getElementById("fechais");
-  const fechafSelectSize = document.getElementById("fechafs");
-
-  // Agregar event listener para los selects de fecha
-  fechaiSelectSize.addEventListener("change", async () => {
-    const fechaInicioSize = new Date(fechaiSelectSize.value);
-    const fechaFinSize = new Date(fechafSelectSize.value);
-    const data = await fetchData(fechaInicioSize, fechaFinSize);
-    if (data) {
-      chart2.setOption(getOptionChart1(data));
-    }
-  });
-
-  fechafSelectSize.addEventListener("change", async () => {
-    const fechaInicioSize = new Date(fechaiSelectSize.value);
-    const fechaFinSize = new Date(fechafSelectSize.value);
-    const data = await fetchDataSize(fechaInicioSize, fechaFinSize);
-    if (data) {
-      chart2.setOption(getOptionChart1(data));
-    }
-  });
-
-  // Obtener datos iniciales y mostrar el gráfico
-  const fechaInicioSize = new Date(fechaiSelectSize.value);
-  const fechaFinSize = new Date(fechafSelectSize.value);
-  const data = await fetchDataSize(fechaInicioSize, fechaFinSize);
-  if (data) {
-    chart2.setOption(getOptionChart2(data));
-  }
-};
+}
 
 window.addEventListener("load", () => {
-  initChartsSize();
+  loadedDataChart2()
 });
