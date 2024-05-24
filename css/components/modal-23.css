@@ -76,6 +76,12 @@
   font-size: 1.125rem;
 }
 
+.buk-modal__body ul li:not(:last-of-type) {
+  padding-bottom: .5rem;
+}
+
+.buk-modal__body ul li { font-weight: 700; }
+
 @keyframes fadeOverlayModal {
   0% {
     opacity: 0;
