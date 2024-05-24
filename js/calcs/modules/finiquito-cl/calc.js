@@ -140,7 +140,7 @@ class CalcFiniquito {
 
   countWeekendsHolidaysAndFinalWorkingDay(date, param) {
     let endContractDate = moment(date)
-    let firstDate = endContractDate.clone()
+    let endDateForCountWeekends = endContractDate.clone()
     let endLaboralDate = endContractDate.clone()
     let advancedLaboralDays = 0
     let weekends = 0
@@ -153,22 +153,23 @@ class CalcFiniquito {
       }
     }
 
-    let toMonday = firstDate.day() === 6 
+    let toMonday = endDateForCountWeekends.day() === 6 
                     ? 2 
-                    : firstDate.day() === 0
+                    : endDateForCountWeekends.day() === 0
                       ? 1
                       : 0
 
-    if (firstDate.day() === 5) {
-      weekends--
-    }
+    // if (firstDate.day() === 5) {
+    //   weekends--
+    // }
+
     let finalDate = moment(endLaboralDate)
     // console.log('FECHA FINAL: ', endLaboralDate)
-    firstDate.add(toMonday, 'days')
+    endDateForCountWeekends.add(toMonday, 'days')
     
     let holidays = this.countHolidays(endContractDate, finalDate)
 
-    if (holidays > 0 && firstDate.day() !== 5) {
+    if (holidays > 0) {
       finalDate.add(holidays, 'days')
       
       finalDate.day() === 6 
@@ -179,13 +180,13 @@ class CalcFiniquito {
     }
 
 
-    while (firstDate.isSameOrBefore(finalDate)) {
-      if (firstDate.day() === 0 || firstDate.day() === 6) {
+    while (endDateForCountWeekends.isSameOrBefore(finalDate)) {
+      if (endDateForCountWeekends.day() === 0 || endDateForCountWeekends.day() === 6) {
         weekends++
       }
-      console.log('date weekend: ', firstDate.format('DD-MM-YYYY'))
+      // console.log('date weekend: ', firstDate.format('DD-MM-YYYY'))
       console.log('weekends: ', weekends)
-      firstDate.add(1, 'days')
+      endDateForCountWeekends.add(1, 'days')
     }
 
     let lastLaboralDay = finalDate.format('DD-MM-YYYY')
@@ -216,10 +217,11 @@ class CalcFiniquito {
 
       // console.log('counter date: ', initCounterDate.format('DD-MM-YYYY'));
 
+      // Encontrar el index del día feriado para luego eliminarlo, en la búsqueda del siguiente día feriado
       let findIndex = convertHolidaysToMoment.findIndex(date => initCounterDate.isSame(date))
       let findDate = convertHolidaysToMoment.find(date => initCounterDate.isSame(date))
-      console.log('holiday find index: ', findIndex);
-      // console.log('holiday find: ', findDate);
+      // console.log('holiday find index: ', findIndex);
+      console.log('holiday find: ', findDate);
 
       if (initCounterDate.isSame(findDate)) {
         holidays++
