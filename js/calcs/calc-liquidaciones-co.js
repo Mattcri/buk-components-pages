@@ -82,3 +82,37 @@ inputsRequired.forEach(input => {
   })
 })
 
+const inputSalaryType = document.getElementById('salary-type')
+const inputDateStartContract = document.getElementById('start-contract-date')
+const inputDateEndContract = document.getElementById('layoff-date')
+
+function enablePreviousYear () {
+  let DOMsectionPrevYear = document.getElementById('previous-year-liquidation')
+  let height = DOMsectionPrevYear.scrollHeight
+  let dateAdmission = new Date(`${document.getElementById('start-contract-date').value}T00:00:00`)
+  let dateEndContract = new Date(`${document.getElementById('layoff-date').value}T00:00:00`)
+  let currentYear = new Date().getFullYear().toString()
+  let prevYear = (currentYear - 1).toString()
+  let initDateToShowPrevYear = moment(`31/12/${prevYear}T00:00:00`, "DD/MM/YYYY")
+  let maxDateToShowPrevYear = moment(`01/02/${currentYear}T00:00:00`, "DD/MM/YYYY")
+  let itemsDetailPrevYear = [...document.querySelectorAll('.calc-detail [data-item-prev-year="true"]')]
+
+  if (inputSalaryType.value !== "integral" && moment(dateEndContract).isBetween(initDateToShowPrevYear, maxDateToShowPrevYear) && moment(dateAdmission).isBefore(dateEndContract) ) {
+    DOMsectionPrevYear.style.height = `${height}px`
+    itemsDetailPrevYear.forEach(element => element.classList.remove('ds-none'))
+  } else {
+    DOMsectionPrevYear.style.height = '0px'
+    itemsDetailPrevYear.forEach(element => element.classList.add('ds-none'))
+  }
+}
+
+enablePreviousYear()
+inputSalaryType.addEventListener('change', () => {
+  enablePreviousYear()
+})
+inputDateStartContract.addEventListener('change', () => {
+  enablePreviousYear()
+})
+inputDateEndContract.addEventListener('change', () => {
+  enablePreviousYear()
+})
