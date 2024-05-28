@@ -17,6 +17,28 @@
   <link rel="stylesheet" href="../css/utilities-spaces-23.css">
   <link rel="stylesheet" href="../css/main-23.css">
 
+  <style>
+    #previous-year-liquidation {
+      height: 0px;
+      overflow: hidden;
+      padding-top: 0px !important;
+      padding-bottom: 0px !important;
+      transition: height .4s ease;
+    }
+
+    .calc-detail hr {
+      border: none;
+      border-radius: 30px;
+      background: var(--color-light-blue);
+      height: 3px;
+    }
+    @media only screen and (min-width: 767px) {
+      .calc-detail hr {
+        height: 2px;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
@@ -150,6 +172,27 @@
               <label for="sum-variables-concepts-vacations" class="txt-blue-buk fw-semi-bold">Suma de conceptos variables vacaciones</label>
               <input type="number" id="sum-variables-concepts-vacations" min="0" placeholder="0" class="buk-mt-2">
             </div>
+            <div id="previous-year-liquidation" class="buk-col buk-py-0 buk-grid">
+              <div class="buk-col ff-title calc-box__section txt-blue-buk rounded-23 rounded-md-49 buk-px-2 buk-px-lg-3 buk-my-2">
+                <p class="buk-py-1">Base de liquidación cesantías año anterior</p>
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-4 ai-self-md-end">
+                <label for="" class="txt-blue-buk fw-semi-bold">Salario base año anterior</label>
+                <input type="number" id="" min="0" placeholder="0" class="buk-mt-2">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-4">
+                <label for="" class="txt-blue-buk fw-semi-bold">Suma de conceptos variables cesantías año anterior</label>
+                <input type="number" id="" min="0" placeholder="0" class="buk-mt-2">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-4 ai-self-md-end">
+                <label for="" class="txt-blue-buk fw-semi-bold">Auxilio de transporte año anterior</label>
+                <input type="number" id="" min="0" placeholder="0" class="buk-mt-2">
+              </div>
+              <div class="buk-col buk-col-md-4 buk-col-lg-4 ai-self-md-end">
+                <label for="" class="txt-blue-buk fw-semi-bold">Días no laborados año anterior</label>
+                <input type="number" id="" min="0" placeholder="0" class="buk-mt-2">
+              </div>
+            </div>
             <div class="buk-col txt-center buk-mt-2" id="calc-results">
               <button class="btn btn--2b" id="btn-calculate">Calcular tu liquidación</button>
             </div>
@@ -204,6 +247,10 @@
                   <p>Días indemnización</p>
                   <p class="txt-blue-buk" id="lbl-days-compensation">79,00</p>
                 </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator" data-item-prev-year="true">
+                  <p>Días liquidación año anterior</p>
+                  <p class="txt-blue-buk" id="">0</p>
+                </div>
               </div>
           
               <div class="cal-detail__title">
@@ -246,12 +293,12 @@
                   <p class="txt-blue-buk" id="lbl-pension">$0</p>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
-                  <p>Solidaridad y subsistencia</p>
+                  <p>Solidaridad</p>
                   <p class="txt-blue-buk" id="lbl-solidarity-subsitence">$0</p>
                 </div>
-                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between ">
-                  <p>Otros descuentos</p>
-                  <p class="txt-blue-buk" id="lbl-other-discounts">$0</p>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
+                  <p>Subsistencia</p>
+                  <p class="txt-blue-buk" id="lbl-subsitence">$0</p>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
                   <p>Retención en la fuente</p>
@@ -260,6 +307,23 @@
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
                   <p>Retención Indemnización</p>
                   <p class="txt-blue-buk" id="lbl-holding-compensation">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
+                  <p>Otros descuentos</p>
+                  <p class="txt-blue-buk" id="lbl-other-discounts">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 v-talet v-desktop">
+                </div>
+                <!-- <div class="buk-col" data-item-prev-year="true">
+                  <hr>
+                </div> -->
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator" data-item-prev-year="true">
+                  <p>Cesantías año anterior</p>
+                  <p class="txt-blue-buk" id="">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between" data-item-prev-year="true">
+                  <p>Interes cesantías año anterior</p>
+                  <p class="txt-blue-buk" id="">$0</p>
                 </div>
               </div>
           
