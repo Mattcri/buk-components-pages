@@ -177,20 +177,20 @@
                 <p class="buk-py-1">Base de liquidación cesantías año anterior</p>
               </div>
               <div class="buk-col buk-col-md-4 buk-col-lg-4 ai-self-md-end">
-                <label for="" class="txt-blue-buk fw-semi-bold">Salario base año anterior</label>
-                <input type="number" id="" min="0" placeholder="0" class="buk-mt-2">
+                <label for="salary-last-year" class="txt-blue-buk fw-semi-bold">Salario base año anterior</label>
+                <input type="number" id="salary-last-year" min="0" placeholder="0" class="buk-mt-2">
               </div>
               <div class="buk-col buk-col-md-4 buk-col-lg-4">
-                <label for="" class="txt-blue-buk fw-semi-bold">Suma de conceptos variables cesantías año anterior</label>
-                <input type="number" id="" min="0" placeholder="0" class="buk-mt-2">
+                <label for="variables-last-year" class="txt-blue-buk fw-semi-bold">Suma de conceptos variables cesantías año anterior</label>
+                <input type="number" id="variables-last-year" min="0" placeholder="0" class="buk-mt-2">
               </div>
               <div class="buk-col buk-col-md-4 buk-col-lg-4 ai-self-md-end">
-                <label for="" class="txt-blue-buk fw-semi-bold">Auxilio de transporte año anterior</label>
-                <input type="number" id="" min="0" placeholder="0" class="buk-mt-2">
+                <label for="aux-transport-last-year" class="txt-blue-buk fw-semi-bold">Auxilio de transporte año anterior</label>
+                <input type="number" id="aux-transport-last-year" min="0" placeholder="0" readonly class="buk-mt-2">
               </div>
               <div class="buk-col buk-col-md-4 buk-col-lg-4 ai-self-md-end">
-                <label for="" class="txt-blue-buk fw-semi-bold">Días no laborados año anterior</label>
-                <input type="number" id="" min="0" placeholder="0" class="buk-mt-2">
+                <label for="days-not-worked-last-year" class="txt-blue-buk fw-semi-bold">Días no laborados año anterior</label>
+                <input type="number" id="days-not-worked-last-year" min="0" placeholder="0" class="buk-mt-2">
               </div>
             </div>
             <div class="buk-col txt-center buk-mt-2" id="calc-results">
@@ -249,7 +249,7 @@
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator" data-item-prev-year="true">
                   <p>Días liquidación año anterior</p>
-                  <p class="txt-blue-buk" id="">0</p>
+                  <p class="txt-blue-buk" id="lbl-days-liquidation-last-year">0</p>
                 </div>
               </div>
           
@@ -272,9 +272,17 @@
                   <p>Cesantias</p>
                   <p class="txt-blue-buk" id="lbl-unemployment">$0</p>
                 </div>
-                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
-                  <p>Intereses cesantias</p>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between" data-item-prev-year="true">
+                  <p>Cesantías año anterior</p>
+                  <p class="txt-blue-buk" id="lbl-unemployment-last-year">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between" data-item-separator="observe">
+                  <p>Intereses cesantías</p>
                   <p class="txt-blue-buk" id="lbl-unemployment-interest">$0</p>
+                </div>
+                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between" data-item-prev-year="true">
+                  <p>Interes cesantías año anterior</p>
+                  <p class="txt-blue-buk" id="lbl-unemployment-interest-last-year">$0</p>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
                   <p>Vacaciones</p>
@@ -294,7 +302,7 @@
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator">
                   <p>Solidaridad</p>
-                  <p class="txt-blue-buk" id="lbl-solidarity-subsitence">$0</p>
+                  <p class="txt-blue-buk" id="lbl-solidarity">$0</p>
                 </div>
                 <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between">
                   <p>Subsistencia</p>
@@ -317,14 +325,6 @@
                 <!-- <div class="buk-col" data-item-prev-year="true">
                   <hr>
                 </div> -->
-                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between calc-detail--separator" data-item-prev-year="true">
-                  <p>Cesantías año anterior</p>
-                  <p class="txt-blue-buk" id="">$0</p>
-                </div>
-                <div class="buk-col buk-col-md-6 buk-col-lg-6 ds-flex jc-between" data-item-prev-year="true">
-                  <p>Interes cesantías año anterior</p>
-                  <p class="txt-blue-buk" id="">$0</p>
-                </div>
               </div>
           
             </div> <!-- end-panel-info -->

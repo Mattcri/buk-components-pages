@@ -1,4 +1,5 @@
 import { Director, validate } from "./modules/liquidaciones-co/director.js"
+import { nvtCO } from "./modules/liquidaciones-co/calc.js"
 
 const director = new Director()
 const btnCalculate = document.getElementById('btn-calculate')
@@ -96,13 +97,16 @@ function enablePreviousYear () {
   let initDateToShowPrevYear = moment(`31/12/${prevYear}T00:00:00`, "DD/MM/YYYY")
   let maxDateToShowPrevYear = moment(`01/02/${currentYear}T00:00:00`, "DD/MM/YYYY")
   let itemsDetailPrevYear = [...document.querySelectorAll('.calc-detail [data-item-prev-year="true"]')]
+  let itemsSeparator = [...document.querySelectorAll('.calc-detail [data-item-separator="observe"]')]
 
   if (inputSalaryType.value !== "integral" && moment(dateEndContract).isBetween(initDateToShowPrevYear, maxDateToShowPrevYear) && moment(dateAdmission).isBefore(dateEndContract) ) {
     DOMsectionPrevYear.style.height = `${height}px`
     itemsDetailPrevYear.forEach(element => element.classList.remove('ds-none'))
+    itemsSeparator.forEach(element => element.classList.add('calc-detail--separator'))
   } else {
     DOMsectionPrevYear.style.height = '0px'
     itemsDetailPrevYear.forEach(element => element.classList.add('ds-none'))
+    itemsSeparator.forEach(element => element.classList.remove('calc-detail--separator'))
   }
 }
 
@@ -115,4 +119,18 @@ inputDateStartContract.addEventListener('change', () => {
 })
 inputDateEndContract.addEventListener('change', () => {
   enablePreviousYear()
+})
+
+const inputSalaryLastYear = document.getElementById('salary-last-year')
+
+inputSalaryLastYear.addEventListener('change', function() {
+  let auxTransportLastYear = document.getElementById('aux-transport-last-year')
+  let salaryLastYear = Number(this.value)
+
+  if (salaryLastYear > (nvtCO.getSMLVlastYear() * 2)) {
+    auxTransportLastYear.value = 0
+  } else {
+    auxTransportLastYear.value = nvtCO.getAuxTransportLastYear()
+  }
+
 })

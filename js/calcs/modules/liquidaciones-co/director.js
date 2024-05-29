@@ -27,6 +27,11 @@ class Director {
     let variablesVacationsConcepts = Number(document.getElementById('sum-variables-concepts-vacations').value)
     let otherDiscounts = Number(document.getElementById('other-discounts').value)
 
+    let salaryLastYear = Number(document.getElementById('salary-last-year').value)
+    let variablesLastYear = Number(document.getElementById('variables-last-year').value)
+    let auxTransportLastYear = Number(document.getElementById('aux-transport-last-year').value)
+    let daysNotWorkedLastYear = Number(document.getElementById('days-not-worked-last-year').value)
+
     validate.salaryNotEmpty(salary)
     validate.salaryIsValid(salary)
     validate.daysWorkedInMonth(daysWorked)
@@ -35,6 +40,9 @@ class Director {
     validate.dateEndContractIsAfter(startContractDate, layoffDate)
     validate.dateEndContractFixTermNotEmpty(endFixedDate, withdrawalReason, contractType)
     validate.dateEndContractFixTermIsAfterAdmission(startContractDate, endFixedDate, withdrawalReason, contractType)
+    
+    calc.checkApplyLastYear(salaryType, layoffDate)
+
     validate.raiseUpModal()
     validate.resetValuesIfFindErrors()
 
@@ -45,6 +53,9 @@ class Director {
       calc.rsltInitLayoff(layoffDate, daysNotWorked)
       calc.rsltCompensationDays(salary, withdrawalReason, contractType, startContractDate, layoffDate, endFixedDate, daysNotWorked)
       calc.ibcSocialSecurity(salary, salaryType, otherSalaries, otherNotSalaries)
+
+      calc.liquidationLastYear(salaryLastYear, variablesLastYear, auxTransportLastYear, daysNotWorkedLastYear, startContractDate, contractType)
+      
       calc.devengosValues(salary, salaryType, contractType, otherConceptsPrima, otherUnemploymentConcepts, otherSalaries, otherNotSalaries, daysWorked, daysNotWorked, variablesVacationsConcepts, vacationsPending)
       calc.discountsValues(salary, salaryType, contractType, otherSalaries, otherNotSalaries, otherDiscounts)
       calc.rsltTotal()

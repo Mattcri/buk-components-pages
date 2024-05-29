@@ -14,7 +14,9 @@ class CalcLiquidaciones {
     ibc = 0,
     totalToPay = 0,
     devengos = null,
-    discounts = null
+    discounts = null,
+    applyPreviousYear = false,
+    previousYear = null
   }) {
     this.liquidationsDays = liquidationsDays
     this.initPrima = initPrima
@@ -24,10 +26,12 @@ class CalcLiquidaciones {
     this.totalToPay = totalToPay
     this.devengos = devengos
     this.discounts = discounts
+    this.applyPreviousYear = applyPreviousYear
+    this.previousYear = previousYear
   }
 
   rsltLiquidationDays (startContractDate, layoffDate, daysNotWorked) {
-    let days = days360v2(startContractDate, layoffDate)
+    let days = days360v2(startContractDate, layoffDate) + 1
 
     this.liquidationsDays = days - daysNotWorked
   }
@@ -73,8 +77,8 @@ class CalcLiquidaciones {
       return
     }
 
-    let countDays = days360v2(startContractDate, layoffDate) - daysNotWorked
-    console.log('días corridos: ', countDays)
+    let countDays = days360v2(startContractDate, layoffDate) + 1 - daysNotWorked
+    // console.log('días corridos: ', countDays)
     let extraDays
     let baseDays
 
@@ -97,7 +101,8 @@ class CalcLiquidaciones {
     let unemploymentInterest = this.unemploymentInterest(salary, salaryType, contractType, otherUnemploymentConcepts, otherSalaries, daysNotWorked)
     let vacations = this.vacations(salary, contractType, variablesVacationsConcepts, otherSalaries, vacationsPending)
     let compensation = this.compensation(salary, contractType, variablesVacationsConcepts, otherSalaries)
-    let totalDevengos = salaryCalc + prima + unemployment + unemploymentInterest + vacations + compensation + otherSalaries + otherNotSalaries
+    let totalLastYear = this.applyPreviousYear === true ? this.previousYear.total : 0
+    let totalDevengos = salaryCalc + prima + unemployment + unemploymentInterest + vacations + compensation + otherSalaries + otherNotSalaries + totalLastYear
 
     this.devengos = {
       salaryCalc,
@@ -202,7 +207,9 @@ class CalcLiquidaciones {
     let health = this.healthAndPension(salaryType, contractType, otherSalaries, otherNotSalaries)
     let pension = this.healthAndPension(salaryType, contractType, otherSalaries, otherNotSalaries)
     let rtCompensation = this.witholdingCompensation(salary)
-    let solidarityPlusSubsistence = this.solidarityAndSubsistence()
+    let solidarityPlusSubsistence = this.solidarityAndSubsistence().total
+    let solidarity = this.solidarityAndSubsistence().solidarity
+    let subsistence = this.solidarityAndSubsistence().subsistence
     let source = this.holdingSource(salaryType, contractType, otherSalaries, otherNotSalaries)
     let totalDiscounts = health + pension + rtCompensation + solidarityPlusSubsistence + source + otherDiscounts
 
@@ -213,6 +220,8 @@ class CalcLiquidaciones {
       pension,
       rtCompensation,
       solidarityPlusSubsistence,
+      solidarity,
+      subsistence,
       source,
       totalDiscounts
     }
@@ -258,7 +267,11 @@ class CalcLiquidaciones {
                             ? ibc * (range.subsistence / 100)
                             : 0
 
-    return Number((calcSolidarity + calcSubsistence).toFixed(0))
+    return {
+      solidarity: Number(calcSolidarity.toFixed(0)),
+      subsistence: Number(calcSubsistence.toFixed(0)),
+      total: Number((calcSolidarity + calcSubsistence).toFixed(0))
+    }
   }
 
   searchUpperLimit(limit, ibc, obj) {
@@ -271,7 +284,7 @@ class CalcLiquidaciones {
     let salary = this.devengos.salaryCalc
     let vacations = this.devengos.vacations
     let healthPension = this.healthAndPension(salaryType, contractType, otherSalaries, otherNotSalaries) * 2 
-    let solidaritySubsistence = this.solidarityAndSubsistence()
+    let solidaritySubsistence = this.solidarityAndSubsistence().total
     let uvt = nvtCO.getUVT()
     let sumValues = (salary + otherSalaries + otherNotSalaries + vacations)
     let calcBase = sumValues - (healthPension + solidaritySubsistence) - ((sumValues - (healthPension + solidaritySubsistence)) * 0.25)
@@ -296,8 +309,57 @@ class CalcLiquidaciones {
   rsltTotal () {
     let devengos = this.devengos.totalDevengos
     let discounts = this.discounts.totalDiscounts
-    let totalToPay = devengos - discounts
-    this.totalToPay = totalToPay
+    // let totalLastYear = this.applyPreviousYear === true ? this.previousYear.total : 0
+    let total = devengos - discounts
+    this.totalToPay = total
+  }
+
+  checkApplyLastYear(salaryType, dateEndContract) {
+    let currentYear = new Date().getFullYear().toString()
+    let lastYear = (currentYear - 1).toString()
+    let initDateToShowLastYear = moment(`31/12/${lastYear}T00:00:00`, "DD/MM/YYYY")
+    let maxDateToShowLastYear = moment(`01/02/${currentYear}T00:00:00`, "DD/MM/YYYY")
+
+    salaryType !== 'integral' && moment(dateEndContract).isBetween(initDateToShowLastYear, maxDateToShowLastYear)
+      ? this.applyPreviousYear = true
+      : this.applyPreviousYear = false
+  }
+
+  liquidationDaysLastYear(startDate, notWorked) {
+    let currentYear = new Date().getFullYear().toString()
+    let lastYear = (currentYear - 1).toString()
+    // let dateAdmission = moment(startDate)
+    let initDateLastYear = moment(`01/01/${lastYear}T00:00:00`, "DD/MM/YYYY")
+    let maxDateLastYear = moment(`30/12/${lastYear}T00:00:00`, "DD/MM/YYYY")
+
+
+    if (moment(startDate).isBefore(initDateLastYear)) {
+      let days = days360v2(initDateLastYear, maxDateLastYear)
+      return (days + 1) - notWorked
+    } else {
+      let days = days360v2(startDate, maxDateLastYear)
+      return (days + 1) - notWorked
+    }
+
+  }
+
+  liquidationLastYear(salaryLastYear, variablesLastYear, auxTransportLastYear, daysNotWorkedLastYear, startContractDate, contractType) {
+    if (this.applyPreviousYear === false || contractType === 'learning') {
+      return
+    }
+
+    let daysLiquidationLastYear = this.liquidationDaysLastYear(startContractDate, daysNotWorkedLastYear)
+    let unemployment = (salaryLastYear + auxTransportLastYear + (variablesLastYear / daysLiquidationLastYear * 30)) * daysLiquidationLastYear / 360
+    let interest = unemployment * daysLiquidationLastYear * 0.12 / 360
+    let total = Number((unemployment + interest).toFixed(0)) 
+
+    this.previousYear = {
+      daysLiquidationLastYear,
+      unemployment: Number(unemployment.toFixed(0)),
+      interest: Number(interest.toFixed(0)),
+      total
+    }
+
   }
 
   printInScreen (otherDisc) {
@@ -318,10 +380,15 @@ class CalcLiquidaciones {
     let compensation = document.getElementById('lbl-compensation')
     let health = document.getElementById('lbl-health')
     let pension = document.getElementById('lbl-pension')
-    let solidarityAndSubsistence = document.getElementById('lbl-solidarity-subsitence')
+    let solidarity = document.getElementById('lbl-solidarity')
+    let subsistence = document.getElementById('lbl-subsitence')
     let otherDiscounts = document.getElementById('lbl-other-discounts')
     let source = document.getElementById('lbl-source')
     let holdingCompensation = document.getElementById('lbl-holding-compensation')
+
+    let daysLiquidationLastYear = document.getElementById('lbl-days-liquidation-last-year')
+    let unemploymentLastYear = document.getElementById('lbl-unemployment-last-year')
+    let unemploymentInterestLastYear = document.getElementById('lbl-unemployment-interest-last-year')
 
     this.display('currency', totalDevengos, this.devengos.totalDevengos)
     this.display('currency', totalDiscounts, this.discounts.totalDiscounts)
@@ -338,10 +405,14 @@ class CalcLiquidaciones {
     this.display('currency', compensation, this.devengos.compensation)
     this.display('currency', health, this.discounts.health)
     this.display('currency', pension, this.discounts.pension)
-    this.display('currency', solidarityAndSubsistence, this.discounts.solidarityPlusSubsistence)
+    this.display('currency', solidarity, this.discounts.solidarity)
+    this.display('currency', subsistence, this.discounts.subsistence)
     this.display('currency', otherDiscounts, otherDisc)
     this.display('currency', source, this.discounts.source)
     this.display('currency', holdingCompensation, this.discounts.rtCompensation)
+    this.display('txt', daysLiquidationLastYear, this.previousYear.daysLiquidationLastYear)
+    this.display('currency', unemploymentLastYear, this.previousYear.unemployment)
+    this.display('currency', unemploymentInterestLastYear, this.previousYear.interest)
 
   }
 
