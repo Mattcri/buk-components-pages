@@ -410,9 +410,12 @@ class CalcLiquidaciones {
     this.display('currency', otherDiscounts, otherDisc)
     this.display('currency', source, this.discounts.source)
     this.display('currency', holdingCompensation, this.discounts.rtCompensation)
-    this.display('txt', daysLiquidationLastYear, this.previousYear.daysLiquidationLastYear)
-    this.display('currency', unemploymentLastYear, this.previousYear.unemployment)
-    this.display('currency', unemploymentInterestLastYear, this.previousYear.interest)
+    
+    if (this.applyPreviousYear === true) {
+      this.display('txt', daysLiquidationLastYear, this.previousYear.daysLiquidationLastYear)
+      this.display('currency', unemploymentLastYear, this.previousYear.unemployment)
+      this.display('currency', unemploymentInterestLastYear, this.previousYear.interest)
+    }
 
   }
 
