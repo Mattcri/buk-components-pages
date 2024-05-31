@@ -33,16 +33,31 @@ const fixedTerm = document.querySelector('[data-condition="fixed-term"]')
 const typeOfContract = document.getElementById('contract-type')
 const withdrawalReason = document.getElementById('withdrawal-reason')
 
-function checkShowFixedTermInput() {
-  if (typeOfContract.value === 'fixed-term' && withdrawalReason.value === 'option-3') {
-    fixedTerm.style.visibility = 'visible'
+function dsNoneOrVisibleOption (element) {
+  let mql = window.matchMedia('(min-width:767px)')
+  if (mql.matches) {
+    element.style.visibility = 'visible'
   } else {
-    fixedTerm.style.visibility = 'hidden'
+    element.style.display = 'block'
+  }
+}
+
+function checkShowFixedTermInput() {
+  let mql = window.matchMedia('(min-width:767px)')
+  if (typeOfContract.value === 'fixed-term' && withdrawalReason.value === 'option-3') {
+    mql.matches === true
+      ? fixedTerm.style.visibility = 'visible' 
+      : fixedTerm.style.display = 'block'
+  } else {
+    console.log(mql.matches)
+    mql.matches === true
+      ? fixedTerm.style.visibility = 'hidden' 
+      : fixedTerm.style.display = 'none'
     document.getElementById('end-contract-fixed-date').value = ''
   }
 }
 
-fixedTerm.style.visibility = 'hidden'
+checkShowFixedTermInput()
 
 typeOfContract.addEventListener('change', () => {
   checkShowFixedTermInput()
@@ -55,29 +70,47 @@ const inputsRequired = [...document.querySelectorAll('input[required]')]
 
 inputsRequired.forEach(input => {
   input.addEventListener('blur', function() {
-    let dateAdmission = new Date(`${document.getElementById('start-contract-date').value}T00:00:00`)
-    let dateEndContract = new Date(`${document.getElementById('layoff-date').value}T00:00:00`)
-    let dateFixedTerm = new Date(`${document.getElementById('end-contract-fixed-date').value}T00:00:00`)
+    if (this.classList.contains('border-error')) {
+      let dateAdmission = new Date(`${document.getElementById('start-contract-date').value}T00:00:00`)
+      let dateEndContract = new Date(`${document.getElementById('layoff-date').value}T00:00:00`)
+      let dateFixedTerm = new Date(`${document.getElementById('end-contract-fixed-date').value}T00:00:00`)
+      let salary = document.getElementById('salary')
+      let salaryLastYear = document.getElementById('salary-last-year')
+      let daysWorkedInMonth = document.getElementById('days-worked')
 
-    this.classList.contains('border-error')
-      ? this.classList.remove('border-error')
-      : false
+      // this.classList.contains('border-error')
+      //   ? this.classList.remove('border-error')
+      //   : false
 
-    if (moment(dateAdmission).isBefore(dateEndContract)) {
-      document.getElementById('start-contract-date').classList.remove('border-error')
-    }
+      if (salary.valueAsNumber !== 0 && salary.valueAsNumber >= nvtCO.getSMLV()) {
+        salary.classList.remove('border-error')
+      }
 
-    if (moment(dateEndContract).isAfter(dateAdmission)) {
-      document.getElementById('layoff-date').classList.remove('border-error')
-    }
+      if (daysWorkedInMonth.valueAsNumber !== 0 && daysWorkedInMonth.valueAsNumber <= 30) {
+        daysWorkedInMonth.classList.remove('border-error')
+      }
 
-    if (typeOfContract.value === 'fixed-term' && withdrawalReason.value === 'option-3') {
-      if (moment(dateAdmission).isBefore(dateFixedTerm)) {
+      if (salaryLastYear.valueAsNumber !== 0 && salaryLastYear.valueAsNumber >= nvtCO.getSMLVlastYear()) {
+        salaryLastYear.classList.remove('border-error')
+      }
+
+      if (moment(dateAdmission).isBefore(dateEndContract)) {
         document.getElementById('start-contract-date').classList.remove('border-error')
       }
-      else if (moment(dateFixedTerm).isAfter(dateAdmission)) {
-        document.getElementById('end-contract-fixed-date').classList.remove('border-error')
+
+      if (moment(dateEndContract).isAfter(dateAdmission)) {
+        document.getElementById('layoff-date').classList.remove('border-error')
       }
+
+      if (typeOfContract.value === 'fixed-term' && withdrawalReason.value === 'option-3') {
+        if (moment(dateAdmission).isBefore(dateFixedTerm)) {
+          document.getElementById('start-contract-date').classList.remove('border-error')
+        }
+        else if (moment(dateFixedTerm).isAfter(dateAdmission)) {
+          document.getElementById('end-contract-fixed-date').classList.remove('border-error')
+        }
+      }
+
     }
 
   })
