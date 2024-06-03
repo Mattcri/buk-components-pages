@@ -21,6 +21,7 @@ const loadDataChart3 = async () => {
   storeChart3 = await data
   await initChartIndustrias(storeChart3)
   await getIndustriesNames(storeChart3)
+  backgroundIndustriesSelected()
 }
 
 const initChartIndustrias = async (data) => {
@@ -50,9 +51,17 @@ let industriesSelected = [
   'Actividades de servicios administrativos y de apoyo'
 ]
 
-// const backgroundIndustriesSelected = () => {
-//   let industries = storeChart3[0]
-// }
+const backgroundIndustriesSelected = () => {
+  let DOMliIndustries = [...document.querySelectorAll('#submenu-industries__wrap li')]
+  
+  DOMliIndustries.forEach(li => {
+    if (industriesSelected.includes(li.dataset.targetIndustry)) {
+      li.classList.add('selected');
+    } else {
+      li.classList.remove('selected');
+    }
+  })
+}
 
 const addToChart = (newIndustry, chart) => {
   const chartTarget = echarts.init(document.getElementById(chart))
@@ -72,7 +81,7 @@ const addToChart = (newIndustry, chart) => {
 
   industriesSelected.shift()
   industriesSelected.push(newIndustry)
-  console.log('new indus: ', industriesSelected)
+  // console.log('new indus: ', industriesSelected)
   // update chart data in options back
   let indexSerieToRemove = currentOptions.series.findIndex(e => e.name === industryToRemove)
   currentOptions.series.splice(indexSerieToRemove, 1)
@@ -93,6 +102,7 @@ const updateChart = (DOMitem, chart) => {
   
   if(!isSelected) {
     addToChart(industryName, chart)
+    backgroundIndustriesSelected()
   }
   
 }
@@ -103,7 +113,7 @@ const getIndustriesNames = async (data) => {
   const builder = (wrapper) => {
     industriesNames.forEach((item, index) => {
       let html = `
-        <li onclick="updateChart(this, 'chart3')" data-target-industry="${item}">${item}</li>
+        <li onclick="updateChart(this, 'chart3')" data-target-industry="${item}" class="submenu-industries__item">${item}</li>
       `
       wrapper.insertAdjacentHTML('beforeend', html)
     })
@@ -217,3 +227,15 @@ const getOptionChart3 = (data) => {
 window.addEventListener("load", () => {
   loadDataChart3();
 });
+
+document.querySelector('body').addEventListener('click', function(event) {
+  if (!event.target.closest('.submenu-industries__item') && !event.target.closest('#btn-industries')) {
+    let btn = document.getElementById('btn-industries')
+    let submenu = document.getElementById('submenu-industries')
+    btn.classList.remove('open')
+    btn.style.borderRadius = '21px'
+    submenu.style.height = `0px`
+    submenu.style.border = 'none'
+    submenu.style.overflowY = 'hidden'
+  }
+})
