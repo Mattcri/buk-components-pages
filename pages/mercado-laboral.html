@@ -84,7 +84,7 @@
         min-height: 400px;
       }
 
-      #submenu-industries {
+      .menu-industries {
         background: var(--color-white);
         border-top: none !important;
         border-radius: 0 0 21px 21px;
@@ -104,17 +104,17 @@
       /* #submenu-industries ul {
         border: 2px solid var(--color-light-blue);
       } */
-      #submenu-industries li:not(:last-of-type) {
+      .menu-industries li:not(:last-of-type) {
         border-bottom: 2px solid var(--color-light-blue);
       }
-      #submenu-industries li {
+      .menu-industries li {
         cursor: pointer;
         padding: .35rem 1rem;
       }
-      #submenu-industries li:hover {
+      .menu-industries li:hover {
         background: #e0dfdf;
       }
-      #submenu-industries li.selected {
+      .menu-industries li.selected {
         background-color: #f0f1f2;
       }
 
@@ -211,7 +211,7 @@
             <div class="tab-pane active buk-col buk-col-lg-12" id="tab-3">
               <div class="buk-mb-6 buk-grid">
                 <div class="buk-col buk-col-md-7 buk-col-lg-5 pst-relative">
-                  <button class="pst-relative wi-100 ff-body btn-select" id="btn-industries">
+                  <button class="pst-relative wi-100 ff-body btn-select" id="btn-industries-1">
                     Seleccionar Industrias
                     <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd" clip-rule="evenodd"
@@ -219,8 +219,8 @@
                         fill="#2F4DAA"></path>
                     </svg>
                   </button>
-                  <div id="submenu-industries">
-                    <ul class="submenu-wrap" id="submenu-industries__wrap">
+                  <div id="menu-industries-1" class="menu-industries">
+                    <ul id="menu-industries-1__wrap">
                       
                     </ul>
                   </div>
@@ -228,6 +228,49 @@
                 </div>
               </div>
               <div id="chart3" class="chart"></div>
+
+              <h3 class="buk-mt-6">Variación entradas y salidas por industria</h3>
+              <div class="buk-my-5 buk-grid">
+                <div class="buk-col buk-col-md-7 buk-col-lg-5 pst-relative">
+                  <button class="pst-relative wi-100 ff-body btn-select" id="btn-industries-2">
+                    Seleccionar Industria
+                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M11.3133 0.740995C11.6192 0.997898 11.6589 1.45409 11.4019 1.75993L7.07395 6.9123C6.51082 7.58269 5.4859 7.60302 4.89664 6.95548L0.188326 1.78151C-0.0804997 1.4861 -0.0589466 1.0287 0.236466 0.75987C0.531878 0.491045 0.989283 0.512598 1.25811 0.808011L5.96642 5.98198L10.2944 0.829598C10.5513 0.523761 11.0075 0.484092 11.3133 0.740995Z"
+                        fill="#2F4DAA"></path>
+                    </svg>
+                  </button>
+                  <div id="menu-industries-2" class="menu-industries">
+                    <ul id="menu-industries-2__wrap">
+              
+                    </ul>
+                  </div>
+              
+                </div>
+              </div>
+              <div id="chart12" class="chart"></div>
+
+              <h3 class="buk-mt-6">Tamaño de muestra empresas</h3>
+              <div class="buk-my-5 buk-grid">
+                <div class="buk-col buk-col-md-7 buk-col-lg-5 pst-relative">
+                  <button class="pst-relative wi-100 ff-body btn-select" id="btn-industries-3">
+                    Seleccionar Industria
+                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M11.3133 0.740995C11.6192 0.997898 11.6589 1.45409 11.4019 1.75993L7.07395 6.9123C6.51082 7.58269 5.4859 7.60302 4.89664 6.95548L0.188326 1.78151C-0.0804997 1.4861 -0.0589466 1.0287 0.236466 0.75987C0.531878 0.491045 0.989283 0.512598 1.25811 0.808011L5.96642 5.98198L10.2944 0.829598C10.5513 0.523761 11.0075 0.484092 11.3133 0.740995Z"
+                        fill="#2F4DAA"></path>
+                    </svg>
+                  </button>
+                  <div id="menu-industries-3" class="menu-industries">
+                    <ul id="menu-industries-3__wrap">
+              
+                    </ul>
+                  </div>
+              
+                </div>
+              </div>
+              <div id="chart9" class="chart"></div>
+
             </div>
 
           </div>
@@ -246,6 +289,8 @@
   <script src="../js/mercado-laboral/chart-1.js" defer></script>
   <script src="../js/mercado-laboral/chart-2.js" defer></script>
   <script src="../js/mercado-laboral/chart-3.js" defer></script>
+  <script src="../js/mercado-laboral/chart-4.js" defer></script>
+  <script src="../js/mercado-laboral/chart-5.js" defer></script>
 
   <!-- <script defer
     src="//cdn2.hubspot.net/hub/3790458/hub_generated/template_assets/104981911308/1692639551588/BUK-SITE_2023/JS/global-main.min.js"></script> -->
