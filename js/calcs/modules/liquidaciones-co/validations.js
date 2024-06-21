@@ -1,4 +1,6 @@
 import { coFormatter } from "../currencyCO.js"
+import { nvtCO } from "./calc.js"
+// import { calc } from "./director.js"
 
 class Validator {
   constructor(errorsList=[]) {
@@ -24,7 +26,7 @@ class Validator {
     let txt = 'El salario básico no puede ser menor a $1.300.000'
     return new Promise((resolve, reject) => {
       if (salary !== 0) {
-        if (salary > 1300000) {
+        if (salary > nvtCO.getSMLV()) {
           resolve()
         } else {
           this.errorsList.push(txt)
@@ -135,12 +137,49 @@ class Validator {
     })
   }
 
+  endContractIsInCurrentYear(endContractDate) {
+    let inputEndContract = document.getElementById('layoff-date')
+    let currentYear = new Date().getFullYear().toString()
+    let initCurrentYear = moment(`01/01/${currentYear}T00:00:00`, "DD/MM/YYYY")
+    let txt = 'La fecha de retiro debe corresponder a una liquidación del año en curso, no puede ser de años anteriores'
+    return new Promise((resolve, reject) => {
+      if (moment(endContractDate).isValid() !== false) {
+        if (moment(endContractDate).isAfter(initCurrentYear)) {
+          resolve()
+        } else {
+          this.activeBorderError(inputEndContract)
+          this.errorsList.push(txt)
+          reject(new Error('La fecha de retiro no corresponde a una fecha del año en curso'))
+        }
+      }
+      reject(new Error('No se ingreso una fecha de retiro'))
+    })
+  }
+
+  salaryLastYearIsNotEmpty (salaryLastYear, applyPreviousYear) {
+    let DOMinput = document.getElementById('salary-last-year')
+    let txt = 'El salario del año anterior no puede ser menor a $1.160.000'
+    return new Promise((resolve, reject) => {
+      if (applyPreviousYear === true) {
+        if (salaryLastYear !== 0 && salaryLastYear >= nvtCO.getSMLVlastYear()) {
+          resolve()
+        } else {
+          this.errorsList.push(txt)
+          this.activeBorderError(DOMinput)
+          reject(new Error('El salario básico del año anterior es menor al mínimo legal'))
+        }
+      }
+      resolve()
+    })
+  }
+
   resetValuesIfFindErrors () {
     const txtValues = [
       document.getElementById('lbl-init-prima'),
       document.getElementById('lbl-init-unemployment'),
       document.getElementById('lbl-days-liquidation'),
-      document.getElementById('lbl-days-compensation')
+      document.getElementById('lbl-days-compensation'),
+      document.getElementById('lbl-days-liquidation-last-year')
     ]
     const currencyValues = [
       document.getElementById('lbl-total-devengos'),
@@ -154,10 +193,13 @@ class Validator {
       document.getElementById('lbl-compensation'),
       document.getElementById('lbl-health'),
       document.getElementById('lbl-pension'),
-      document.getElementById('lbl-solidarity-subsitence'),
+      document.getElementById('lbl-solidarity'),
+      document.getElementById('lbl-subsitence'),
       document.getElementById('lbl-other-discounts'),
       document.getElementById('lbl-source'),
-      document.getElementById('lbl-holding-compensation')
+      document.getElementById('lbl-holding-compensation'),
+      document.getElementById('lbl-unemployment-last-year'),
+      document.getElementById('lbl-unemployment-interest-last-year')
     ]
 
     if (this.errorsList.length > 0) {
