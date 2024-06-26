@@ -15,6 +15,10 @@ class NationalValuesCO {
     return 140606
   }
 
+  getAuxTransportCurrentYear() {
+    return 162000
+  }
+
   maxSocialSecurity() {
     return Number(this.getSMLV() * 25)
   }

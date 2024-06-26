@@ -101,8 +101,9 @@ class CalcLiquidaciones {
     let unemploymentInterest = this.unemploymentInterest(salary, salaryType, contractType, otherUnemploymentConcepts, otherSalaries, daysNotWorked)
     let vacations = this.vacations(salary, contractType, variablesVacationsConcepts, otherSalaries, vacationsPending)
     let compensation = this.compensation(salary, contractType, variablesVacationsConcepts, otherSalaries)
+    let auxTransport = this.auxTransportDevengos(salary, daysWorked)
     let totalLastYear = this.applyPreviousYear === true ? this.previousYear.total : 0
-    let totalDevengos = salaryCalc + prima + unemployment + unemploymentInterest + vacations + compensation + otherSalaries + otherNotSalaries + totalLastYear
+    let totalDevengos = salaryCalc + prima + unemployment + unemploymentInterest + vacations + compensation + otherSalaries + otherNotSalaries + totalLastYear + auxTransport
 
     this.devengos = {
       salaryCalc,
@@ -111,6 +112,7 @@ class CalcLiquidaciones {
       unemploymentInterest,
       vacations,
       compensation,
+      auxTransport,
       totalDevengos
     }
   }
@@ -128,7 +130,9 @@ class CalcLiquidaciones {
       return 0
     }
 
-    let calcPrima = (salary + ((otherConceptsPrima + otherSalaries) / this.initPrima * 30)) * this.initPrima / 360
+    let auxTransport = this.auxTransportAmount(salary)
+
+    let calcPrima = (salary + auxTransport + ((otherConceptsPrima + otherSalaries) / this.initPrima * 30)) * this.initPrima / 360
 
     return Number(calcPrima.toFixed(0))
   }
@@ -142,9 +146,28 @@ class CalcLiquidaciones {
       return 0
     }
 
-    let calcUnemployment = (salary + ((otherUnemploymentConcepts + otherSalaries) / (this.initLayoff + daysNotWorked) * 30)) * this.initLayoff / 360
+    let auxTransport = this.auxTransportAmount(salary)
+
+    let calcUnemployment = (salary + auxTransport + ((otherUnemploymentConcepts + otherSalaries) / (this.initLayoff + daysNotWorked) * 30)) * this.initLayoff / 360
 
     return Number(calcUnemployment.toFixed(0))
+  }
+
+  auxTransportAmount(salary) {
+    if (salary > (nvtCO.getSMLV() * 2) ) {
+      return 0
+    } else {
+      return nvtCO.getAuxTransportCurrentYear()
+    }
+  }
+
+  auxTransportDevengos(salary, daysWorked) {
+    if (salary > (nvtCO.getSMLV() * 2)) {
+      return 0
+    } else {
+      let auxTransport = nvtCO.getAuxTransportCurrentYear()
+      return Number((auxTransport / 30 * daysWorked).toFixed(0))
+    }
   }
 
   unemploymentInterest(salary, salaryType, contractType, otherUnemploymentConcepts, otherSalaries, daysNotWorked) {
@@ -385,6 +408,7 @@ class CalcLiquidaciones {
     let otherDiscounts = document.getElementById('lbl-other-discounts')
     let source = document.getElementById('lbl-source')
     let holdingCompensation = document.getElementById('lbl-holding-compensation')
+    let auxTransport = document.getElementById('lbl-aux-transport')
 
     let daysLiquidationLastYear = document.getElementById('lbl-days-liquidation-last-year')
     let unemploymentLastYear = document.getElementById('lbl-unemployment-last-year')
@@ -410,7 +434,8 @@ class CalcLiquidaciones {
     this.display('currency', otherDiscounts, otherDisc)
     this.display('currency', source, this.discounts.source)
     this.display('currency', holdingCompensation, this.discounts.rtCompensation)
-    
+    this.display('currency', auxTransport, this.devengos.auxTransport)
+
     if (this.applyPreviousYear === true) {
       this.display('txt', daysLiquidationLastYear, this.previousYear.daysLiquidationLastYear)
       this.display('currency', unemploymentLastYear, this.previousYear.unemployment)

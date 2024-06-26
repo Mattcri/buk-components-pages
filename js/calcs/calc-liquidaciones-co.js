@@ -1,5 +1,6 @@
 import { Director, validate } from "./modules/liquidaciones-co/director.js"
 import { nvtCO } from "./modules/liquidaciones-co/calc.js"
+import { coFormatter } from "./modules/currencyCO.js"
 
 const director = new Director()
 const btnCalculate = document.getElementById('btn-calculate')
@@ -7,6 +8,10 @@ const btnCalculate = document.getElementById('btn-calculate')
 btnCalculate.addEventListener('click', () => {
   director.calculateLiquidation()
 })
+
+document.getElementById('min-legal-salary').value = coFormatter.format(nvtCO.getSMLV())
+document.getElementById('aux-legal-transport').value = coFormatter.format(nvtCO.getAuxTransportCurrentYear())
+document.getElementById('uvt-legal').value = coFormatter.format(nvtCO.getUVT())
 
 const closeDialog = document.getElementById('close-dialog-errs')
 const dialogErrors = document.querySelector('.buk-modal.buk-modal--control-errs')
