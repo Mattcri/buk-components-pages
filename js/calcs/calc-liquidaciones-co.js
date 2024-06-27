@@ -13,6 +13,10 @@ document.getElementById('min-legal-salary').value = coFormatter.format(nvtCO.get
 document.getElementById('aux-legal-transport').value = coFormatter.format(nvtCO.getAuxTransportCurrentYear())
 document.getElementById('uvt-legal').value = coFormatter.format(nvtCO.getUVT())
 
+document.getElementById('days-worked').addEventListener('change', function () {
+  Number(this.value) <= 30 ? this.value = this.value : this.value = 30
+})
+
 const closeDialog = document.getElementById('close-dialog-errs')
 const dialogErrors = document.querySelector('.buk-modal.buk-modal--control-errs')
 

@@ -31,7 +31,12 @@ class CalcLiquidaciones {
   }
 
   rsltLiquidationDays (startContractDate, layoffDate, daysNotWorked) {
+    let end = moment(layoffDate)
+    let specialMonths = [1, 3, 5, 8, 10]
     let days = days360v2(startContractDate, layoffDate) + 1
+    if (specialMonths.includes(end.month()) && end.date() <= 9) {
+      days--
+    }
 
     this.liquidationsDays = days - daysNotWorked
   }
@@ -205,8 +210,9 @@ class CalcLiquidaciones {
     return Number(calcCompensation.toFixed(0))
   }
 
-  ibcSocialSecurity(salary, salaryType, otherSalaries, otherNotSalaries) {
-    let sumSalaries = salary + otherSalaries + otherNotSalaries
+  ibcSocialSecurity(salary, salaryType, otherSalaries, otherNotSalaries, daysWorked) {
+    let salaryDaysWorked = this.salary(salary, daysWorked)
+    let sumSalaries = salaryDaysWorked + otherSalaries + otherNotSalaries
     let maxAmount = nvtCO.maxSocialSecurity()
     let fortyPct = Number((sumSalaries * 0.4).toFixed(0))
     let excessLaw1393 = (otherNotSalaries - fortyPct) > 0
@@ -214,7 +220,7 @@ class CalcLiquidaciones {
       : 0
     let calcIbc = salaryType === 'integral'
       ? Number((((sumSalaries * 0.7) + excessLaw1393)).toFixed(0))
-      : Number(salary + otherSalaries + excessLaw1393)
+      : Number(salaryDaysWorked + otherSalaries + excessLaw1393)
 
     // console.log('40%: ', fortyPct)
     // console.log('excess: ', excessLaw1393)
@@ -358,10 +364,10 @@ class CalcLiquidaciones {
 
     if (moment(startDate).isBefore(initDateLastYear)) {
       let days = days360v2(initDateLastYear, maxDateLastYear)
-      return (days + 1) - notWorked
+      return (days + 1)
     } else {
       let days = days360v2(startDate, maxDateLastYear)
-      return (days + 1) - notWorked
+      return (days + 1)
     }
 
   }

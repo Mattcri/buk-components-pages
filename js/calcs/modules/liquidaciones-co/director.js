@@ -59,7 +59,7 @@ class Director {
       calc.rsltInitPrima(layoffDate)
       calc.rsltInitLayoff(layoffDate, daysNotWorked)
       calc.rsltCompensationDays(salary, withdrawalReason, contractType, startContractDate, layoffDate, endFixedDate, daysNotWorked)
-      calc.ibcSocialSecurity(salary, salaryType, otherSalaries, otherNotSalaries)
+      calc.ibcSocialSecurity(salary, salaryType, otherSalaries, otherNotSalaries, daysWorked)
       calc.liquidationLastYear(salaryLastYear, variablesLastYear, auxTransportLastYear, daysNotWorkedLastYear, startContractDate, contractType)
       calc.devengosValues(salary, salaryType, contractType, otherConceptsPrima, otherUnemploymentConcepts, otherSalaries, otherNotSalaries, daysWorked, daysNotWorked, variablesVacationsConcepts, vacationsPending)
       calc.discountsValues(salary, salaryType, contractType, otherSalaries, otherNotSalaries, otherDiscounts)
