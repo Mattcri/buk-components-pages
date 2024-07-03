@@ -56,15 +56,15 @@ class Director {
       sectionResults.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
       
       calc.rsltLiquidationDays(startContractDate, layoffDate, daysNotWorked)
-      calc.rsltInitPrima(layoffDate)
-      calc.rsltInitLayoff(layoffDate, daysNotWorked)
+      calc.rsltInitPrima(layoffDate, salaryType)
+      calc.rsltInitLayoff(layoffDate, daysNotWorked, salaryType)
       calc.rsltCompensationDays(salary, withdrawalReason, contractType, startContractDate, layoffDate, endFixedDate, daysNotWorked)
       calc.ibcSocialSecurity(salary, salaryType, otherSalaries, otherNotSalaries, daysWorked)
       calc.liquidationLastYear(salaryLastYear, variablesLastYear, auxTransportLastYear, daysNotWorkedLastYear, startContractDate, contractType)
       calc.devengosValues(salary, salaryType, contractType, otherConceptsPrima, otherUnemploymentConcepts, otherSalaries, otherNotSalaries, daysWorked, daysNotWorked, variablesVacationsConcepts, vacationsPending)
       calc.discountsValues(salary, salaryType, contractType, otherSalaries, otherNotSalaries, otherDiscounts)
       calc.rsltTotal()
-      calc.printInScreen(otherDiscounts)
+      calc.printInScreen(otherDiscounts, otherSalaries, otherNotSalaries)
       calc.logRslt()
     }
 

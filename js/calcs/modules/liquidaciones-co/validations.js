@@ -200,7 +200,9 @@ class Validator {
       document.getElementById('lbl-holding-compensation'),
       document.getElementById('lbl-unemployment-last-year'),
       document.getElementById('lbl-unemployment-interest-last-year'),
-      document.getElementById('lbl-aux-transport')
+      document.getElementById('lbl-aux-transport'),
+      document.getElementById('lbl-other-salary-concepts'),
+      document.getElementById('lbl-other-not-salary-concepts')
     ]
 
     if (this.errorsList.length > 0) {

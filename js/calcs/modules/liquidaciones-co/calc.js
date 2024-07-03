@@ -41,7 +41,12 @@ class CalcLiquidaciones {
     this.liquidationsDays = days - daysNotWorked
   }
 
-  rsltInitPrima (layoffDate) {
+  rsltInitPrima (layoffDate, salaryType) {
+    if (salaryType === 'integral') {
+      this.initPrima = 0
+      return
+    }
+
     let currentYear = new Date().getFullYear().toString()
     let firstSemester = moment(`01/01/${currentYear}T00:00:00`, "DD/MM/YYYY")
     let secondSemester = moment(`01/07/${currentYear}T00:00:00`, "DD/MM/YYYY")
@@ -62,7 +67,12 @@ class CalcLiquidaciones {
     this.initPrima = prima
   }
 
-  rsltInitLayoff (layoffDate, daysNotWorked) {
+  rsltInitLayoff (layoffDate, daysNotWorked, salaryType) {
+    if (salaryType === 'integral') {
+      this.initLayoff = 0
+      return
+    }
+
     let currentYear = new Date().getFullYear().toString()
     let firstDayOfYear = moment(`01/01/${currentYear}T00:00:00`, "DD/MM/YYYY")
     
@@ -377,13 +387,17 @@ class CalcLiquidaciones {
       return
     }
 
-    let daysLiquidationLastYear = this.liquidationDaysLastYear(startContractDate, daysNotWorkedLastYear)
-    let unemployment = (salaryLastYear + auxTransportLastYear + (variablesLastYear / daysLiquidationLastYear * 30)) * daysLiquidationLastYear / 360
-    let interest = unemployment * daysLiquidationLastYear * 0.12 / 360
-    let total = Number((unemployment + interest).toFixed(0)) 
+    let daysContractedLastYear = this.liquidationDaysLastYear(startContractDate)
+    let daysFullyWorkedLastYear = daysContractedLastYear - daysNotWorkedLastYear
+    let avgVariableConcepts = Number((variablesLastYear / daysContractedLastYear * 30).toFixed(0))
+    let baseFinal = Number((salaryLastYear + avgVariableConcepts + auxTransportLastYear).toFixed(0))
+
+    let unemployment = baseFinal / 360 * daysFullyWorkedLastYear
+    let interest = (unemployment * daysContractedLastYear * 0.12) / 360
+    let total = Number((unemployment + interest).toFixed(0))
 
     this.previousYear = {
-      daysLiquidationLastYear,
+      daysLiquidationLastYear: daysFullyWorkedLastYear,
       unemployment: Number(unemployment.toFixed(0)),
       interest: Number(interest.toFixed(0)),
       total
@@ -391,7 +405,7 @@ class CalcLiquidaciones {
 
   }
 
-  printInScreen (otherDisc) {
+  printInScreen (otherDisc, otherSalary, otherNotSalary) {
     let totalDevengos = document.getElementById('lbl-total-devengos')
     let totalDiscounts = document.getElementById('lbl-total-discounts')
     let totalToPay = document.getElementById('lbl-total-pay')
@@ -415,6 +429,8 @@ class CalcLiquidaciones {
     let source = document.getElementById('lbl-source')
     let holdingCompensation = document.getElementById('lbl-holding-compensation')
     let auxTransport = document.getElementById('lbl-aux-transport')
+    let otherSalaryConcepts = document.getElementById('lbl-other-salary-concepts')
+    let otherNotSalaryConcepts = document.getElementById('lbl-other-not-salary-concepts')
 
     let daysLiquidationLastYear = document.getElementById('lbl-days-liquidation-last-year')
     let unemploymentLastYear = document.getElementById('lbl-unemployment-last-year')
@@ -441,6 +457,8 @@ class CalcLiquidaciones {
     this.display('currency', source, this.discounts.source)
     this.display('currency', holdingCompensation, this.discounts.rtCompensation)
     this.display('currency', auxTransport, this.devengos.auxTransport)
+    this.display('currency', otherSalaryConcepts, otherSalary)
+    this.display('currency', otherNotSalaryConcepts, otherNotSalary)
 
     if (this.applyPreviousYear === true) {
       this.display('txt', daysLiquidationLastYear, this.previousYear.daysLiquidationLastYear)
