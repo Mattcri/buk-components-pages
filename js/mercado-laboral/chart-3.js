@@ -52,7 +52,7 @@ let industriesSelected = [
 ]
 
 const backgroundIndustriesSelected = () => {
-  let DOMliIndustries = [...document.querySelectorAll('#submenu-industries__wrap li')]
+  let DOMliIndustries = [...document.querySelectorAll('#menu-industries-1__wrap li')]
   
   DOMliIndustries.forEach(li => {
     if (industriesSelected.includes(li.dataset.targetIndustry)) {
@@ -72,7 +72,6 @@ const addToChart = (newIndustry, chart) => {
   let newSeries = {
     name: industryData.nameIndustry,
     type: 'line',
-    stack: 'value',
     data: industryData.serieData
   }
   
@@ -108,12 +107,12 @@ const updateChart = (DOMitem, chart) => {
 }
 
 const getIndustriesNames = async (data) => {
-  let DOMsubmenu = document.getElementById('submenu-industries__wrap') 
+  let DOMsubmenu = document.getElementById('menu-industries-1__wrap') 
   const industriesNames = await data[0].industries.map(e => e.industry)
   const builder = (wrapper) => {
     industriesNames.forEach((item, index) => {
       let html = `
-        <li onclick="updateChart(this, 'chart3')" data-target-industry="${item}" class="submenu-industries__item">${item}</li>
+        <li onclick="updateChart(this, 'chart3')" data-target-industry="${item}" class="menu-industries__item">${item}</li>
       `
       wrapper.insertAdjacentHTML('beforeend', html)
     })
@@ -152,7 +151,6 @@ const getOptionChart3 = (data) => {
     return {
       name: industry.nameIndustry,
       type: 'line',
-      stack: 'value',
       data: industry.serieData
     };
   })
@@ -229,9 +227,9 @@ window.addEventListener("load", () => {
 });
 
 document.querySelector('body').addEventListener('click', function(event) {
-  if (!event.target.closest('.submenu-industries__item') && !event.target.closest('#btn-industries')) {
-    let btn = document.getElementById('btn-industries')
-    let submenu = document.getElementById('submenu-industries')
+  if (!event.target.closest('.menu-industries__item') && !event.target.closest('#btn-industries-1')) {
+    let btn = document.getElementById('btn-industries-1')
+    let submenu = document.getElementById('menu-industries-1')
     btn.classList.remove('open')
     btn.style.borderRadius = '21px'
     submenu.style.height = `0px`
